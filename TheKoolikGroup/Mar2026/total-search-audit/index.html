@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Koolik Group - Total Search Audit | Blok.CO</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #0a0a0a; color: #e0e0e0; line-height: 1.6; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+
+        /* Header */
+        .header { background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%); padding: 60px 0; border-bottom: 1px solid #333; }
+        .header-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px; }
+        .blok-logo { font-size: 14px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #00d4ff; }
+        .header-date { font-size: 13px; color: #888; }
+        .header h1 { font-size: 42px; font-weight: 300; color: #fff; margin-bottom: 8px; letter-spacing: -0.5px; }
+        .header h1 strong { font-weight: 700; }
+        .header .subtitle { font-size: 18px; color: #00d4ff; font-weight: 500; margin-bottom: 24px; }
+        .header .client-info { display: flex; gap: 40px; font-size: 14px; color: #999; }
+        .header .client-info span { display: flex; align-items: center; gap: 8px; }
+        .header .client-info .label { color: #666; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
+        .client-detail { display: flex; flex-direction: column; }
+
+        /* Confidential Banner */
+        .confidential { background: #1a1a1a; border: 1px solid #333; padding: 12px 24px; text-align: center; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #666; }
+
+        /* Score Dashboard */
+        .dashboard { background: #111; padding: 50px 0; border-bottom: 1px solid #222; }
+        .dashboard h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 3px; color: #666; margin-bottom: 30px; }
+        .score-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
+        .score-card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 12px; padding: 28px 20px; text-align: center; position: relative; overflow: hidden; }
+        .score-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+        .score-card.critical::before { background: #ff4444; }
+        .score-card.warning::before { background: #ffaa00; }
+        .score-card.moderate::before { background: #00d4ff; }
+        .score-card.good::before { background: #00cc88; }
+        .score-number { font-size: 48px; font-weight: 700; margin-bottom: 4px; }
+        .score-card.critical .score-number { color: #ff4444; }
+        .score-card.warning .score-number { color: #ffaa00; }
+        .score-card.moderate .score-number { color: #00d4ff; }
+        .score-card.good .score-number { color: #00cc88; }
+        .score-label { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+        .score-sub { font-size: 11px; color: #555; margin-top: 8px; }
+
+        /* Executive Summary */
+        .exec-summary { padding: 60px 0; border-bottom: 1px solid #222; }
+        .exec-summary h2 { font-size: 28px; font-weight: 300; color: #fff; margin-bottom: 30px; }
+        .exec-summary h2 strong { font-weight: 700; color: #00d4ff; }
+        .exec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .exec-card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 8px; padding: 30px; }
+        .exec-card h3 { font-size: 14px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; }
+        .exec-card h3.green { color: #00cc88; }
+        .exec-card h3.red { color: #ff4444; }
+        .exec-card h3.blue { color: #00d4ff; }
+        .exec-card h3.yellow { color: #ffaa00; }
+        .exec-card ul { list-style: none; }
+        .exec-card ul li { padding: 8px 0; border-bottom: 1px solid #222; font-size: 14px; color: #ccc; padding-left: 20px; position: relative; }
+        .exec-card ul li:last-child { border-bottom: none; }
+        .exec-card ul li::before { content: ''; position: absolute; left: 0; top: 15px; width: 6px; height: 6px; border-radius: 50%; }
+        .exec-card.strengths ul li::before { background: #00cc88; }
+        .exec-card.critical ul li::before { background: #ff4444; }
+        .exec-card.opportunities ul li::before { background: #00d4ff; }
+        .exec-card.threats ul li::before { background: #ffaa00; }
+
+        /* Section Styling */
+        .section { padding: 60px 0; border-bottom: 1px solid #222; }
+        .section-number { font-size: 11px; text-transform: uppercase; letter-spacing: 3px; color: #00d4ff; margin-bottom: 8px; }
+        .section h2 { font-size: 28px; font-weight: 300; color: #fff; margin-bottom: 30px; }
+        .section h2 strong { font-weight: 700; }
+        .section h3 { font-size: 18px; font-weight: 600; color: #fff; margin: 30px 0 16px; }
+        .section p { font-size: 15px; color: #bbb; margin-bottom: 16px; max-width: 800px; }
+
+        /* Tables */
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th { background: #1a1a1a; color: #00d4ff; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; padding: 14px 16px; text-align: left; border-bottom: 2px solid #333; }
+        td { padding: 14px 16px; border-bottom: 1px solid #1a1a1a; font-size: 14px; color: #ccc; }
+        tr:hover td { background: #151515; }
+
+        /* Status Badges */
+        .badge { display: inline-block; padding: 3px 10px; border-radius: 4px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        .badge-critical { background: rgba(255,68,68,0.15); color: #ff4444; border: 1px solid rgba(255,68,68,0.3); }
+        .badge-warning { background: rgba(255,170,0,0.15); color: #ffaa00; border: 1px solid rgba(255,170,0,0.3); }
+        .badge-good { background: rgba(0,204,136,0.15); color: #00cc88; border: 1px solid rgba(0,204,136,0.3); }
+        .badge-info { background: rgba(0,212,255,0.15); color: #00d4ff; border: 1px solid rgba(0,212,255,0.3); }
+        .badge-neutral { background: rgba(255,255,255,0.08); color: #999; border: 1px solid rgba(255,255,255,0.15); }
+
+        /* Query Results */
+        .query-result { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 8px; padding: 20px; margin: 12px 0; }
+        .query-result .query { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 8px; }
+        .query-result .result { font-size: 13px; color: #999; }
+        .query-result .result .found { color: #00cc88; font-weight: 600; }
+        .query-result .result .not-found { color: #ff4444; font-weight: 600; }
+
+        /* Competitor Grid */
+        .competitor-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0; }
+        .competitor-card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 8px; padding: 24px; }
+        .competitor-card h4 { font-size: 16px; color: #fff; margin-bottom: 4px; }
+        .competitor-card .brokerage { font-size: 12px; color: #00d4ff; margin-bottom: 12px; }
+        .competitor-card .stats { display: flex; gap: 16px; flex-wrap: wrap; }
+        .competitor-card .stat { font-size: 12px; color: #999; }
+        .competitor-card .stat strong { color: #ccc; }
+
+        /* Action Plan */
+        .action-item { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 8px; padding: 24px; margin: 12px 0; display: flex; gap: 20px; align-items: flex-start; }
+        .action-number { background: #00d4ff; color: #0a0a0a; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; flex-shrink: 0; }
+        .action-content h4 { font-size: 15px; color: #fff; margin-bottom: 6px; }
+        .action-content p { font-size: 13px; color: #999; margin: 0; }
+        .action-meta { display: flex; gap: 12px; margin-top: 10px; }
+
+        /* Highlight Box */
+        .highlight-box { background: linear-gradient(135deg, rgba(0,212,255,0.08), rgba(0,204,136,0.08)); border: 1px solid rgba(0,212,255,0.2); border-radius: 8px; padding: 30px; margin: 24px 0; }
+        .highlight-box h4 { color: #00d4ff; font-size: 14px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+        .highlight-box p { color: #ccc; font-size: 15px; }
+
+        .warning-box { background: rgba(255,68,68,0.06); border: 1px solid rgba(255,68,68,0.2); border-radius: 8px; padding: 30px; margin: 24px 0; }
+        .warning-box h4 { color: #ff4444; font-size: 14px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+        .warning-box p { color: #ccc; font-size: 15px; }
+
+        /* Stat Row */
+        .stat-row { display: flex; gap: 20px; margin: 20px 0; }
+        .stat-block { flex: 1; background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 8px; padding: 20px; text-align: center; }
+        .stat-block .stat-num { font-size: 36px; font-weight: 700; color: #fff; }
+        .stat-block .stat-label { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+
+        /* Phase Timeline */
+        .phase { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 8px; padding: 30px; margin: 20px 0; border-left: 4px solid; }
+        .phase.phase-1 { border-left-color: #ff4444; }
+        .phase.phase-2 { border-left-color: #ffaa00; }
+        .phase.phase-3 { border-left-color: #00cc88; }
+        .phase h4 { font-size: 16px; color: #fff; margin-bottom: 4px; }
+        .phase .phase-timeline { font-size: 12px; color: #00d4ff; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+        .phase ul { list-style: none; }
+        .phase ul li { padding: 6px 0; font-size: 14px; color: #ccc; padding-left: 16px; position: relative; }
+        .phase ul li::before { content: ''; position: absolute; left: 0; top: 13px; width: 4px; height: 4px; border-radius: 50%; background: #666; }
+
+        /* Footer */
+        .footer { padding: 40px 0; text-align: center; }
+        .footer p { font-size: 12px; color: #444; }
+        .footer .blok-footer { font-size: 14px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #333; margin-bottom: 8px; }
+
+        /* Two Column Layout */
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .score-grid { grid-template-columns: repeat(3, 1fr); }
+            .exec-grid, .competitor-grid, .two-col { grid-template-columns: 1fr; }
+            .container { padding: 0 20px; }
+            .header h1 { font-size: 28px; }
+        }
+
+        @media print {
+            body { background: #fff; color: #333; }
+            .header { background: #fff; border-bottom: 2px solid #000; }
+            .header h1 { color: #000; }
+            .score-card, .exec-card, .competitor-card, .action-item, .phase, .query-result, .highlight-box, .warning-box, .stat-block { background: #f9f9f9; border-color: #ddd; }
+            td, th { color: #333; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Confidential Banner -->
+<div class="confidential">Confidential -- Prepared for Bianca Ungerman-Ferring, CMO, The Koolik Group</div>
+
+<!-- Header -->
+<div class="header">
+    <div class="container">
+        <div class="header-top">
+            <div class="blok-logo">Blok.CO</div>
+            <div class="header-date">March 6, 2026</div>
+        </div>
+        <h1><strong>Total Search Audit</strong></h1>
+        <div class="subtitle">The Koolik Group | koolik.com</div>
+        <div class="client-info">
+            <div class="client-detail">
+                <span class="label">Client</span>
+                <span>The Koolik Group</span>
+            </div>
+            <div class="client-detail">
+                <span class="label">CMO</span>
+                <span>Bianca Ungerman-Ferring</span>
+            </div>
+            <div class="client-detail">
+                <span class="label">Brokerage</span>
+                <span>COMPASS</span>
+            </div>
+            <div class="client-detail">
+                <span class="label">Market</span>
+                <span>South Florida (Palm Beach, Broward, Miami-Dade)</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Score Dashboard -->
+<div class="dashboard">
+    <div class="container">
+        <h2>Visibility Scorecard</h2>
+        <div class="score-grid">
+            <div class="score-card critical">
+                <div class="score-number">18</div>
+                <div class="score-label">AEO / ChatGPT</div>
+                <div class="score-sub">0/10 non-brand queries</div>
+            </div>
+            <div class="score-card critical">
+                <div class="score-number">5</div>
+                <div class="score-label">AI Overviews</div>
+                <div class="score-sub">Brand only, no market queries</div>
+            </div>
+            <div class="score-card warning">
+                <div class="score-number">32</div>
+                <div class="score-label">Google Organic</div>
+                <div class="score-sub">Strong brand, zero non-brand</div>
+            </div>
+            <div class="score-card warning">
+                <div class="score-number">50</div>
+                <div class="score-label">Local Pack / Maps</div>
+                <div class="score-sub">GBP active, 63 reviews, 5.0 stars</div>
+            </div>
+            <div class="score-card moderate">
+                <div class="score-number">52</div>
+                <div class="score-label">Perplexity</div>
+                <div class="score-sub">Moderate citation potential</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Executive Summary -->
+<div class="exec-summary">
+    <div class="container">
+        <h2>Executive <strong>Summary</strong></h2>
+
+        <div class="warning-box">
+            <h4>The Core Problem</h4>
+            <p>The Koolik Group has built a $2.7B real estate business with 4,800+ transactions over 35+ years -- but is virtually <strong style="color:#ff4444">invisible</strong> in AI search engines and non-branded Google queries. When South Florida buyers and sellers ask ChatGPT, Perplexity, Gemini, or Google "Who is the best real estate team in Boca Raton?" -- The Koolik Group does not appear. Competitors with inferior sales records but superior digital footprints are capturing this demand.</p>
+        </div>
+
+        <div class="exec-grid">
+            <div class="exec-card strengths">
+                <h3 class="green">Strengths</h3>
+                <ul>
+                    <li>$2.7B+ career sales, 4,800+ homes sold -- elite production</li>
+                    <li>Three-generation family legacy (Steven, Elliot, Wendy, Lindsey, Shira)</li>
+                    <li>COMPASS affiliation with strong brand halo</li>
+                    <li>Country club microsite network (Broken Sound, Addison Reserve, St. Andrews, Woodfield)</li>
+                    <li>Solid schema markup foundation (LocalBusiness, RealEstateAgent, FAQPage)</li>
+                    <li>Active blog with 63 posts and consistent publishing cadence</li>
+                    <li>Clean NAP consistency across all pages</li>
+                    <li>Inman Broker Spotlight feature (2023), RealTrends recognition</li>
+                </ul>
+            </div>
+            <div class="exec-card critical">
+                <h3 class="red">Critical Issues</h3>
+                <ul>
+                    <li><strong>63 Google reviews + ~4 Zillow reviews</strong> against 4,800+ transactions -- significant review gap (competitors have 500-2,000+)</li>
+                    <li>Zero visibility across all non-brand queries on every search surface</li>
+                    <li>Primary market page (Boca Raton) is only ~400 words</li>
+                    <li>Missing meta descriptions on most pages site-wide</li>
+                    <li>No canonical tags -- duplicate content risk with MLS/IDX</li>
+                    <li>Same 4 FAQ schema questions duplicated on every page (spam signal)</li>
+                    <li>Blog has zero lead capture -- complete conversion dead-end</li>
+                    <li>Market share page displays 2021 data -- 5 years outdated</li>
+                    <li>Press/media page abandoned (nothing since 2023)</li>
+                </ul>
+            </div>
+            <div class="exec-card opportunities">
+                <h3 class="blue">Opportunities</h3>
+                <ul>
+                    <li>Country club microsites are a unique moat -- no competitor has this</li>
+                    <li>$2.7B in sales qualifies for every major ranking list (RealTrends, Newsweek, The Real Deal)</li>
+                    <li>Neighborhood landing pages can capture high-intent local traffic</li>
+                    <li>Review generation campaign could rapidly close the gap</li>
+                    <li>Data-rich market reports would make them citable by AI engines</li>
+                    <li>Agent bios (55 pages) can be optimized for individual ranking</li>
+                    <li>AI search is still early -- first-mover advantage available</li>
+                </ul>
+            </div>
+            <div class="exec-card threats">
+                <h3 class="yellow">Competitive Threats</h3>
+                <ul>
+                    <li><strong>The Mastropieri Group</strong> -- 2,000+ reviews, YouTube, podcast, monthly market reports</li>
+                    <li><strong>Champagne & Parisi</strong> -- Owns bocaratonrealestate.com (premium domain since 2016)</li>
+                    <li><strong>The Jills Zeder Group</strong> -- #1 nationally, $1.85B in 2024, 103K Instagram</li>
+                    <li><strong>Chad Carroll Group</strong> -- 537K Instagram, $8B+ career, massive social footprint</li>
+                    <li><strong>DOTOLI Group</strong> -- NYT, WSJ, Bloomberg, Forbes citations drive AI trust</li>
+                    <li><strong>CBG Luxury Team</strong> -- New development focus, strong digital presence</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section 1: SEO Audit -->
+<div class="section">
+    <div class="container">
+        <div class="section-number">Section 01</div>
+        <h2>Technical <strong>SEO Audit</strong></h2>
+        <p>A comprehensive crawl of koolik.com reveals a solid WordPress + IDX foundation with critical gaps in on-page optimization, structured data, and content architecture.</p>
+
+        <h3>Site Overview</h3>
+        <div class="stat-row">
+            <div class="stat-block">
+                <div class="stat-num">171</div>
+                <div class="stat-label">Indexed URLs</div>
+            </div>
+            <div class="stat-block">
+                <div class="stat-num">63</div>
+                <div class="stat-label">Blog Posts</div>
+            </div>
+            <div class="stat-block">
+                <div class="stat-num">55</div>
+                <div class="stat-label">Agent Bio Pages</div>
+            </div>
+            <div class="stat-block">
+                <div class="stat-num">5</div>
+                <div class="stat-label">Neighborhood Pages</div>
+            </div>
+            <div class="stat-block">
+                <div class="stat-num">6+</div>
+                <div class="stat-label">Microsites</div>
+            </div>
+        </div>
+
+        <h3>Technical Issues</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Issue</th>
+                    <th>Severity</th>
+                    <th>Impact</th>
+                    <th>Detail</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Missing meta descriptions</td>
+                    <td><span class="badge badge-critical">Critical</span></td>
+                    <td>CTR, Rankings</td>
+                    <td>Most pages (About, Contact, Featured Listings, agent pages, blog posts) lack meta descriptions</td>
+                </tr>
+                <tr>
+                    <td>No canonical tags</td>
+                    <td><span class="badge badge-critical">Critical</span></td>
+                    <td>Duplicate content</td>
+                    <td>With MLS/IDX integration, multiple URLs can serve same content. No canonicals to resolve.</td>
+                </tr>
+                <tr>
+                    <td>Duplicate FAQ schema</td>
+                    <td><span class="badge badge-critical">Critical</span></td>
+                    <td>Schema spam</td>
+                    <td>Identical 4-question FAQPage schema on every page. Google may penalize or ignore.</td>
+                </tr>
+                <tr>
+                    <td>Non-optimized H1 tags</td>
+                    <td><span class="badge badge-warning">High</span></td>
+                    <td>Rankings</td>
+                    <td>Aspirational copy ("You've landed in the right place") instead of keyword-targeted headings</td>
+                </tr>
+                <tr>
+                    <td>Missing Open Graph tags</td>
+                    <td><span class="badge badge-warning">High</span></td>
+                    <td>Social sharing</td>
+                    <td>No og:title, og:description, og:image on any page. Poor social preview cards.</td>
+                </tr>
+                <tr>
+                    <td>Image alt tags missing</td>
+                    <td><span class="badge badge-warning">High</span></td>
+                    <td>Accessibility, SEO</td>
+                    <td>Most images use filenames ("Screenshot-2026-02-19-at-10.47.16-AM.webp") or blank alts</td>
+                </tr>
+                <tr>
+                    <td>Test pages indexed</td>
+                    <td><span class="badge badge-warning">Medium</span></td>
+                    <td>Crawl budget</td>
+                    <td>/test-page/, /test-page-2/, /meet-team-lead-template/, /meet-kevin-mcnamara-old/ in sitemap</td>
+                </tr>
+                <tr>
+                    <td>No sitemap in robots.txt</td>
+                    <td><span class="badge badge-info">Medium</span></td>
+                    <td>Crawl discovery</td>
+                    <td>Sitemap exists at /sitemap.xml but not referenced in robots.txt</td>
+                </tr>
+                <tr>
+                    <td>Heavy script load</td>
+                    <td><span class="badge badge-info">Medium</span></td>
+                    <td>Core Web Vitals</td>
+                    <td>GTM, Facebook Pixel, AdRoll, TV Squared, New Relic, reCAPTCHA, Vimeo -- impacts LCP/TBT</td>
+                </tr>
+                <tr>
+                    <td>Cookie consent H2 pollution</td>
+                    <td><span class="badge badge-neutral">Low</span></td>
+                    <td>Header structure</td>
+                    <td>Cookie modal uses semantic H2 tags ("What Are Cookies?") diluting page header hierarchy</td>
+                </tr>
+                <tr>
+                    <td>No breadcrumb schema</td>
+                    <td><span class="badge badge-neutral">Low</span></td>
+                    <td>Rich results</td>
+                    <td>Missing BreadcrumbList structured data across entire site</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Schema Markup Assessment</h3>
+        <div class="two-col">
+            <div>
+                <h4 style="color:#00cc88; font-size:13px; text-transform:uppercase; letter-spacing:1px; margin-bottom:12px;">Implemented</h4>
+                <table>
+                    <tbody>
+                        <tr><td>LocalBusiness + RealEstateAgent</td><td><span class="badge badge-good">Active</span></td></tr>
+                        <tr><td>Organization (name, logo, sameAs)</td><td><span class="badge badge-good">Active</span></td></tr>
+                        <tr><td>Service (Luxury Residential)</td><td><span class="badge badge-good">Active</span></td></tr>
+                        <tr><td>FAQPage (4 Q&As)</td><td><span class="badge badge-warning">Duplicated</span></td></tr>
+                        <tr><td>PostalAddress</td><td><span class="badge badge-good">Active</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <h4 style="color:#ff4444; font-size:13px; text-transform:uppercase; letter-spacing:1px; margin-bottom:12px;">Missing</h4>
+                <table>
+                    <tbody>
+                        <tr><td>Person schema (agent bios)</td><td><span class="badge badge-critical">Missing</span></td></tr>
+                        <tr><td>Review / AggregateRating</td><td><span class="badge badge-critical">Missing</span></td></tr>
+                        <tr><td>BlogPosting / Article</td><td><span class="badge badge-critical">Missing</span></td></tr>
+                        <tr><td>BreadcrumbList</td><td><span class="badge badge-warning">Missing</span></td></tr>
+                        <tr><td>RealEstateListing</td><td><span class="badge badge-warning">Missing</span></td></tr>
+                        <tr><td>VideoObject</td><td><span class="badge badge-neutral">Missing</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <h3>Content Architecture Gaps</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Content Type</th>
+                    <th>Status</th>
+                    <th>What Exists</th>
+                    <th>What's Needed</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Neighborhood pages</td>
+                    <td><span class="badge badge-critical">5 of 15+</span></td>
+                    <td>Boca Raton (400 words), Palm Beach, Highland Beach, West Palm Beach, Downtown Boca</td>
+                    <td>Delray Beach, Coral Springs, Parkland, Fort Lauderdale, Miami/Brickell, South Beach, Coral Gables, Coconut Grove, Boynton Beach, Deerfield Beach</td>
+                </tr>
+                <tr>
+                    <td>Community/subdivision pages</td>
+                    <td><span class="badge badge-critical">0</span></td>
+                    <td>None on koolik.com (microsites exist separately)</td>
+                    <td>Addison Reserve, Broken Sound, Woodfield, St. Andrews, Boca West, Royal Palm, The Oaks, Mizner CC</td>
+                </tr>
+                <tr>
+                    <td>Market reports</td>
+                    <td><span class="badge badge-critical">None</span></td>
+                    <td>Market share page with 2021 data</td>
+                    <td>Monthly/quarterly reports with current median prices, inventory, days on market</td>
+                </tr>
+                <tr>
+                    <td>Property type pages</td>
+                    <td><span class="badge badge-critical">None</span></td>
+                    <td>No dedicated pages</td>
+                    <td>Waterfront homes, luxury condos, golf communities, gated communities, new construction</td>
+                </tr>
+                <tr>
+                    <td>Blog content</td>
+                    <td><span class="badge badge-warning">Lifestyle only</span></td>
+                    <td>63 posts, mostly restaurants/events/attractions</td>
+                    <td>Market analysis, buyer/seller guides, neighborhood comparisons, school guides, investment content</td>
+                </tr>
+                <tr>
+                    <td>Agent bios</td>
+                    <td><span class="badge badge-warning">Under-optimized</span></td>
+                    <td>55 /meet-[name]/ pages with personal bios</td>
+                    <td>SEO-optimized titles, individual testimonials, transaction data, Person schema</td>
+                </tr>
+                <tr>
+                    <td>Lead capture</td>
+                    <td><span class="badge badge-warning">Basic</span></td>
+                    <td>Contact form, home valuation, property organizer</td>
+                    <td>Blog CTAs, gated content, newsletter, chatbot, scheduling tool, exit-intent</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Section 2: AI Search Visibility -->
+<div class="section">
+    <div class="container">
+        <div class="section-number">Section 02</div>
+        <h2>AI Search <strong>Visibility Audit</strong></h2>
+        <p>We tested The Koolik Group's presence across ChatGPT, Google AI Overviews, and Perplexity using 14 branded and non-branded queries that South Florida buyers and sellers would ask.</p>
+
+        <div class="warning-box">
+            <h4>Critical Finding</h4>
+            <p>The Koolik Group appeared in <strong style="color:#ff4444">zero out of 10 non-branded queries</strong> across all AI search surfaces. They are invisible to every prospective buyer and seller who doesn't already know their name.</p>
+        </div>
+
+        <h3>Branded Query Results</h3>
+        <div class="query-result">
+            <div class="query">"The Koolik Group" / "Koolik Group real estate" / "koolik.com"</div>
+            <div class="result"><span class="found">VISIBLE</span> -- Dominates all branded queries across Google, AI Overviews, and web results. Strong brand SERP with koolik.com, Compass profile, Zillow, and Inman article appearing.</div>
+        </div>
+
+        <h3>Non-Branded Query Results</h3>
+        <div class="query-result">
+            <div class="query">"best real estate team Boca Raton"</div>
+            <div class="result"><span class="not-found">NOT FOUND</span> -- Champagne & Parisi (bocaratonrealestate.com), The Mastropieri Group, U.S. News directory, FastExpert dominate. Koolik absent from all results.</div>
+        </div>
+        <div class="query-result">
+            <div class="query">"top realtors Boca Raton Florida"</div>
+            <div class="result"><span class="not-found">NOT FOUND</span> -- Zillow, Realtor.com, FastExpert, Redfin agent directories rank. No Koolik presence.</div>
+        </div>
+        <div class="query-result">
+            <div class="query">"luxury real estate agents South Florida"</div>
+            <div class="result"><span class="not-found">NOT FOUND</span> -- The Jills Zeder Group, Chad Carroll Group, DOTOLI Group, Waterfront Properties appear. Koolik absent.</div>
+        </div>
+        <div class="query-result">
+            <div class="query">"best real estate group Fort Lauderdale"</div>
+            <div class="result"><span class="not-found">NOT FOUND</span> -- Teixeira Team, CBG Luxury, local directories dominate. No Koolik.</div>
+        </div>
+        <div class="query-result">
+            <div class="query">"top real estate teams Palm Beach County"</div>
+            <div class="result"><span class="not-found">NOT FOUND</span> -- The Real Deal rankings, RealTrends lists, Waterfront Properties appear. Koolik absent despite qualifying production.</div>
+        </div>
+        <div class="query-result">
+            <div class="query">"best realtor to sell my home Boca Raton"</div>
+            <div class="result"><span class="not-found">NOT FOUND</span> -- Zillow, HomeLight, FastExpert agent matching tools rank. Koolik not in any directory results.</div>
+        </div>
+        <div class="query-result">
+            <div class="query">"luxury homes South Florida real estate agent"</div>
+            <div class="result"><span class="not-found">NOT FOUND</span> -- The Jills Zeder, DOTOLI Group, Sotheby's, Douglas Elliman agents appear.</div>
+        </div>
+        <div class="query-result">
+            <div class="query">"real estate team Parkland Florida"</div>
+            <div class="result"><span class="not-found">NOT FOUND</span> -- Despite listing Parkland in their service areas, no presence in results.</div>
+        </div>
+        <div class="query-result">
+            <div class="query">"best realtor Coral Springs Florida"</div>
+            <div class="result"><span class="not-found">NOT FOUND</span> -- Local agents and directories rank. No Koolik visibility.</div>
+        </div>
+        <div class="query-result">
+            <div class="query">"top producing real estate team Broward County"</div>
+            <div class="result"><span class="not-found">NOT FOUND</span> -- RealTrends, The Real Deal, Tricoli Team, local competitors visible.</div>
+        </div>
+
+        <h3>Why Competitors Appear and Koolik Does Not</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>AI Ranking Factor</th>
+                    <th>Koolik Group</th>
+                    <th>Top Competitors</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Third-party reviews</td>
+                    <td><span class="badge badge-warning">63 Google + ~4 Zillow</span></td>
+                    <td>Mastropieri: 2,000+; Others: 100-500+</td>
+                </tr>
+                <tr>
+                    <td>Directory profiles</td>
+                    <td><span class="badge badge-critical">Compass + Zillow only</span></td>
+                    <td>FastExpert, HomeLight, U.S. News, RateMyAgent, Yelp, Realtor.com</td>
+                </tr>
+                <tr>
+                    <td>Editorial coverage</td>
+                    <td><span class="badge badge-warning">1 Inman feature (2023)</span></td>
+                    <td>NYT, WSJ, Forbes, Bloomberg, The Real Deal, South Florida Agent Magazine</td>
+                </tr>
+                <tr>
+                    <td>Current ranking lists</td>
+                    <td><span class="badge badge-critical">Not on 2024-2026 lists</span></td>
+                    <td>RealTrends, Newsweek, The Real Deal annual rankings</td>
+                </tr>
+                <tr>
+                    <td>Data-rich content</td>
+                    <td><span class="badge badge-critical">No market data</span></td>
+                    <td>Monthly market reports, pricing data, trend analysis</td>
+                </tr>
+                <tr>
+                    <td>Q&A / FAQ content</td>
+                    <td><span class="badge badge-warning">4 generic FAQs (duplicated)</span></td>
+                    <td>Comprehensive buyer/seller guides, neighborhood Q&As</td>
+                </tr>
+                <tr>
+                    <td>Social proof signals</td>
+                    <td><span class="badge badge-warning">15K Instagram</span></td>
+                    <td>Chad Carroll: 537K; Jills Zeder: 103K; YouTube channels, podcasts</td>
+                </tr>
+                <tr>
+                    <td>Knowledge graph entity</td>
+                    <td><span class="badge badge-critical">Not established</span></td>
+                    <td>Wikipedia entries, Google Knowledge Panels for top teams</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Section 3: Competitive Landscape -->
+<div class="section">
+    <div class="container">
+        <div class="section-number">Section 03</div>
+        <h2>Competitive <strong>Landscape</strong></h2>
+        <p>Seven primary competitors were identified across South Florida luxury real estate. While The Koolik Group leads in career production, they trail significantly in digital presence.</p>
+
+        <div class="highlight-box">
+            <h4>The Koolik Paradox</h4>
+            <p>With $2.7B in career sales and 4,800+ transactions, The Koolik Group has the strongest production numbers of any Boca Raton-based team -- yet trails competitors in digital visibility and AI search presence. A perfect 5.0-star Google rating across 63 reviews is a strong signal, but the offline brand has not been fully translated to the digital ecosystem where modern buyers begin their search.</p>
+        </div>
+
+        <h3>Competitor Profiles</h3>
+        <div class="competitor-grid">
+            <div class="competitor-card">
+                <h4>The Mastropieri Group</h4>
+                <div class="brokerage">Independent (discoversouthflorida.com)</div>
+                <div class="stats">
+                    <div class="stat"><strong>2,000+</strong> reviews</div>
+                    <div class="stat"><strong>YouTube</strong> channel</div>
+                    <div class="stat"><strong>Podcast</strong> active</div>
+                    <div class="stat"><strong>Monthly</strong> market reports</div>
+                </div>
+                <p style="font-size:12px; color:#ff4444; margin-top:10px;">Greatest digital threat -- 2,000+ review moat vs Koolik's 63 creates compounding advantage in Google Local Pack, Zillow rankings, and AI recommendations</p>
+            </div>
+            <div class="competitor-card">
+                <h4>The Jills Zeder Group</h4>
+                <div class="brokerage">Coldwell Banker</div>
+                <div class="stats">
+                    <div class="stat"><strong>$1.85B</strong> in 2024</div>
+                    <div class="stat"><strong>#1</strong> nationally (RealTrends)</div>
+                    <div class="stat"><strong>103K</strong> Instagram</div>
+                    <div class="stat"><strong>40+</strong> year brand</div>
+                </div>
+            </div>
+            <div class="competitor-card">
+                <h4>Chad Carroll Group</h4>
+                <div class="brokerage">Compass</div>
+                <div class="stats">
+                    <div class="stat"><strong>$8B+</strong> career</div>
+                    <div class="stat"><strong>537K</strong> Instagram</div>
+                    <div class="stat"><strong>Netflix</strong> featured</div>
+                    <div class="stat"><strong>Ultra-luxury</strong> focus</div>
+                </div>
+            </div>
+            <div class="competitor-card">
+                <h4>Champagne & Parisi</h4>
+                <div class="brokerage">RE/MAX (bocaratonrealestate.com)</div>
+                <div class="stats">
+                    <div class="stat"><strong>Premium</strong> domain</div>
+                    <div class="stat"><strong>Since 2016</strong> content</div>
+                    <div class="stat"><strong>Boca Raton</strong> dominant</div>
+                    <div class="stat"><strong>Blog</strong> active</div>
+                </div>
+                <p style="font-size:12px; color:#ffaa00; margin-top:10px;">Owns bocaratonrealestate.com -- an enormous organic SEO advantage for Koolik's primary market</p>
+            </div>
+            <div class="competitor-card">
+                <h4>DOTOLI Group</h4>
+                <div class="brokerage">Compass</div>
+                <div class="stats">
+                    <div class="stat"><strong>NYT, WSJ</strong> citations</div>
+                    <div class="stat"><strong>Bloomberg</strong> featured</div>
+                    <div class="stat"><strong>Forbes</strong> quoted</div>
+                    <div class="stat"><strong>High E-E-A-T</strong></div>
+                </div>
+            </div>
+            <div class="competitor-card">
+                <h4>CBG Luxury Team</h4>
+                <div class="brokerage">Compass</div>
+                <div class="stats">
+                    <div class="stat"><strong>~$1B</strong> career</div>
+                    <div class="stat"><strong>New dev</strong> focus</div>
+                    <div class="stat"><strong>Baccarat</strong> specialist</div>
+                    <div class="stat"><strong>Digital-first</strong></div>
+                </div>
+            </div>
+            <div class="competitor-card">
+                <h4>Teixeira Team</h4>
+                <div class="brokerage">Douglas Elliman</div>
+                <div class="stats">
+                    <div class="stat"><strong>$2B+</strong> career</div>
+                    <div class="stat"><strong>$3.1M</strong> avg price</div>
+                    <div class="stat"><strong>Fort Lauderdale</strong> waterfront</div>
+                    <div class="stat"><strong>Ultra-luxury</strong></div>
+                </div>
+            </div>
+            <div class="competitor-card">
+                <h4>Tricoli Team</h4>
+                <div class="brokerage">Keller Williams</div>
+                <div class="stats">
+                    <div class="stat"><strong>$1B+</strong> career</div>
+                    <div class="stat"><strong>300</strong> transactions 2025</div>
+                    <div class="stat"><strong>Volume</strong> leader</div>
+                    <div class="stat"><strong>Broad</strong> market</div>
+                </div>
+            </div>
+        </div>
+
+        <h3>Competitive Matrix</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Dimension</th>
+                    <th>Koolik</th>
+                    <th>Mastropieri</th>
+                    <th>Jills Zeder</th>
+                    <th>Chad Carroll</th>
+                    <th>Champagne & Parisi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Career Volume</td>
+                    <td><span class="badge badge-good">$2.7B</span></td>
+                    <td><span class="badge badge-info">N/A</span></td>
+                    <td><span class="badge badge-good">$1.85B/yr</span></td>
+                    <td><span class="badge badge-good">$8B+</span></td>
+                    <td><span class="badge badge-info">Mid</span></td>
+                </tr>
+                <tr>
+                    <td>Google Organic</td>
+                    <td><span class="badge badge-critical">Brand only</span></td>
+                    <td><span class="badge badge-good">Strong</span></td>
+                    <td><span class="badge badge-good">Strong</span></td>
+                    <td><span class="badge badge-good">Strong</span></td>
+                    <td><span class="badge badge-good">Dominant (Boca)</span></td>
+                </tr>
+                <tr>
+                    <td>AI Search Visibility</td>
+                    <td><span class="badge badge-critical">Invisible</span></td>
+                    <td><span class="badge badge-good">High</span></td>
+                    <td><span class="badge badge-good">High</span></td>
+                    <td><span class="badge badge-good">High</span></td>
+                    <td><span class="badge badge-warning">Moderate</span></td>
+                </tr>
+                <tr>
+                    <td>Review Count</td>
+                    <td><span class="badge badge-warning">67 total</span></td>
+                    <td><span class="badge badge-good">2,000+</span></td>
+                    <td><span class="badge badge-good">High</span></td>
+                    <td><span class="badge badge-warning">Moderate</span></td>
+                    <td><span class="badge badge-warning">Moderate</span></td>
+                </tr>
+                <tr>
+                    <td>Social Media</td>
+                    <td><span class="badge badge-warning">15K IG</span></td>
+                    <td><span class="badge badge-warning">Moderate</span></td>
+                    <td><span class="badge badge-good">103K IG</span></td>
+                    <td><span class="badge badge-good">537K IG</span></td>
+                    <td><span class="badge badge-warning">Low-Mid</span></td>
+                </tr>
+                <tr>
+                    <td>Content Depth</td>
+                    <td><span class="badge badge-warning">Lifestyle blog</span></td>
+                    <td><span class="badge badge-good">Reports + Video</span></td>
+                    <td><span class="badge badge-good">Deep</span></td>
+                    <td><span class="badge badge-warning">Social-led</span></td>
+                    <td><span class="badge badge-good">Blog since 2016</span></td>
+                </tr>
+                <tr>
+                    <td>Media/PR</td>
+                    <td><span class="badge badge-warning">1 Inman (2023)</span></td>
+                    <td><span class="badge badge-warning">Moderate</span></td>
+                    <td><span class="badge badge-good">Extensive</span></td>
+                    <td><span class="badge badge-good">Netflix, Forbes</span></td>
+                    <td><span class="badge badge-neutral">Low</span></td>
+                </tr>
+                <tr>
+                    <td>Niche Authority</td>
+                    <td><span class="badge badge-good">Country clubs</span></td>
+                    <td><span class="badge badge-good">South FL reviews</span></td>
+                    <td><span class="badge badge-good">Ultra-luxury</span></td>
+                    <td><span class="badge badge-good">Celebrity luxury</span></td>
+                    <td><span class="badge badge-good">Boca Raton</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Section 4: The Review Gap -->
+<div class="section">
+    <div class="container">
+        <div class="section-number">Section 04</div>
+        <h2>The <strong>Review Gap</strong></h2>
+        <p>While The Koolik Group has a strong Google Business Profile foundation, the review volume still represents a significant gap relative to production and competitors.</p>
+
+        <div class="warning-box">
+            <h4>67 Reviews vs. 4,800+ Transactions</h4>
+            <p>The Koolik Group has a verified Google Business Profile with <strong style="color:#00cc88">63 reviews at a perfect 5.0 stars</strong> plus ~4 reviews on Zillow. This is a solid foundation -- but with 4,800+ career transactions, only ~1.4% of clients have left a review. Meanwhile, The Mastropieri Group has built a moat of 2,000+ five-star reviews that dominates Google Local Pack, Zillow search rankings, and AI engine recommendations. Closing this gap is the fastest path to improved visibility.</p>
+        </div>
+
+        <h3>Why This Matters for AI Search</h3>
+        <p>AI search engines (ChatGPT, Perplexity, Gemini) use review volume and sentiment as a primary signal for recommending service providers. When a user asks "Who is the best real estate team in Boca Raton?", AI engines weight:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Signal</th>
+                    <th>Weight</th>
+                    <th>Koolik Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Google Business Profile reviews</td>
+                    <td><span class="badge badge-critical">Very High</span></td>
+                    <td>63 reviews, 5.0 stars -- solid but needs 200+ to compete</td>
+                </tr>
+                <tr>
+                    <td>Zillow reviews</td>
+                    <td><span class="badge badge-critical">Very High</span></td>
+                    <td>~4 reviews (Elliot Koolik profile)</td>
+                </tr>
+                <tr>
+                    <td>Realtor.com reviews</td>
+                    <td><span class="badge badge-warning">High</span></td>
+                    <td>No confirmed presence</td>
+                </tr>
+                <tr>
+                    <td>Third-party directory reviews</td>
+                    <td><span class="badge badge-warning">High</span></td>
+                    <td>Not on FastExpert, HomeLight, RateMyAgent, Yelp</td>
+                </tr>
+                <tr>
+                    <td>On-site testimonials</td>
+                    <td><span class="badge badge-neutral">Low</span></td>
+                    <td>15 testimonials (no schema markup)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Recommended Review Targets</h3>
+        <p style="margin-bottom:16px;">Review generation is outside the Blok.CO engagement scope, but we strongly recommend The Koolik Group pursue these targets to complement the Total Search strategy:</p>
+        <div class="stat-row">
+            <div class="stat-block">
+                <div class="stat-num" style="color:#ffaa00;">67</div>
+                <div class="stat-label">Current Reviews (Total)</div>
+            </div>
+            <div class="stat-block">
+                <div class="stat-num" style="color:#ffaa00;">150</div>
+                <div class="stat-label">30-Day Target</div>
+            </div>
+            <div class="stat-block">
+                <div class="stat-num" style="color:#00d4ff;">300</div>
+                <div class="stat-label">90-Day Target</div>
+            </div>
+            <div class="stat-block">
+                <div class="stat-num" style="color:#00cc88;">500+</div>
+                <div class="stat-label">12-Month Target</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section 5: Action Plan -->
+<div class="section">
+    <div class="container">
+        <div class="section-number">Section 05</div>
+        <h2>What <strong>Blok.CO Delivers</strong></h2>
+        <p>Our engagement begins with a client questionnaire to understand your markets, ideal clients, and competitive positioning. From that foundation, we build interconnected content clusters optimized for both traditional search engines and AI answer engines -- owning Total Search across every surface.</p>
+
+        <div class="highlight-box">
+            <h4>The Blok.CO Method</h4>
+            <p><strong>Questionnaire</strong> &rarr; <strong>Content Clusters</strong> &rarr; <strong>SEO + GEO/AEO Optimization</strong> &rarr; <strong>Google Search Console Indexing</strong> &rarr; <strong>PPC Integration</strong> &rarr; <strong>Total Search Ownership</strong></p>
+            <p style="margin-top:12px;">Every piece of content connects to every other piece. Neighborhood guides link to community pages, community pages link to blog posts, blog posts link back to service pages. This interconnected architecture is what AI engines use to build trust and cite sources.</p>
+        </div>
+
+        <!-- Phase 1 -->
+        <div class="phase phase-1">
+            <h4>Phase 1: Discovery + Website Optimization</h4>
+            <div class="phase-timeline">Weeks 1-4 | Foundation</div>
+            <ul>
+                <li><strong>Client questionnaire</strong> -- Deep intake on target markets, ideal client profiles, key neighborhoods, competitive differentiators, and content priorities</li>
+                <li><strong>Website SEO optimization</strong> -- Fix meta descriptions, implement canonical tags, optimize H1 tags, add Open Graph tags across all pages</li>
+                <li><strong>Schema markup implementation</strong> -- Deploy proper FAQ schema (unique per page), Person schema for all 55 agent bios, Location schema for office and service areas</li>
+                <li><strong>Google Search Console setup + indexing</strong> -- Submit sitemap, verify indexing status, request indexing for all optimized pages, monitor crawl health</li>
+                <li><strong>Clean up indexed pages</strong> -- Remove test pages, templates, and outdated content; add sitemap reference to robots.txt</li>
+                <li><strong>Fix image alt tags</strong> across entire site for accessibility and search visibility</li>
+                <li><strong>Competitor data analysis</strong> -- Identify exactly which queries competitors are winning and where The Koolik Group can break through</li>
+                <li><strong>Content cluster architecture</strong> -- Map out the full interconnected content strategy based on questionnaire insights and competitor gaps</li>
+            </ul>
+        </div>
+
+        <!-- Phase 2 -->
+        <div class="phase phase-2">
+            <h4>Phase 2: Content Engine + AEO Optimization</h4>
+            <div class="phase-timeline">Weeks 5-12 | Content Clusters</div>
+            <ul>
+                <li><strong>Build neighborhood guide content clusters</strong> -- Create comprehensive, AEO-optimized guides for each target market (Boca Raton, Delray Beach, Coral Springs, Parkland, Fort Lauderdale, Highland Beach, Palm Beach, West Palm Beach, and more). Each guide includes FAQ schema, Person schema, location data, and internal links to related content</li>
+                <li><strong>Expand Boca Raton page</strong> from 400 words to 3,000+ words -- this is the primary market and should be the hub of the content cluster</li>
+                <li><strong>Community/subdivision guides</strong> -- Addison Reserve, Broken Sound, Woodfield CC, St. Andrews CC, Boca West, Royal Palm -- leveraging the existing microsite content into the main domain</li>
+                <li><strong>Blog content strategy pivot</strong> -- Shift from lifestyle-only content to a mix that includes market insights, buyer/seller guides, and neighborhood comparisons -- all GEO/AEO optimized with proper schema and author attribution</li>
+                <li><strong>Internal linking architecture</strong> -- Connect every piece of content to related pages using hub-and-spoke model. Neighborhood guides &rarr; community pages &rarr; blog posts &rarr; agent pages &rarr; service pages</li>
+                <li><strong>Author bylines + Person schema</strong> on all blog content -- critical E-E-A-T signal for both Google and AI engines</li>
+                <li><strong>AI search query analysis</strong> -- Monitor which queries AI engines are answering about South Florida real estate and create content that directly addresses those queries</li>
+                <li><strong>Google Search Console monitoring</strong> -- Track indexing, impressions, clicks, and position changes as new content is published</li>
+            </ul>
+        </div>
+
+        <!-- Phase 3 -->
+        <div class="phase phase-3">
+            <h4>Phase 3: Total Search Ownership</h4>
+            <div class="phase-timeline">Months 4-12 | Dominance</div>
+            <ul>
+                <li><strong>PPC integration</strong> -- Leverage search query data from Google Ads to identify high-intent keywords, then create organic + AEO content to own both paid and organic positions for the same queries</li>
+                <li><strong>Definitive guide content</strong> -- "Complete Guide to Buying in Palm Beach County", "Best Neighborhoods in Boca Raton 2026", "South Florida Country Club Living Guide" -- comprehensive, AI-citable content</li>
+                <li><strong>Comparison content</strong> -- "Boca Raton vs. Delray Beach", "Palm Beach vs. Jupiter", "Best Gated Communities in South Florida" -- the exact format AI engines cite when answering comparison queries</li>
+                <li><strong>Property type content clusters</strong> -- Waterfront homes, luxury condos, golf course communities, gated communities, new construction -- each with full schema and internal linking</li>
+                <li><strong>Agent page optimization</strong> -- SEO-targeted titles ("[Name] | Luxury Realtor Boca Raton"), Person schema, individual specializations, and connection to neighborhood content</li>
+                <li><strong>Ongoing competitor monitoring</strong> -- Track competitor content, rankings, and AI search appearances to identify new opportunities and respond to market changes</li>
+                <li><strong>Content refresh cycle</strong> -- Update neighborhood guides and market data quarterly to maintain freshness signals for both Google and AI engines</li>
+                <li><strong>School district + relocation content</strong> -- Families drive South Florida relocations; create comprehensive guides for NY-to-FL, Chicago, California, Northeast, and international buyers</li>
+            </ul>
+        </div>
+
+        <h3 style="margin-top:30px;">Recommendations (Outside Blok.CO Scope)</h3>
+        <p>The following are strategic recommendations we suggest The Koolik Group pursue independently to complement the Total Search work:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Recommendation</th>
+                    <th>Why It Matters</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Accelerate review generation on Google + Zillow</td>
+                    <td>63 Google reviews (5.0 stars) is a strong base -- scaling to 200+ will significantly boost Local Pack and AI engine citations</td>
+                </tr>
+                <tr>
+                    <td>Claim profiles on directories (FastExpert, HomeLight, RateMyAgent, etc.)</td>
+                    <td>Third-party directory presence is a key signal AI engines use to validate and recommend agents</td>
+                </tr>
+                <tr>
+                    <td>Submit to ranking lists (RealTrends, Newsweek, The Real Deal)</td>
+                    <td>$2.7B in career sales qualifies -- ranking list placements are among the most cited sources by AI engines</td>
+                </tr>
+                <tr>
+                    <td>Pursue editorial/media coverage</td>
+                    <td>Publications like The Real Deal, Inman, and South Florida Agent Magazine create high-authority signals that AI engines trust</td>
+                </tr>
+                <tr>
+                    <td>Consider YouTube/video content</td>
+                    <td>Video is increasingly cited by AI engines and dominates for neighborhood-related queries</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Section 6: Expected Outcomes -->
+<div class="section">
+    <div class="container">
+        <div class="section-number">Section 06</div>
+        <h2>Expected <strong>Outcomes</strong></h2>
+
+        <h3>Projected Score Improvement</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Metric</th>
+                    <th>Current</th>
+                    <th>After Phase 1 (30 days)</th>
+                    <th>After Phase 2 (90 days)</th>
+                    <th>After Phase 3 (12 months)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>AEO / ChatGPT Score</td>
+                    <td><span class="badge badge-critical">18</span></td>
+                    <td><span class="badge badge-warning">30</span></td>
+                    <td><span class="badge badge-info">55</span></td>
+                    <td><span class="badge badge-good">80+</span></td>
+                </tr>
+                <tr>
+                    <td>Google AI Overviews</td>
+                    <td><span class="badge badge-critical">5</span></td>
+                    <td><span class="badge badge-critical">15</span></td>
+                    <td><span class="badge badge-warning">45</span></td>
+                    <td><span class="badge badge-good">75+</span></td>
+                </tr>
+                <tr>
+                    <td>Google Organic</td>
+                    <td><span class="badge badge-warning">32</span></td>
+                    <td><span class="badge badge-warning">42</span></td>
+                    <td><span class="badge badge-info">60</span></td>
+                    <td><span class="badge badge-good">80+</span></td>
+                </tr>
+                <tr>
+                    <td>Local Pack / Maps</td>
+                    <td><span class="badge badge-info">50</span></td>
+                    <td><span class="badge badge-info">60</span></td>
+                    <td><span class="badge badge-good">75</span></td>
+                    <td><span class="badge badge-good">90+</span></td>
+                </tr>
+                <tr>
+                    <td>Perplexity Citation</td>
+                    <td><span class="badge badge-info">52</span></td>
+                    <td><span class="badge badge-info">60</span></td>
+                    <td><span class="badge badge-good">75</span></td>
+                    <td><span class="badge badge-good">90+</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Key Milestones</h3>
+        <div class="action-item">
+            <div class="action-number">1</div>
+            <div class="action-content">
+                <h4>First non-branded AI search appearance</h4>
+                <p>Expected within 60-90 days of Phase 2 launch, driven by review volume, directory profiles, and neighborhood content.</p>
+            </div>
+        </div>
+        <div class="action-item">
+            <div class="action-number">2</div>
+            <div class="action-content">
+                <h4>Google AI Overview citation for "best real estate team Boca Raton"</h4>
+                <p>Expected within 6 months, requiring 100+ reviews, neighborhood content, and ranking list placements.</p>
+            </div>
+        </div>
+        <div class="action-item">
+            <div class="action-number">3</div>
+            <div class="action-content">
+                <h4>Consistent Perplexity citations across South Florida queries</h4>
+                <p>Expected within 4-6 months, driven by market reports with citable data and third-party editorial coverage.</p>
+            </div>
+        </div>
+        <div class="action-item">
+            <div class="action-number">4</div>
+            <div class="action-content">
+                <h4>Dominant AI search presence in Boca Raton luxury real estate</h4>
+                <p>Expected within 12 months with full Phase 3 execution -- positioning Koolik as the most visible luxury team in South Florida.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    <div class="container">
+        <div class="blok-footer">Blok.CO</div>
+        <p>Prepared for The Koolik Group | March 2026</p>
+        <p style="margin-top: 8px;">Confidential -- Do not distribute without authorization</p>
+    </div>
+</div>
+
+</body>
+</html>
