@@ -607,6 +607,241 @@
     </div>
 </div>
 
+<!-- Section 2.5: Live AI Search Evidence -->
+<div class="section">
+    <div class="container">
+        <div class="section-number">Visual Evidence</div>
+        <h2>What AI Engines Show <strong>Right Now</strong></h2>
+        <p>We asked the three major AI search surfaces "Who is the best real estate team in Boca Raton, Florida?" on March 6, 2026. Here is exactly what buyers and sellers see today.</p>
+
+        <h3>ChatGPT Response</h3>
+        <div class="warning-box">
+            <h4>The Koolik Group: Not Mentioned</h4>
+            <p>ChatGPT recommends Larry Mastropieri (#1), David W. Roberts (#2), Matt & Nick Team (#3), Chris Cusimano (#4), and Julian Soffer (#5). The Koolik Group -- with $2.7B in career sales -- is not mentioned. Sources cited: Effective Agents, The Real Deal, Newsweek Rankings.</p>
+        </div>
+        <div style="border: 1px solid #2a2a2a; border-radius: 8px; overflow: hidden; margin: 20px 0;">
+            <img src="chatgpt-best-team-boca-raton.png" alt="ChatGPT response for best real estate team Boca Raton - The Koolik Group not mentioned" style="width: 100%; display: block;">
+        </div>
+
+        <h3>Google Search Results + Local Pack</h3>
+        <div class="warning-box">
+            <h4>Absent from Google Local Pack (Top 3 Map Results)</h4>
+            <p>Google's Local Pack shows Florida's Best Realty (208 reviews), BEST Real Estate Team (35 reviews), and The Mastropieri Group (693 reviews). The Koolik Group does not appear in the Local Pack despite having 63 Google reviews. They do appear in organic results around position 7 -- but below the fold and below Zillow, U.S. News, FastExpert, and Boca West Realty.</p>
+        </div>
+        <div style="border: 1px solid #2a2a2a; border-radius: 8px; overflow: hidden; margin: 20px 0;">
+            <img src="google-best-team-boca-raton.png" alt="Google search results for best real estate team Boca Raton - Koolik Group absent from Local Pack" style="width: 100%; display: block;">
+        </div>
+
+        <h3>Perplexity AI Response</h3>
+        <div class="warning-box">
+            <h4>The Koolik Group: Not Cited</h4>
+            <p>Perplexity recommends Alex & Margot Platt (#1), Boca West Realty (#2), Pam & Toni Team (#3), and references Mastropieri and Tricoli from ranking sites. The Koolik Group is not mentioned or cited in any of the 9 sources. Perplexity pulls from FastExpert, Compass, Boca West, and Zillow.</p>
+        </div>
+        <div style="border: 1px solid #2a2a2a; border-radius: 8px; overflow: hidden; margin: 20px 0;">
+            <img src="perplexity-best-team-boca-raton.png" alt="Perplexity AI response for best real estate team Boca Raton - The Koolik Group not cited" style="width: 100%; display: block;">
+        </div>
+    </div>
+</div>
+
+<!-- Section 2.6: Schema Comparison -->
+<div class="section">
+    <div class="container">
+        <div class="section-number">What AI Engines See</div>
+        <h2>Schema <strong>X-Ray Comparison</strong></h2>
+        <p>When AI engines crawl a website, they read structured data (schema markup) to understand who you are, what you do, and whether to cite you. Here's what AI sees when it crawls koolik.com versus a top competitor.</p>
+
+        <div class="two-col">
+            <div>
+                <h3 style="color:#ff4444;">koolik.com (Current)</h3>
+                <div style="background:#1a1a1a; border:1px solid #2a2a2a; border-radius:8px; padding:20px; font-family:monospace; font-size:12px; line-height:1.8; color:#ccc;">
+                    <div style="color:#ff4444;">// FAQ Schema (SAME on every page)</div>
+                    <div>"@type": "FAQPage"</div>
+                    <div>"name": "What areas do you serve?"</div>
+                    <div>"name": "Why choose The Koolik Group?"</div>
+                    <div>"name": "What services do you offer?"</div>
+                    <div>"name": "How do I get started?"</div>
+                    <div style="color:#ff4444; margin-top:12px;">// Person Schema</div>
+                    <div style="color:#666;">NOT FOUND</div>
+                    <div style="color:#ff4444; margin-top:12px;">// Review / AggregateRating</div>
+                    <div style="color:#666;">NOT FOUND</div>
+                    <div style="color:#ff4444; margin-top:12px;">// BlogPosting / Article</div>
+                    <div style="color:#666;">NOT FOUND</div>
+                    <div style="color:#ff4444; margin-top:12px;">// BreadcrumbList</div>
+                    <div style="color:#666;">NOT FOUND</div>
+                    <div style="color:#00cc88; margin-top:12px;">// LocalBusiness + RealEstateAgent</div>
+                    <div>"name": "The Koolik Group"</div>
+                    <div>"address": "101 N Federal Hwy..."</div>
+                    <div>"telephone": "(561) 560-0057"</div>
+                </div>
+                <div style="margin-top:16px;">
+                    <table>
+                        <tbody>
+                            <tr><td>FAQ Schema</td><td><span class="badge badge-critical">Duplicated (spam risk)</span></td></tr>
+                            <tr><td>Person Schema</td><td><span class="badge badge-critical">Missing</span></td></tr>
+                            <tr><td>Review Schema</td><td><span class="badge badge-critical">Missing</span></td></tr>
+                            <tr><td>Article Schema</td><td><span class="badge badge-critical">Missing</span></td></tr>
+                            <tr><td>LocalBusiness</td><td><span class="badge badge-good">Present</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div>
+                <h3 style="color:#00cc88;">Optimized Competitor (Example)</h3>
+                <div style="background:#1a1a1a; border:1px solid #2a2a2a; border-radius:8px; padding:20px; font-family:monospace; font-size:12px; line-height:1.8; color:#ccc;">
+                    <div style="color:#00cc88;">// FAQ Schema (UNIQUE per page)</div>
+                    <div>"@type": "FAQPage"</div>
+                    <div>"name": "What is the median home price in Boca Raton?"</div>
+                    <div>"name": "Best neighborhoods for families?"</div>
+                    <div>"name": "How long do homes stay on market?"</div>
+                    <div>"name": "What are HOA fees in Addison Reserve?"</div>
+                    <div style="color:#00cc88; margin-top:12px;">// Person Schema (per agent)</div>
+                    <div>"@type": "Person"</div>
+                    <div>"name": "Larry Mastropieri"</div>
+                    <div>"jobTitle": "Luxury Real Estate Agent"</div>
+                    <div>"award": "Top Producer 2024"</div>
+                    <div style="color:#00cc88; margin-top:12px;">// AggregateRating</div>
+                    <div>"@type": "AggregateRating"</div>
+                    <div>"ratingValue": "5.0"</div>
+                    <div>"reviewCount": "693"</div>
+                    <div style="color:#00cc88; margin-top:12px;">// BlogPosting + Author</div>
+                    <div>"@type": "BlogPosting"</div>
+                    <div>"author": { "@type": "Person" }</div>
+                    <div>"datePublished": "2026-03-01"</div>
+                </div>
+                <div style="margin-top:16px;">
+                    <table>
+                        <tbody>
+                            <tr><td>FAQ Schema</td><td><span class="badge badge-good">Unique per page</span></td></tr>
+                            <tr><td>Person Schema</td><td><span class="badge badge-good">All agents</span></td></tr>
+                            <tr><td>Review Schema</td><td><span class="badge badge-good">693 reviews</span></td></tr>
+                            <tr><td>Article Schema</td><td><span class="badge badge-good">Full authorship</span></td></tr>
+                            <tr><td>LocalBusiness</td><td><span class="badge badge-good">Present</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="highlight-box" style="margin-top:30px;">
+            <h4>What This Means</h4>
+            <p>AI engines use structured data to decide <strong>who to recommend</strong>. When ChatGPT, Perplexity, or Google AI Overviews answer "best real estate team in Boca Raton," they look for Person schema to identify agents, AggregateRating to validate quality, unique FAQ content to extract answers, and BlogPosting with author attribution to assess expertise. The Koolik Group's website gives AI engines almost none of these signals -- which is why competitors with inferior production numbers get recommended instead.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Section 2.7: Content Cluster Architecture -->
+<div class="section">
+    <div class="container">
+        <div class="section-number">The Architecture</div>
+        <h2>Content Cluster <strong>Map</strong></h2>
+        <p>This is the interconnected content system Blok.CO will build for The Koolik Group. Every piece of content links to related content, creating a web of authority that AI engines use to establish topical expertise and trust.</p>
+
+        <div style="background:#111; border:1px solid #2a2a2a; border-radius:12px; padding:40px; margin:24px 0; position:relative; overflow:hidden;">
+            <!-- Center Hub -->
+            <div style="text-align:center; margin-bottom:40px;">
+                <div style="display:inline-block; background:linear-gradient(135deg, #00d4ff, #0088cc); color:#0a0a0a; padding:16px 32px; border-radius:50px; font-weight:700; font-size:18px;">koolik.com</div>
+                <div style="color:#666; font-size:12px; margin-top:8px;">DOMAIN AUTHORITY HUB</div>
+            </div>
+
+            <!-- Tier 1: Pillar Pages -->
+            <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-bottom:12px;">
+                <div style="color:#00d4ff; font-size:10px; text-transform:uppercase; letter-spacing:2px; width:100%; text-align:center; margin-bottom:8px;">Pillar Pages (Tier 1)</div>
+            </div>
+            <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-bottom:30px;">
+                <div style="background:#1a2a3a; border:1px solid #00d4ff; border-radius:8px; padding:10px 16px; font-size:13px; color:#00d4ff; font-weight:600; text-align:center;">Boca Raton<br><span style="font-size:10px; color:#666; font-weight:400;">3,000+ words</span></div>
+                <div style="background:#1a2a3a; border:1px solid #00d4ff; border-radius:8px; padding:10px 16px; font-size:13px; color:#00d4ff; font-weight:600; text-align:center;">Palm Beach<br><span style="font-size:10px; color:#666; font-weight:400;">Existing - Expand</span></div>
+                <div style="background:#1a2a3a; border:1px solid #00d4ff; border-radius:8px; padding:10px 16px; font-size:13px; color:#00d4ff; font-weight:600; text-align:center;">Delray Beach<br><span style="font-size:10px; color:#666; font-weight:400;">NEW</span></div>
+                <div style="background:#1a2a3a; border:1px solid #00d4ff; border-radius:8px; padding:10px 16px; font-size:13px; color:#00d4ff; font-weight:600; text-align:center;">Fort Lauderdale<br><span style="font-size:10px; color:#666; font-weight:400;">NEW</span></div>
+                <div style="background:#1a2a3a; border:1px solid #00d4ff; border-radius:8px; padding:10px 16px; font-size:13px; color:#00d4ff; font-weight:600; text-align:center;">Parkland<br><span style="font-size:10px; color:#666; font-weight:400;">NEW</span></div>
+                <div style="background:#1a2a3a; border:1px solid #00d4ff; border-radius:8px; padding:10px 16px; font-size:13px; color:#00d4ff; font-weight:600; text-align:center;">Coral Springs<br><span style="font-size:10px; color:#666; font-weight:400;">NEW</span></div>
+            </div>
+
+            <!-- Connecting arrows visual -->
+            <div style="text-align:center; color:#333; font-size:20px; margin-bottom:12px;">&#8595; &#8595; &#8595; &#8597; &#8597; &#8597;</div>
+
+            <!-- Tier 2: Community/Subdivision Pages -->
+            <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-bottom:12px;">
+                <div style="color:#00cc88; font-size:10px; text-transform:uppercase; letter-spacing:2px; width:100%; text-align:center; margin-bottom:8px;">Community Pages (Tier 2)</div>
+            </div>
+            <div style="display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin-bottom:30px;">
+                <div style="background:#1a2a2a; border:1px solid #00cc88; border-radius:6px; padding:8px 14px; font-size:12px; color:#00cc88;">Addison Reserve</div>
+                <div style="background:#1a2a2a; border:1px solid #00cc88; border-radius:6px; padding:8px 14px; font-size:12px; color:#00cc88;">Broken Sound</div>
+                <div style="background:#1a2a2a; border:1px solid #00cc88; border-radius:6px; padding:8px 14px; font-size:12px; color:#00cc88;">Woodfield CC</div>
+                <div style="background:#1a2a2a; border:1px solid #00cc88; border-radius:6px; padding:8px 14px; font-size:12px; color:#00cc88;">St. Andrews CC</div>
+                <div style="background:#1a2a2a; border:1px solid #00cc88; border-radius:6px; padding:8px 14px; font-size:12px; color:#00cc88;">Boca West</div>
+                <div style="background:#1a2a2a; border:1px solid #00cc88; border-radius:6px; padding:8px 14px; font-size:12px; color:#00cc88;">Royal Palm</div>
+                <div style="background:#1a2a2a; border:1px solid #00cc88; border-radius:6px; padding:8px 14px; font-size:12px; color:#00cc88;">The Oaks</div>
+                <div style="background:#1a2a2a; border:1px solid #00cc88; border-radius:6px; padding:8px 14px; font-size:12px; color:#00cc88;">Mizner CC</div>
+            </div>
+
+            <!-- Connecting arrows visual -->
+            <div style="text-align:center; color:#333; font-size:20px; margin-bottom:12px;">&#8595; &#8595; &#8597; &#8597; &#8593; &#8593;</div>
+
+            <!-- Tier 3: Blog + Supporting Content -->
+            <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-bottom:12px;">
+                <div style="color:#ffaa00; font-size:10px; text-transform:uppercase; letter-spacing:2px; width:100%; text-align:center; margin-bottom:8px;">Blog + Supporting Content (Tier 3)</div>
+            </div>
+            <div style="display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin-bottom:30px;">
+                <div style="background:#2a2a1a; border:1px solid #ffaa00; border-radius:6px; padding:8px 14px; font-size:11px; color:#ffaa00;">Market Reports</div>
+                <div style="background:#2a2a1a; border:1px solid #ffaa00; border-radius:6px; padding:8px 14px; font-size:11px; color:#ffaa00;">Buyer Guides</div>
+                <div style="background:#2a2a1a; border:1px solid #ffaa00; border-radius:6px; padding:8px 14px; font-size:11px; color:#ffaa00;">Seller Guides</div>
+                <div style="background:#2a2a1a; border:1px solid #ffaa00; border-radius:6px; padding:8px 14px; font-size:11px; color:#ffaa00;">School Guides</div>
+                <div style="background:#2a2a1a; border:1px solid #ffaa00; border-radius:6px; padding:8px 14px; font-size:11px; color:#ffaa00;">Comparison Posts</div>
+                <div style="background:#2a2a1a; border:1px solid #ffaa00; border-radius:6px; padding:8px 14px; font-size:11px; color:#ffaa00;">Relocation Guides</div>
+                <div style="background:#2a2a1a; border:1px solid #ffaa00; border-radius:6px; padding:8px 14px; font-size:11px; color:#ffaa00;">Lifestyle Content</div>
+                <div style="background:#2a2a1a; border:1px solid #ffaa00; border-radius:6px; padding:8px 14px; font-size:11px; color:#ffaa00;">Investment Guides</div>
+            </div>
+
+            <!-- Connecting arrows visual -->
+            <div style="text-align:center; color:#333; font-size:20px; margin-bottom:12px;">&#8595; &#8597; &#8593;</div>
+
+            <!-- Tier 4: Schema + Conversion Layer -->
+            <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-bottom:12px;">
+                <div style="color:#ff4444; font-size:10px; text-transform:uppercase; letter-spacing:2px; width:100%; text-align:center; margin-bottom:8px;">Schema + Conversion Layer (Every Page)</div>
+            </div>
+            <div style="display:flex; justify-content:center; gap:10px; flex-wrap:wrap;">
+                <div style="background:#2a1a1a; border:1px solid #ff4444; border-radius:6px; padding:8px 14px; font-size:11px; color:#ff4444;">FAQ Schema (unique)</div>
+                <div style="background:#2a1a1a; border:1px solid #ff4444; border-radius:6px; padding:8px 14px; font-size:11px; color:#ff4444;">Person Schema</div>
+                <div style="background:#2a1a1a; border:1px solid #ff4444; border-radius:6px; padding:8px 14px; font-size:11px; color:#ff4444;">Location Schema</div>
+                <div style="background:#2a1a1a; border:1px solid #ff4444; border-radius:6px; padding:8px 14px; font-size:11px; color:#ff4444;">Open Graph Tags</div>
+                <div style="background:#2a1a1a; border:1px solid #ff4444; border-radius:6px; padding:8px 14px; font-size:11px; color:#ff4444;">Canonical URLs</div>
+                <div style="background:#2a1a1a; border:1px solid #ff4444; border-radius:6px; padding:8px 14px; font-size:11px; color:#ff4444;">Internal Links</div>
+                <div style="background:#2a1a1a; border:1px solid #ff4444; border-radius:6px; padding:8px 14px; font-size:11px; color:#ff4444;">CTAs + Lead Capture</div>
+                <div style="background:#2a1a1a; border:1px solid #ff4444; border-radius:6px; padding:8px 14px; font-size:11px; color:#ff4444;">GSC Indexing</div>
+            </div>
+        </div>
+
+        <div class="highlight-box">
+            <h4>How Content Clusters Work</h4>
+            <p>Every piece of content connects to related content through internal links. A Boca Raton neighborhood guide links to the Addison Reserve community page, which links to a blog post about country club living, which links to an agent bio page, which links back to the neighborhood guide. This creates a <strong>web of topical authority</strong> that signals to AI engines: "The Koolik Group is THE expert on Boca Raton real estate." When every page reinforces every other page, AI engines have no choice but to cite you.</p>
+        </div>
+
+        <h3>Current vs. Planned Content Volume</h3>
+        <div class="stat-row">
+            <div class="stat-block">
+                <div class="stat-num" style="color:#ff4444;">5</div>
+                <div class="stat-label">Neighborhood Pages (Now)</div>
+            </div>
+            <div class="stat-block">
+                <div class="stat-num" style="color:#00cc88;">15+</div>
+                <div class="stat-label">Neighborhood Pages (Planned)</div>
+            </div>
+            <div class="stat-block">
+                <div class="stat-num" style="color:#ff4444;">0</div>
+                <div class="stat-label">Community Pages (Now)</div>
+            </div>
+            <div class="stat-block">
+                <div class="stat-num" style="color:#00cc88;">8+</div>
+                <div class="stat-label">Community Pages (Planned)</div>
+            </div>
+            <div class="stat-block">
+                <div class="stat-num" style="color:#ff4444;">0</div>
+                <div class="stat-label">Market Reports (Now)</div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Section 3: Competitive Landscape -->
 <div class="section">
     <div class="container">
