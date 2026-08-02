@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Total Search AI Citation Report | July 2026 | The Cheryl Foote Team</title>
+</head>
+<body>
+<style>
+:root{
+    --navy:#010b23; --navy-mid:#060f2a; --navy-light:#0a1536; --indigo:#111e50;
+    --blue:#1936a5; --blue-glow:#416bdf; --cyan:#59f3ff; --coral:#fb958a; --teal:#85c9ce;
+    --paper:#eef1f8; --sheet:#ffffff;
+    --ink:#0a1430; --muted:#55618a; --dim:#8b93b0;
+    --line:rgba(17,30,80,.12); --line-strong:rgba(17,30,80,.22);
+    --good:#0f9d8f; --warn:#c9772e;
+    --font: -apple-system, "Helvetica Neue", "Segoe UI", system-ui, Roboto, Arial, sans-serif;
+    --mono: "SF Mono", ui-monospace, "Roboto Mono", Menlo, monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:
+      radial-gradient(1200px 600px at 50% -200px, rgba(65,107,223,.10), transparent 60%),
+      var(--paper);
+    color:var(--ink); font-family:var(--font); line-height:1.5;
+    -webkit-font-smoothing:antialiased; padding:32px 18px 60px;}
+  .sheet{max-width:960px; margin:0 auto; background:var(--sheet);
+    border:1px solid var(--line); border-radius:14px; overflow:hidden;
+    box-shadow:0 24px 60px -30px rgba(10,20,48,.4), 0 2px 0 rgba(255,255,255,.6) inset;}
+  .pad{padding:40px 46px}
+  @media(max-width:620px){ .pad{padding:28px 22px} body{padding:16px 10px 40px} }
+
+  /* header */
+  .head{display:flex; justify-content:space-between; align-items:flex-start;
+    gap:24px; flex-wrap:wrap; padding-bottom:26px; border-bottom:1px solid var(--line);}
+  .logo{width:150px; height:auto; display:block}
+  .head-meta{text-align:right; font-size:12.5px; color:var(--muted); line-height:1.65}
+  .head-meta .doc{font-weight:700; color:var(--ink); letter-spacing:-.01em; font-size:13px}
+  .kicker{display:inline-block; font-size:11px; font-weight:700; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--blue); }
+
+  h1{font-size:30px; line-height:1.1; letter-spacing:-.025em; margin:18px 0 6px;
+     font-weight:800; text-wrap:balance; color:var(--ink)}
+  .sub{font-size:15px; color:var(--muted); margin:0}
+  .client-row{display:flex; gap:18px; flex-wrap:wrap; align-items:baseline;
+     margin-top:14px; font-size:13.5px}
+  .client-row b{color:var(--ink); font-weight:700}
+  .client-row a{color:var(--blue); text-decoration:none}
+  .period{font-variant-numeric:tabular-nums}
+
+  .lede{margin:26px 0 4px; font-size:16.5px; line-height:1.6; color:#28324f;
+     border-left:3px solid var(--cyan); padding-left:16px}
+  .lede b{color:var(--ink); font-weight:700}
+  .lede p{margin:0 0 12px} .lede p:last-child{margin-bottom:0}
+
+  section{margin-top:38px}
+  .eyebrow{font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--dim); margin:0 0 14px; display:flex; align-items:center; gap:10px}
+  .eyebrow::after{content:""; flex:1; height:1px; background:var(--line)}
+  h2{font-size:19px; letter-spacing:-.02em; margin:0 0 4px; font-weight:800}
+  h3{font-size:15px; letter-spacing:-.01em; margin:0 0 8px; font-weight:800}
+  p.body{font-size:14.5px; line-height:1.65; color:#28324f; margin:0 0 12px}
+  p.body b{color:var(--ink)}
+
+  /* KPI tiles */
+  .kpis{display:grid; grid-template-columns:repeat(auto-fit,minmax(158px,1fr)); gap:14px}
+  @media(max-width:720px){ .kpis{grid-template-columns:repeat(2,1fr)} }
+  .tile{background:linear-gradient(160deg,var(--navy-light),var(--navy) 70%);
+    border:1px solid rgba(89,243,255,.16); border-radius:12px; padding:18px 16px;
+    position:relative; overflow:hidden; break-inside:avoid}
+  .tile::before{content:""; position:absolute; inset:0;
+    background:radial-gradient(120px 80px at 80% -10%, rgba(89,243,255,.18), transparent 70%);
+    pointer-events:none}
+  .tile .num{font-size:34px; font-weight:800; letter-spacing:-.03em; color:var(--cyan);
+    font-variant-numeric:tabular-nums; line-height:1; text-shadow:0 0 22px rgba(89,243,255,.35)}
+  .tile .num small{font-size:16px; color:#aeeff8; font-weight:700}
+  .tile .lab{color:#c9d2ec; font-size:11.5px; margin-top:9px; line-height:1.4}
+  .tile .foot{color:#7f8bb5; font-size:10.5px; margin-top:8px; letter-spacing:.02em}
+  .tile.win .num{color:#7bffd0; text-shadow:0 0 22px rgba(123,255,208,.3)}
+
+
+  /* table */
+  .tbl{width:100%; border-collapse:collapse; font-size:13.5px}
+  .tbl-wrap{overflow-x:auto; border:1px solid var(--line); border-radius:12px}
+  .tbl th{background:var(--navy); color:#dbe3ff; text-align:left; font-weight:600;
+    font-size:11px; letter-spacing:.06em; text-transform:uppercase; padding:12px 14px; white-space:nowrap}
+  .tbl th small{display:block; font-weight:400; letter-spacing:.02em; text-transform:none;
+    color:#8fa0d0; font-size:9.5px; margin-top:3px}
+  .tbl th.c,.tbl td.c{text-align:center}
+  .tbl td{padding:11px 14px; border-top:1px solid var(--line); vertical-align:middle}
+  .tbl tbody tr:nth-child(even){background:rgba(17,30,80,.025)}
+  .tbl .q{font-weight:600; color:var(--ink)}
+  .tbl .dom{display:block; font-size:11.5px; color:var(--dim); font-weight:500; margin-top:3px}
+  .tbl .dom.grove{color:var(--good)}
+  .cit{font-size:15px; font-weight:800; color:var(--good); line-height:1}
+  .non{font-size:15px; color:var(--dim); line-height:1}
+  .noai{font-size:17px; color:#aab2c8; line-height:1; font-weight:700}
+  .rowmark{width:4px; padding:0 !important}
+  .rowmark.on{background:var(--cyan)} .rowmark.off{background:var(--coral)}
+  .badge{display:inline-block; font-size:9.5px; font-weight:700; letter-spacing:.06em;
+    text-transform:uppercase; padding:3px 7px; border-radius:999px; margin-left:8px; vertical-align:middle}
+  .badge.new{background:rgba(25,54,165,.1); color:var(--blue)}
+  .badge.amber{background:rgba(201,119,46,.12); color:var(--warn)}
+  .tag{font-size:10.5px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; margin-left:6px}
+  .tag.held{color:var(--muted)} .tag.won{color:var(--good)} .tag.lost{color:var(--coral)}
+
+  .legend{margin-top:12px; font-size:11.5px; color:var(--muted); line-height:1.7}
+  .legend b{color:var(--ink)}
+  .readnote{margin-top:14px; font-size:12.5px; color:var(--muted); line-height:1.65}
+  .readnote b{color:var(--ink)}
+
+  /* two-up */
+  .two{display:grid; grid-template-columns:1fr 1fr; gap:22px}
+  @media(max-width:720px){ .two{grid-template-columns:1fr} }
+  .panel{border:1px solid var(--line); border-radius:12px; padding:20px; background:#fbfcff; break-inside:avoid}
+  .panel h3{margin:0 0 16px; font-size:14px; letter-spacing:-.01em}
+
+  /* evidence figures */
+  .ev{margin:18px 0 0; border:1px solid var(--line); border-radius:12px; overflow:hidden; background:#fbfcff; break-inside:avoid}
+  .ev .shot{max-height:540px; overflow-y:auto; border-bottom:1px solid var(--line);
+    background:#fff; -webkit-overflow-scrolling:touch}
+  .ev img{width:100%; height:auto; display:block}
+  .ev figcaption{padding:12px 16px; font-size:12px; color:var(--muted); line-height:1.6}
+  .ev figcaption b{color:var(--ink)}
+
+  /* callouts */
+  .honest{margin-top:16px; border-left:3px solid var(--coral); background:#fffaf8;
+    border-radius:0 10px 10px 0; padding:14px 18px; font-size:13px; line-height:1.6; color:#28324f}
+  .honest b{color:var(--ink)}
+
+  /* post-block: prose, then evidence, then interpretation */
+  .post-block{border:1px solid var(--line); border-radius:12px; padding:20px 22px;
+    background:#fbfcff; margin-top:18px; break-inside:avoid}
+  .post-block h3{margin:0 0 14px; display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+  .post-block .tbl-wrap{background:#fff}
+
+  /* evidence-tier pills */
+  .tier-tag{display:inline-block; font-size:10px; font-weight:700; letter-spacing:.07em;
+    text-transform:uppercase; padding:4px 9px; border-radius:999px; white-space:nowrap}
+  .tier-tag.confirmed{background:var(--cyan); color:#052734}
+  .tier-tag.observed{background:rgba(25,54,165,.11); color:var(--blue)}
+
+  /* verdict pill in story tables */
+  .verdict{display:inline-block; font-size:11px; font-weight:700; letter-spacing:.03em;
+    padding:4px 11px; border-radius:12px}
+  .verdict.v-cited{background:var(--cyan); color:#052734}
+  .verdict.v-won{background:rgba(15,157,143,.14); color:var(--good)}
+  .verdict.v-lost{background:rgba(251,149,138,.18); color:#a8412f}
+
+  /* interpretation callout */
+  .interp{margin-top:18px; background:linear-gradient(180deg,#f2f7ff,#eef3fd);
+    border-left:4px solid var(--cyan); border-radius:0 10px 10px 0; padding:14px 18px;
+    font-size:13.5px; line-height:1.62; color:#1f2c4d}
+  .interp strong{color:var(--ink)}
+  .interp.honest{background:#fff6f2; border-left-color:var(--coral); color:#5c3327}
+  .interp.honest strong{color:#3d2018}
+
+  /* July plan runway cards */
+  .runway{display:grid; grid-template-columns:repeat(2,1fr); gap:16px}
+  @media(max-width:720px){ .runway{grid-template-columns:1fr} }
+  .runway-card{background:#fff; border:1px solid var(--line); border-left:4px solid var(--cyan);
+    border-radius:12px; padding:16px 18px; break-inside:avoid}
+  .runway-card h4{margin:0 0 7px; font-size:13.5px; font-weight:800; letter-spacing:-.01em; color:var(--ink)}
+  .runway-card p{margin:0; font-size:12.5px; line-height:1.58; color:var(--muted)}
+
+  /* opportunity cards */
+  .opps{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+  @media(max-width:720px){ .opps{grid-template-columns:1fr} }
+  .opp{border:1px solid var(--line); border-left:3px solid var(--coral); border-radius:10px;
+    padding:14px 16px; background:#fffaf8; break-inside:avoid}
+  .opp .qq{font-weight:700; font-size:13.5px; color:var(--ink)}
+  .opp .why{font-size:12.5px; color:var(--muted); margin-top:5px; line-height:1.5}
+
+  /* footer */
+  .foot-band{margin-top:44px; padding-top:22px; border-top:1px solid var(--line);
+    display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;
+    font-size:11.5px; color:var(--dim)}
+  .foot-band b{color:var(--muted); font-weight:700}
+  .foot-band a{color:var(--blue); text-decoration:none}
+
+  @media print{
+    body{background:#fff; padding:0}
+    .sheet{box-shadow:none; border:none; border-radius:0}
+    section,.tile,.panel,.opp,.ev,.momc,.tbl-wrap{break-inside:avoid}
+    /* never clip evidence on paper: the scroll frame is a screen-only affordance */
+    .ev .shot{max-height:none; overflow:visible}
+  }
+  /* source-cited cell in the engine story tables */
+  .tbl .src{font-size:12.5px; color:var(--muted); font-weight:600}
+
+</style>
+
+<div class="sheet">
+  <div class="pad">
+
+    <div class="head">
+      <svg class="logo" viewBox="0 0 521.68 163.5" role="img" aria-label="BLOK">
+  <g>
+    <polygon fill="#85c9ce" points="54.9 98.1 54.9 40.6 107.4 69.7 107.4 128.5 54.9 98.1"/>
+    <polygon fill="#fb958a" points="0 132.9 53.7 101.6 106.7 132.9 53.7 163.5 0 132.9"/>
+    <polygon fill="#060c3b" points="0 129.2 0 29.7 51.7 0 51.7 98.8 0 129.2"/>
+    <path fill="#060c3b" d="M212.4,104.4c0-10-1.6-17.3-4.7-21.8-3.2-4.6-7.9-6.9-14.2-6.9-8.4,0-14.2,3.4-17.3,10.3v39c3.2,6.9,9.1,10.4,17.5,10.4s14.1-4.2,16.8-12.6c1.3-4,1.9-10.2,1.9-18.4ZM238.8,106.3c0,15.8-3.4,28.2-10.1,37.1-6.8,8.8-16.2,13.2-28.3,13.2-10.7,0-19.3-4.1-25.7-12.3l-1.2,10.5h-23.7V14.6h26.4v50.3c6.1-7.1,14.1-10.7,24-10.7,12.1,0,21.5,4.4,28.3,13.3,6.9,8.8,10.3,21.3,10.3,37.3v1.5Z"/>
+    <rect fill="#060c3b" x="256.5" y="14.6" width="26.5" height="140.2"/>
+    <path fill="#060c3b" d="M327.1,106.4c0,9.4,1.8,16.6,5.3,21.5s8.6,7.4,15.2,7.4,11.4-2.4,15-7.3c3.6-4.9,5.4-12.8,5.4-23.6,0-9.2-1.8-16.3-5.4-21.4-3.6-5.1-8.6-7.6-15.2-7.6s-11.4,2.5-15,7.6c-3.5,5.1-5.3,12.9-5.3,23.4ZM300.7,104.5c0-9.8,1.9-18.5,5.7-26.2,3.8-7.7,9.2-13.6,16.2-17.8,7.1-4.2,15.4-6.3,24.7-6.3,13.3,0,24.2,4.1,32.6,12.2,8.5,8.2,13.2,19.2,14.2,33.2l.2,6.8c0,15.2-4.2,27.3-12.7,36.5-8.5,9.1-19.8,13.7-34.1,13.7s-25.6-4.6-34.1-13.7c-8.5-9.1-12.7-21.5-12.7-37.2v-1.2h0Z"/>
+    <polygon fill="#060c3b" points="446.4 115.2 436.9 124.7 436.9 154.8 410.5 154.8 410.5 14.6 436.9 14.6 436.9 92.3 442 85.7 467.3 56 499 56 463.3 97.2 502.1 154.8 471.8 154.8 446.4 115.2"/>
+    <path fill="#060c3b" d="M521.68,23.94c0,5.58-4.38,9.96-10.08,9.96s-10.14-4.38-10.14-9.96,4.5-9.84,10.14-9.84,10.08,4.38,10.08,9.84ZM503.98,23.94c0,4.38,3.24,7.86,7.68,7.86s7.5-3.48,7.5-7.8-3.18-7.92-7.56-7.92-7.62,3.54-7.62,7.86ZM510.04,29.1h-2.28v-9.84c.9-.18,2.16-.3,3.78-.3,1.86,0,2.7.3,3.42.72.54.42.96,1.2.96,2.16,0,1.08-.84,1.92-2.04,2.28v.12c.96.36,1.5,1.08,1.8,2.4.3,1.5.48,2.1.72,2.46h-2.46c-.3-.36-.48-1.26-.78-2.4-.18-1.08-.78-1.56-2.04-1.56h-1.08v3.96ZM510.1,23.52h1.08c1.26,0,2.28-.42,2.28-1.44,0-.9-.66-1.5-2.1-1.5-.6,0-1.02.06-1.26.12v2.82Z"/>
+  </g>
+</svg>
+      <div class="head-meta">
+        <div class="doc">Total Search</div>
+        AI Citation Report<br>
+        <span class="period">July 2026</span>
+      </div>
+    </div>
+
+    <span class="kicker">Monthly AI Visibility</span>
+    <h1>Total Search AI Citation Report</h1>
+    <p class="sub">July 2026 &nbsp;|&nbsp; The Cheryl Foote Team</p>
+
+    <div class="client-row">
+      <span>Steamboat Springs, CO &middot; Engines covered: Google AI Overviews, Perplexity, ChatGPT</span>
+      <span>Site tracked: <b>realestateinsteamboat.com</b></span>
+      <span>Questions tracked: <b>12</b></span>
+      <span>Confidential &middot; Prepared for Cheryl Foote</span>
+    </div>
+
+    <section>
+      <p class="eyebrow">Executive summary</p>
+      <h2>Cited on Every Question We Track, on at Least One Engine</h2>
+      <div class="lede" style="margin-top:18px">
+        <p>In July, realestateinsteamboat.com was named as a source on <b>all twelve</b> of the buyer and investor questions we track. Across the three engines covered here, Google&rsquo;s AI Overview, Perplexity and ChatGPT, there is no question in the set that came back with nothing of yours.</p><p><b>Perplexity named you on every one of the twelve.</b> <b>ChatGPT</b> named you on eight of the twelve.</p><p><b>Google&rsquo;s AI Overview named you on six of the ten questions where it generated one</b>, including the market report, the housing market question, and the short-term rental rules your investor buyers ask about.</p><p>Two notes on the tiles below. The Google tile counts Overview citations across all twelve tracked questions, and Google produced an Overview on ten of them, so the working figure is six of ten. The clicks tile counts Google Search clicks to the whole site across the window shown, not only the twelve questions tracked here.</p>
+      </div>
+      <div class="kpis" style="margin-top:24px">
+        <div class="tile win"><div class="num">12<small>/12</small></div><div class="lab">Questions Cited on at Least One Engine</div></div><div class="tile win"><div class="num">6<small>/12</small></div><div class="lab">Google AI Overview Questions Cited</div><div class="foot">6 of the 10 questions where Google produced an AI answer</div></div><div class="tile win"><div class="num">12<small>/12</small></div><div class="lab">Perplexity Questions Cited</div></div><div class="tile win"><div class="num">8<small>/12</small></div><div class="lab">ChatGPT Questions Cited</div></div><div class="tile"><div class="num">322</div><div class="lab">Google Search Clicks (Jul 3 to Jul 30)</div></div>
+      </div>
+    </section>
+
+    <section>
+      <p class="eyebrow">Citation matrix</p>
+      <h2>All Twelve Questions by Engine</h2>
+      <p class="legend">
+        <b>&#10003;</b> Cited: your site is among the sources that answer drew on<br>
+        <b>&ndash;</b> Not cited in the reading for that column<br>
+        <b>&#9702;</b> Google did not generate an AI Overview for this question, so there was no AI answer to be cited in
+      </p>
+      <div class="tbl-wrap" style="margin-top:14px">
+        <table class="tbl">
+          <thead><tr><th class="rowmark"></th><th>Buyer question</th>
+            <th class="c">Google AI Overview</th><th class="c">Perplexity</th><th class="c">ChatGPT</th></tr></thead>
+          <tbody>
+            <tr><td class="rowmark on"></td><td class="q">Best neighborhoods in Steamboat Springs Colorado<span class="dom">realestateinsteamboat.com</span></td><td class="c"><span class="non">&ndash;</span></td><td class="c"><span class="cit">&#10003;</span></td><td class="c"><span class="cit">&#10003;</span></td></tr><tr><td class="rowmark on"></td><td class="q">Buying a home in Steamboat Springs out of area guide<span class="dom">realestateinsteamboat.com</span></td><td class="c"><span class="cit">&#10003;</span></td><td class="c"><span class="cit">&#10003;</span></td><td class="c"><span class="non">&ndash;</span></td></tr><tr><td class="rowmark on"></td><td class="q">Cheryl Foote Steamboat Springs real estate<span class="dom">realestateinsteamboat.com</span></td><td class="c"><span class="noai">&#9702;</span></td><td class="c"><span class="cit">&#10003;</span></td><td class="c"><span class="cit">&#10003;</span></td></tr><tr><td class="rowmark on"></td><td class="q">Cost of living in Steamboat Springs CO<span class="dom">realestateinsteamboat.com</span></td><td class="c"><span class="non">&ndash;</span></td><td class="c"><span class="cit">&#10003;</span></td><td class="c"><span class="cit">&#10003;</span></td></tr><tr><td class="rowmark on"></td><td class="q">Is Steamboat Springs a good place to live<span class="dom">realestateinsteamboat.com</span></td><td class="c"><span class="non">&ndash;</span></td><td class="c"><span class="cit">&#10003;</span></td><td class="c"><span class="non">&ndash;</span></td></tr><tr><td class="rowmark on"></td><td class="q">Moving to Steamboat Springs Colorado guide<span class="dom">realestateinsteamboat.com</span></td><td class="c"><span class="cit">&#10003;</span></td><td class="c"><span class="cit">&#10003;</span></td><td class="c"><span class="non">&ndash;</span></td></tr><tr><td class="rowmark on"></td><td class="q">Old Town Steamboat Springs neighborhood guide<span class="dom">realestateinsteamboat.com</span></td><td class="c"><span class="noai">&#9702;</span></td><td class="c"><span class="cit">&#10003;</span></td><td class="c"><span class="cit">&#10003;</span></td></tr><tr><td class="rowmark on"></td><td class="q">Steamboat Springs housing market 2026<span class="dom">realestateinsteamboat.com</span></td><td class="c"><span class="cit">&#10003;</span></td><td class="c"><span class="cit">&#10003;</span></td><td class="c"><span class="cit">&#10003;</span></td></tr><tr><td class="rowmark on"></td><td class="q">Steamboat Springs neighborhoods where to live<span class="dom">realestateinsteamboat.com</span></td><td class="c"><span class="cit">&#10003;</span></td><td class="c"><span class="cit">&#10003;</span></td><td class="c"><span class="cit">&#10003;</span></td></tr><tr><td class="rowmark on"></td><td class="q">Steamboat Springs real estate market report June 2026<span class="dom">realestateinsteamboat.com</span></td><td class="c"><span class="cit">&#10003;</span></td><td class="c"><span class="cit">&#10003;</span></td><td class="c"><span class="cit">&#10003;</span></td></tr><tr><td class="rowmark on"></td><td class="q">Steamboat Springs short term rental rules investment property<span class="dom">realestateinsteamboat.com</span></td><td class="c"><span class="cit">&#10003;</span></td><td class="c"><span class="cit">&#10003;</span></td><td class="c"><span class="cit">&#10003;</span></td></tr><tr><td class="rowmark on"></td><td class="q">What is it like to live in Steamboat Springs Colorado<span class="dom">realestateinsteamboat.com</span></td><td class="c"><span class="non">&ndash;</span></td><td class="c"><span class="cit">&#10003;</span></td><td class="c"><span class="non">&ndash;</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="readnote"><b>Reading the matrix.</b> Every question is cited on at least one engine. Perplexity carries all twelve, ChatGPT eight, and Google&rsquo;s AI Overview six of the ten questions where it produced an Overview. Where Google produced no AI answer in our reading, the cell is marked with a circle. The Google tile counts across all twelve tracked questions; the line beneath it gives the rate on the ten where Google produced an answer.</p>
+      <p class="readnote" style="margin-top:10px"><b>How to read the columns.</b> Perplexity and ChatGPT were measured across the month. The Google AI Overview column is a set of single readings taken on July 6, with one exception: the question about what it is like to live in Steamboat could not be read that day, so it was read on August 1 instead. Treat that column as snapshots rather than a month, and read that one row as an August 1 result. Both sittings ran from a connection outside Steamboat Springs, and Google localizes these answers, so a search run from inside the market can return a different result. One point applies to all three columns: AI answers are regenerated on every run, so a check on any single day may not reproduce a citation the month recorded. Every AI Overview was read as Google first rendered it, with collapsed source lists left unexpanded and side panels as displayed. So any list of sources named in this report is what Google showed first on that reading, not a complete inventory of everything the answer drew on.</p>
+    </section>
+    <section>
+      <p class="eyebrow">Story one</p>
+      <h2>Perplexity &ndash; Cited on All 12</h2>
+      <p class="body">Perplexity cites realestateinsteamboat.com on <b>every one of the twelve</b> questions, from the brand query through neighborhoods, cost of living, the market report and the short-term rental rules.</p><div class="post-block"><h3>All Twelve Perplexity questions cited <span class="tier-tag confirmed">Confirmed</span></h3><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Buyer question</th><th class="c">Status</th><th>Owned domains cited on this question</th></tr></thead><tbody><tr><td class="q">Best neighborhoods in Steamboat Springs Colorado</td><td class="c"><span class="verdict v-cited">Cited</span></td><td class="src">realestateinsteamboat.com</td></tr><tr><td class="q">Buying a home in Steamboat Springs out of area guide</td><td class="c"><span class="verdict v-cited">Cited</span></td><td class="src">realestateinsteamboat.com</td></tr><tr><td class="q">Cheryl Foote Steamboat Springs real estate</td><td class="c"><span class="verdict v-cited">Cited</span></td><td class="src">realestateinsteamboat.com</td></tr><tr><td class="q">Cost of living in Steamboat Springs CO</td><td class="c"><span class="verdict v-cited">Cited</span></td><td class="src">realestateinsteamboat.com</td></tr><tr><td class="q">Is Steamboat Springs a good place to live</td><td class="c"><span class="verdict v-cited">Cited</span></td><td class="src">realestateinsteamboat.com</td></tr><tr><td class="q">Moving to Steamboat Springs Colorado guide</td><td class="c"><span class="verdict v-cited">Cited</span></td><td class="src">realestateinsteamboat.com</td></tr><tr><td class="q">Old Town Steamboat Springs neighborhood guide</td><td class="c"><span class="verdict v-cited">Cited</span></td><td class="src">realestateinsteamboat.com</td></tr><tr><td class="q">Steamboat Springs housing market 2026</td><td class="c"><span class="verdict v-cited">Cited</span></td><td class="src">realestateinsteamboat.com</td></tr><tr><td class="q">Steamboat Springs neighborhoods where to live</td><td class="c"><span class="verdict v-cited">Cited</span></td><td class="src">realestateinsteamboat.com</td></tr><tr><td class="q">Steamboat Springs real estate market report June 2026</td><td class="c"><span class="verdict v-cited">Cited</span></td><td class="src">realestateinsteamboat.com</td></tr><tr><td class="q">Steamboat Springs short term rental rules investment property</td><td class="c"><span class="verdict v-cited">Cited</span></td><td class="src">realestateinsteamboat.com</td></tr><tr><td class="q">What is it like to live in Steamboat Springs Colorado</td><td class="c"><span class="verdict v-cited">Cited</span></td><td class="src">realestateinsteamboat.com</td></tr></tbody></table></div><div class="interp"><strong>Interpretation:</strong> Complete coverage on one engine comes from one thing: a small, tightly-scoped market covered exhaustively. Seven published pages cover the twelve questions in the tracked set end to end, and Perplexity is naming the domain on every one of them. The task from here is defending that position on this set while the next questions get built.</div></div>
+    </section>
+    <section>
+      <p class="eyebrow">Story two</p>
+      <h2>ChatGPT &ndash; 8 of 12, Including the Brand Query</h2>
+      <p class="body">ChatGPT cites you on <b>eight of the twelve</b>, including the Cheryl Foote brand query, so the team name and the site are being returned together.</p><div class="post-block"><h3>Eight ChatGPT questions cited <span class="tier-tag confirmed">Confirmed</span></h3><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Buyer question</th><th class="c">Status</th><th>Owned domains cited on this question</th></tr></thead><tbody><tr><td class="q">Best neighborhoods in Steamboat Springs Colorado</td><td class="c"><span class="verdict v-cited">Cited</span></td><td class="src">realestateinsteamboat.com</td></tr><tr><td class="q">Cheryl Foote Steamboat Springs real estate</td><td class="c"><span class="verdict v-cited">Cited</span></td><td class="src">realestateinsteamboat.com</td></tr><tr><td class="q">Cost of living in Steamboat Springs CO</td><td class="c"><span class="verdict v-cited">Cited</span></td><td class="src">realestateinsteamboat.com</td></tr><tr><td class="q">Old Town Steamboat Springs neighborhood guide</td><td class="c"><span class="verdict v-cited">Cited</span></td><td class="src">realestateinsteamboat.com</td></tr><tr><td class="q">Steamboat Springs housing market 2026</td><td class="c"><span class="verdict v-cited">Cited</span></td><td class="src">realestateinsteamboat.com</td></tr><tr><td class="q">Steamboat Springs neighborhoods where to live</td><td class="c"><span class="verdict v-cited">Cited</span></td><td class="src">realestateinsteamboat.com</td></tr><tr><td class="q">Steamboat Springs real estate market report June 2026</td><td class="c"><span class="verdict v-cited">Cited</span></td><td class="src">realestateinsteamboat.com</td></tr><tr><td class="q">Steamboat Springs short term rental rules investment property</td><td class="c"><span class="verdict v-cited">Cited</span></td><td class="src">realestateinsteamboat.com</td></tr></tbody></table></div><div class="interp"><strong>Interpretation:</strong> Being cited on your own brand query matters: a buyer who asks for the team by name gets the site named in the answer. The questions ChatGPT did not name you on are the out-of-area buying question, the moving question, and the two questions about what living in Steamboat is like. The first two are the ones to take first, because they are what a relocating buyer asks before anything else and because your site is already the answer elsewhere. On both of them Google&rsquo;s Overview names your site: the page it shows as your source is the Old Town guide on the out-of-area question and the Living in Steamboat guide on the moving question. Perplexity names you on both as well. ChatGPT is the one engine not picking that content up.</div></div>
+    </section>
+    <section>
+      <p class="eyebrow">Story three</p>
+      <h2>Google AI Overviews &ndash; 6 of the 10 That Generated One</h2>
+      <p class="body">Google produced an AI Overview on <b>ten</b> of the twelve questions and cited you on <b>six</b> of those, and the wins cover both halves of your buyer. On the commercial side: the market report, the housing market, and the short-term rental rules. On the relocation and neighborhood side: buying from out of area, moving to Steamboat, and where to live in Steamboat. One thing to know before you open the screenshots: Google labels realestateinsteamboat.com with the site name COMPASS STEAMBOAT, so that is the name to look for inside the Overview and in its source panel.</p><div class="post-block"><h3>&ldquo;Steamboat Springs short term rental rules investment property&rdquo; <span class="tier-tag observed">Screenshot evidence</span></h3><p class="body" style="margin-bottom:0">Google cites you inside the Overview on the core investor question in this market. A COMPASS STEAMBOAT source chip closes the opening paragraph, and your short-term rental page sits in the source panel alongside the City of Steamboat Springs. Regulatory clarity is difficult content to write and Google is carrying yours.</p><figure class="ev"><div class="shot"><img src="screenshots/capture-2026-07-06/google-steamboat-springs-short-term-rental-rules-invest.png" alt="Google AI Overview for Steamboat Springs short term rental rules citing COMPASS STEAMBOAT, the site name Google uses for realestateinsteamboat.com"></div><figcaption>Google AI Overview &ndash; &ldquo;Steamboat Springs short term rental rules investment property.&rdquo; Your guide is carried as a source, shown as COMPASS STEAMBOAT. Captured July 6 from a connection outside Steamboat Springs.</figcaption></figure></div><div class="post-block"><h3>&ldquo;Steamboat Springs housing market 2026&rdquo; <span class="tier-tag observed">Screenshot evidence</span></h3><p class="body" style="margin-bottom:0">On the housing market question your June market report is the top card in the Overview&rsquo;s source panel, shown as COMPASS STEAMBOAT. That is the clearest argument for keeping the monthly market report current.</p><figure class="ev"><div class="shot"><img src="screenshots/capture-2026-07-06/google-steamboat-springs-housing-market-2026.png" alt="Google AI Overview for Steamboat Springs housing market 2026 with the June market report as the top card in the source panel, shown as COMPASS STEAMBOAT"></div><figcaption>Google AI Overview &ndash; &ldquo;Steamboat Springs housing market 2026.&rdquo; Your June market report is the top source in the Overview&rsquo;s source panel, shown as COMPASS STEAMBOAT. Captured July 6 from a connection outside Steamboat Springs.</figcaption></figure></div><div class="interp"><strong>Interpretation:</strong> The pattern across the cited Overviews is dated, specific, locally-owned pages: your June market report on both market questions, your short-term rental page on the investor question, and the Old Town and Living in Steamboat guides on the relocation and neighborhood questions. On the four questions where Google wrote an Overview without naming you, the sources it showed split three ways. On best neighborhoods and on whether Steamboat is a good place to live, competing Steamboat real estate sites are among them: The Agency Steamboat and myhomesteamboat.com on the first, The Group Real Estate on the second. On cost of living, Google reaches for reference and lifestyle sites plus one local title: Livability, Salary.com and Steamboat Magazine. On what it is like to live in Steamboat, it reaches past publishers altogether, to Reddit and to a YouTube channel, The Western Nomad. The two with a competitor in the answer are the ones worth taking first.</div>
+    </section>
+    <section>
+      <p class="eyebrow">Gaps as opportunities</p>
+      <h2>The August Plan &ndash; Defend the Position and Close the Open Slots</h2>
+      <p class="body">Every tracked question is cited on at least one engine, and there is open ground beyond that. Google generated an Overview on ten of the twelve questions and named you on six. ChatGPT named you on eight of the twelve. August is about those open slots. On ChatGPT the out-of-area buying question and the moving question come first, because Google and Perplexity both name your site on them and ChatGPT is the only engine that has to be moved. Behind them sit the two lifestyle questions, whether Steamboat is a good place to live and what it is like to live there: they share a single asset, the living in Steamboat guide, so they move together once that page carries the resident detail those answers are built from. The other half of August is widening the question set so the next report has something new to measure.</p>
+      <div class="runway"><div class="runway-card"><h4>1. Refresh the market report every month</h4><p>Your June market report is the page Google carries as a source on both market questions. A monthly refresh is the highest-return maintenance task in the plan: it is the only recurring asset in the set, the one that goes stale on a schedule.</p></div><div class="runway-card"><h4>2. Deepen the investor track</h4><p>Your short-term rental content is cited on all three engines. Extending it into financing and property management, the two questions a buyer asks straight after the rules question, targets the buyer with the highest transaction value.</p></div><div class="runway-card"><h4>3. Widen the tracked question set</h4><p>With every one of the twelve cited somewhere, the top line on this set has nowhere left to go. Adding surrounding markets and the ski-in ski-out and mountain-area queries gives August something new to measure.</p></div><div class="runway-card"><h4>4. Take the open Overviews</h4><p>On the four questions where Google wrote an Overview without naming you, best neighborhoods, whether Steamboat is a good place to live, cost of living, and what it is like to live in Steamboat, the source list is open ground. On the first two a rival Steamboat brokerage sits among the sources Google showed instead, which is what makes those two worth contesting first. The cost of living page, the neighborhoods map and the living in Steamboat guide are already published, so this is not new writing: it is adding the dated local figures and the resident detail those answers are built from, then measuring whether Google picks them up.</p></div></div>
+    </section>
+
+    <div class="foot-band">
+      <span>Prepared by <b>BLOK</b> &middot; Total Search</span>
+      <span>The Cheryl Foote Team</span>
+      <span><a href="mailto:advertising@blok.co">advertising@blok.co</a></span>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
