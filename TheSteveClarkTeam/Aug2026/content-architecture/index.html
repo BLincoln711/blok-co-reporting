@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Steve Clark Team, Content Strategy Architecture</title>
+    <style>
+        @page {
+            size: 1400px 3300px;
+            margin: 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0f;
+            color: #e0e0e0;
+            padding: 60px;
+            width: 1400px;
+        }
+
+        .strategy-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .header .blok-tag {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #00d4ff;
+            margin-bottom: 8px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+
+        .header .subtitle {
+            font-size: 14px;
+            color: #8892a0;
+            margin-bottom: 20px;
+        }
+
+        .header .meta {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        .header .meta span {
+            background: rgba(255,255,255,0.05);
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .header .meta strong {
+            color: #00d4ff;
+        }
+
+        /* Domain Hub */
+        .domain-hub {
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .domain-bubble {
+            display: inline-block;
+            background: linear-gradient(135deg, #0ea5e9 0%, #00d4ff 100%);
+            color: #0a0a0f;
+            font-size: 20px;
+            font-weight: 700;
+            padding: 18px 40px;
+            border-radius: 50px;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .hub-label {
+            text-align: center;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #6b7280;
+            margin-bottom: 30px;
+        }
+
+        /* Tier Sections */
+        .tier {
+            margin-bottom: 16px;
+        }
+
+        .tier-label {
+            text-align: center;
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #00d4ff;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .tier-description {
+            text-align: center;
+            font-size: 12px;
+            color: #6b7280;
+            margin-bottom: 16px;
+        }
+
+        /* Arrows */
+        .arrows {
+            text-align: center;
+            font-size: 18px;
+            color: #2a3a4a;
+            margin: 12px 0;
+            letter-spacing: 8px;
+        }
+
+        /* Cards Grid */
+        .cards {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        /* Tier 0 Cards - Entity Layer */
+        .card-entity {
+            background: rgba(139, 92, 246, 0.08);
+            border: 1.5px solid rgba(139, 92, 246, 0.35);
+            border-radius: 10px;
+            padding: 12px 16px;
+            text-align: center;
+            min-width: 150px;
+        }
+
+        .card-entity .card-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: #a78bfa;
+            margin-bottom: 3px;
+        }
+
+        .card-entity .card-meta {
+            font-size: 9px;
+            color: #7a6a9a;
+        }
+
+        /* Tier 1 Cards - Pillar Pages */
+        .card-pillar {
+            background: linear-gradient(180deg, rgba(14, 165, 233, 0.15) 0%, rgba(14, 165, 233, 0.05) 100%);
+            border: 1.5px solid rgba(14, 165, 233, 0.4);
+            border-radius: 10px;
+            padding: 16px 20px;
+            text-align: center;
+            min-width: 190px;
+            max-width: 200px;
+            position: relative;
+        }
+
+        .card-pillar .card-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #00d4ff;
+            margin-bottom: 4px;
+        }
+
+        .card-pillar .card-meta {
+            font-size: 10px;
+            color: #6b98b8;
+        }
+
+        .card-pillar .card-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #f59e0b;
+            color: #0a0a0f;
+            font-size: 8px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 10px;
+            text-transform: uppercase;
+        }
+
+        .card-pillar .card-badge.primary {
+            background: #10b981;
+        }
+
+        .card-pillar .card-badge.rebuild {
+            background: #ef4444;
+        }
+
+        .card-pillar .card-sub {
+            font-size: 9px;
+            color: #4a7a9a;
+            margin-top: 6px;
+            line-height: 1.4;
+        }
+
+        /* Tier 2 Cards - Community Pages */
+        .card-community {
+            background: rgba(16, 185, 129, 0.08);
+            border: 1.5px solid rgba(16, 185, 129, 0.3);
+            border-radius: 10px;
+            padding: 12px 16px;
+            text-align: center;
+            min-width: 145px;
+        }
+
+        .card-community .card-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: #10b981;
+            margin-bottom: 3px;
+        }
+
+        .card-community .card-meta {
+            font-size: 9px;
+            color: #4a8a6a;
+        }
+
+        .card-community.secondary {
+            background: rgba(16, 185, 129, 0.04);
+            border-color: rgba(16, 185, 129, 0.16);
+        }
+
+        .card-community.secondary .card-title {
+            color: #0d8a63;
+        }
+
+        /* Tier 3 Cards - Blog/Content */
+        .card-blog {
+            background: rgba(245, 158, 11, 0.08);
+            border: 1.5px solid rgba(245, 158, 11, 0.3);
+            border-radius: 10px;
+            padding: 10px 14px;
+            text-align: center;
+            min-width: 145px;
+        }
+
+        .card-blog .card-title {
+            font-size: 11px;
+            font-weight: 600;
+            color: #f59e0b;
+        }
+
+        .card-blog .card-meta {
+            font-size: 9px;
+            color: #8a7a4a;
+            margin-top: 2px;
+        }
+
+        /* Tier 4 Cards - Schema */
+        .card-schema {
+            background: rgba(239, 68, 68, 0.08);
+            border: 1.5px solid rgba(239, 68, 68, 0.3);
+            border-radius: 10px;
+            padding: 10px 14px;
+            text-align: center;
+            min-width: 130px;
+        }
+
+        .card-schema .card-title {
+            font-size: 11px;
+            font-weight: 600;
+            color: #ef4444;
+        }
+
+        /* Priority 0 Section */
+        .priority-zero {
+            margin-top: 40px;
+            background: rgba(239, 68, 68, 0.05);
+            border: 1.5px solid rgba(239, 68, 68, 0.2);
+            border-radius: 12px;
+            padding: 24px 30px;
+        }
+
+        .priority-zero h3 {
+            color: #ef4444;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .fix-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+        }
+
+        .fix-item {
+            background: rgba(239, 68, 68, 0.08);
+            border-radius: 8px;
+            padding: 12px 14px;
+        }
+
+        .fix-item .fix-number {
+            font-size: 10px;
+            font-weight: 700;
+            color: #ef4444;
+            margin-bottom: 4px;
+        }
+
+        .fix-item .fix-text {
+            font-size: 11px;
+            color: #c0a0a0;
+            line-height: 1.4;
+        }
+
+        /* Open Questions Section */
+        .open-questions {
+            margin-top: 40px;
+            background: rgba(245, 158, 11, 0.05);
+            border: 1.5px solid rgba(245, 158, 11, 0.22);
+            border-radius: 12px;
+            padding: 24px 30px;
+        }
+
+        .open-questions h3 {
+            color: #f59e0b;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+            text-align: center;
+        }
+
+        .open-questions .oq-sub {
+            text-align: center;
+            font-size: 11px;
+            color: #6b7280;
+            margin-bottom: 16px;
+        }
+
+        .oq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .oq-item {
+            background: rgba(245, 158, 11, 0.08);
+            border-radius: 8px;
+            padding: 12px 14px;
+        }
+
+        .oq-item .oq-number {
+            font-size: 10px;
+            font-weight: 700;
+            color: #f59e0b;
+            margin-bottom: 4px;
+        }
+
+        .oq-item .oq-text {
+            font-size: 11px;
+            color: #c0b08a;
+            line-height: 1.4;
+        }
+
+        /* Phased Rollout */
+        .rollout {
+            margin-top: 40px;
+        }
+
+        .rollout h3 {
+            color: #00d4ff;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .phase-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+        }
+
+        .phase {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .phase h4 {
+            font-size: 13px;
+            color: #00d4ff;
+            margin-bottom: 4px;
+        }
+
+        .phase .phase-time {
+            font-size: 10px;
+            color: #6b7280;
+            margin-bottom: 12px;
+        }
+
+        .phase ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .phase ul li {
+            font-size: 11px;
+            color: #a0a8b4;
+            padding: 3px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            line-height: 1.4;
+        }
+
+        .phase ul li:last-child {
+            border-bottom: none;
+        }
+
+        .phase ul li::before {
+            content: "→ ";
+            color: #00d4ff;
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat .stat-number {
+            font-size: 28px;
+            font-weight: 700;
+            color: #00d4ff;
+        }
+
+        .stat .stat-label {
+            font-size: 10px;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .footer p {
+            font-size: 11px;
+            color: #4a5568;
+        }
+
+        .footer .blok-mark {
+            color: #00d4ff;
+            font-weight: 700;
+        }
+
+        /* Fact Check Badge */
+        .fact-check-bar {
+            text-align: center;
+            margin: 20px 0;
+            padding: 12px;
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 8px;
+        }
+
+        .fact-check-bar span {
+            font-size: 11px;
+            color: #10b981;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="strategy-container">
+
+        <!-- Header -->
+        <div class="header">
+            <div class="blok-tag">Blok.co</div>
+            <h1>Content Strategy Architecture</h1>
+            <div class="subtitle">AI Search Domination + Organic Authority for the Indianapolis North Side</div>
+            <div class="meta">
+                <span><strong>Client:</strong> The Steve Clark Team at Compass</span>
+                <span><strong>Markets:</strong> Hamilton + Boone + North Marion</span>
+                <span><strong>Edge:</strong> New Construction</span>
+                <span><strong>Date:</strong> August 8, 2026</span>
+            </div>
+        </div>
+
+        <!-- Stats Bar -->
+        <div class="stats-bar">
+            <div class="stat">
+                <div class="stat-number">9</div>
+                <div class="stat-label">Pillar Pages</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">18</div>
+                <div class="stat-label">Community Pages</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">80</div>
+                <div class="stat-label">Blog Posts</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Unique FAQs</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">9</div>
+                <div class="stat-label">Critical Fixes</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">7</div>
+                <div class="stat-label">Schema Types</div>
+            </div>
+        </div>
+
+        <!-- Domain Authority Hub -->
+        <div class="domain-hub">
+            <div class="domain-bubble">steveclarkteam.com</div>
+        </div>
+        <div class="hub-label">Domain Authority Hub</div>
+
+        <!-- Arrows -->
+        <div class="arrows">↓ ↓ ↓ ↓</div>
+
+        <!-- Tier 0: Entity Layer -->
+        <div class="tier">
+            <div class="tier-label">Entity Layer (Tier 0) &middot; Built First</div>
+            <div class="tier-description">Ten pages. RealEstateAgent + Organization + Person schema with a reconciled sameAs graph. Lifts every page published after it.</div>
+            <div class="cards">
+                <div class="card-entity">
+                    <div class="card-title">The Steve Clark Team</div>
+                    <div class="card-meta">RealEstateAgent + Organization</div>
+                </div>
+                <div class="card-entity">
+                    <div class="card-title">Steve Clark</div>
+                    <div class="card-meta">Listing strategy + luxury</div>
+                </div>
+                <div class="card-entity">
+                    <div class="card-title">Jeff Rossier</div>
+                    <div class="card-meta">Operations</div>
+                </div>
+                <div class="card-entity">
+                    <div class="card-title">Beth Givan</div>
+                    <div class="card-meta">Lane TBC</div>
+                </div>
+                <div class="card-entity">
+                    <div class="card-title">Tonya Battee</div>
+                    <div class="card-meta">Lane TBC</div>
+                </div>
+                <div class="card-entity">
+                    <div class="card-title">Angelo Caruso</div>
+                    <div class="card-meta">Lane TBC</div>
+                </div>
+                <div class="card-entity">
+                    <div class="card-title">Lauren Giesler</div>
+                    <div class="card-meta">Lane TBC</div>
+                </div>
+                <div class="card-entity">
+                    <div class="card-title">Jackie Miller</div>
+                    <div class="card-meta">Lane TBC</div>
+                </div>
+                <div class="card-entity">
+                    <div class="card-title">Samantha Losier</div>
+                    <div class="card-meta">Lane TBC</div>
+                </div>
+                <div class="card-entity">
+                    <div class="card-title">Carly DeFazio</div>
+                    <div class="card-meta">Lane TBC</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Arrows -->
+        <div class="arrows">↓ ↓ ↓ ↓</div>
+
+        <!-- Tier 1: Pillar Pages -->
+        <div class="tier">
+            <div class="tier-label">Pillar Pages (Tier 1)</div>
+            <div class="tier-description">3,000-4,000 words each | 8-12 unique FAQs | Answer-first opening block | Refreshed quarterly</div>
+            <div class="cards">
+                <div class="card-pillar">
+                    <span class="card-badge rebuild">Rebuild</span>
+                    <div class="card-title">Communities</div>
+                    <div class="card-meta">/communities/ | Hub over 18</div>
+                    <div class="card-sub">18 town pages exist<br>1,218 words total today<br>Price, schools, HOA, builders</div>
+                </div>
+                <div class="card-pillar">
+                    <span class="card-badge primary">Primary</span>
+                    <div class="card-title">New Construction</div>
+                    <div class="card-meta">/new-construction/ | 11 spokes</div>
+                    <div class="card-sub">The stated specialty<br>$544,940 new-build median<br>Nobody writes it honestly</div>
+                </div>
+                <div class="card-pillar">
+                    <span class="card-badge primary">Lead Magnet</span>
+                    <div class="card-title">LEAP + Meta Corridor</div>
+                    <div class="card-meta">/boone-county-growth/ | 9 spokes</div>
+                    <div class="card-sub">$13B Lilly + $10B Meta<br>~9,000 acres, new I-65 ramp<br>Zero competitor coverage</div>
+                </div>
+                <div class="card-pillar">
+                    <span class="card-badge">Secondary</span>
+                    <div class="card-title">Schools</div>
+                    <div class="card-meta">/schools/ | 9 spokes</div>
+                    <div class="card-sub">Highest-intent queries<br>Carmel Clay, Zionsville, HSE<br>Fair Housing compliant</div>
+                </div>
+                <div class="card-pillar">
+                    <span class="card-badge">Secondary</span>
+                    <div class="card-title">Relocation</div>
+                    <div class="card-meta">/relocation/ | 10 spokes</div>
+                    <div class="card-sub">Chicago, California, NE<br>Lilly, Meta, health systems<br>Employer-specific guides</div>
+                </div>
+                <div class="card-pillar">
+                    <span class="card-badge">Secondary</span>
+                    <div class="card-title">Buying</div>
+                    <div class="card-meta">/buying/ | 10 spokes</div>
+                    <div class="card-sub">Indiana closing process<br>HOA and covenant review<br>Bridge loans, Private Exclusives</div>
+                </div>
+                <div class="card-pillar">
+                    <span class="card-badge">Secondary</span>
+                    <div class="card-title">Selling</div>
+                    <div class="card-meta">/selling/ | 10 spokes</div>
+                    <div class="card-sub">Avg DOM went 23 to 30<br>The mispricing penalty<br>Concierge, told honestly</div>
+                </div>
+                <div class="card-pillar">
+                    <span class="card-badge primary">Recency</span>
+                    <div class="card-title">Market + Tax Data</div>
+                    <div class="card-meta">/market-reports/ | 11 spokes</div>
+                    <div class="card-sub">Monthly MIBOR reports<br>Indiana SB1 homestead phase-out<br>July 2026 edition already built</div>
+                </div>
+                <div class="card-pillar">
+                    <span class="card-badge">Opportunity</span>
+                    <div class="card-title">Compare + Decide</div>
+                    <div class="card-meta">/compare/ | 10 spokes</div>
+                    <div class="card-sub">Carmel vs Zionsville vs Westfield<br>Comparison queries are what<br>people actually ask assistants</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Arrows -->
+        <div class="arrows">↓ ↓ ↕ ↑ ↑</div>
+
+        <!-- Tier 2: Community Pages -->
+        <div class="tier">
+            <div class="tier-label">Community Pages (Tier 2) &middot; All 18 Rebuilt</div>
+            <div class="tier-description">1,500-2,000 words each | 5-8 unique FAQs | Price bands, schools, HOA, commute, builders | Word counts below are what is live today</div>
+            <div class="cards">
+                <div class="card-community"><div class="card-title">Carmel</div><div class="card-meta">Hamilton | 66 words today | Primary</div></div>
+                <div class="card-community"><div class="card-title">Zionsville</div><div class="card-meta">Boone | 68 words today | Primary</div></div>
+                <div class="card-community"><div class="card-title">Westfield</div><div class="card-meta">Hamilton | 65 words today | Primary</div></div>
+                <div class="card-community"><div class="card-title">Fishers</div><div class="card-meta">Hamilton | 61 words today | Primary</div></div>
+                <div class="card-community"><div class="card-title">Noblesville</div><div class="card-meta">Hamilton | 75 words today | Primary</div></div>
+                <div class="card-community"><div class="card-title">Whitestown</div><div class="card-meta">Boone | 72 words today | Primary</div></div>
+                <div class="card-community"><div class="card-title">Geist</div><div class="card-meta">Waterfront | 106 words today | Primary</div></div>
+                <div class="card-community"><div class="card-title">Williams Creek</div><div class="card-meta">Luxury | 54 words today | Primary</div></div>
+                <div class="card-community secondary"><div class="card-title">Lebanon</div><div class="card-meta">Boone | New page | LEAP anchor</div></div>
+                <div class="card-community secondary"><div class="card-title">Meridian-Kessler</div><div class="card-meta">Marion | 58 words today</div></div>
+                <div class="card-community secondary"><div class="card-title">Meridian Hills</div><div class="card-meta">Marion | 62 words today</div></div>
+                <div class="card-community secondary"><div class="card-title">Broad Ripple</div><div class="card-meta">Marion | 67 words today</div></div>
+                <div class="card-community secondary"><div class="card-title">Brownsburg</div><div class="card-meta">Hendricks | 76 words today</div></div>
+                <div class="card-community secondary"><div class="card-title">McCordsville</div><div class="card-meta">Hancock | 65 words today</div></div>
+                <div class="card-community secondary"><div class="card-title">Fortville</div><div class="card-meta">Hancock | 62 words today</div></div>
+                <div class="card-community secondary"><div class="card-title">Lawrence</div><div class="card-meta">Marion | 80 words today</div></div>
+                <div class="card-community secondary"><div class="card-title">Pike</div><div class="card-meta">Marion | 57 words today</div></div>
+                <div class="card-community secondary"><div class="card-title">Downtown Indy</div><div class="card-meta">Marion | 79 words today</div></div>
+            </div>
+        </div>
+
+        <!-- Arrows -->
+        <div class="arrows">↓ ↓ ↕ ↑ ↑</div>
+
+        <!-- Tier 3: Blog + Supporting Content -->
+        <div class="tier">
+            <div class="tier-label">Blog + Supporting Content (Tier 3)</div>
+            <div class="tier-description">80 prioritized posts | 2 long-form assets per week + 1 monthly market report | Blog currently holds one placeholder post from July 2020</div>
+            <div class="cards">
+                <div class="card-blog">
+                    <div class="card-title">Builder Guides</div>
+                    <div class="card-meta">11 posts | The differentiator</div>
+                </div>
+                <div class="card-blog">
+                    <div class="card-title">LEAP + Growth Corridor</div>
+                    <div class="card-meta">9 posts | Lead magnet</div>
+                </div>
+                <div class="card-blog">
+                    <div class="card-title">School Guides</div>
+                    <div class="card-meta">9 posts | Fair Housing safe</div>
+                </div>
+                <div class="card-blog">
+                    <div class="card-title">Town Comparisons</div>
+                    <div class="card-meta">10 posts | Pure AEO</div>
+                </div>
+                <div class="card-blog">
+                    <div class="card-title">Relocation Guides</div>
+                    <div class="card-meta">10 posts | Feeder markets</div>
+                </div>
+                <div class="card-blog">
+                    <div class="card-title">Buyer Guides</div>
+                    <div class="card-meta">10 posts | Process + financing</div>
+                </div>
+                <div class="card-blog">
+                    <div class="card-title">Seller Guides</div>
+                    <div class="card-meta">10 posts | Pricing + Concierge</div>
+                </div>
+                <div class="card-blog">
+                    <div class="card-title">Market Reports</div>
+                    <div class="card-meta">Monthly, by county + town</div>
+                </div>
+                <div class="card-blog">
+                    <div class="card-title">Property Tax + SB1</div>
+                    <div class="card-meta">Homestead phase-out to 2030</div>
+                </div>
+                <div class="card-blog">
+                    <div class="card-title">Subdivision Deep Dives</div>
+                    <div class="card-meta">Phase 2 | Day 91+</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Arrows -->
+        <div class="arrows">↓ ↕ ↑</div>
+
+        <!-- Tier 4: Schema + Conversion Layer -->
+        <div class="tier">
+            <div class="tier-label">Schema + Conversion Layer (Every Page)</div>
+            <div class="tier-description">AI-optimized structured data | 40-60 word answer-first blocks | Unique FAQs per page | Original dated data table on every guide</div>
+            <div class="cards">
+                <div class="card-schema"><div class="card-title">FAQPage Schema</div></div>
+                <div class="card-schema"><div class="card-title">RealEstateAgent</div></div>
+                <div class="card-schema"><div class="card-title">Person Schema</div></div>
+                <div class="card-schema"><div class="card-title">Place Schema</div></div>
+                <div class="card-schema"><div class="card-title">HowTo Schema</div></div>
+                <div class="card-schema"><div class="card-title">Dataset Schema</div></div>
+                <div class="card-schema"><div class="card-title">BreadcrumbList</div></div>
+                <div class="card-schema"><div class="card-title">Answer-First Blocks</div></div>
+                <div class="card-schema"><div class="card-title">Original Data Tables</div></div>
+                <div class="card-schema"><div class="card-title">Internal Links</div></div>
+                <div class="card-schema"><div class="card-title">Last-Updated Stamps</div></div>
+                <div class="card-schema"><div class="card-title">GSC Indexing</div></div>
+            </div>
+        </div>
+
+        <!-- Fact Check Bar -->
+        <div class="fact-check-bar">
+            <span>AUDITED 2026-08-07: all 18 community pages measured live | 1,218 total original words | 410 IDX listing cards | 0 FAQ schema | 0 data tables | blog dormant since July 2020 | competitor sites measured the same day</span>
+        </div>
+
+        <!-- Priority 0: Critical Fixes -->
+        <div class="priority-zero">
+            <h3>Priority 0 &middot; Critical Fixes (Before New Content)</h3>
+            <div class="fix-grid">
+                <div class="fix-item">
+                    <div class="fix-number">FIX 1</div>
+                    <div class="fix-text">18 community pages average 68 original words each, 1,218 words across the whole footprint. Rebuild as Tier 2 guides.</div>
+                </div>
+                <div class="fix-item">
+                    <div class="fix-number">FIX 2</div>
+                    <div class="fix-text">IDX template serves 87 F.C. Tucker listing cards against 38 Compass on the team's own domain. Rebalance the template.</div>
+                </div>
+                <div class="fix-item">
+                    <div class="fix-number">FIX 3</div>
+                    <div class="fix-text">Zero FAQPage schema site-wide. Single highest-leverage AEO gap, and no competitor in the market has it either.</div>
+                </div>
+                <div class="fix-item">
+                    <div class="fix-number">FIX 4</div>
+                    <div class="fix-text">Blog holds one post since July 2020, titled "placeholder blog post title." Remove it and start the real cadence.</div>
+                </div>
+                <div class="fix-item">
+                    <div class="fix-number">FIX 5</div>
+                    <div class="fix-text">Zero data tables site-wide. Engines cite pages that carry original dated numbers, and there are none.</div>
+                </div>
+                <div class="fix-item">
+                    <div class="fix-number">FIX 6</div>
+                    <div class="fix-text">One H2 per community page. No heading structure for passage retrieval or answer extraction.</div>
+                </div>
+                <div class="fix-item">
+                    <div class="fix-number">FIX 7</div>
+                    <div class="fix-text">Production figures conflict: site says $115M over two years and 1,200+ families, Compass says $500M+ career and 1,500+.</div>
+                </div>
+                <div class="fix-item">
+                    <div class="fix-number">FIX 8</div>
+                    <div class="fix-text">Nine agent pages carry no Person schema and no sameAs graph. Named experts are what engines cite.</div>
+                </div>
+                <div class="fix-item">
+                    <div class="fix-number">FIX 9</div>
+                    <div class="fix-text">Williams Creek page pulls general 46240 inventory from $229K to $579K, not Williams Creek comparables. Tighten the IDX radius.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Open Questions -->
+        <div class="open-questions">
+            <h3>Open Questions &middot; Needed to Unblock the Build</h3>
+            <div class="oq-sub">The intake questionnaire was never returned. Everything above was assembled from the public record. These eight answers finalize it.</div>
+            <div class="oq-grid">
+                <div class="oq-item">
+                    <div class="oq-number">Q1 &middot; Blocks the entity layer</div>
+                    <div class="oq-text">Which production numbers publish everywhere? Engines cross-check, and the site and Compass profile currently disagree.</div>
+                </div>
+                <div class="oq-item">
+                    <div class="oq-number">Q2 &middot; Blocks nine author pages</div>
+                    <div class="oq-text">Who owns which lane, who can be quoted, and who stays out of public content?</div>
+                </div>
+                <div class="oq-item">
+                    <div class="oq-number">Q3 &middot; Sets pillar weighting</div>
+                    <div class="oq-text">Buyer or seller weighted, and which price bands lead the community guides?</div>
+                </div>
+                <div class="oq-item">
+                    <div class="oq-number">Q4 &middot; Sizes the differentiator</div>
+                    <div class="oq-text">How much of the business is new construction, how direct can we be, and which builder relationships are off limits?</div>
+                </div>
+                <div class="oq-item">
+                    <div class="oq-number">Q5 &middot; Sequences 18 town guides</div>
+                    <div class="oq-text">Which communities are primary, secondary or IDX only? Our working split is shown in Tier 2 above.</div>
+                </div>
+                <div class="oq-item">
+                    <div class="oq-number">Q6 &middot; Defines Tier 3</div>
+                    <div class="oq-text">Which 20 to 25 subdivisions carry the most volume and the most of your business?</div>
+                </div>
+                <div class="oq-item">
+                    <div class="oq-number">Q7 &middot; In or out</div>
+                    <div class="oq-text">Compass Concierge, bridge loans and Private Exclusives as content? We would cover cost and tradeoffs honestly.</div>
+                </div>
+                <div class="oq-item">
+                    <div class="oq-number">Q8 &middot; Blocks publishing entirely</div>
+                    <div class="oq-text">Who controls WordPress, GA4, Search Console and the IDX template? Fix 2 needs whoever built the site.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phased Rollout -->
+        <div class="rollout">
+            <h3>Phased Rollout</h3>
+            <div class="phase-grid">
+                <div class="phase">
+                    <h4>Phase 1</h4>
+                    <div class="phase-time">Days 1-30 &middot; Foundation</div>
+                    <ul>
+                        <li>All 9 critical fixes</li>
+                        <li>Entity layer: team page + 9 agent pages with full schema and sameAs graph</li>
+                        <li>Communities pillar hub</li>
+                        <li>Carmel and Zionsville rebuilds</li>
+                        <li>LEAP pillar hub + "What LEAP means for home values"</li>
+                        <li>Publish the July 2026 market report (already built)</li>
+                    </ul>
+                </div>
+                <div class="phase">
+                    <h4>Phase 2</h4>
+                    <div class="phase-time">Days 31-60 &middot; Depth</div>
+                    <ul>
+                        <li>New Construction pillar hub</li>
+                        <li>"Should you bring your own agent to a builder's model home"</li>
+                        <li>Schools pillar hub + Carmel Clay and Zionsville guides</li>
+                        <li>Westfield, Fishers, Noblesville, Whitestown, Geist rebuilds</li>
+                        <li>"Where to live if you work at LEAP"</li>
+                        <li>Monthly market report</li>
+                    </ul>
+                </div>
+                <div class="phase">
+                    <h4>Phase 3</h4>
+                    <div class="phase-time">Days 61-90 &middot; AI Search Offensive</div>
+                    <ul>
+                        <li>Compare and Decide pillar hub</li>
+                        <li>Carmel vs Zionsville, Carmel vs Westfield</li>
+                        <li>Indiana SB1 property tax explainer</li>
+                        <li>Relocation and Selling pillar hubs</li>
+                        <li>"Moving to Carmel from Chicago"</li>
+                        <li>90-day review: rank, citations, leads, listings</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Deliverable links -->
+        <div class="rollout" style="margin-top:40px">
+            <h3>The Full Deliverable</h3>
+            <div class="phase-grid">
+                <div class="phase">
+                    <h4>Full Architecture Document</h4>
+                    <div class="phase-time">14 pages &middot; the complete write-up</div>
+                    <ul>
+                        <li><a href="full-architecture/" style="color:#a0a8b4;text-decoration:none">Read in browser</a></li>
+                        <li><a href="content-architecture-full.pdf" style="color:#a0a8b4;text-decoration:none">Download PDF</a></li>
+                    </ul>
+                </div>
+                <div class="phase">
+                    <h4>This Diagram</h4>
+                    <div class="phase-time">Single page &middot; print or present</div>
+                    <ul>
+                        <li><a href="content-strategy-diagram.pdf" style="color:#a0a8b4;text-decoration:none">Download PDF</a></li>
+                    </ul>
+                </div>
+                <div class="phase">
+                    <h4>What Sits Behind It</h4>
+                    <div class="phase-time">Measured, not estimated</div>
+                    <ul>
+                        <li>All 18 community pages audited live 2026-08-07</li>
+                        <li>MIBOR Market Insights, June 2026</li>
+                        <li>Two competitor sites measured the same day</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>Prepared by <span class="blok-mark">Blok.co</span> | Site audit measured live 2026-08-07 | Market data from MIBOR Market Insights, June 2026 | LEAP and Meta figures from the IEDC and Inside INdiana Business</p>
+            <p style="margin-top: 6px; font-size: 10px; color: #3a4558;">Full architecture document linked above | Team credentials and production figures as supplied, pending confirmation</p>
+        </div>
+
+    </div>
+</body>
+</html>

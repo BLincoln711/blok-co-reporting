@@ -1,0 +1,790 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Steve Clark Team, Total Search Content Architecture | BLOK.co</title>
+<style>
+  :root{
+    --navy:#010b23;
+    --navy-2:#0d1b3d;
+    --navy-3:#16264f;
+    --cyan:#59f3ff;
+    --cyan-deep:#0a8aa0;
+    --ink:#0e1420;
+    --ink-2:#1f2b3d;
+    --body:#2b3646;
+    --muted:#63718a;
+    --line:#dde4ee;
+    --line-2:#eaeff6;
+    --bg:#f7f9fc;
+    --card:#ffffff;
+    --tint:#eef5fd;
+    --warn-bg:#fff8ec;
+    --warn-line:#e8c98a;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
+    font-family:'Helvetica Neue',-apple-system,BlinkMacSystemFont,Arial,sans-serif;
+    font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1180px;margin:0 auto;padding:44px 30px 72px}
+
+  .topbar{height:5px;border-radius:3px;background:linear-gradient(90deg,var(--navy) 0%,var(--navy-3) 55%,var(--cyan) 100%);margin-bottom:30px}
+  .eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan-deep);font-weight:700;margin-bottom:12px}
+  h1{font-size:40px;line-height:1.08;letter-spacing:-.015em;margin:0 0 10px;color:var(--navy)}
+  h2{font-size:23px;line-height:1.22;margin:52px 0 6px;letter-spacing:-.01em;color:var(--navy)}
+  h2 + .sub{color:var(--muted);font-size:14.5px;margin:0 0 18px}
+  h3{font-size:16.5px;margin:0 0 6px;color:var(--ink-2)}
+  h4{font-size:11px;margin:16px 0 6px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+  p{margin:0 0 12px;color:var(--body)}
+  .lede{font-size:18.5px;line-height:1.5;color:var(--ink-2);margin-bottom:8px;max-width:940px}
+  .meta{color:var(--muted);font-size:13px;margin-bottom:6px}
+  .hr{height:1px;background:var(--line);margin:38px 0}
+  .grid{display:grid;gap:16px}
+  .g2{grid-template-columns:1fr 1fr}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:19px 20px;page-break-inside:avoid;break-inside:avoid}
+  .card p{font-size:14px;margin-bottom:0;color:var(--body)}
+  .accent{width:38px;height:3px;background:var(--cyan);border-radius:2px;margin-bottom:11px}
+
+  .stat{background:var(--navy);border-radius:11px;padding:18px 19px;color:#fff;page-break-inside:avoid}
+  .stat .v{font-size:29px;font-weight:700;letter-spacing:-.02em;color:var(--cyan);display:block;line-height:1.15}
+  .stat .l{font-size:11.5px;color:#a9bad6;text-transform:uppercase;letter-spacing:.07em;margin-top:6px;display:block;line-height:1.35}
+
+  .quote{border-left:3px solid var(--cyan);background:var(--tint);padding:14px 18px;border-radius:0 8px 8px 0;margin:16px 0;page-break-inside:avoid}
+  .quote p{margin:0;font-size:14.5px;color:var(--ink-2)}
+
+  table{width:100%;border-collapse:collapse;margin-top:10px;font-size:13.5px;page-break-inside:avoid;break-inside:avoid}
+  th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line-2);vertical-align:top}
+  th{font-size:10.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:700;border-bottom:1px solid var(--line)}
+  td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+  tr.total td{border-top:2px solid var(--navy);font-weight:700;color:var(--navy);border-bottom:none}
+
+  .pillar{position:relative;overflow:hidden;padding-top:22px}
+  .pillar .bar{position:absolute;top:0;left:0;right:0;height:4px;background:var(--cyan)}
+  .pillar .num{position:absolute;top:16px;right:19px;font-size:38px;font-weight:700;color:#eaeff7;letter-spacing:-.03em;line-height:1}
+  .slug{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11.5px;color:var(--cyan-deep);background:var(--tint);padding:3px 8px;border-radius:5px;display:inline-block;margin-bottom:8px;font-weight:600}
+  .promise{font-size:13.5px;color:var(--body);margin:0 0 4px}
+  .pillar ul{margin:6px 0 0;padding-left:17px}
+  .pillar li{font-size:12.8px;color:#3b4759;margin-bottom:2px;line-height:1.42}
+  .tag{display:inline-block;font-size:10.5px;background:var(--navy);color:var(--cyan);padding:3px 8px;border-radius:999px;margin:0 5px 5px 0;font-weight:600;letter-spacing:.02em}
+  .tag-l{display:inline-block;font-size:10.5px;background:var(--tint);color:var(--cyan-deep);border:1px solid #cfe3f5;padding:2px 8px;border-radius:999px;margin:0 5px 5px 0;font-weight:600}
+
+  .flag{background:var(--warn-bg);border:1px solid var(--warn-line);border-radius:11px;padding:19px 20px;page-break-inside:avoid}
+  .flag h3{color:#8a5d12}
+
+  .ask{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--cyan);border-radius:0 10px 10px 0;padding:15px 18px;margin-bottom:11px;page-break-inside:avoid}
+  .ask .qn{font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--cyan-deep);font-weight:700;margin-bottom:4px}
+  .ask h3{font-size:15px;margin-bottom:4px}
+  .ask p{font-size:13.5px;margin:0;color:var(--body)}
+
+  .phase{display:grid;grid-template-columns:104px 1fr;gap:14px;padding:13px 0;border-bottom:1px solid var(--line-2);page-break-inside:avoid}
+  .phase .wk{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11.5px;color:var(--cyan-deep);font-weight:700;padding-top:2px}
+  .phase p{font-size:13.5px;margin:0}
+  .phase-h{font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--navy);font-weight:700;margin:26px 0 4px;padding-bottom:6px;border-bottom:2px solid var(--navy)}
+
+  figure{margin:0 0 8px}
+  figcaption{font-size:12px;color:var(--muted);margin-top:9px}
+  svg{width:100%;height:auto;display:block}
+
+  .footer{margin-top:58px;padding-top:20px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
+  .footer strong{color:var(--navy);font-weight:700}
+
+  @media (max-width:860px){
+    .g2,.g3,.g4{grid-template-columns:1fr}
+    h1{font-size:30px}
+    .wrap{padding:28px 18px 50px}
+  }
+  @page{size:Letter;margin:13mm 11mm}
+  @media print{
+    body{background:#fff;font-size:14px}
+    p,li{orphans:3;widows:3}
+    .wrap{max-width:none;padding:0}
+    h2{page-break-after:avoid;break-after:avoid}
+    .pagebreak{page-break-before:always;break-before:page}
+    .card,.stat,.ask,.flag,figure,table,.phase{page-break-inside:avoid;break-inside:avoid}
+    /* the 860px mobile breakpoint fires at Letter width; restore the designed columns */
+    .g2{grid-template-columns:1fr 1fr}
+    .g3{grid-template-columns:repeat(3,1fr)}
+    .g4{grid-template-columns:repeat(4,1fr)}
+    .grid{gap:11px}
+    h1{font-size:34px}
+    h2{font-size:20px;margin:34px 0 5px}
+    .lede{font-size:16px}
+    .card{padding:14px 15px}
+    .pillar li{font-size:11.4px;line-height:1.38}
+    .promise{font-size:12.4px}
+    .card p{font-size:12.6px}
+    .stat{padding:13px 14px}
+    .stat .v{font-size:25px}
+    .stat .l{font-size:10.5px}
+    .ask{padding:12px 15px}
+    .ask p{font-size:12.6px}
+    table{font-size:12.2px}
+    th,td{padding:7px 9px}
+    .phase{padding:10px 0}
+    .phase p{font-size:12.6px}
+  }
+</style>
+</head>
+<body>
+<div style="max-width:1180px;margin:0 auto;padding:18px 30px 0"><a href="../" style="font-size:12.5px;color:#0a8aa0;text-decoration:none;font-weight:600">&larr; Back to the architecture diagram</a></div>
+<div class="wrap">
+
+  <div class="topbar"></div>
+  <div class="eyebrow">BLOK.co &middot; Total Search &middot; Content Architecture</div>
+  <h1>The Steve Clark Team</h1>
+  <p class="lede">A 9-pillar, 98-spoke content architecture built to win classic search across Hamilton County, Boone County and the north side of Indianapolis, and to be the source that ChatGPT, Perplexity, Gemini and Google AI Overviews cite when buyers and sellers ask.</p>
+  <div class="meta">steveclarkteam.com &middot; Compass Indiana, LLC &middot; Carmel, IN &middot; Prepared for the working session, August 8, 2026</div>
+
+  <div class="hr"></div>
+
+  <h2>The Short Version</h2>
+  <p class="sub">What the audit of steveclarkteam.com found, before any content is written.</p>
+
+  <div class="grid g4" style="margin-top:16px">
+    <div class="stat"><span class="v">1,218</span><span class="l">Total original words across all 18 community pages</span></div>
+    <div class="stat"><span class="v">410</span><span class="l">IDX listing cards on those same 18 pages</span></div>
+    <div class="stat"><span class="v">1</span><span class="l">Blog post, titled "placeholder blog post title", July 2020</span></div>
+    <div class="stat"><span class="v">0</span><span class="l">FAQ schema blocks and data tables, site-wide</span></div>
+  </div>
+
+  <p style="margin-top:20px">The Steve Clark Team is a founding Compass Indiana team, an IBJ Top 25 All-Star Agent Team and a RealTrends-ranked team. That is real, earned authority. None of it is reaching an AI search engine, because there is almost nothing on the site for an engine to read.</p>
+
+  <p>Eighteen community pages are live for Carmel, Zionsville, Westfield, Fishers, Noblesville, Whitestown, Geist, Williams Creek, Meridian-Kessler, Meridian Hills, Broad Ripple, Brownsburg, McCordsville, Fortville, Lawrence, Pike, Downtown Indy and Morris. Their combined original content is 1,218 words, an average of 68 words per community. Williams Creek, the most exclusive address in the footprint, gets 54 words. Every one of those pages then hands the rest of its screen to an IDX feed.</p>
+
+  <div class="quote">
+    <p>The clearest single finding: across those 18 pages, steveclarkteam.com serves 87 listing cards branded F.C. Tucker Company and 38 branded Compass Indiana. The team's own website is doing more than twice as much brand-building for its largest competitor as it is for its own brokerage.</p>
+  </div>
+
+  <p>This is not a criticism of the site build. It is the normal outcome of an IDX-first template that was never given editorial content to balance it. It is also the entire opportunity: the pages already exist, they already rank for the right place names, and they are one content layer away from being the best answer in the market.</p>
+
+  <div class="hr"></div>
+
+  <h2>What the Audit Actually Measured</h2>
+  <p class="sub">Every figure below was pulled directly from the live site on August 7, 2026. No estimates.</p>
+
+  <table>
+    <thead>
+      <tr><th>Community page</th><th class="num">Original words</th><th class="num">IDX cards</th><th class="num">FAQ schema</th><th class="num">Data tables</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Geist</td><td class="num">106</td><td class="num">23</td><td class="num">0</td><td class="num">0</td></tr>
+      <tr><td>Lawrence</td><td class="num">80</td><td class="num">24</td><td class="num">0</td><td class="num">0</td></tr>
+      <tr><td>Downtown Indy</td><td class="num">79</td><td class="num">24</td><td class="num">0</td><td class="num">0</td></tr>
+      <tr><td>Brownsburg</td><td class="num">76</td><td class="num">24</td><td class="num">0</td><td class="num">0</td></tr>
+      <tr><td>Noblesville</td><td class="num">75</td><td class="num">23</td><td class="num">0</td><td class="num">0</td></tr>
+      <tr><td>Whitestown</td><td class="num">72</td><td class="num">24</td><td class="num">0</td><td class="num">0</td></tr>
+      <tr><td>Zionsville</td><td class="num">68</td><td class="num">24</td><td class="num">0</td><td class="num">0</td></tr>
+      <tr><td>Broad Ripple</td><td class="num">67</td><td class="num">24</td><td class="num">0</td><td class="num">0</td></tr>
+      <tr><td>Carmel</td><td class="num">66</td><td class="num">23</td><td class="num">0</td><td class="num">0</td></tr>
+      <tr><td>Westfield</td><td class="num">65</td><td class="num">24</td><td class="num">0</td><td class="num">0</td></tr>
+      <tr><td>McCordsville</td><td class="num">65</td><td class="num">24</td><td class="num">0</td><td class="num">0</td></tr>
+      <tr><td>Meridian Hills</td><td class="num">62</td><td class="num">6</td><td class="num">0</td><td class="num">0</td></tr>
+      <tr><td>Fortville</td><td class="num">62</td><td class="num">24</td><td class="num">0</td><td class="num">0</td></tr>
+      <tr><td>Fishers</td><td class="num">61</td><td class="num">24</td><td class="num">0</td><td class="num">0</td></tr>
+      <tr><td>Meridian-Kessler</td><td class="num">58</td><td class="num">23</td><td class="num">0</td><td class="num">0</td></tr>
+      <tr><td>Pike</td><td class="num">57</td><td class="num">24</td><td class="num">0</td><td class="num">0</td></tr>
+      <tr><td>Williams Creek</td><td class="num">54</td><td class="num">24</td><td class="num">0</td><td class="num">0</td></tr>
+      <tr><td>Morris</td><td class="num">45</td><td class="num">24</td><td class="num">0</td><td class="num">0</td></tr>
+      <tr class="total"><td>All 18 community pages</td><td class="num">1,218</td><td class="num">410</td><td class="num">0</td><td class="num">0</td></tr>
+    </tbody>
+  </table>
+
+  <div class="grid g2" style="margin-top:26px">
+    <div class="card">
+      <div class="accent"></div>
+      <h3>What is already right</h3>
+      <p>The URL footprint is excellent. Eighteen clean community slugs, a Buyers page, a Sellers page, Compass Concierge, Bridge Loan Services, a home valuation tool and nine individual agent pages. Baseline Place, Organization and PostalAddress schema is already firing on the community pages. The structure is sound. It is the content inside it that does not exist.</p>
+    </div>
+    <div class="card">
+      <div class="accent"></div>
+      <h3>What is blocking citation</h3>
+      <p>No FAQ schema anywhere on the site. No data tables. One H2 per community page. A blog that has published a single placeholder post since July 2020. AI engines cite passages that directly answer a question, carry structured markup and sit next to original data. The site currently offers none of those three.</p>
+    </div>
+  </div>
+
+  <div class="hr pagebreak"></div>
+
+  <h2>The Architecture</h2>
+  <p class="sub">Nine pillars, 98 spokes, and a 10-page entity layer underneath all of it.</p>
+
+  <p>Each pillar is a definitive hub page. Spokes link up to their pillar and laterally to each other where a buyer would genuinely move between the two questions. The schema mix leans on FAQPage, Place, RealEstateAgent, HowTo and Dataset, the structured types that generative engines preferentially quote.</p>
+
+  <figure style="margin-top:22px">
+  <svg viewBox="0 0 1160 860" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Content architecture diagram showing the entity layer, nine pillar hubs, spoke and subdivision tiers, and the AEO layer">
+    <defs>
+      <style>
+        .nvy{fill:#010b23}.nvy2{fill:#0d1b3d}
+        .cy{fill:#59f3ff}
+        .wt{fill:#ffffff}
+        .mut{fill:#a9bad6}
+        .ink{fill:#0e1420}.bod{fill:#3b4759}.mut2{fill:#63718a}
+        .lbl{font-family:'Helvetica Neue',Arial,sans-serif;font-size:10.5px;letter-spacing:.14em;font-weight:700}
+        .ttl{font-family:'Helvetica Neue',Arial,sans-serif;font-size:15px;font-weight:700}
+        .sml{font-family:'Helvetica Neue',Arial,sans-serif;font-size:11.5px}
+        .mono{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10.5px;font-weight:600}
+        .big{font-family:'Helvetica Neue',Arial,sans-serif;font-size:30px;font-weight:700}
+        .conn{stroke:#9fd9e6;stroke-width:1.4;fill:none}
+      </style>
+    </defs>
+
+    <!-- TIER 0 -->
+    <rect x="20" y="8" width="1120" height="82" rx="10" class="nvy"/>
+    <rect x="20" y="8" width="4" height="82" rx="2" class="cy"/>
+    <text x="42" y="31" class="lbl cy">TIER 0 &#183; ENTITY LAYER</text>
+    <text x="42" y="53" class="ttl wt">The Steve Clark Team, plus nine named agent entities</text>
+    <text x="42" y="73" class="sml mut">RealEstateAgent &#183; Organization &#183; Person &#183; sameAs graph across Compass, Google Business Profile, Zillow, Realtor.com, LinkedIn, Instagram</text>
+
+    <path d="M580 90 L580 120" class="conn"/>
+    <path d="M200 120 L960 120" class="conn"/>
+    <path d="M200 120 L200 130 M580 120 L580 130 M960 120 L960 130" class="conn"/>
+
+    <text x="20" y="106" class="lbl mut2">TIER 1 &#183; NINE PILLAR HUBS</text>
+
+    <!-- PILLAR CARDS: 3 cols (x=20,400,780) w=360 ; 3 rows (y=130,268,406) h=118 -->
+    <g>
+      <!-- row 1 -->
+      <rect x="20"  y="130" width="360" height="118" rx="9" fill="#ffffff" stroke="#d8e0ec"/>
+      <rect x="20"  y="130" width="360" height="4" rx="2" class="cy"/>
+      <text x="360" y="172" text-anchor="end" class="big" fill="#eaeff7">1</text>
+      <text x="38" y="158" class="mono" fill="#0a8aa0">/communities/</text>
+      <text x="38" y="180" class="ttl ink">Communities of the North Side</text>
+      <text x="38" y="200" class="sml bod">Rebuilds all 18 existing town pages</text>
+      <text x="38" y="219" class="sml bod">into real guides with price bands,</text>
+      <text x="38" y="238" class="sml bod">schools, HOA, commute and builders.</text>
+
+      <rect x="400" y="130" width="360" height="118" rx="9" fill="#ffffff" stroke="#d8e0ec"/>
+      <rect x="400" y="130" width="360" height="4" rx="2" class="cy"/>
+      <text x="740" y="172" text-anchor="end" class="big" fill="#eaeff7">2</text>
+      <text x="418" y="158" class="mono" fill="#0a8aa0">/new-construction/</text>
+      <text x="418" y="180" class="ttl ink">New Construction and Builders</text>
+      <text x="418" y="200" class="sml bod">The team's stated specialty, and the</text>
+      <text x="418" y="219" class="sml bod">lane no competitor writes honestly.</text>
+      <text x="418" y="238" class="sml bod">11 spokes.</text>
+
+      <rect x="780" y="130" width="360" height="118" rx="9" fill="#ffffff" stroke="#d8e0ec"/>
+      <rect x="780" y="130" width="360" height="4" rx="2" class="cy"/>
+      <text x="1120" y="172" text-anchor="end" class="big" fill="#eaeff7">3</text>
+      <text x="798" y="158" class="mono" fill="#0a8aa0">/boone-county-growth/</text>
+      <text x="798" y="180" class="ttl ink">LEAP, Meta and the Corridor</text>
+      <text x="798" y="200" class="sml bod">The lead magnet. 23 billion dollars of</text>
+      <text x="798" y="219" class="sml bod">capital landing in Boone County and</text>
+      <text x="798" y="238" class="sml bod">nobody owns the housing story.</text>
+
+      <!-- row 2 -->
+      <rect x="20"  y="268" width="360" height="118" rx="9" fill="#ffffff" stroke="#d8e0ec"/>
+      <rect x="20"  y="268" width="360" height="4" rx="2" class="cy"/>
+      <text x="360" y="310" text-anchor="end" class="big" fill="#eaeff7">4</text>
+      <text x="38" y="296" class="mono" fill="#0a8aa0">/schools/</text>
+      <text x="38" y="318" class="ttl ink">Schools and Family Life</text>
+      <text x="38" y="338" class="sml bod">Highest-intent queries in the market.</text>
+      <text x="38" y="357" class="sml bod">Written factual and Fair Housing</text>
+      <text x="38" y="376" class="sml bod">compliant. 9 spokes.</text>
+
+      <rect x="400" y="268" width="360" height="118" rx="9" fill="#ffffff" stroke="#d8e0ec"/>
+      <rect x="400" y="268" width="360" height="4" rx="2" class="cy"/>
+      <text x="740" y="310" text-anchor="end" class="big" fill="#eaeff7">5</text>
+      <text x="418" y="296" class="mono" fill="#0a8aa0">/relocation/</text>
+      <text x="418" y="318" class="ttl ink">Relocating to the North Side</text>
+      <text x="418" y="338" class="sml bod">Feeder-market and employer guides.</text>
+      <text x="418" y="357" class="sml bod">Chicago, California, Lilly, Meta,</text>
+      <text x="418" y="376" class="sml bod">health systems. 10 spokes.</text>
+
+      <rect x="780" y="268" width="360" height="118" rx="9" fill="#ffffff" stroke="#d8e0ec"/>
+      <rect x="780" y="268" width="360" height="4" rx="2" class="cy"/>
+      <text x="1120" y="310" text-anchor="end" class="big" fill="#eaeff7">6</text>
+      <text x="798" y="296" class="mono" fill="#0a8aa0">/buying/</text>
+      <text x="798" y="318" class="ttl ink">Buying on the North Side</text>
+      <text x="798" y="338" class="sml bod">Process, financing, inspections, HOA</text>
+      <text x="798" y="357" class="sml bod">review, and the Compass bridge loan</text>
+      <text x="798" y="376" class="sml bod">and Private Exclusives. 10 spokes.</text>
+
+      <!-- row 3 -->
+      <rect x="20"  y="406" width="360" height="118" rx="9" fill="#ffffff" stroke="#d8e0ec"/>
+      <rect x="20"  y="406" width="360" height="4" rx="2" class="cy"/>
+      <text x="360" y="448" text-anchor="end" class="big" fill="#eaeff7">7</text>
+      <text x="38" y="434" class="mono" fill="#0a8aa0">/selling/</text>
+      <text x="38" y="456" class="ttl ink">Selling on the North Side</text>
+      <text x="38" y="476" class="sml bod">Pricing into a market where average</text>
+      <text x="38" y="495" class="sml bod">days on market jumped 23 to 30.</text>
+      <text x="38" y="514" class="sml bod">Concierge told honestly. 10 spokes.</text>
+
+      <rect x="400" y="406" width="360" height="118" rx="9" fill="#ffffff" stroke="#d8e0ec"/>
+      <rect x="400" y="406" width="360" height="4" rx="2" class="cy"/>
+      <text x="740" y="448" text-anchor="end" class="big" fill="#eaeff7">8</text>
+      <text x="418" y="434" class="mono" fill="#0a8aa0">/market-reports/</text>
+      <text x="418" y="456" class="ttl ink">Market Data and Property Tax</text>
+      <text x="418" y="476" class="sml bod">Monthly reports plus the Indiana SB1</text>
+      <text x="418" y="495" class="sml bod">homestead phase-out, the most</text>
+      <text x="418" y="514" class="sml bod">confusing topic in the state. 11 spokes.</text>
+
+      <rect x="780" y="406" width="360" height="118" rx="9" fill="#ffffff" stroke="#d8e0ec"/>
+      <rect x="780" y="406" width="360" height="4" rx="2" class="cy"/>
+      <text x="1120" y="448" text-anchor="end" class="big" fill="#eaeff7">9</text>
+      <text x="798" y="434" class="mono" fill="#0a8aa0">/compare/</text>
+      <text x="798" y="456" class="ttl ink">Compare and Decide</text>
+      <text x="798" y="476" class="sml bod">Carmel vs Zionsville vs Westfield and</text>
+      <text x="798" y="495" class="sml bod">every other head to head. Pure AI</text>
+      <text x="798" y="514" class="sml bod">search play. 10 spokes.</text>
+    </g>
+
+    <path d="M200 524 L200 552 M580 524 L580 552 M960 524 L960 552" class="conn"/>
+    <path d="M200 552 L960 552" class="conn"/>
+    <path d="M580 552 L580 572" class="conn"/>
+
+    <!-- TIER 2 -->
+    <rect x="20" y="572" width="1120" height="72" rx="10" fill="#eef5fd" stroke="#cfe3f5"/>
+    <text x="42" y="597" class="lbl" fill="#0a8aa0">TIER 2 &#183; 98 SPOKES</text>
+    <text x="42" y="620" class="ttl ink">18 town guides, 11 builder guides, 9 school guides, 10 comparisons, 50 topic guides</text>
+    <text x="42" y="637" class="sml mut2">Each one answer-first, FAQ schema marked, and carrying at least one original data table.</text>
+
+    <path d="M580 644 L580 664" class="conn"/>
+
+    <!-- TIER 3 -->
+    <rect x="20" y="664" width="1120" height="64" rx="10" fill="#ffffff" stroke="#d8e0ec" stroke-dasharray="4 3"/>
+    <text x="42" y="688" class="lbl mut2">TIER 3 &#183; SUBDIVISION LAYER, PHASE 2</text>
+    <text x="42" y="711" class="sml bod">Village of WestClay, Jackson's Grant, Bridlebourne, Holliday Farms, Chatham Hills, Harmony and the rest. Deferred to day 91 so the first 90 days build depth, not thin pages.</text>
+
+    <!-- AEO LAYER -->
+    <rect x="20" y="748" width="1120" height="100" rx="10" class="nvy"/>
+    <rect x="20" y="748" width="4" height="100" rx="2" class="cy"/>
+    <text x="42" y="772" class="lbl cy">THE AEO LAYER, APPLIED TO EVERY PAGE ABOVE</text>
+    <text x="42" y="797" class="sml wt">Answer-first opening block, 40 to 60 words &#183; FAQPage schema on every guide &#183; original dated data tables &#183; named-entity density</text>
+    <text x="42" y="817" class="sml wt">Last-updated stamps and a quarterly refresh &#183; outbound citations to MIBOR, Hamilton County, IEDC and the school corporations</text>
+    <text x="42" y="834" class="sml mut">This layer is the reason the architecture gets cited rather than merely ranked.</text>
+  </svg>
+  <figcaption>Figure 1. The full content architecture. Tier 0 establishes who the team is in a form an engine can verify. Tiers 1 through 3 build the topical surface. The AEO layer is applied to every page in every tier.</figcaption>
+  </figure>
+
+  <div class="hr pagebreak"></div>
+
+  <h2>How One Pillar Works</h2>
+  <p class="sub">Pillar 3 shown in full, because it is the fastest path to inbound leads.</p>
+
+  <p>Eli Lilly has committed more than 13 billion dollars to its Lebanon campus. Meta broke ground in February 2026 on a 10 billion dollar, 1,500-acre data center. Together that is more capital arriving in one Indiana community than in any other in the state's history, on an IEDC land assembly of roughly 9,000 acres, with a new I-65 interchange and a mixed-use village that went out for master-developer proposals in July 2026. At full build the district is projected to employ tens of thousands of people.</p>
+
+  <p>Every one of those people has to live somewhere, and almost all of them will ask an AI assistant where before they ask an agent. Right now no team in Central Indiana owns that answer.</p>
+
+  <figure style="margin-top:20px">
+  <svg viewBox="0 0 1160 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hub and spoke diagram for the LEAP and Boone County growth pillar with nine spokes">
+    <defs><style>
+      .sp{fill:#ffffff;stroke:#cfe3f5;stroke-width:1.4}
+      .spt{font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;fill:#1f2b3d}
+      .hub{fill:#010b23}
+      .hubt{font-family:'Helvetica Neue',Arial,sans-serif;font-size:15px;font-weight:700;fill:#ffffff}
+      .hubs{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;fill:#59f3ff}
+      .ray{stroke:#9fd9e6;stroke-width:1.3;fill:none}
+      .lat{stroke:#d5dfeb;stroke-width:1.1;fill:none;stroke-dasharray:3 3}
+    </style></defs>
+
+    <!-- rays first so boxes sit on top -->
+    <g class="ray">
+      <path d="M580 265 L580 118"/>
+      <path d="M580 280 L845 175"/>
+      <path d="M594 295 L975 300"/>
+      <path d="M594 315 L940 442"/>
+      <path d="M586 325 L722 520"/>
+      <path d="M574 325 L438 520"/>
+      <path d="M566 315 L220 442"/>
+      <path d="M566 295 L185 300"/>
+      <path d="M566 280 L315 175"/>
+    </g>
+    <!-- lateral links -->
+    <g class="lat">
+      <path d="M700 130 Q 880 130 900 165"/>
+      <path d="M1000 330 Q 1000 400 960 425"/>
+      <path d="M330 470 Q 400 520 430 522"/>
+    </g>
+
+    <!-- hub -->
+    <rect x="410" y="255" width="340" height="80" rx="11" class="hub"/>
+    <rect x="410" y="255" width="340" height="4" rx="2" fill="#59f3ff"/>
+    <text x="580" y="288" text-anchor="middle" class="hubs">/boone-county-growth/</text>
+    <text x="580" y="311" text-anchor="middle" class="hubt">LEAP, Meta and the Growth Corridor</text>
+    <text x="580" y="328" text-anchor="middle" class="hubs" style="fill:#a9bad6">Pillar hub, 3,000+ words</text>
+
+    <!-- spokes -->
+    <g>
+      <rect x="470" y="96" width="220" height="44" rx="8" class="sp"/>
+      <text x="580" y="123" text-anchor="middle" class="spt">What LEAP actually is</text>
+
+      <rect x="740" y="153" width="220" height="44" rx="8" class="sp"/>
+      <text x="850" y="180" text-anchor="middle" class="spt">Where LEAP workers should live</text>
+
+      <rect x="870" y="278" width="220" height="44" rx="8" class="sp"/>
+      <text x="980" y="305" text-anchor="middle" class="spt">Meta's data center effect</text>
+
+      <rect x="835" y="420" width="220" height="44" rx="8" class="sp"/>
+      <text x="945" y="447" text-anchor="middle" class="spt">Commute times to the campus</text>
+
+      <rect x="615" y="498" width="220" height="44" rx="8" class="sp"/>
+      <text x="725" y="525" text-anchor="middle" class="spt">Why Boone prices fell 4.3%</text>
+
+      <rect x="330" y="498" width="220" height="44" rx="8" class="sp"/>
+      <text x="440" y="525" text-anchor="middle" class="spt">Relocating for Eli Lilly</text>
+
+      <rect x="112" y="420" width="220" height="44" rx="8" class="sp"/>
+      <text x="222" y="447" text-anchor="middle" class="spt">Buying land in the path</text>
+
+      <rect x="72" y="278" width="220" height="44" rx="8" class="sp"/>
+      <text x="182" y="305" text-anchor="middle" class="spt">Whitestown, the next decade</text>
+
+      <rect x="205" y="153" width="220" height="44" rx="8" class="sp"/>
+      <text x="315" y="180" text-anchor="middle" class="spt">Lebanon's mixed-use village</text>
+    </g>
+
+    <text x="580" y="580" text-anchor="middle" class="spt" style="fill:#63718a;font-size:11.5px">Solid lines: spoke links up to the pillar. Dashed lines: lateral links between spokes a buyer moves between.</text>
+  </svg>
+  <figcaption>Figure 2. The hub-and-spoke pattern, shown on Pillar 3. Every pillar in Figure 1 is built to this same shape.</figcaption>
+  </figure>
+
+  <div class="hr pagebreak"></div>
+
+  <h2>The Nine Pillars in Detail</h2>
+  <p class="sub">Each hub is a long-form resource. Spoke titles below are the working set, to be finalized with the team.</p>
+
+  <div class="grid g2" style="margin-top:16px">
+
+    <div class="card pillar">
+      <div class="bar"></div><div class="num">1</div>
+      <span class="slug">/communities/</span>
+      <h3>Communities of the North Side</h3>
+      <p class="promise">The definitive guide to every town in the footprint: price bands, schools, HOA structure, commute, builders and who each one actually fits.</p>
+      <h4>18 town guides, rebuilt from the existing pages</h4>
+      <ul>
+        <li>Carmel, Zionsville, Westfield, Fishers, Noblesville</li>
+        <li>Whitestown, Geist, Williams Creek, Lebanon</li>
+        <li>Meridian-Kessler, Meridian Hills, Broad Ripple</li>
+        <li>Brownsburg, McCordsville, Fortville, Lawrence, Pike, Downtown Indy</li>
+      </ul>
+      <div style="margin-top:10px"><span class="tag-l">Place</span><span class="tag-l">FAQPage</span><span class="tag-l">BreadcrumbList</span></div>
+    </div>
+
+    <div class="card pillar">
+      <div class="bar"></div><div class="num">2</div>
+      <span class="slug">/new-construction/</span>
+      <h3>New Construction and Builder Intelligence</h3>
+      <p class="promise">The honest guide to buying new in a market where new construction closed at a 544,940 dollar median in June 2026, above the 520,500 dollar county median.</p>
+      <h4>11 spokes</h4>
+      <ul>
+        <li>Should you bring your own agent to a builder's model home</li>
+        <li>Builder contracts versus the Indiana purchase agreement</li>
+        <li>Lot premiums in Hamilton County that actually hold value</li>
+        <li>Upgrades that return at resale, and the ones that do not</li>
+        <li>Spec homes versus to-be-built: timeline, price, room to negotiate</li>
+        <li>How to negotiate when a builder will not move on price</li>
+        <li>Individual builder guides, national and local</li>
+        <li>New construction warranties in Indiana, year one to year ten</li>
+        <li>Why you still need three inspections on a new build</li>
+        <li>Construction loans, rate locks and builder lender incentives</li>
+        <li>Custom builders across Hamilton and Boone counties</li>
+      </ul>
+      <div style="margin-top:10px"><span class="tag-l">HowTo</span><span class="tag-l">FAQPage</span><span class="tag-l">Article</span></div>
+    </div>
+
+    <div class="card pillar">
+      <div class="bar"></div><div class="num">3</div>
+      <span class="slug">/boone-county-growth/</span>
+      <h3>LEAP, Meta and the Growth Corridor</h3>
+      <p class="promise">The lead magnet. The clearest plain-English account of what 23 billion dollars of capital does to Boone County housing.</p>
+      <h4>9 spokes</h4>
+      <ul>
+        <li>What the LEAP district actually is, and what it means for values</li>
+        <li>Where to live if you work at LEAP: four towns compared</li>
+        <li>Meta's data center campus and what it changes</li>
+        <li>Commute times from every north-side town to the campus</li>
+        <li>Why Boone County's median fell 4.3% while sales rose 19.6%</li>
+        <li>Relocating to Boone County for Eli Lilly</li>
+        <li>Buying land in the path of growth, and what to check first</li>
+        <li>Whitestown after a decade as Indiana's fastest-growing town</li>
+        <li>Lebanon's mixed-use village: timeline and what gets built when</li>
+      </ul>
+      <div style="margin-top:10px"><span class="tag-l">FAQPage</span><span class="tag-l">Article</span><span class="tag-l">Dataset</span></div>
+    </div>
+
+    <div class="card pillar">
+      <div class="bar"></div><div class="num">4</div>
+      <span class="slug">/schools/</span>
+      <h3>Schools and Family Life</h3>
+      <p class="promise">Factual, Fair Housing compliant answers to the questions buyers ask most and agents answer least in writing.</p>
+      <h4>9 spokes</h4>
+      <ul>
+        <li>Carmel Clay Schools</li>
+        <li>Zionsville Community Schools</li>
+        <li>Westfield Washington Schools</li>
+        <li>Hamilton Southeastern Schools</li>
+        <li>Noblesville Schools</li>
+        <li>Brownsburg Community Schools</li>
+        <li>Washington Township and the north-side Indy options</li>
+        <li>Private and parochial schools across the north side</li>
+        <li>How Indiana school boundaries, transfers and choice actually work</li>
+      </ul>
+      <div style="margin-top:10px"><span class="tag-l">FAQPage</span><span class="tag-l">Dataset</span><span class="tag-l">Article</span></div>
+    </div>
+
+    <div class="card pillar">
+      <div class="bar"></div><div class="num">5</div>
+      <span class="slug">/relocation/</span>
+      <h3>Relocating to the Indianapolis North Side</h3>
+      <p class="promise">Feeder-market and employer-specific guides. This is the content almost nobody writes, and it converts.</p>
+      <h4>10 spokes</h4>
+      <ul>
+        <li>Moving to Carmel from Chicago</li>
+        <li>A California buyer's guide to Hamilton County</li>
+        <li>Moving from New York and the Northeast</li>
+        <li>Moving from Ohio, Michigan and the Midwest</li>
+        <li>Corporate relocation packages and how to use them</li>
+        <li>Physician and healthcare recruitment relocation</li>
+        <li>Eli Lilly and Meta employee relocation</li>
+        <li>Buying sight-unseen from out of state</li>
+        <li>International buyers in Central Indiana</li>
+        <li>Moving up within the Indianapolis metro</li>
+      </ul>
+      <div style="margin-top:10px"><span class="tag-l">FAQPage</span><span class="tag-l">HowTo</span><span class="tag-l">Article</span></div>
+    </div>
+
+    <div class="card pillar">
+      <div class="bar"></div><div class="num">6</div>
+      <span class="slug">/buying/</span>
+      <h3>Buying on the North Side</h3>
+      <p class="promise">Everything between first search and closing table in Hamilton, Boone, Hancock and Marion counties.</p>
+      <h4>10 spokes</h4>
+      <ul>
+        <li>First-time buyer guide for Hamilton County</li>
+        <li>The Indiana closing process: timeline and real costs</li>
+        <li>How to choose a north-side real estate agent</li>
+        <li>Financing above the conforming limit in Carmel and Zionsville</li>
+        <li>What inspections actually catch in Central Indiana homes</li>
+        <li>Reading an HOA packet and covenant set before you sign</li>
+        <li>Earnest money and Indiana contract timelines</li>
+        <li>Cash versus financed offers at 1.2 months of supply</li>
+        <li>Compass bridge loans and buying before you sell</li>
+        <li>Private Exclusives and Coming Soon, explained</li>
+      </ul>
+      <div style="margin-top:10px"><span class="tag-l">HowTo</span><span class="tag-l">FAQPage</span></div>
+    </div>
+
+    <div class="card pillar">
+      <div class="bar"></div><div class="num">7</div>
+      <span class="slug">/selling/</span>
+      <h3>Selling on the North Side</h3>
+      <p class="promise">A seller playbook for a market that is still tight on supply but punishing on price.</p>
+      <h4>10 spokes</h4>
+      <ul>
+        <li>Best time of year to sell in Hamilton County</li>
+        <li>How to price when average days on market went from 23 to 30</li>
+        <li>The mispricing penalty, measured</li>
+        <li>The pre-listing staging checklist</li>
+        <li>Pre-listing improvements that pay back on the north side</li>
+        <li>Compass Concierge, told honestly</li>
+        <li>Net sheet walkthrough: what a seller actually takes home</li>
+        <li>Selling a Geist waterfront or pool home</li>
+        <li>Selling an estate property in Williams Creek or the Meridian corridor</li>
+        <li>Selling a newer home into a new-construction market</li>
+      </ul>
+      <div style="margin-top:10px"><span class="tag-l">HowTo</span><span class="tag-l">FAQPage</span></div>
+    </div>
+
+    <div class="card pillar">
+      <div class="bar"></div><div class="num">8</div>
+      <span class="slug">/market-reports/</span>
+      <h3>Market Data, Property Tax and Cost of Ownership</h3>
+      <p class="promise">The recency engine. Dated, sourced, indexable data that both Google and the LLMs come back for.</p>
+      <h4>11 spokes</h4>
+      <ul>
+        <li>Monthly Indianapolis north side market report, recurring</li>
+        <li>Quarterly snapshots for Carmel, Zionsville, Westfield, Fishers, Noblesville</li>
+        <li>Indiana Senate Bill 1 property tax reform, explained</li>
+        <li>The homestead deduction phase-out timeline through 2030</li>
+        <li>What a Hamilton County tax bill looks like in 2026</li>
+        <li>Cost of living on the Indianapolis north side</li>
+        <li>HOA fees by community, as a data table</li>
+        <li>Home insurance costs in Central Indiana</li>
+        <li>Price per square foot by town and by year</li>
+        <li>Luxury tier report, one million dollars and above</li>
+        <li>Year-end north side review</li>
+      </ul>
+      <div style="margin-top:10px"><span class="tag-l">Dataset</span><span class="tag-l">Report</span><span class="tag-l">FAQPage</span></div>
+    </div>
+
+    <div class="card pillar">
+      <div class="bar"></div><div class="num">9</div>
+      <span class="slug">/compare/</span>
+      <h3>Compare and Decide</h3>
+      <p class="promise">Head-to-head comparisons. The purest AI search play in the architecture, because comparison questions are exactly what people ask assistants.</p>
+      <h4>10 spokes</h4>
+      <ul>
+        <li>Carmel versus Zionsville</li>
+        <li>Carmel versus Westfield</li>
+        <li>Zionsville versus Westfield</li>
+        <li>Fishers versus Noblesville</li>
+        <li>Geist versus Morse Reservoir</li>
+        <li>Hamilton County versus Boone County</li>
+        <li>Carmel versus Fishers for families</li>
+        <li>North side versus downtown Indianapolis</li>
+        <li>Indianapolis north side versus the Chicago suburbs</li>
+        <li>The best north-side town for every buyer type, ranked</li>
+      </ul>
+      <div style="margin-top:10px"><span class="tag-l">FAQPage</span><span class="tag-l">ItemList</span><span class="tag-l">Article</span></div>
+    </div>
+
+  </div>
+
+  <div class="hr pagebreak"></div>
+
+  <h2>Where the Competition Actually Stands</h2>
+  <p class="sub">Measured on the live sites, August 7, 2026.</p>
+
+  <p>Two teams in this market are publishing seriously. Neither is publishing for AI search, and that gap is the opening.</p>
+
+  <table>
+    <thead><tr><th>Site</th><th>Publishing volume</th><th>Structured data</th><th>FAQ schema</th><th>The gap</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>The Carrie Holle Group<br><span style="color:var(--muted);font-size:12px">wearecarmelrealestate.com</span></td>
+        <td>Deep library. Neighborhood guides, named subdivision pages, lifestyle, new construction.</td>
+        <td>BlogPosting, Organization, RealEstateAgent, WebPage</td>
+        <td class="num">0</td>
+        <td>Strong content, no answer layer. Nothing formatted for an engine to quote.</td>
+      </tr>
+      <tr>
+        <td>Mark Dietel Realty<br><span style="color:var(--muted);font-size:12px">markdietel.com</span></td>
+        <td>Roughly 12 to 15 articles a month, seller-weighted.</td>
+        <td>None detected</td>
+        <td class="num">0</td>
+        <td>High volume, zero schema, and no school or new-construction coverage at all.</td>
+      </tr>
+      <tr>
+        <td>The Steve Clark Team<br><span style="color:var(--muted);font-size:12px">steveclarkteam.com</span></td>
+        <td>1,218 words across 18 community pages. One placeholder post since 2020.</td>
+        <td>Place, Organization, PostalAddress</td>
+        <td class="num">0</td>
+        <td>Best URL structure of the three, almost no content inside it.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="flag" style="margin-top:24px">
+    <h3>The honest read</h3>
+    <p style="margin-top:6px">The Steve Clark Team cannot out-publish The Carrie Holle Group from a standing start. She has years of a head start and a real library. Trying to win on volume is the wrong game and it would take eighteen months.</p>
+    <p style="margin-top:10px">The winnable game is structure. Not one competitor in this market has a single FAQ schema block or a single original data table. Answer-first formatting, FAQ markup and dated proprietary data are what generative engines actually quote, and they are cheap to add to content that is being written anyway. That is where a team with better bones and no content beats a team with more content and no structure.</p>
+    <p style="margin-top:10px">Second honest note: the IDX template is a structural problem the content program cannot fix on its own. As long as a community page pairs 68 words with 24 competitor listing cards, the page reads as a listing feed, not a resource. Rebalancing that template is a prerequisite, not a nice-to-have.</p>
+  </div>
+
+  <div class="hr pagebreak"></div>
+
+  <h2>The 90-Day Plan</h2>
+  <p class="sub">Two long-form assets a week plus one monthly market report. Roughly 26 published assets by day 90.</p>
+
+  <div class="phase-h">Days 1 to 30, Foundation</div>
+  <div class="phase"><div class="wk">Week 1</div><p>Entity layer first. Team page and nine agent pages with RealEstateAgent, Organization and Person schema plus the full sameAs graph. This lifts everything published after it.</p></div>
+  <div class="phase"><div class="wk">Week 2</div><p>Communities pillar hub, plus the Carmel and Zionsville rebuilds. Highest volume, highest intent, and the two pages most likely to be cited first.</p></div>
+  <div class="phase"><div class="wk">Week 3</div><p>LEAP pillar hub, plus "What the LEAP district means for home values." This is the linkbait asset in the plan.</p></div>
+  <div class="phase"><div class="wk">Week 4</div><p>Monthly market report for the north side, plus the Westfield and Fishers rebuilds.</p></div>
+
+  <div class="phase-h">Days 31 to 60, Depth</div>
+  <div class="phase"><div class="wk">Week 5</div><p>New Construction pillar hub, plus "Should you bring your own agent to a builder's model home." The single best differentiator asset the team has.</p></div>
+  <div class="phase"><div class="wk">Week 6</div><p>Schools pillar hub, plus Carmel Clay and Zionsville Community school guides.</p></div>
+  <div class="phase"><div class="wk">Week 7</div><p>Noblesville, Whitestown and Geist rebuilds, plus "Where to live if you work at LEAP."</p></div>
+  <div class="phase"><div class="wk">Week 8</div><p>Monthly market report, plus "Builder contracts versus the Indiana purchase agreement."</p></div>
+
+  <div class="phase-h">Days 61 to 90, The AI Search Offensive</div>
+  <div class="phase"><div class="wk">Week 9</div><p>Compare and Decide pillar hub, plus "Carmel versus Zionsville." Comparison content is where citation share is won.</p></div>
+  <div class="phase"><div class="wk">Week 10</div><p>"Carmel versus Westfield," plus the Indiana Senate Bill 1 property tax explainer.</p></div>
+  <div class="phase"><div class="wk">Week 11</div><p>Relocation pillar hub, plus "Moving to Carmel from Chicago." Selling pillar hub goes up in parallel.</p></div>
+  <div class="phase"><div class="wk">Week 12</div><p>Monthly market report, plus "Why Boone County's median fell while sales rose." Ninety-day review: rankings, citation count, organic leads, attributed listings.</p></div>
+
+  <p style="margin-top:22px">By day 90: six of nine pillar hubs live, roughly 20 spokes published, three dated market reports indexed and the entity layer complete. That is enough density for Google to read topical authority and enough structure for the LLMs to start naming the team.</p>
+
+  <div class="hr pagebreak"></div>
+
+  <h2>What We Need From You in This Session</h2>
+  <p class="sub">The intake questionnaire did not reach us. These eight answers unblock the build. Everything above was assembled from the public record, so treat it as a first draft to correct, not a finished plan.</p>
+
+  <div class="ask">
+    <div class="qn">Question 01 &middot; blocks the entity layer</div>
+    <h3>Which production numbers do we publish everywhere?</h3>
+    <p>steveclarkteam.com says 115 million dollars over the last two years and 1,200-plus families. The Compass profile says 500 million dollars in career sales and 1,500-plus families. Both may be true measured differently, but AI engines cross-check, and an inconsistency here weakens every citation. We need one set, stated one way, everywhere.</p>
+  </div>
+
+  <div class="ask">
+    <div class="qn">Question 02 &middot; blocks nine author pages</div>
+    <h3>Who owns which lane, and who stays out of public content?</h3>
+    <p>Steve, Jeff, Beth, Tonya, Angelo, Lauren, Jackie, Samantha and Carly. Engines cite named people with a defined specialty far more readily than a team byline. We need a lane per person, confirmation of who can be quoted, and a note on anyone who should not be named publicly.</p>
+  </div>
+
+  <div class="ask">
+    <div class="qn">Question 03 &middot; sets pillar weighting</div>
+    <h3>Buyer or seller weighted, and which price bands?</h3>
+    <p>This decides whether Pillar 6 or Pillar 7 gets built out first, and whether the community guides lead with the 400 thousand dollar tier or the estate tier.</p>
+  </div>
+
+  <div class="ask">
+    <div class="qn">Question 04 &middot; sizes the biggest differentiator</div>
+    <h3>How much of the business is new construction, and how hard do we lean in?</h3>
+    <p>Pillar 2 is the strongest opening in this market because no competitor writes about builder negotiation honestly. It is also the one place where naming builders has commercial consequences. Tell us how direct to be, and which builder relationships are off limits.</p>
+  </div>
+
+  <div class="ask">
+    <div class="qn">Question 05 &middot; sequences 18 town guides</div>
+    <h3>Which communities are primary, which are secondary, which are IDX only?</h3>
+    <p>Eighteen pages exist. We do not think all eighteen deserve a full guide in year one. Our working assumption is Carmel, Zionsville, Westfield, Fishers, Noblesville, Whitestown and Geist as primary. Correct us.</p>
+  </div>
+
+  <div class="ask">
+    <div class="qn">Question 06 &middot; defines Tier 3</div>
+    <h3>Which subdivisions actually matter?</h3>
+    <p>Central Indiana buyers search by subdivision name, and a competitor already has pages on Village of WestClay, Jackson's Grant, Bridlebourne and Laurelwood. We need your list of the 20 to 25 that carry the most volume and the most of your business.</p>
+  </div>
+
+  <div class="ask">
+    <div class="qn">Question 07 &middot; in or out</div>
+    <h3>Compass Concierge, bridge loans and Private Exclusives: content or not?</h3>
+    <p>These are real searched questions with real intent, and you already have pages for them. We want to write them honestly, which means covering cost and tradeoffs. Confirm that is acceptable within Compass brand requirements, or tell us to leave them out.</p>
+  </div>
+
+  <div class="ask">
+    <div class="qn">Question 08 &middot; blocks publishing entirely</div>
+    <h3>Who controls the site, the analytics and the IDX template?</h3>
+    <p>We need WordPress admin, Google Analytics and Google Search Console access, and we need to know who can change the community page template. The template rebalance in the honest-read section above requires whoever built the site.</p>
+  </div>
+
+  <h4 style="margin-top:26px">Also useful, but not blocking</h4>
+  <p style="font-size:14px">Feeder markets you see most often. Any employer or relocation-department relationships worth naming. Which designations each team member holds. Fair Housing and Compass compliance language you want enforced. Competitors you specifically want to outrank. Seasonality in your market. Anything you do not want us writing about.</p>
+
+  <div class="hr"></div>
+
+  <h2>What BLOK.co Delivers</h2>
+  <div class="grid g3" style="margin-top:14px">
+    <div class="card"><div class="accent"></div><h3>Architecture and schema</h3><p>The pillar and spoke taxonomy, the internal link graph, and schema templates for RealEstateAgent, Person, FAQPage, Place, HowTo, Dataset and BreadcrumbList.</p></div>
+    <div class="card"><div class="accent"></div><h3>Editorial</h3><p>Two long-form assets a week, each answer-first, FAQ marked, and carrying at least one original dated data table with image direction included.</p></div>
+    <div class="card"><div class="accent"></div><h3>Market reports</h3><p>A monthly north side report built on MIBOR data, sourced line by line. The July 2026 edition is already built and ready to publish.</p></div>
+    <div class="card"><div class="accent"></div><h3>Entity rebuild</h3><p>The team entity and nine agent entities, with the sameAs graph reconciled across Compass, Google Business Profile, Zillow, Realtor.com and LinkedIn.</p></div>
+    <div class="card"><div class="accent"></div><h3>Quarterly refresh</h3><p>Every published page re-dated and updated each quarter. Recency is a ranking and citation signal in both systems.</p></div>
+    <div class="card"><div class="accent"></div><h3>Total Search reporting</h3><p>A monthly report covering classic rankings plus tracked citations in ChatGPT, Perplexity, Gemini and Google AI Overviews.</p></div>
+  </div>
+
+  <div class="hr"></div>
+
+  <h2>Recommended Next Steps</h2>
+  <ol style="padding-left:18px;color:var(--body)">
+    <li style="margin-bottom:8px">Answer the eight questions above in this session. Six of them take a sentence.</li>
+    <li style="margin-bottom:8px">Approve the nine-pillar architecture and the 90-day cadence, or tell us which pillars to reorder.</li>
+    <li style="margin-bottom:8px">Settle the production numbers today. Nothing in the entity layer can ship until that is one consistent set.</li>
+    <li style="margin-bottom:8px">Get us site, analytics and Search Console access, and put us in touch with whoever controls the community page template.</li>
+    <li style="margin-bottom:8px">Publish the July 2026 market report. It is built, sourced and ready, and it starts the recency signal immediately.</li>
+    <li>Set the 90-day review: rankings, AI citation count, organic leads and attributed listings.</li>
+  </ol>
+
+  <div class="footer">
+    <p><strong>BLOK.co Total Search</strong> &middot; Content architecture prepared for The Steve Clark Team at Compass, August 2026.</p>
+    <p style="margin-top:6px">Site audit figures measured directly from steveclarkteam.com on August 7, 2026. Market figures from the MIBOR REALTOR Association Market Insights Report for June 2026, the most recent complete month published. Mortgage rate from the Freddie Mac Primary Mortgage Market Survey, week ending July 30, 2026. LEAP and Meta figures from the Indiana Economic Development Corporation and Inside INdiana Business. Property tax provisions from Indiana Senate Bill 1, 2025 session. Competitor measurements taken from the live sites on August 7, 2026.</p>
+    <p style="margin-top:6px">Team credentials, production figures and roster details are as supplied by the team and pending confirmation in this session.</p>
+  </div>
+
+</div>
+</body>
+</html>
