@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Total Search Questionnaire | Energy Realty</title>
+    <link rel="stylesheet" href="https://use.typekit.net/xay8dos.css">
+    <style>
+        :root {
+            --navy: #010b23;
+            --navy-mid: #060f2a;
+            --navy-light: #0a1536;
+            --indigo: #111e50;
+            --blue: #1936a5;
+            --blue-glow: #416bdf;
+            --cyan: #59f3ff;
+            --cyan-dim: rgba(89,243,255,0.55);
+            --cyan-ghost: rgba(89,243,255,0.10);
+            --coral: #fb958a;
+            --teal: #85c9ce;
+            --paper: #eef1f8;
+            --sheet: #ffffff;
+            --ink: #0a1430;
+            --muted: #55618a;
+            --dim: #8b93b0;
+            --line: rgba(17,30,80,0.12);
+            --line-strong: rgba(17,30,80,0.22);
+            --font: "proxima-nova", -apple-system, "Helvetica Neue", "Segoe UI", system-ui, Roboto, Arial, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font);
+            background:
+                radial-gradient(1200px 600px at 50% -220px, rgba(65,107,223,0.12), transparent 60%),
+                var(--paper);
+            color: var(--ink);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 940px;
+            margin: 0 auto;
+            padding: 32px 20px 60px;
+        }
+
+        /* HEADER: light letterhead with the black BLOK logo */
+        header {
+            background: var(--sheet);
+            border: 1px solid var(--line);
+            border-top: 4px solid var(--cyan);
+            border-radius: 14px;
+            padding: 30px 34px 32px;
+            margin-bottom: 22px;
+            box-shadow: 0 18px 46px -28px rgba(10,20,48,0.4);
+        }
+
+        .brandbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding-bottom: 22px;
+            border-bottom: 1px solid var(--line);
+            margin-bottom: 24px;
+        }
+
+        .brandbar .logo {
+            width: 132px;
+            height: auto;
+            display: block;
+        }
+
+        .brandbar .doc-tag {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2.4px;
+            text-transform: uppercase;
+            color: var(--muted);
+            text-align: right;
+        }
+
+        .brandbar .doc-tag span {
+            display: block;
+            color: var(--blue);
+        }
+
+        header h1 {
+            font-size: 30px;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+            color: var(--navy);
+            margin-bottom: 6px;
+        }
+
+        header .subtitle {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--blue);
+            margin-bottom: 14px;
+        }
+
+        header .description {
+            font-size: 15px;
+            color: var(--muted);
+            max-width: 760px;
+        }
+
+        /* INTRO */
+        .intro {
+            background: var(--sheet);
+            border: 1px solid var(--line);
+            border-left: 4px solid var(--cyan);
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin-bottom: 22px;
+            box-shadow: 0 14px 40px -30px rgba(10,20,48,0.4);
+        }
+
+        .intro p {
+            font-size: 15px;
+            color: var(--ink);
+            margin-bottom: 12px;
+        }
+
+        .intro p:last-child { margin-bottom: 0; }
+
+        .intro strong { color: var(--navy); }
+
+        /* SECTIONS */
+        .section {
+            background: var(--sheet);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 0 30px 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 14px 40px -30px rgba(10,20,48,0.4);
+            overflow: hidden;
+        }
+
+        .section-header {
+            background: linear-gradient(100deg, var(--navy) 0%, var(--indigo) 100%);
+            color: #f0f2fa;
+            padding: 14px 24px;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            margin: 0 -30px 26px;
+            border-bottom: 2px solid var(--cyan);
+        }
+
+        .section-header .sec-num {
+            color: var(--cyan);
+            margin-right: 10px;
+        }
+
+        .question-group { margin-bottom: 28px; }
+        .question-group:last-child { margin-bottom: 0; }
+
+        .question-label {
+            font-weight: 600;
+            color: var(--navy);
+            font-size: 15.5px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .question-number {
+            display: inline-block;
+            background: var(--navy);
+            color: var(--cyan);
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 25px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-right: 9px;
+        }
+
+        .question-hint {
+            font-size: 13.5px;
+            color: var(--muted);
+            margin-bottom: 10px;
+        }
+
+        textarea, input[type="text"] {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1.5px solid var(--line-strong);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 14.5px;
+            color: var(--ink);
+            background: #fbfcff;
+            transition: border-color 0.15s, box-shadow 0.15s;
+        }
+
+        textarea {
+            min-height: 84px;
+            resize: vertical;
+        }
+
+        textarea:focus, input[type="text"]:focus {
+            outline: none;
+            border-color: var(--blue-glow);
+            box-shadow: 0 0 0 3px var(--cyan-ghost);
+            background: #fff;
+        }
+
+        textarea::placeholder, input::placeholder { color: var(--dim); }
+
+        .checkbox-group, .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .checkbox-group label, .radio-group label {
+            display: flex;
+            align-items: flex-start;
+            gap: 11px;
+            cursor: pointer;
+            font-size: 14.5px;
+            padding: 9px 14px;
+            background: #f6f8fd;
+            border: 1px solid transparent;
+            border-radius: 7px;
+            transition: background 0.15s, border-color 0.15s;
+        }
+
+        .checkbox-group label:hover, .radio-group label:hover {
+            background: var(--cyan-ghost);
+            border-color: rgba(89,243,255,0.45);
+        }
+
+        .checkbox-group input[type="checkbox"] { margin-top: 3px; }
+
+        .checkbox-group input[type="checkbox"],
+        .radio-group input[type="radio"] {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+            accent-color: var(--blue);
+        }
+
+        /* Two-column checkbox variant for long lists */
+        .cols-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        /* AREA GRID */
+        .area-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            border: 1.5px solid var(--line-strong);
+            border-radius: 9px;
+            overflow: hidden;
+            margin-top: 12px;
+        }
+
+        .area-grid .area-name {
+            padding: 12px 14px;
+            background: #f6f8fd;
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--navy);
+            border-bottom: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+        }
+
+        .area-grid .area-input {
+            padding: 7px 14px;
+            border-bottom: 1px solid var(--line);
+            border-left: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+        }
+
+        .area-grid .area-input input {
+            border: none;
+            background: transparent;
+            padding: 4px 0;
+            font-size: 14px;
+        }
+
+        .area-grid .area-input input:focus {
+            box-shadow: none;
+            background: transparent;
+        }
+
+        .area-grid .area-name:last-of-type,
+        .area-grid .area-input:last-of-type { border-bottom: none; }
+
+        /* CONFIRM GRID */
+        .confirm-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .confirm-grid .full { grid-column: 1 / -1; }
+
+        .confirm-grid label {
+            font-size: 12.5px;
+            font-weight: 700;
+            letter-spacing: 0.4px;
+            text-transform: uppercase;
+            color: var(--muted);
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        /* FLAG callout for things we found that need confirming */
+        .flag {
+            background: rgba(251,149,138,0.10);
+            border: 1px solid rgba(251,149,138,0.45);
+            border-left: 3px solid var(--coral);
+            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 13.5px;
+            color: var(--ink);
+            margin-bottom: 12px;
+        }
+
+        .flag .flag-tag {
+            display: block;
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 1.6px;
+            text-transform: uppercase;
+            color: #b4564a;
+            margin-bottom: 4px;
+        }
+
+        /* SUBMIT */
+        .submit-section {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 60%, var(--indigo) 100%);
+            border-radius: 12px;
+            padding: 36px 30px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 18px 46px -28px rgba(10,20,48,0.6);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--cyan) 0%, #7fd8ff 100%);
+            color: var(--navy);
+            border: none;
+            padding: 16px 62px;
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.4px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px -6px rgba(89,243,255,0.45);
+        }
+
+        .submit-btn:active { transform: translateY(0); }
+
+        .submit-note {
+            font-size: 13px;
+            color: #c3c5cf;
+            margin-top: 14px;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 8px 20px;
+            color: var(--muted);
+        }
+
+        footer p { font-size: 13px; margin: 4px 0; }
+
+        footer strong { color: var(--navy); }
+
+        footer a { color: var(--blue); text-decoration: none; }
+
+        @media print {
+            body { background: #fff; }
+            .section, header, .intro { box-shadow: none; break-inside: avoid; }
+            .question-group { break-inside: avoid; }
+            .area-grid, .checkbox-group, .radio-group, .confirm-grid, .flag { break-inside: avoid; }
+            textarea { min-height: 60px; }
+        }
+
+        @media (max-width: 640px) {
+            .container { padding: 20px 14px 40px; }
+            header { padding: 24px 20px; }
+            header h1 { font-size: 24px; }
+            .section { padding: 0 18px 24px; }
+            .section-header { margin: 0 -18px 22px; padding: 13px 18px; }
+            .intro { padding: 20px; }
+            .area-grid { grid-template-columns: 1fr; }
+            .confirm-grid { grid-template-columns: 1fr; }
+            .cols-2 { grid-template-columns: 1fr; }
+            .brandbar .doc-tag { text-align: left; }
+            .submit-btn { width: 100%; padding: 16px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <header>
+            <div class="brandbar">
+                <svg class="logo" viewBox="0 0 521.68 163.5" role="img" aria-label="BLOK">
+                    <g>
+                        <polygon fill="#85c9ce" points="54.9 98.1 54.9 40.6 107.4 69.7 107.4 128.5 54.9 98.1"/>
+                        <polygon fill="#fb958a" points="0 132.9 53.7 101.6 106.7 132.9 53.7 163.5 0 132.9"/>
+                        <polygon fill="#060c3b" points="0 129.2 0 29.7 51.7 0 51.7 98.8 0 129.2"/>
+                        <path fill="#060c3b" d="M212.4,104.4c0-10-1.6-17.3-4.7-21.8-3.2-4.6-7.9-6.9-14.2-6.9-8.4,0-14.2,3.4-17.3,10.3v39c3.2,6.9,9.1,10.4,17.5,10.4s14.1-4.2,16.8-12.6c1.3-4,1.9-10.2,1.9-18.4ZM238.8,106.3c0,15.8-3.4,28.2-10.1,37.1-6.8,8.8-16.2,13.2-28.3,13.2-10.7,0-19.3-4.1-25.7-12.3l-1.2,10.5h-23.7V14.6h26.4v50.3c6.1-7.1,14.1-10.7,24-10.7,12.1,0,21.5,4.4,28.3,13.3,6.9,8.8,10.3,21.3,10.3,37.3v1.5Z"/>
+                        <rect fill="#060c3b" x="256.5" y="14.6" width="26.5" height="140.2"/>
+                        <path fill="#060c3b" d="M327.1,106.4c0,9.4,1.8,16.6,5.3,21.5s8.6,7.4,15.2,7.4,11.4-2.4,15-7.3c3.6-4.9,5.4-12.8,5.4-23.6,0-9.2-1.8-16.3-5.4-21.4-3.6-5.1-8.6-7.6-15.2-7.6s-11.4,2.5-15,7.6c-3.5,5.1-5.3,12.9-5.3,23.4ZM300.7,104.5c0-9.8,1.9-18.5,5.7-26.2,3.8-7.7,9.2-13.6,16.2-17.8,7.1-4.2,15.4-6.3,24.7-6.3,13.3,0,24.2,4.1,32.6,12.2,8.5,8.2,13.2,19.2,14.2,33.2l.2,6.8c0,15.2-4.2,27.3-12.7,36.5-8.5,9.1-19.8,13.7-34.1,13.7s-25.6-4.6-34.1-13.7c-8.5-9.1-12.7-21.5-12.7-37.2v-1.2h0Z"/>
+                        <polygon fill="#060c3b" points="446.4 115.2 436.9 124.7 436.9 154.8 410.5 154.8 410.5 14.6 436.9 14.6 436.9 92.3 442 85.7 467.3 56 499 56 463.3 97.2 502.1 154.8 471.8 154.8 446.4 115.2"/>
+                        <path fill="#060c3b" d="M521.68,23.94c0,5.58-4.38,9.96-10.08,9.96s-10.14-4.38-10.14-9.96,4.5-9.84,10.14-9.84,10.08,4.38,10.08,9.84ZM503.98,23.94c0,4.38,3.24,7.86,7.68,7.86s7.5-3.48,7.5-7.8-3.18-7.92-7.56-7.92-7.62,3.54-7.62,7.86ZM510.04,29.1h-2.28v-9.84c.9-.18,2.16-.3,3.78-.3,1.86,0,2.7.3,3.42.72.54.42.96,1.2.96,2.16,0,1.08-.84,1.92-2.04,2.28v.12c.96.36,1.5,1.08,1.8,2.4.3,1.5.48,2.1.72,2.46h-2.46c-.3-.36-.48-1.26-.78-2.4-.18-1.08-.78-1.56-2.04-1.56h-1.08v3.96ZM510.1,23.52h1.08c1.26,0,2.28-.42,2.28-1.44,0-.9-.66-1.5-2.1-1.5-.6,0-1.02.06-1.26.12v2.82Z"/>
+                    </g>
+                </svg>
+                <div class="doc-tag">
+                    Total Search
+                    <span>Onboarding Questionnaire</span>
+                </div>
+            </div>
+
+            <h1>Total Search Questionnaire</h1>
+            <div class="subtitle">Energy Realty | Houston, Texas</div>
+            <p class="description">We build the content that gets your brand cited by Google AI Overviews, ChatGPT, Perplexity, and Gemini. Your answers below tell us exactly what to build, who to name, and which questions to answer for buyers, sellers, renters, and relocating families across the Energy Corridor, Katy, Memorial, and greater Houston.</p>
+        </header>
+
+        <div class="intro">
+            <p><strong>How this works:</strong> Energy Realty already has real authority to build on. You are an independent brokerage (TREC #9007682) with more than a billion dollars in total production, a RealTrends number one volume ranking in the City of Houston, a roster of more than 35 agents and specialists, a team fluent in over a dozen languages, and an active blog that has been publishing market updates and Houston-specific guidance since 2024. Total Search amplifies that into AI search. We create and optimize pillar pages, community guides, neighborhood pages, relocation content, and multilingual guides, then index every page so AI engines name Energy Realty when someone asks about buying, selling, leasing, or moving to west Houston.</p>
+            <p>Two things make this questionnaire different from a typical agent intake. First, you are a brokerage, not a single team, so we need to know how to distribute authority across your agents rather than concentrate it in one name. Second, your international and multilingual reach is an asset that almost no competing Houston brokerage can match in AI search, and we want to aim it precisely.</p>
+            <p>Most questions take a sentence or two. The more specific you are, the faster we own the right searches. If a question does not apply, skip it. Where we found something on your site that needs a decision or a correction, we have flagged it in orange.</p>
+        </div>
+
+        <form action="https://formsubmit.co/brandon.hendricks@blok.co" method="POST">
+            <!-- FormSubmit Configuration -->
+            <input type="hidden" name="_subject" value="Total Search Questionnaire - Energy Realty">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_cc" value="advertising@blok.co">
+            <input type="hidden" name="_next" value="https://reports-blok.co/thank-you/">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="text" name="_honey" style="display:none">
+
+            <!-- Section 1 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">01</span> Confirm Your Details</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">1</span> Confirm or correct the details we have on file.</label>
+                    <div class="question-hint">Consistent brokerage name, license, address, and phone across the web is part of how AI engines decide who to trust and cite. Fix anything that is wrong or out of date.</div>
+                    <div class="confirm-grid">
+                        <div>
+                            <label>Brokerage name</label>
+                            <input type="text" name="1a. Brokerage Name" value="Energy Realty">
+                        </div>
+                        <div>
+                            <label>Broker license (TREC)</label>
+                            <input type="text" name="1b. TREC License" value="9007682">
+                        </div>
+                        <div>
+                            <label>Founder / designated broker</label>
+                            <input type="text" name="1c. Founder" value="Sherry Campbell, Founder">
+                        </div>
+                        <div>
+                            <label>Year founded</label>
+                            <input type="text" name="1d. Year Founded" placeholder="Not stated on the site, please add">
+                        </div>
+                        <div>
+                            <label>Website</label>
+                            <input type="text" name="1e. Website" value="energy-realty.com">
+                        </div>
+                        <div>
+                            <label>Primary email</label>
+                            <input type="text" name="1f. Email" value="info@energy-realty.com">
+                        </div>
+                        <div>
+                            <label>Phone</label>
+                            <input type="text" name="1g. Phone" value="(346) 307-7464">
+                        </div>
+                        <div>
+                            <label>Best point of contact for this project</label>
+                            <input type="text" name="1h. Project Contact" placeholder="Name, role, email, direct phone">
+                        </div>
+                        <div class="full">
+                            <label>Primary office address</label>
+                            <input type="text" name="1i. Office Address" value="23033 Grand Circle Blvd, Suite 150-B, Katy, TX 77449">
+                        </div>
+                        <div class="full">
+                            <label>Any additional offices or locations</label>
+                            <input type="text" name="1j. Other Offices" placeholder="Address and role of each additional office, or 'single location'">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">2</span> Settle the Energy Corridor versus Katy question for us.</label>
+                    <div class="flag">
+                        <span class="flag-tag">Found on your site</span>
+                        Your About page positions Energy Realty as "a boutique brokerage located in Houston's Energy Corridor," but the listed office address is on Grand Circle Blvd in Katy, 77449. Both are true to how people talk about west Houston, but AI engines resolve a business to one physical location and then check that location against your Google Business Profile, your Zillow profile, and every directory listing. An unresolved mismatch weakens the entity and makes engines less willing to name you.
+                    </div>
+                    <div class="question-hint">Tell us how you want this handled so we publish one consistent story everywhere.</div>
+                    <div class="radio-group">
+                        <label><input type="radio" name="2. Location Framing" value="Katy address is canonical, Energy Corridor is the market served"> The Katy address is the canonical business location. Energy Corridor is the market we serve, not where we sit.</label>
+                        <label><input type="radio" name="2. Location Framing" value="There is a separate Energy Corridor office"> We also have an Energy Corridor office. Details in the box below.</label>
+                        <label><input type="radio" name="2. Location Framing" value="We are relocating or rebranding the location"> The location is changing or being rebranded. Details in the box below.</label>
+                        <label><input type="radio" name="2. Location Framing" value="Not sure, advise us"> Not sure, tell us what you recommend.</label>
+                    </div>
+                    <textarea name="2. Location Notes" style="min-height: 56px; margin-top: 12px;" placeholder="Anything we should know about the address, the Google Business Profile, or how you want the location described in content..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 2 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">02</span> Your Agents and Who We Name</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">3</span> Who should be named in content, and for what?</label>
+                    <div class="question-hint">Your agent page lists more than 35 people. AI engines cite named individuals with a clear area of expertise far more readily than a generic brokerage byline, but naming 35 people dilutes every one of them. The winning pattern is a focused roster of subject matter owners. Tell us who owns which lane.</div>
+                    <textarea name="3. Named Experts" style="min-height: 140px;" placeholder="e.g.,
+- Sherry Campbell for brokerage vision, luxury, and anything that needs the founder's voice
+- Renée Eads for relocation and corporate moves
+- Sam Jaoude (CIPS) for international and global buyers
+- Amber Hill for property management and landlord content
+- Roselyn Rios / Marie Rios for anything marketing-facing
+- Then your top producing agents by geography: who owns Katy, who owns Memorial, who owns Cypress, who owns Sugar Land, who owns commercial
+
+Also tell us: is there anyone who should NOT appear in public content?"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">4</span> How many agents should we build individual authority pages for?</label>
+                    <div class="question-hint">An agent authority page is a full bio page built to be citable: credentials, service areas, specialties, languages, transaction proof, and structured data. These are how an individual agent starts getting named by AI, not just the brokerage. They take real effort per agent, so we scope this deliberately.</div>
+                    <div class="radio-group">
+                        <label><input type="radio" name="4. Agent Pages" value="Brokerage only, no individual pages"> Brokerage only. Keep all authority on the Energy Realty entity.</label>
+                        <label><input type="radio" name="4. Agent Pages" value="Top 3-5 agents"> Top 3 to 5 agents plus the brokerage.</label>
+                        <label><input type="radio" name="4. Agent Pages" value="Top 8-12 agents"> Top 8 to 12 agents, roughly one per major market or specialty.</label>
+                        <label><input type="radio" name="4. Agent Pages" value="Every agent"> Every agent on the roster.</label>
+                        <label><input type="radio" name="4. Agent Pages" value="Not sure, advise us"> Not sure, recommend an approach.</label>
+                    </div>
+                    <textarea name="4. Agent Pages Notes" style="min-height: 56px; margin-top: 12px;" placeholder="If you picked a subset, name the agents. If agents can opt in, tell us how that works internally..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">5</span> Is agent recruiting a goal for this program?</label>
+                    <div class="question-hint">Most of our clients are teams, so their content targets buyers and sellers only. You are a brokerage, which means "best brokerage to work for in Houston," "brokerages with the best commission split in Katy," and "independent versus national brokerage in Texas" are searches you could own. Agents research their next brokerage the same way buyers research a home, and almost no Houston brokerage writes for that audience.</div>
+                    <div class="radio-group">
+                        <label><input type="radio" name="5. Recruiting" value="Yes, recruiting is a major goal"> Yes, recruiting is a major goal. Build content for it.</label>
+                        <label><input type="radio" name="5. Recruiting" value="Yes, but secondary to client acquisition"> Yes, but secondary. Client acquisition comes first.</label>
+                        <label><input type="radio" name="5. Recruiting" value="No, client acquisition only"> No. Keep this program focused on buyers, sellers, and renters.</label>
+                    </div>
+                    <textarea name="5. Recruiting Notes" style="min-height: 56px; margin-top: 12px;" placeholder="If recruiting matters: what kind of agent are you looking for, what do you offer that the national brands do not, and is there anything about splits, fees, or support you are willing to publish?"></textarea>
+                </div>
+            </div>
+
+            <!-- Section 3 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">03</span> Goals and Business Mix</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">6</span> What is your primary goal right now?</label>
+                    <div class="question-hint">What does success look like for Energy Realty in the next 6 to 12 months?</div>
+                    <textarea name="6. Primary Goal" placeholder="e.g., More listing appointments in Katy and Memorial, own the Energy Corridor corporate relocation pipeline, grow the luxury side in Memorial Villages and River Oaks, build the property management book, capture international and expat buyers before they land in Houston, recruit producing agents, reduce dependence on paid lead sources..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">7</span> Roughly how does your business break down today?</label>
+                    <div class="question-hint">You offer residential sales, luxury, commercial, leasing, property management, staging, and relocation. We need to know where the revenue actually is, not just what is on the services menu, so we do not spend the content budget on a line that is 3% of your business.</div>
+                    <textarea name="7. Business Mix" style="min-height: 110px;" placeholder="Rough percentages are fine, e.g.,
+- Residential sales (buyer side): __%
+- Residential sales (listing side): __%
+- Luxury (define your luxury threshold in Houston): __%
+- Leasing / rentals: __%
+- Property management: __%
+- Commercial: __%
+- Relocation (as a share of the above): __%"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">8</span> What type of transactions are you trying to generate more of?</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="8. Transaction Focus" value="Mostly buyers (70%+ buyer content)"> Mostly buyers (70%+ buyer content)</label>
+                        <label><input type="radio" name="8. Transaction Focus" value="Mostly sellers (70%+ seller content)"> Mostly sellers (70%+ seller content)</label>
+                        <label><input type="radio" name="8. Transaction Focus" value="Even split (50/50)"> Even split (50/50 buyer and seller content)</label>
+                        <label><input type="radio" name="8. Transaction Focus" value="Heavier buyer (60/40)"> Heavier buyer, some seller (60/40)</label>
+                        <label><input type="radio" name="8. Transaction Focus" value="Heavier seller (60/40)"> Heavier seller, some buyer (60/40)</label>
+                        <label><input type="radio" name="8. Transaction Focus" value="Leasing and renters are a real priority"> Leasing and renters deserve real weight alongside buyers and sellers</label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">9</span> What price range should our content focus on? (Check all that apply)</label>
+                    <div class="question-hint">Houston price bands run differently than the coastal markets. Tell us where your volume actually sits and where you want to grow.</div>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="9. Price Range" value="Under $250K"> Under $250K (first-time, condo, investment)</label>
+                        <label><input type="checkbox" name="9. Price Range" value="$250K - $400K"> $250K to $400K</label>
+                        <label><input type="checkbox" name="9. Price Range" value="$400K - $600K"> $400K to $600K</label>
+                        <label><input type="checkbox" name="9. Price Range" value="$600K - $900K"> $600K to $900K</label>
+                        <label><input type="checkbox" name="9. Price Range" value="$900K - $1.5M"> $900K to $1.5M</label>
+                        <label><input type="checkbox" name="9. Price Range" value="$1.5M - $3M"> $1.5M to $3M</label>
+                        <label><input type="checkbox" name="9. Price Range" value="$3M+ (Memorial Villages / River Oaks tier)"> $3M and up (Memorial Villages, River Oaks, Tanglewood tier)</label>
+                        <label><input type="checkbox" name="9. Price Range" value="Lease: under $3K/mo"> Lease: under $3,000 per month</label>
+                        <label><input type="checkbox" name="9. Price Range" value="Lease: $3K-$6K/mo (executive)"> Lease: $3,000 to $6,000 per month (executive and expat)</label>
+                        <label><input type="checkbox" name="9. Price Range" value="Lease: $6K+/mo (luxury)"> Lease: $6,000 and up per month (luxury and corporate)</label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">10</span> Roughly what share of your business is new construction versus resale?</label>
+                    <div class="question-hint">Katy, Fulshear, Cypress, and Richmond are among the most active new-construction corridors in the country. "Do I need my own agent when buying from a builder" is a question AI engines answer constantly, and the honest answer is a citation magnet. We need to know how hard to lean into it.</div>
+                    <div class="radio-group">
+                        <label><input type="radio" name="10. New Construction Share" value="Mostly new construction (60%+)"> Mostly new construction (60%+)</label>
+                        <label><input type="radio" name="10. New Construction Share" value="Meaningful mix (30-60%)"> Meaningful mix (roughly 30% to 60% new construction)</label>
+                        <label><input type="radio" name="10. New Construction Share" value="Some new construction (10-30%)"> Some new construction (roughly 10% to 30%)</label>
+                        <label><input type="radio" name="10. New Construction Share" value="Mostly resale (under 10% new)"> Mostly resale (under 10% new construction)</label>
+                    </div>
+                    <textarea name="10. Builders" style="min-height: 70px; margin-top: 12px;" placeholder="Which builders and master-planned communities do you work in most? (e.g., Cross Creek Ranch, Cinco Ranch, Bridgeland, Elyson, Jordan Ranch, Harvest Green, Sienna, Towne Lake, and the builders you have repeat relationships with)"></textarea>
+                </div>
+            </div>
+
+            <!-- Section 4 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">04</span> Your Markets</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">11</span> Help us understand your geography. For each area below, tell us what it is and whether we should build a pillar page for it.</label>
+                    <div class="question-hint">A pillar page is a 3,000+ word comprehensive guide (for example, "The Complete Guide to Living in the Energy Corridor"). We need to know: is this a primary market, a secondary market, or one you are trying to break into? Your site names Katy, Memorial, and the Energy Corridor explicitly. Correct anything that is wrong and mark the ones that do not matter.</div>
+
+                    <div class="area-grid">
+                        <div class="area-name">Energy Corridor</div>
+                        <div class="area-input"><input type="text" name="11. Market - Energy Corridor" placeholder="e.g., Primary market, our identity, build the flagship pillar page"></div>
+
+                        <div class="area-name">Katy / Cinco Ranch</div>
+                        <div class="area-input"><input type="text" name="11. Market - Katy Cinco Ranch" placeholder="e.g., Primary market, office location, Katy ISD, master-planned volume"></div>
+
+                        <div class="area-name">Memorial / Memorial Villages</div>
+                        <div class="area-input"><input type="text" name="11. Market - Memorial" placeholder="e.g., Primary market, luxury tier, Hedwig, Bunker Hill, Piney Point, Hunters Creek"></div>
+
+                        <div class="area-name">Spring Branch</div>
+                        <div class="area-input"><input type="text" name="11. Market - Spring Branch" placeholder="e.g., Value relative to Memorial, redevelopment, SBISD"></div>
+
+                        <div class="area-name">Cypress / Bridgeland</div>
+                        <div class="area-input"><input type="text" name="11. Market - Cypress" placeholder="e.g., Cy-Fair ISD, new construction volume, family buyers"></div>
+
+                        <div class="area-name">Fulshear / Cross Creek Ranch</div>
+                        <div class="area-input"><input type="text" name="11. Market - Fulshear" placeholder="e.g., Fastest growth, Lamar CISD, new construction, do we own this?"></div>
+
+                        <div class="area-name">Richmond / Rosenberg</div>
+                        <div class="area-input"><input type="text" name="11. Market - Richmond Rosenberg" placeholder="e.g., Value play, Fort Bend County, price-sensitive buyers"></div>
+
+                        <div class="area-name">Sugar Land / Missouri City</div>
+                        <div class="area-input"><input type="text" name="11. Market - Sugar Land" placeholder="e.g., Fort Bend ISD, Sienna, First Colony, diverse buyer base"></div>
+
+                        <div class="area-name">River Oaks / Tanglewood / Galleria</div>
+                        <div class="area-input"><input type="text" name="11. Market - River Oaks Tanglewood" placeholder="e.g., Luxury tier, do we compete here or refer out?"></div>
+
+                        <div class="area-name">West University / Bellaire</div>
+                        <div class="area-input"><input type="text" name="11. Market - West U Bellaire" placeholder="e.g., Inner loop family market, teardown and rebuild dynamics"></div>
+
+                        <div class="area-name">The Heights / Montrose / Garden Oaks</div>
+                        <div class="area-input"><input type="text" name="11. Market - Heights Montrose" placeholder="e.g., Inner loop lifestyle buyers, secondary market?"></div>
+
+                        <div class="area-name">Downtown / Midtown / Museum District / EaDo</div>
+                        <div class="area-input"><input type="text" name="11. Market - Downtown Midtown" placeholder="e.g., Condos, Medical Center proximity, lease-heavy"></div>
+
+                        <div class="area-name">The Woodlands / Spring / Tomball</div>
+                        <div class="area-input"><input type="text" name="11. Market - Woodlands Spring" placeholder="e.g., ExxonMobil campus corridor, do we serve north Houston?"></div>
+
+                        <div class="area-name">Pearland / Friendswood / Clear Lake</div>
+                        <div class="area-input"><input type="text" name="11. Market - Pearland Clear Lake" placeholder="e.g., South side, NASA corridor, occasional or not a focus"></div>
+
+                        <div class="area-name">Jersey Village / Copperfield / Northwest</div>
+                        <div class="area-input"><input type="text" name="11. Market - Jersey Village NW" placeholder="e.g., Do we sell here, or referral only?"></div>
+
+                        <div class="area-name">Brookshire / Waller / Hempstead</div>
+                        <div class="area-input"><input type="text" name="11. Market - Brookshire Waller" placeholder="e.g., Acreage, far-west growth corridor, land buyers"></div>
+                    </div>
+
+                    <textarea name="11. Other Markets" style="min-height: 56px; margin-top: 16px;" placeholder="Any other cities, neighborhoods, or counties we should know about? (Harris, Fort Bend, Waller, Montgomery, Brazoria, plus anywhere you take referrals or hold a second market)"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">12</span> Which specific neighborhoods, master-planned communities, or high-rises should get their own dedicated page?</label>
+                    <div class="question-hint">These are Tier 2 pages: detailed guides about living in each community (amenities, HOA, MUD district, schools, lifestyle, price bands, builders, flood history). Houston buyers search heavily by subdivision and master-planned community name, and those searches convert. List the ones you specialize in, hold listings in, or have closed repeatedly.</div>
+                    <textarea name="12. Community Pages" style="min-height: 130px;" placeholder="e.g.,
+- Katy area: Cinco Ranch, Seven Meadows, Grand Lakes, Firethorne, Cane Island, Falcon Landing, Kelliwood
+- Fulshear / Richmond: Cross Creek Ranch, Fulbrook on Fulshear Creek, Jordan Ranch, Harvest Green, Aliana
+- Cypress: Bridgeland, Towne Lake, Fairfield, Coles Crossing, Blackhorse Ranch
+- Memorial: Memorial Villages, Nottingham Forest, Wilchester, Frostwood, Rustling Pines
+- Energy Corridor: Parkway Villages, Lakes on Eldridge, Nottingham, Ashford
+- High-rises and condos, if relevant
+- Any community where you have repeat closings or a listing presence"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">13</span> Which school districts and schools matter most to your buyers?</label>
+                    <div class="question-hint">School searches are among the highest-intent queries in your market and AI engines answer them constantly. Houston is unusual in that international schools carry real weight, because expat families often choose the school before the neighborhood. We write all of this Fair Housing compliant, factual, and without steering language.</div>
+                    <textarea name="13. School Districts" style="min-height: 100px;" placeholder="e.g., Katy ISD, Cy-Fair ISD, Spring Branch ISD, Fort Bend ISD, Lamar CISD, Houston ISD, Klein ISD, Tomball ISD, Alief ISD. Plus the private and international schools your buyers ask about: Awty International School, The Village School, British International School of Houston, St. John's, Kinkaid, Second Baptist, Strake Jesuit, and any others that drive neighborhood decisions..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 5 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">05</span> Languages and Global Reach</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">14</span> Which languages does your team actually serve clients in?</label>
+                    <div class="flag">
+                        <span class="flag-tag">Found on your site</span>
+                        Your homepage says "over 12 languages" and another section says "over 11 languages." Small inconsistency, but AI engines pick up numeric claims and repeat them, so we want one number that is correct and defensible. Give us the real count and the list.
+                    </div>
+                    <div class="question-hint">This is the single most underused asset you have. Houston is one of the most linguistically diverse metros in the United States, and essentially no Houston brokerage publishes serious content in anything but English. A buyer asking ChatGPT a question in Spanish, Mandarin, or Farsi about buying a home in Houston is getting a generic answer today. That is an opening.</div>
+                    <div class="checkbox-group cols-2">
+                        <label><input type="checkbox" name="14. Languages" value="Spanish"> Spanish</label>
+                        <label><input type="checkbox" name="14. Languages" value="Mandarin"> Mandarin</label>
+                        <label><input type="checkbox" name="14. Languages" value="Cantonese"> Cantonese</label>
+                        <label><input type="checkbox" name="14. Languages" value="Vietnamese"> Vietnamese</label>
+                        <label><input type="checkbox" name="14. Languages" value="Arabic"> Arabic</label>
+                        <label><input type="checkbox" name="14. Languages" value="Farsi / Persian"> Farsi / Persian</label>
+                        <label><input type="checkbox" name="14. Languages" value="Hindi"> Hindi</label>
+                        <label><input type="checkbox" name="14. Languages" value="Urdu"> Urdu</label>
+                        <label><input type="checkbox" name="14. Languages" value="Portuguese"> Portuguese</label>
+                        <label><input type="checkbox" name="14. Languages" value="French"> French</label>
+                        <label><input type="checkbox" name="14. Languages" value="Russian"> Russian</label>
+                        <label><input type="checkbox" name="14. Languages" value="Tagalog / Filipino"> Tagalog / Filipino</label>
+                        <label><input type="checkbox" name="14. Languages" value="Korean"> Korean</label>
+                        <label><input type="checkbox" name="14. Languages" value="Japanese"> Japanese</label>
+                        <label><input type="checkbox" name="14. Languages" value="German"> German</label>
+                        <label><input type="checkbox" name="14. Languages" value="Italian"> Italian</label>
+                        <label><input type="checkbox" name="14. Languages" value="Turkish"> Turkish</label>
+                        <label><input type="checkbox" name="14. Languages" value="Hebrew"> Hebrew</label>
+                    </div>
+                    <textarea name="14. Languages Detail" style="min-height: 80px; margin-top: 12px;" placeholder="Add any languages not listed. Then tell us WHO speaks what, and at what level. We need to distinguish 'can hold a client conversation and handle a contract' from 'conversational.' Only the first level should appear in content, because a buyer who calls expecting service in that language and does not get it is worse than never claiming it."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">15</span> Do you want us to publish content in languages other than English?</label>
+                    <div class="question-hint">This is a real fork in the road. Multilingual pages are a large and genuinely differentiated content lane, but they only work if someone on your side can service the inquiry in that language and keep the page accurate over time. Be honest about capacity.</div>
+                    <div class="radio-group">
+                        <label><input type="radio" name="15. Multilingual Content" value="Yes, prioritize it"> Yes. Multilingual content is a priority. Build it early.</label>
+                        <label><input type="radio" name="15. Multilingual Content" value="Yes, but start with one or two languages"> Yes, but start narrow. One or two languages first, then expand if it works.</label>
+                        <label><input type="radio" name="15. Multilingual Content" value="English only for now"> English only for now. Mention the multilingual team as a differentiator inside English content.</label>
+                        <label><input type="radio" name="15. Multilingual Content" value="Not sure, advise us"> Not sure, recommend an approach.</label>
+                    </div>
+                    <textarea name="15. Multilingual Notes" style="min-height: 56px; margin-top: 12px;" placeholder="If you want to start narrow, which languages first and why? Which agent would field those inquiries?"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">16</span> Where do your international clients come from?</label>
+                    <div class="question-hint">Your site says you "bring the world to Texas and Texas to the world." Content like "A guide to buying a home in Houston from the UK" or "What Nigerian buyers need to know about Texas property taxes" ranks and gets cited because almost nobody writes it. Tell us which versions are worth building.</div>
+                    <div class="checkbox-group cols-2">
+                        <label><input type="checkbox" name="16. Client Origins" value="United Kingdom"> United Kingdom</label>
+                        <label><input type="checkbox" name="16. Client Origins" value="Norway / Scandinavia"> Norway / Scandinavia</label>
+                        <label><input type="checkbox" name="16. Client Origins" value="Netherlands"> Netherlands</label>
+                        <label><input type="checkbox" name="16. Client Origins" value="France"> France</label>
+                        <label><input type="checkbox" name="16. Client Origins" value="Nigeria / West Africa"> Nigeria / West Africa</label>
+                        <label><input type="checkbox" name="16. Client Origins" value="Middle East (UAE, Saudi, Qatar)"> Middle East (UAE, Saudi, Qatar)</label>
+                        <label><input type="checkbox" name="16. Client Origins" value="Iran"> Iran</label>
+                        <label><input type="checkbox" name="16. Client Origins" value="India"> India</label>
+                        <label><input type="checkbox" name="16. Client Origins" value="China"> China</label>
+                        <label><input type="checkbox" name="16. Client Origins" value="Southeast Asia (Malaysia, Singapore, Philippines)"> Southeast Asia</label>
+                        <label><input type="checkbox" name="16. Client Origins" value="Mexico"> Mexico</label>
+                        <label><input type="checkbox" name="16. Client Origins" value="Venezuela"> Venezuela</label>
+                        <label><input type="checkbox" name="16. Client Origins" value="Colombia"> Colombia</label>
+                        <label><input type="checkbox" name="16. Client Origins" value="Brazil"> Brazil</label>
+                        <label><input type="checkbox" name="16. Client Origins" value="Canada"> Canada</label>
+                        <label><input type="checkbox" name="16. Client Origins" value="Australia"> Australia</label>
+                    </div>
+                    <textarea name="16. Other Client Origins" style="min-height: 56px; margin-top: 12px;" placeholder="Any others, and which two or three send you the most business?"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">17</span> Do you work foreign national and non-resident buyers, and what do they need to know?</label>
+                    <div class="question-hint">Foreign national financing, ITIN purchases, FIRPTA on the sell side, and buying through an LLC or trust are questions with high commercial intent, near-zero quality content, and heavy AI answer volume. If your team handles these, it is one of the strongest lanes available to you.</div>
+                    <textarea name="17. Foreign National Buyers" style="min-height: 100px;" placeholder="e.g., Do you have lender relationships for foreign national loans, do you handle ITIN buyers, do you work non-resident sellers subject to FIRPTA withholding, do buyers commonly purchase through an LLC or trust, do you coordinate with immigration or tax counsel, do you handle purchases made remotely before the client arrives in the US..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 6 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">06</span> Corporate and Energy Sector Relocation</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">18</span> Which employers, campuses, or industries drive the most relocation business to you?</label>
+                    <div class="question-hint">Employer-specific relocation content ranks and gets cited because almost nobody writes it. You are named Energy Realty and sit in the Energy Corridor. If specific energy majors, service companies, or engineering firms are sending you buyers and renters, that is a lane you can own outright.</div>
+                    <textarea name="18. Relocation Employers" style="min-height: 110px;" placeholder="e.g., Energy Corridor employers (BP, Shell, ConocoPhillips, Chevron, SLB, Halliburton, Baker Hughes, TechnipFMC, Wood, Worley, KBR, McDermott, Sysco), ExxonMobil's Spring campus, Texas Medical Center and the health systems, Amazon and the Katy distribution corridor, universities, plus any corporate relocation firms, HR contacts, or global mobility teams you already work with..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">19</span> Do you have formal relocation relationships or certifications?</label>
+                    <div class="question-hint">Formal credentials and named partnerships are structured trust signals that AI engines and schema markup both read. Your roster includes a Relocation Director and a CIPS-designated relocation specialist, which is more relocation infrastructure than most independent brokerages have.</div>
+                    <textarea name="19. Relocation Credentials" style="min-height: 90px;" placeholder="e.g., Relocation network memberships, corporate relocation management company (RMC) contracts, referral network affiliations, CIPS or other international designations held and by whom, any employer where you are a preferred or listed provider, whether you handle inbound only or outbound too..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">20</span> How much of your relocation business starts as a lease?</label>
+                    <div class="question-hint">The classic Houston energy relocation pattern is lease first on a two or three year assignment, then buy if the assignment extends. If that is your pipeline, then leasing content is not a low-value side line, it is the top of your funnel, and we should treat it that way.</div>
+                    <div class="radio-group">
+                        <label><input type="radio" name="20. Lease First" value="Most relocations start as a lease"> Most relocation clients lease first, then some convert to purchase.</label>
+                        <label><input type="radio" name="20. Lease First" value="Roughly half"> Roughly half lease first.</label>
+                        <label><input type="radio" name="20. Lease First" value="Most buy immediately"> Most buy on arrival. Leasing is a small part of it.</label>
+                        <label><input type="radio" name="20. Lease First" value="Not sure"> Not sure.</label>
+                    </div>
+                    <textarea name="20. Lease First Notes" style="min-height: 56px; margin-top: 12px;" placeholder="If leasing feeds your sales pipeline, tell us how you stay in touch with those clients between the lease and the purchase..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">21</span> What are the top reasons people give for moving to west Houston and working with you?</label>
+                    <div class="question-hint">This shapes the angle of our relocation content and the questions AI will answer with your name.</div>
+                    <textarea name="21. Relocation Reasons" style="min-height: 100px;" placeholder="e.g., What a London, Lagos, or California budget actually buys in Katy or Memorial, no state income tax, commute to the Energy Corridor without crossing the whole city, Katy ISD and Cy-Fair ISD reputations, international schools, established expat communities, cost of living versus other energy hubs, the size and quality of home you get for the money..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 7 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">07</span> Beyond Residential Sales</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">22</span> Which of your service lines should get their own content, and how much weight?</label>
+                    <div class="question-hint">Your site lists residential, luxury, commercial, leasing, property management, staging, relocation, and lending. Each one is a separate search universe with a separate audience. Tell us which ones earn real investment and which are just a checkbox on the services page.</div>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="22. Service Lines" value="Residential sales (core)"> Residential sales (core investment)</label>
+                        <label><input type="checkbox" name="22. Service Lines" value="Luxury"> Luxury (define your Houston luxury threshold below)</label>
+                        <label><input type="checkbox" name="22. Service Lines" value="Leasing / rentals"> Leasing and rentals (tenant side)</label>
+                        <label><input type="checkbox" name="22. Service Lines" value="Property management"> Property management (landlord and investor side)</label>
+                        <label><input type="checkbox" name="22. Service Lines" value="Commercial"> Commercial</label>
+                        <label><input type="checkbox" name="22. Service Lines" value="Investment / rental portfolio"> Investment and rental portfolio buyers</label>
+                        <label><input type="checkbox" name="22. Service Lines" value="Staging"> Staging</label>
+                        <label><input type="checkbox" name="22. Service Lines" value="Lending / mortgage"> Lending and mortgage</label>
+                        <label><input type="checkbox" name="22. Service Lines" value="Relocation"> Relocation</label>
+                        <label><input type="checkbox" name="22. Service Lines" value="New construction"> New construction representation</label>
+                    </div>
+                    <textarea name="22. Service Lines Notes" style="min-height: 70px; margin-top: 12px;" placeholder="For each one you checked: who runs it, is it in-house or a partner, and how much of your revenue is it? Also tell us what price point counts as luxury in your Houston footprint, since that number varies enormously by market."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">23</span> If property management matters, who is the ideal owner client?</label>
+                    <div class="question-hint">Property management content targets a completely different searcher than a homebuyer: an owner comparing management fees, an out-of-state investor, or an expat who is keeping a Houston home while on assignment abroad. That last one is a natural fit for your client base and almost nobody writes for it.</div>
+                    <textarea name="23. Property Management" style="min-height: 90px;" placeholder="e.g., Local owners with one or two doors, out-of-state or international investors, expats renting out a Houston home during an overseas assignment, small portfolio investors. What do you charge, what is included, what door count are you trying to reach, and what do owners get wrong about self-managing in Texas?"></textarea>
+                </div>
+            </div>
+
+            <!-- Section 8 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">08</span> Questions People Ask You</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">24</span> What are the most common questions buyers ask you?</label>
+                    <div class="question-hint">Think about what comes up in consultations, calls, and emails. These become the exact queries we make AI answer with your name.</div>
+                    <textarea name="24. Common Buyer Questions" style="min-height: 140px;" placeholder="e.g.,
+- Katy vs. Cypress vs. Fulshear for a family: how do I choose?
+- Is this home in a flood zone, and what does that actually mean?
+- What is a MUD district and why is my tax rate 3.2%?
+- What does $500K actually buy in each of these areas?
+- Houston has no zoning, so what stops someone building next to me?
+- Should I buy new construction or resale?
+- How long is the commute to the Energy Corridor from each suburb?
+- Do I need my own agent if I am buying from a builder?"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">25</span> What are the most common questions sellers ask you?</label>
+                    <div class="question-hint">What do owners want to know when they are thinking about listing?</div>
+                    <textarea name="25. Common Seller Questions" style="min-height: 130px;" placeholder="e.g.,
+- What is my Katy or Memorial home worth right now?
+- How long are homes taking to sell in my subdivision?
+- Do I have to disclose that my home flooded?
+- Should I update before listing or price for it?
+- Am I competing against new construction, and how do I win that?
+- What do I owe if I am selling from overseas? (FIRPTA)
+- Should I sell or keep it as a rental while I am on assignment?
+- Should I list now or wait?"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">26</span> The Houston questions almost nobody answers well. Which of these do you want to own?</label>
+                    <div class="flag">
+                        <span class="flag-tag">Biggest opportunity we see</span>
+                        Houston has a set of local complications that confuse every buyer who has not lived here, and the content answering them is mostly thin, outdated, or written by national sites that do not know the market. Your footprint sits directly on top of several of them, including the Addicks and Barker reservoirs. Honest, specific, locally-informed answers here are the highest-value citation targets available to you, because they are exactly what someone types into ChatGPT at 11pm before making an offer.
+                    </div>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="26. Houston Topics" value="Flood zones and flood maps"> Flood zones, flood maps, and how to actually read them</label>
+                        <label><input type="checkbox" name="26. Houston Topics" value="Addicks and Barker reservoirs"> The Addicks and Barker reservoirs, the flood pools, and what buyers in that footprint need to understand</label>
+                        <label><input type="checkbox" name="26. Houston Topics" value="Flood insurance"> Flood insurance: when it is required, what it costs, and how to check before you offer</label>
+                        <label><input type="checkbox" name="26. Houston Topics" value="Seller flood disclosure"> Texas seller disclosure obligations around prior flooding</label>
+                        <label><input type="checkbox" name="26. Houston Topics" value="MUD districts and tax rates"> MUD districts, LIDs, and why the tax rate varies so much between subdivisions</label>
+                        <label><input type="checkbox" name="26. Houston Topics" value="Property tax rates and protests"> Property tax rates, homestead exemption, and how to protest your assessment</label>
+                        <label><input type="checkbox" name="26. Houston Topics" value="No zoning and deed restrictions"> Houston has no zoning: what deed restrictions do and do not protect</label>
+                        <label><input type="checkbox" name="26. Houston Topics" value="Foundations and clay soil"> Foundations, clay soil, and what a foundation report actually tells you</label>
+                        <label><input type="checkbox" name="26. Houston Topics" value="Homeowners and windstorm insurance"> Homeowners and windstorm insurance in a hurricane market</label>
+                        <label><input type="checkbox" name="26. Houston Topics" value="Hurricane preparedness"> Hurricane preparedness for owners (you already publish on this)</label>
+                        <label><input type="checkbox" name="26. Houston Topics" value="Toll roads and commute math"> Toll roads and real commute math (Grand Parkway, Westpark, Beltway 8, I-10)</label>
+                        <label><input type="checkbox" name="26. Houston Topics" value="HOA rules and fees"> HOA rules, fees, and transfer costs</label>
+                        <label><input type="checkbox" name="26. Houston Topics" value="Buying without a state income tax"> How no state income tax changes the total cost math for relocating buyers</label>
+                    </div>
+                    <textarea name="26. Houston Topics Notes" style="min-height: 70px; margin-top: 12px;" placeholder="Which of these do you personally know cold and could be quoted on? Are there any you would rather we handle carefully or avoid entirely? Flood is the obvious one to discuss before we publish."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">27</span> What unique or surprising questions do you get that most agents would not know how to answer?</label>
+                    <div class="question-hint">These are gold. They become content no competitor has, which AI loves to cite.</div>
+                    <textarea name="27. Unique Questions" style="min-height: 100px;" placeholder="e.g., Which specific streets sit inside a reservoir flood pool and which do not, how an expat on a three-year assignment should think about buy versus lease, how a foreign national gets a mortgage here, which subdivisions have MUD debt that is nearly paid off versus just issued, how detention pond changes affect a neighborhood, what an energy sector layoff cycle does to specific submarkets, how to buy remotely from another country..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">28</span> What should someone relocating to Houston be asking that they do not think to ask?</label>
+                    <div class="question-hint">Relocation content performs extremely well in AI search. What do newcomers get blindsided by?</div>
+                    <textarea name="28. Relocation Questions" style="min-height: 100px;" placeholder="e.g., That the property tax rate offsets the lack of income tax and by how much, that flood risk is street-by-street rather than neighborhood-wide, that Houston has no zoning, that the commute defines which suburb works and not the other way around, what summer is genuinely like, how fast good homes move in each price band, where to lease while you look, how school enrollment works mid-year..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 9 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">09</span> Content Priorities</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">29</span> Which types of content are most important for your business? (Rank your top 5)</label>
+                    <div class="question-hint">We create these as guides and posts that support your pillar, community, and neighborhood pages. You already publish monthly market updates and Houston-specific guidance, so we will also reinforce and optimize what is already working rather than duplicate it.</div>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="29. Content Types" value="Area comparisons"> Area comparisons (for example, "Katy vs. Cypress vs. Fulshear")</label>
+                        <label><input type="checkbox" name="29. Content Types" value="Relocation guides"> Relocation guides (for example, "Moving to Houston from London")</label>
+                        <label><input type="checkbox" name="29. Content Types" value="Corporate and energy relocation guides"> Corporate and energy sector relocation guides</label>
+                        <label><input type="checkbox" name="29. Content Types" value="International buyer guides"> International and foreign national buyer guides</label>
+                        <label><input type="checkbox" name="29. Content Types" value="Multilingual content"> Content published in languages other than English</label>
+                        <label><input type="checkbox" name="29. Content Types" value="School and international school guides"> School district and international school guides</label>
+                        <label><input type="checkbox" name="29. Content Types" value="Neighborhood and master-planned community guides"> Neighborhood and master-planned community deep-dives</label>
+                        <label><input type="checkbox" name="29. Content Types" value="Flood, MUD, and tax explainers"> Flood, MUD district, and property tax explainers</label>
+                        <label><input type="checkbox" name="29. Content Types" value="New construction and builder guides"> New construction and builder guides</label>
+                        <label><input type="checkbox" name="29. Content Types" value="Leasing and renter guides"> Leasing and renter guides</label>
+                        <label><input type="checkbox" name="29. Content Types" value="Landlord and property management guides"> Landlord, investor, and property management guides</label>
+                        <label><input type="checkbox" name="29. Content Types" value="Seller guides"> Seller guides (for example, "How to Sell a Home in Katy")</label>
+                        <label><input type="checkbox" name="29. Content Types" value="First-time buyer guides"> First-time buyer guides</label>
+                        <label><input type="checkbox" name="29. Content Types" value="Luxury content"> Luxury content (Memorial Villages, River Oaks, Tanglewood)</label>
+                        <label><input type="checkbox" name="29. Content Types" value="Commercial content"> Commercial real estate content</label>
+                        <label><input type="checkbox" name="29. Content Types" value="Market reports"> Market reports (you already run these monthly)</label>
+                        <label><input type="checkbox" name="29. Content Types" value="Agent recruiting content"> Agent recruiting content</label>
+                        <label><input type="checkbox" name="29. Content Types" value="Lifestyle and things-to-do"> Lifestyle content (dining, parks, Terry Hershey, Memorial City, events)</label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">30</span> If we could get Energy Realty cited by AI for just 3 queries, what would they be?</label>
+                    <div class="question-hint">What are the highest-value questions you want to own? Be as literal as you can, the way a buyer, seller, or renter would actually type or say it.</div>
+                    <textarea name="30. Top 3 AI Queries" style="min-height: 100px;" placeholder="1.
+2.
+3."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 10 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">10</span> Your Expertise and Proof</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">31</span> What does Energy Realty know better than any other brokerage in Houston?</label>
+                    <div class="question-hint">This becomes the angle for your pillar content. What is your brokerage uniquely qualified to speak on?</div>
+                    <textarea name="31. Unique Expertise" placeholder="e.g., Being a woman-led independent brokerage in a market dominated by national brands, the depth of the multilingual bench, moving people between the global energy industry and Houston in both directions, boutique service at scale, block-by-block knowledge of the Energy Corridor and Katy, handling the full lifecycle from lease to purchase to management to resale for the same client..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">32</span> Confirm the numbers and awards we should cite.</label>
+                    <div class="flag">
+                        <span class="flag-tag">Needs precision before we publish</span>
+                        Your site claims "#1 in volume in City of Houston" citing RealTrends 2024, and "$1B+ in total production." We will not publish a superlative like that without the exact ranking, category, and year, because a number one claim that cannot be sourced is both an advertising exposure and, once AI engines start repeating it, very hard to walk back. We also noticed a stat block on the About page that renders as "1" instead of a real figure, which suggests a broken field in the theme. Give us the precise, current, defensible version of each number.
+                    </div>
+                    <div class="question-hint">Concrete, verifiable proof points are what make AI engines trust and cite you. One consistent set, published everywhere, beats three impressive but conflicting ones.</div>
+                    <textarea name="32. Proof Points" style="min-height: 130px;" placeholder="e.g.,
+- The exact RealTrends award: which list, which category, which ranking, which year, and the exact wording they used
+- Total production: what figure, over what period, and is it brokerage career volume or annual
+- Trailing 12-month volume and unit count
+- Number of agents, current
+- Number of languages, current and correct
+- Year founded and years in business
+- Any other awards, press, or rankings, and whether each is current or historical"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">33</span> Which designations and credentials does the brokerage or its agents hold? (Check all that apply)</label>
+                    <div class="question-hint">Designations are structured credentials that AI engines and schema markup both read as trust signals. Note which agent holds which one in the box below.</div>
+                    <div class="checkbox-group cols-2">
+                        <label><input type="checkbox" name="33. Designations" value="CIPS"> CIPS (Certified International Property Specialist)</label>
+                        <label><input type="checkbox" name="33. Designations" value="GRI"> GRI (Graduate, REALTOR Institute)</label>
+                        <label><input type="checkbox" name="33. Designations" value="CRS"> CRS (Certified Residential Specialist)</label>
+                        <label><input type="checkbox" name="33. Designations" value="ABR"> ABR (Accredited Buyer's Representative)</label>
+                        <label><input type="checkbox" name="33. Designations" value="SRES"> SRES (Seniors Real Estate Specialist)</label>
+                        <label><input type="checkbox" name="33. Designations" value="SRS"> SRS (Seller Representative Specialist)</label>
+                        <label><input type="checkbox" name="33. Designations" value="CLHMS"> CLHMS (Certified Luxury Home Marketing Specialist)</label>
+                        <label><input type="checkbox" name="33. Designations" value="CRB"> CRB (Certified Real Estate Brokerage Manager)</label>
+                        <label><input type="checkbox" name="33. Designations" value="CNE"> CNE (Certified Negotiation Expert)</label>
+                        <label><input type="checkbox" name="33. Designations" value="TRLP / TRLS"> Texas REALTORS Leadership Program</label>
+                        <label><input type="checkbox" name="33. Designations" value="MRP"> MRP (Military Relocation Professional)</label>
+                        <label><input type="checkbox" name="33. Designations" value="ePRO"> ePRO</label>
+                    </div>
+                    <textarea name="33. Designations Detail" style="min-height: 56px; margin-top: 12px;" placeholder="Note who holds what, plus any designations not listed and any associations (HAR, Texas REALTORS, NAR, Katy Area Chamber, Houston West Chamber, WCR, or any international networks)..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">34</span> Who is your ideal client? Describe them.</label>
+                    <div class="question-hint">This helps us write content that speaks directly to the right buyer, seller, or renter.</div>
+                    <textarea name="34. Ideal Client" placeholder="e.g., An energy sector family relocating from overseas on a three-year assignment who will lease first and buy second; a Katy move-up buyer at $600K to $900K; a longtime Memorial owner downsizing; an international investor building a Houston rental portfolio; a first-generation buyer who wants to be walked through the process in their own language..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 11 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">11</span> Competition and Current Presence</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">35</span> Who are your top competitors, and is there anyone specific you want to outrank?</label>
+                    <div class="question-hint">Name the brokerages, teams, or agents who show up first when buyers search your markets. We will study what they rank for and build past them.</div>
+                    <textarea name="35. Competitors" style="min-height: 90px;" placeholder="e.g., Specific Compass, Douglas Elliman, Christie's, Martha Turner Sotheby's, Better Homes and Gardens Gary Greene, Keller Williams, RE/MAX, eXp, or independent Katy and Memorial brokerages. Also name anyone whose neighborhood guides, market reports, or videos keep showing up ahead of you..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">36</span> Confirm your profile URLs across the major platforms.</label>
+                    <div class="question-hint">AI engines cross-check your name, license, phone, and address across every profile they can find. Inconsistencies between your site, Google, Zillow, and HAR weaken the entity and make engines less willing to cite you. Paste the live URLs so we can audit and align them.</div>
+                    <div class="confirm-grid">
+                        <div>
+                            <label>Google Business Profile</label>
+                            <input type="text" name="36a. Google Business Profile" placeholder="Paste the URL">
+                        </div>
+                        <div>
+                            <label>Zillow (brokerage)</label>
+                            <input type="text" name="36b. Zillow" placeholder="Paste the URL">
+                        </div>
+                        <div>
+                            <label>Realtor.com</label>
+                            <input type="text" name="36c. Realtor.com" placeholder="Paste the URL">
+                        </div>
+                        <div>
+                            <label>HAR.com</label>
+                            <input type="text" name="36d. HAR" placeholder="Paste the URL">
+                        </div>
+                        <div>
+                            <label>Facebook</label>
+                            <input type="text" name="36e. Facebook" placeholder="Paste the URL or handle">
+                        </div>
+                        <div>
+                            <label>Instagram</label>
+                            <input type="text" name="36f. Instagram" placeholder="Paste the URL or handle">
+                        </div>
+                        <div>
+                            <label>LinkedIn</label>
+                            <input type="text" name="36g. LinkedIn" placeholder="Paste the URL or handle">
+                        </div>
+                        <div>
+                            <label>YouTube</label>
+                            <input type="text" name="36h. YouTube" placeholder="Paste the URL or handle">
+                        </div>
+                        <div>
+                            <label>Yelp</label>
+                            <input type="text" name="36i. Yelp" placeholder="Paste the URL">
+                        </div>
+                        <div>
+                            <label>TikTok</label>
+                            <input type="text" name="36j. TikTok" placeholder="Paste the URL or handle">
+                        </div>
+                        <div class="full">
+                            <label>Anywhere else the brokerage is listed</label>
+                            <input type="text" name="36k. Other Profiles" placeholder="Homes.com, Redfin, chambers of commerce, expat directories, international networks, press pages, other sites you control">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">37</span> How should we work with the blog you already run?</label>
+                    <div class="question-hint">You have been publishing consistently since 2024, including monthly market updates, hurricane preparedness, property tax guidance, and luxury features. That is a real asset and a real publishing habit, which most clients do not have. We do not want to duplicate it or fight it.</div>
+                    <div class="radio-group">
+                        <label><input type="radio" name="37. Blog Integration" value="Keep publishing our own, BLOK adds on top"> Keep publishing our own posts. Add your content alongside it.</label>
+                        <label><input type="radio" name="37. Blog Integration" value="BLOK takes over the market updates too"> Take over the recurring market updates as well so we can stop producing them.</label>
+                        <label><input type="radio" name="37. Blog Integration" value="BLOK takes over the blog entirely"> Take over the blog entirely.</label>
+                        <label><input type="radio" name="37. Blog Integration" value="Not sure, advise us"> Not sure, recommend an approach.</label>
+                    </div>
+                    <textarea name="37. Blog Notes" style="min-height: 70px; margin-top: 12px;" placeholder="Who writes your posts today, how often, and which existing posts perform best? Share URLs of anything that already earns traffic or leads so we amplify it rather than compete with it."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">38</span> Do we have access to what we need to publish and measure?</label>
+                    <div class="question-hint">Total Search works fastest when we can publish directly and see the data. Your site runs on WordPress, which is the setup we work in most often. Tell us who controls each of these and whether access is already available.</div>
+                    <textarea name="38. Access" style="min-height: 90px;" placeholder="e.g., WordPress admin and who manages it (in-house, a web vendor, or your Digital Marketing Manager), Google Search Console, Google Analytics, Google Business Profile, your IDX or listing feed provider, who approves content before it goes live, and how quickly that approval usually happens..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 12 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">12</span> Guardrails and Anything Else</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">39</span> Are there any topics, claims, or areas we should avoid, and what tone fits your brand?</label>
+                    <div class="question-hint">Anything you do NOT want us to write about, plus the compliance rules we need to follow. For a Texas brokerage that means TREC advertising rules and the IABS and Consumer Protection Notice requirements, Fair Housing on all school and neighborhood content, and care around flood history on specific properties. Tell us your standards and we will work inside them.</div>
+                    <textarea name="39. Guardrails & Tone" style="min-height: 100px;" placeholder="e.g., Keep Fair Housing compliant with no steering language in school or neighborhood content, follow TREC advertising rules and keep the broker name and required notices intact, never name clients, avoid flood claims about specific addresses, avoid crime and demographic claims, avoid direct competitor comparisons by name. Preferred tone: the site voice is warm and service-led ('Orange Is The New Sold', 'an experience of excellence'), tell us how closely to match that versus a more straightforward informational voice for the guides."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">40</span> Is there anything else we should know about your brokerage, your market, or your goals?</label>
+                    <div class="question-hint">Anything we missed: specialties, upcoming listings or projects you want featured, seasonality in the Houston market, energy sector cycles that affect your business, or specific results you want from this program.</div>
+                    <textarea name="40. Additional Notes" style="min-height: 110px;" placeholder="Anything else..."></textarea>
+                </div>
+            </div>
+
+            <!-- Submit -->
+            <div class="submit-section">
+                <button type="submit" class="submit-btn">Submit Questionnaire</button>
+                <p class="submit-note">Your responses go directly to Blok.co. You will receive a confirmation after submitting.</p>
+            </div>
+        </form>
+
+        <footer>
+            <p><strong>Energy Realty</strong> | Total Search Questionnaire | August 2026</p>
+            <p>Prepared by <a href="https://blok.co">Blok.co</a></p>
+        </footer>
+
+    </div>
+</body>
+</html>
