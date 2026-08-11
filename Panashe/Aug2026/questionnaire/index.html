@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Total Search Questionnaire | Panashe</title>
+    <link rel="stylesheet" href="https://use.typekit.net/xay8dos.css">
+    <style>
+        :root {
+            --navy: #010b23;
+            --navy-mid: #060f2a;
+            --navy-light: #0a1536;
+            --indigo: #111e50;
+            --blue: #1936a5;
+            --blue-glow: #416bdf;
+            --cyan: #59f3ff;
+            --cyan-dim: rgba(89,243,255,0.55);
+            --cyan-ghost: rgba(89,243,255,0.10);
+            --coral: #fb958a;
+            --teal: #85c9ce;
+            --paper: #eef1f8;
+            --sheet: #ffffff;
+            --ink: #0a1430;
+            --muted: #55618a;
+            --dim: #8b93b0;
+            --line: rgba(17,30,80,0.12);
+            --line-strong: rgba(17,30,80,0.22);
+            --font: "proxima-nova", -apple-system, "Helvetica Neue", "Segoe UI", system-ui, Roboto, Arial, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font);
+            background:
+                radial-gradient(1200px 600px at 50% -220px, rgba(65,107,223,0.12), transparent 60%),
+                var(--paper);
+            color: var(--ink);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 940px;
+            margin: 0 auto;
+            padding: 32px 20px 60px;
+        }
+
+        /* HEADER: light letterhead with the black BLOK logo */
+        header {
+            background: var(--sheet);
+            border: 1px solid var(--line);
+            border-top: 4px solid var(--cyan);
+            border-radius: 14px;
+            padding: 30px 34px 32px;
+            margin-bottom: 22px;
+            box-shadow: 0 18px 46px -28px rgba(10,20,48,0.4);
+        }
+
+        .brandbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding-bottom: 22px;
+            border-bottom: 1px solid var(--line);
+            margin-bottom: 24px;
+        }
+
+        .brandbar .logo {
+            width: 132px;
+            height: auto;
+            display: block;
+        }
+
+        .brandbar .doc-tag {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2.4px;
+            text-transform: uppercase;
+            color: var(--muted);
+            text-align: right;
+        }
+
+        .brandbar .doc-tag span {
+            display: block;
+            color: var(--blue);
+        }
+
+        header h1 {
+            font-size: 30px;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+            color: var(--navy);
+            margin-bottom: 6px;
+        }
+
+        header .subtitle {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--blue);
+            margin-bottom: 14px;
+        }
+
+        header .description {
+            font-size: 15px;
+            color: var(--muted);
+            max-width: 760px;
+        }
+
+        /* INTRO */
+        .intro {
+            background: var(--sheet);
+            border: 1px solid var(--line);
+            border-left: 4px solid var(--cyan);
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin-bottom: 22px;
+            box-shadow: 0 14px 40px -30px rgba(10,20,48,0.4);
+        }
+
+        .intro p {
+            font-size: 15px;
+            color: var(--ink);
+            margin-bottom: 12px;
+        }
+
+        .intro p:last-child { margin-bottom: 0; }
+
+        .intro strong { color: var(--navy); }
+
+        /* SECTIONS */
+        .section {
+            background: var(--sheet);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 0 30px 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 14px 40px -30px rgba(10,20,48,0.4);
+            overflow: hidden;
+        }
+
+        .section-header {
+            background: linear-gradient(100deg, var(--navy) 0%, var(--indigo) 100%);
+            color: #f0f2fa;
+            padding: 14px 24px;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            margin: 0 -30px 26px;
+            border-bottom: 2px solid var(--cyan);
+        }
+
+        .section-header .sec-num {
+            color: var(--cyan);
+            margin-right: 10px;
+        }
+
+        .question-group { margin-bottom: 28px; }
+        .question-group:last-child { margin-bottom: 0; }
+
+        .question-label {
+            font-weight: 600;
+            color: var(--navy);
+            font-size: 15.5px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .question-number {
+            display: inline-block;
+            background: var(--navy);
+            color: var(--cyan);
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 25px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-right: 9px;
+        }
+
+        .question-hint {
+            font-size: 13.5px;
+            color: var(--muted);
+            margin-bottom: 10px;
+        }
+
+        textarea, input[type="text"] {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1.5px solid var(--line-strong);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 14.5px;
+            color: var(--ink);
+            background: #fbfcff;
+            transition: border-color 0.15s, box-shadow 0.15s;
+        }
+
+        textarea {
+            min-height: 84px;
+            resize: vertical;
+        }
+
+        textarea:focus, input[type="text"]:focus {
+            outline: none;
+            border-color: var(--blue-glow);
+            box-shadow: 0 0 0 3px var(--cyan-ghost);
+            background: #fff;
+        }
+
+        textarea::placeholder, input::placeholder { color: var(--dim); }
+
+        .checkbox-group, .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .checkbox-group label, .radio-group label {
+            display: flex;
+            align-items: flex-start;
+            gap: 11px;
+            cursor: pointer;
+            font-size: 14.5px;
+            padding: 9px 14px;
+            background: #f6f8fd;
+            border: 1px solid transparent;
+            border-radius: 7px;
+            transition: background 0.15s, border-color 0.15s;
+        }
+
+        .checkbox-group label:hover, .radio-group label:hover {
+            background: var(--cyan-ghost);
+            border-color: rgba(89,243,255,0.45);
+        }
+
+        .checkbox-group input[type="checkbox"] { margin-top: 3px; }
+
+        .checkbox-group input[type="checkbox"],
+        .radio-group input[type="radio"] {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+            accent-color: var(--blue);
+        }
+
+        /* Two-column checkbox variant for long lists */
+        .cols-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        /* AREA GRID */
+        .area-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            border: 1.5px solid var(--line-strong);
+            border-radius: 9px;
+            overflow: hidden;
+            margin-top: 12px;
+        }
+
+        .area-grid .area-name {
+            padding: 12px 14px;
+            background: #f6f8fd;
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--navy);
+            border-bottom: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+        }
+
+        .area-grid .area-input {
+            padding: 7px 14px;
+            border-bottom: 1px solid var(--line);
+            border-left: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+        }
+
+        .area-grid .area-input input {
+            border: none;
+            background: transparent;
+            padding: 4px 0;
+            font-size: 14px;
+        }
+
+        .area-grid .area-input input:focus {
+            box-shadow: none;
+            background: transparent;
+        }
+
+        .area-grid .area-name:last-of-type,
+        .area-grid .area-input:last-of-type { border-bottom: none; }
+
+        /* CONFIRM GRID */
+        .confirm-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .confirm-grid .full { grid-column: 1 / -1; }
+
+        .confirm-grid label {
+            font-size: 12.5px;
+            font-weight: 700;
+            letter-spacing: 0.4px;
+            text-transform: uppercase;
+            color: var(--muted);
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        /* FLAG callout for things we found that need confirming */
+        .flag {
+            background: rgba(251,149,138,0.10);
+            border: 1px solid rgba(251,149,138,0.45);
+            border-left: 3px solid var(--coral);
+            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 13.5px;
+            color: var(--ink);
+            margin-bottom: 12px;
+        }
+
+        .flag .flag-tag {
+            display: block;
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 1.6px;
+            text-transform: uppercase;
+            color: #b4564a;
+            margin-bottom: 4px;
+        }
+
+        /* SUBMIT */
+        .submit-section {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 60%, var(--indigo) 100%);
+            border-radius: 12px;
+            padding: 36px 30px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 18px 46px -28px rgba(10,20,48,0.6);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--cyan) 0%, #7fd8ff 100%);
+            color: var(--navy);
+            border: none;
+            padding: 16px 62px;
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.4px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px -6px rgba(89,243,255,0.45);
+        }
+
+        .submit-btn:active { transform: translateY(0); }
+
+        .submit-note {
+            font-size: 13px;
+            color: #c3c5cf;
+            margin-top: 14px;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 8px 20px;
+            color: var(--muted);
+        }
+
+        footer p { font-size: 13px; margin: 4px 0; }
+
+        footer strong { color: var(--navy); }
+
+        footer a { color: var(--blue); text-decoration: none; }
+
+        @media print {
+            body { background: #fff; }
+            .section, header, .intro { box-shadow: none; break-inside: avoid; }
+            .question-group { break-inside: avoid; }
+            .area-grid, .checkbox-group, .radio-group, .confirm-grid, .flag { break-inside: avoid; }
+            textarea { min-height: 60px; }
+        }
+
+        @media (max-width: 640px) {
+            .container { padding: 20px 14px 40px; }
+            header { padding: 24px 20px; }
+            header h1 { font-size: 24px; }
+            .section { padding: 0 18px 24px; }
+            .section-header { margin: 0 -18px 22px; padding: 13px 18px; }
+            .intro { padding: 20px; }
+            .area-grid { grid-template-columns: 1fr; }
+            .confirm-grid { grid-template-columns: 1fr; }
+            .cols-2 { grid-template-columns: 1fr; }
+            .brandbar .doc-tag { text-align: left; }
+            .submit-btn { width: 100%; padding: 16px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <header>
+            <div class="brandbar">
+                <svg class="logo" viewBox="0 0 521.68 163.5" role="img" aria-label="BLOK">
+                    <g>
+                        <polygon fill="#85c9ce" points="54.9 98.1 54.9 40.6 107.4 69.7 107.4 128.5 54.9 98.1"/>
+                        <polygon fill="#fb958a" points="0 132.9 53.7 101.6 106.7 132.9 53.7 163.5 0 132.9"/>
+                        <polygon fill="#060c3b" points="0 129.2 0 29.7 51.7 0 51.7 98.8 0 129.2"/>
+                        <path fill="#060c3b" d="M212.4,104.4c0-10-1.6-17.3-4.7-21.8-3.2-4.6-7.9-6.9-14.2-6.9-8.4,0-14.2,3.4-17.3,10.3v39c3.2,6.9,9.1,10.4,17.5,10.4s14.1-4.2,16.8-12.6c1.3-4,1.9-10.2,1.9-18.4ZM238.8,106.3c0,15.8-3.4,28.2-10.1,37.1-6.8,8.8-16.2,13.2-28.3,13.2-10.7,0-19.3-4.1-25.7-12.3l-1.2,10.5h-23.7V14.6h26.4v50.3c6.1-7.1,14.1-10.7,24-10.7,12.1,0,21.5,4.4,28.3,13.3,6.9,8.8,10.3,21.3,10.3,37.3v1.5Z"/>
+                        <rect fill="#060c3b" x="256.5" y="14.6" width="26.5" height="140.2"/>
+                        <path fill="#060c3b" d="M327.1,106.4c0,9.4,1.8,16.6,5.3,21.5s8.6,7.4,15.2,7.4,11.4-2.4,15-7.3c3.6-4.9,5.4-12.8,5.4-23.6,0-9.2-1.8-16.3-5.4-21.4-3.6-5.1-8.6-7.6-15.2-7.6s-11.4,2.5-15,7.6c-3.5,5.1-5.3,12.9-5.3,23.4ZM300.7,104.5c0-9.8,1.9-18.5,5.7-26.2,3.8-7.7,9.2-13.6,16.2-17.8,7.1-4.2,15.4-6.3,24.7-6.3,13.3,0,24.2,4.1,32.6,12.2,8.5,8.2,13.2,19.2,14.2,33.2l.2,6.8c0,15.2-4.2,27.3-12.7,36.5-8.5,9.1-19.8,13.7-34.1,13.7s-25.6-4.6-34.1-13.7c-8.5-9.1-12.7-21.5-12.7-37.2v-1.2h0Z"/>
+                        <polygon fill="#060c3b" points="446.4 115.2 436.9 124.7 436.9 154.8 410.5 154.8 410.5 14.6 436.9 14.6 436.9 92.3 442 85.7 467.3 56 499 56 463.3 97.2 502.1 154.8 471.8 154.8 446.4 115.2"/>
+                        <path fill="#060c3b" d="M521.68,23.94c0,5.58-4.38,9.96-10.08,9.96s-10.14-4.38-10.14-9.96,4.5-9.84,10.14-9.84,10.08,4.38,10.08,9.84ZM503.98,23.94c0,4.38,3.24,7.86,7.68,7.86s7.5-3.48,7.5-7.8-3.18-7.92-7.56-7.92-7.62,3.54-7.62,7.86ZM510.04,29.1h-2.28v-9.84c.9-.18,2.16-.3,3.78-.3,1.86,0,2.7.3,3.42.72.54.42.96,1.2.96,2.16,0,1.08-.84,1.92-2.04,2.28v.12c.96.36,1.5,1.08,1.8,2.4.3,1.5.48,2.1.72,2.46h-2.46c-.3-.36-.48-1.26-.78-2.4-.18-1.08-.78-1.56-2.04-1.56h-1.08v3.96ZM510.1,23.52h1.08c1.26,0,2.28-.42,2.28-1.44,0-.9-.66-1.5-2.1-1.5-.6,0-1.02.06-1.26.12v2.82Z"/>
+                    </g>
+                </svg>
+                <div class="doc-tag">
+                    Total Search
+                    <span>Onboarding Questionnaire</span>
+                </div>
+            </div>
+
+            <h1>Total Search Questionnaire</h1>
+            <div class="subtitle">Panashe | Compass | Asheville, North Carolina</div>
+            <p class="description">We build the content that gets your brand cited by Google AI Overviews, ChatGPT, Perplexity, and Gemini. Your answers below tell us exactly what to build, who to name, and which questions to answer for buyers and sellers across Asheville, Biltmore Forest, and western North Carolina.</p>
+        </header>
+
+        <div class="intro">
+            <p><strong>How this works:</strong> Panashe already has real authority to build on. You are a boutique luxury team that Tracy Veteto founded in 2019 and brought to Compass, you hold REALM membership on the high net worth side, and panasheville.com already publishes neighborhood guides across Biltmore Forest, The Ramble, The Cliffs at Walnut Cove, Biltmore Park, Biltmore Lake, North Asheville, Lake Lure, and Linville. Total Search amplifies that into AI search. We create and optimize pillar pages, neighborhood guides, relocation content, and the hard explainers nobody else writes, then index every page so AI engines name Panashe when buyers and sellers ask about Asheville and western North Carolina.</p>
+            <p>Asheville is a more interesting market to do this in than almost anywhere else we work, for one reason. Most of the questions people ask about buying here right now are questions the internet answers badly: what Helene actually changed, whether a given property is at risk, what the short-term rental rules really allow, how mountain land and private roads and steep slope work, and what North Carolina's due diligence fee means for an out-of-state buyer. Honest, specific answers to those are exactly what AI engines look for and exactly what your competitors are avoiding.</p>
+            <p>Most questions take a sentence or two. The more specific you are, the faster we own the right searches. If a question does not apply, skip it. Where we found something that needs a decision from you, we flagged it in orange.</p>
+        </div>
+
+        <form action="https://formsubmit.co/brandon.hendricks@blok.co" method="POST">
+            <!-- FormSubmit Configuration -->
+            <input type="hidden" name="_subject" value="Total Search Questionnaire - Panashe (Asheville)">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_cc" value="advertising@blok.co">
+            <input type="hidden" name="_next" value="https://reports-blok.co/thank-you/">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="text" name="_honey" style="display:none">
+
+            <!-- Section 1 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">01</span> Confirm Your Details</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">1</span> Confirm or correct the details we have on file.</label>
+                    <div class="question-hint">Consistent name, brokerage, license, and contact details across the web are part of how AI engines decide who to trust and cite. Fix anything that is wrong or out of date.</div>
+                    <div class="confirm-grid">
+                        <div>
+                            <label>Team lead</label>
+                            <input type="text" name="1a. Team Lead" value="Tracy Veteto">
+                        </div>
+                        <div>
+                            <label>Title</label>
+                            <input type="text" name="1b. Title" value="Principal / Broker">
+                        </div>
+                        <div>
+                            <label>Team name</label>
+                            <input type="text" name="1c. Team Name" value="Panashe">
+                        </div>
+                        <div>
+                            <label>Brokerage</label>
+                            <input type="text" name="1d. Brokerage" value="Compass">
+                        </div>
+                        <div>
+                            <label>Website</label>
+                            <input type="text" name="1e. Website" value="panasheville.com">
+                        </div>
+                        <div>
+                            <label>Primary email</label>
+                            <input type="text" name="1f. Email" value="tracy.veteto@compass.com">
+                        </div>
+                        <div>
+                            <label>Phone</label>
+                            <input type="text" name="1g. Phone" value="(828) 712-5530">
+                        </div>
+                        <div>
+                            <label>NC license number</label>
+                            <input type="text" name="1h. License" value="245814">
+                        </div>
+                        <div>
+                            <label>Year Panashe was founded</label>
+                            <input type="text" name="1i. Year Founded" value="2019">
+                        </div>
+                        <div>
+                            <label>Year you joined Compass</label>
+                            <input type="text" name="1j. Year Joined Compass" placeholder="Reported as 2024, please confirm">
+                        </div>
+                        <div class="full">
+                            <label>Office address</label>
+                            <input type="text" name="1k. Office Address" value="12 E Walnut St, Asheville, NC 28801">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">2</span> How should we describe your role in North Carolina terms?</label>
+                    <div class="flag">
+                        <span class="flag-tag">Small but it matters for schema</span>
+                        North Carolina does not license "agents" or "salespersons." Everyone is a broker, and the supervising licensee at a firm is the Broker-in-Charge. Since Panashe operates as a team within Compass rather than as an independent firm, "Principal / Broker" may be a legacy title from the pre-Compass years. We want the version that is accurate under NC license law, because titles go into structured data that AI engines read directly and an inaccurate one is worth correcting now rather than after it propagates.
+                    </div>
+                    <div class="question-hint">Tell us the title you want used in content and structured data.</div>
+                    <textarea name="2. Title Clarification" style="min-height: 70px;" placeholder="e.g., the exact title you want published, whether you hold Broker-in-Charge status anywhere, and whether Panashe should be described as a team at Compass, a boutique firm within Compass, or something else..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 2 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">02</span> Your Team and Who We Name</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">3</span> Who on the team should be named in content, and for what?</label>
+                    <div class="question-hint">Your site lists Tracy Veteto, Michaela Schmidlin, Hunter Lanier, and Cate Scales. AI engines cite named people with a clear area of expertise more readily than a generic team byline. A four person team is the right size to give each person a real lane rather than splitting attention. Tell us who owns what.</div>
+                    <textarea name="3. Team Bylines" style="min-height: 110px;" placeholder="e.g., Tracy for luxury, listing strategy, and anything that needs the founder's voice; who owns Biltmore Forest and the gated club communities; who owns downtown and the historic districts; who owns land, mountain, and Lake Lure or Linville; who works with relocating buyers first. Note anyone who should not be named publicly, and confirm who can be quoted or attributed in guides."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">4</span> Should we build individual authority pages for each team member?</label>
+                    <div class="question-hint">An agent authority page is a full bio page built to be citable: credentials, service areas, specialties, transaction proof, and structured data. It is how an individual starts getting named by AI rather than just the team.</div>
+                    <div class="radio-group">
+                        <label><input type="radio" name="4. Agent Pages" value="Yes, all four"> Yes, build one for all four of us.</label>
+                        <label><input type="radio" name="4. Agent Pages" value="Tracy plus one or two others"> Tracy plus one or two others.</label>
+                        <label><input type="radio" name="4. Agent Pages" value="Tracy only"> Tracy only. Keep the rest of the authority on the Panashe entity.</label>
+                        <label><input type="radio" name="4. Agent Pages" value="Team entity only"> Team entity only, no individual pages.</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">03</span> Goals and Transaction Focus</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">5</span> What is your primary goal right now?</label>
+                    <div class="question-hint">What does success look like for Panashe in the next 6 to 12 months?</div>
+                    <textarea name="5. Primary Goal" placeholder="e.g., More listing appointments in Biltmore Forest and North Asheville, grow the $2M+ side, own the relocation search before buyers pick an agent, capture second home and mountain buyers, build the referral pipeline through REALM, replace paid lead sources with organic and AI-driven inquiries..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">6</span> What type of transactions are you trying to generate more of?</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="6. Transaction Focus" value="Mostly buyers (70%+ buyer content)"> Mostly buyers (70%+ buyer content)</label>
+                        <label><input type="radio" name="6. Transaction Focus" value="Mostly sellers (70%+ seller content)"> Mostly sellers (70%+ seller content)</label>
+                        <label><input type="radio" name="6. Transaction Focus" value="Even split (50/50)"> Even split (50/50 buyer and seller content)</label>
+                        <label><input type="radio" name="6. Transaction Focus" value="Heavier buyer (60/40)"> Heavier buyer, some seller (60/40)</label>
+                        <label><input type="radio" name="6. Transaction Focus" value="Heavier seller (60/40)"> Heavier seller, some buyer (60/40)</label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">7</span> What price range should our content focus on? (Check all that apply)</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="7. Price Range" value="Under $400K"> Under $400K</label>
+                        <label><input type="checkbox" name="7. Price Range" value="$400K - $650K"> $400K to $650K</label>
+                        <label><input type="checkbox" name="7. Price Range" value="$650K - $1M"> $650K to $1M</label>
+                        <label><input type="checkbox" name="7. Price Range" value="$1M - $2M"> $1M to $2M</label>
+                        <label><input type="checkbox" name="7. Price Range" value="$2M - $4M"> $2M to $4M</label>
+                        <label><input type="checkbox" name="7. Price Range" value="$4M+ (estate tier)"> $4M and up (estate tier)</label>
+                        <label><input type="checkbox" name="7. Price Range" value="Land and acreage"> Land and acreage (separate from improved property)</label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">8</span> How much of your business is primary residence versus second home or investment?</label>
+                    <div class="question-hint">Asheville draws all three, and they are completely different searchers. A retiree relocating full time, a family buying a mountain second home, and an investor evaluating rental income each need different content.</div>
+                    <textarea name="8. Buyer Mix" style="min-height: 80px;" placeholder="Rough percentages are fine:
+- Primary residence / full-time relocation: __%
+- Second home / vacation: __%
+- Investment or rental: __%
+- Land or build lots: __%"></textarea>
+                </div>
+            </div>
+
+            <!-- Section 4 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">04</span> Your Markets</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">9</span> Help us understand your geography. For each area below, tell us what it is and whether we should build a pillar page for it.</label>
+                    <div class="question-hint">A pillar page is a 3,000+ word comprehensive guide (for example, "The Complete Guide to Living in Biltmore Forest"). We need to know: is this a primary market, a secondary market, or one you are trying to break into? The first several are pulled from the neighborhood guides already on panasheville.com. Correct anything that is wrong for your business.</div>
+
+                    <div class="area-grid">
+                        <div class="area-name">Biltmore Forest</div>
+                        <div class="area-input"><input type="text" name="9. Market - Biltmore Forest" placeholder="e.g., Primary market, estate tier, build the flagship pillar page"></div>
+
+                        <div class="area-name">The Ramble at Biltmore Forest</div>
+                        <div class="area-input"><input type="text" name="9. Market - The Ramble" placeholder="e.g., Gated, amenities, do we hold listings here?"></div>
+
+                        <div class="area-name">The Cliffs at Walnut Cove</div>
+                        <div class="area-input"><input type="text" name="9. Market - Cliffs Walnut Cove" placeholder="e.g., Golf and club membership, mountain luxury"></div>
+
+                        <div class="area-name">North Asheville</div>
+                        <div class="area-input"><input type="text" name="9. Market - North Asheville" placeholder="e.g., Grove Park, Kimberly, Lakeview Park, historic and established"></div>
+
+                        <div class="area-name">Downtown Asheville</div>
+                        <div class="area-input"><input type="text" name="9. Market - Downtown" placeholder="e.g., Condos, walkability, lock-and-leave second homes"></div>
+
+                        <div class="area-name">Montford / Chestnut Hill</div>
+                        <div class="area-input"><input type="text" name="9. Market - Montford" placeholder="e.g., Historic districts, renovation buyers, overlay rules"></div>
+
+                        <div class="area-name">Biltmore Park</div>
+                        <div class="area-input"><input type="text" name="9. Market - Biltmore Park" placeholder="e.g., Town Square, planned community, family buyers"></div>
+
+                        <div class="area-name">Biltmore Lake</div>
+                        <div class="area-input"><input type="text" name="9. Market - Biltmore Lake" placeholder="e.g., Lake lifestyle, west side, price band"></div>
+
+                        <div class="area-name">West Asheville</div>
+                        <div class="area-input"><input type="text" name="9. Market - West Asheville" placeholder="e.g., Haywood Rd, younger buyers, value relative to north"></div>
+
+                        <div class="area-name">South Asheville / Arden / Fletcher</div>
+                        <div class="area-input"><input type="text" name="9. Market - South Arden Fletcher" placeholder="e.g., Convenience, airport, newer construction"></div>
+
+                        <div class="area-name">East Asheville / Haw Creek / Oakley</div>
+                        <div class="area-input"><input type="text" name="9. Market - East Haw Creek" placeholder="e.g., Value, proximity, do we sell here?"></div>
+
+                        <div class="area-name">Fairview / Reynolds</div>
+                        <div class="area-input"><input type="text" name="9. Market - Fairview Reynolds" placeholder="e.g., Acreage, views, rural-adjacent"></div>
+
+                        <div class="area-name">Weaverville / Woodfin</div>
+                        <div class="area-input"><input type="text" name="9. Market - Weaverville Woodfin" placeholder="e.g., Small town north, growth corridor"></div>
+
+                        <div class="area-name">Black Mountain / Swannanoa</div>
+                        <div class="area-input"><input type="text" name="9. Market - Black Mountain Swannanoa" placeholder="e.g., Do we serve the valley, and how is recovery affecting demand?"></div>
+
+                        <div class="area-name">Hendersonville / Flat Rock</div>
+                        <div class="area-input"><input type="text" name="9. Market - Hendersonville Flat Rock" placeholder="e.g., Henderson County, retiree draw, secondary market?"></div>
+
+                        <div class="area-name">Lake Lure / Chimney Rock</div>
+                        <div class="area-input"><input type="text" name="9. Market - Lake Lure Chimney Rock" placeholder="e.g., Second home and lake market, and how recovery has changed it"></div>
+
+                        <div class="area-name">Linville / Banner Elk / Grandfather</div>
+                        <div class="area-input"><input type="text" name="9. Market - Linville Banner Elk" placeholder="e.g., High country, club communities, seasonal second homes"></div>
+
+                        <div class="area-name">Brevard / Transylvania County</div>
+                        <div class="area-input"><input type="text" name="9. Market - Brevard" placeholder="e.g., Waterfalls, DuPont, retirees, do we take these?"></div>
+
+                        <div class="area-name">Waynesville / Haywood County</div>
+                        <div class="area-input"><input type="text" name="9. Market - Waynesville" placeholder="e.g., West of Asheville, value, referral only?"></div>
+
+                        <div class="area-name">Candler / Leicester / Madison County</div>
+                        <div class="area-input"><input type="text" name="9. Market - Candler Leicester Madison" placeholder="e.g., Marshall, Mars Hill, acreage and land buyers"></div>
+                    </div>
+
+                    <textarea name="9. Other Markets" style="min-height: 56px; margin-top: 16px;" placeholder="Any other towns, counties, or communities we should know about? (Buncombe, Henderson, Madison, Haywood, Transylvania, Rutherford, Avery, Polk, McDowell, plus anywhere you take referrals)"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">10</span> Which specific gated communities, club communities, or developments should get their own dedicated page?</label>
+                    <div class="question-hint">These are Tier 2 pages: detailed guides about living in each community (amenities, club membership structure and cost, HOA, road maintenance, price bands, views, build restrictions). Buyers at your price point search by community name, and those searches convert. Club membership rules in particular are poorly documented online and heavily asked about.</div>
+                    <textarea name="10. Community Pages" style="min-height: 120px;" placeholder="e.g., The Cliffs at Walnut Cove, The Ramble at Biltmore Forest, Biltmore Lake, Biltmore Park, Grove Park area, Linville Ridge, Linville Falls, Elk River, Eagles Nest, Champion Hills, Kenmure, Cummings Cove, Reynolds Mountain, Versant, Southcliff, and any community where you have repeat closings or a listing presence..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">11</span> Which schools matter most to your buyers?</label>
+                    <div class="question-hint">School searches are high intent and AI engines answer them constantly. At your price point the private and independent schools often matter more than the district lines. We write all of this Fair Housing compliant, factual, and without steering language.</div>
+                    <textarea name="11. Schools" style="min-height: 80px;" placeholder="e.g., Asheville City Schools versus Buncombe County Schools and what buyers actually ask about the difference, plus the independent schools: Carolina Day, Asheville School, Christ School, Veritas, Rainbow Community School, Odyssey, and any others that drive neighborhood decisions..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 5 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">05</span> Luxury, REALM, and the High Net Worth Lane</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">12</span> What counts as luxury in your market, and where is your ceiling?</label>
+                    <div class="question-hint">Luxury is a relative term and AI engines answer "luxury homes in Asheville" with whatever price band the available content implies. We want to define it deliberately rather than let the market define it for you.</div>
+                    <textarea name="12. Luxury Definition" style="min-height: 80px;" placeholder="e.g., Where the luxury threshold sits in Asheville today, your highest closing to date, the price band you most want to be known for, and whether there is a tier you would like to move up into..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">13</span> How should we use REALM in your content?</label>
+                    <div class="question-hint">REALM is a genuine differentiator and almost no Asheville team has it. It is also poorly understood by the public, which makes "what is REALM real estate" and "how do luxury agents find off-market buyers" real searchable questions you could own. We want your framing and any membership rules on how it can be described before we publish.</div>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="13. REALM" value="Build content explaining REALM"> Build content explaining what REALM is and what it does for a seller</label>
+                        <label><input type="checkbox" name="13. REALM" value="Reference it as a credential only"> Reference it as a credential only, without a dedicated explainer</label>
+                        <label><input type="checkbox" name="13. REALM" value="Use it in listing and seller-facing content"> Use it in listing presentations and seller-facing content</label>
+                        <label><input type="checkbox" name="13. REALM" value="Keep REALM out of public content"> Keep REALM out of public content</label>
+                    </div>
+                    <textarea name="13. REALM Notes" style="min-height: 56px; margin-top: 12px;" placeholder="Any membership rules, approved language, or restrictions on how REALM can be described publicly..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">14</span> How should we handle the Compass tools in your content?</label>
+                    <div class="question-hint">Compass Concierge and Compass Cares are already on your site. These are searchable questions with real intent ("how does Compass Concierge work"), but we want your framing before we publish anything about how you use them.</div>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="14. Compass Tools" value="Compass Concierge"> Build content around Compass Concierge (pre-sale improvements)</label>
+                        <label><input type="checkbox" name="14. Compass Tools" value="Private Exclusives / Coming Soon"> Build content around Private Exclusives and Coming Soon listings</label>
+                        <label><input type="checkbox" name="14. Compass Tools" value="Bridge loans"> Build content around bridge loans and buying before you sell</label>
+                        <label><input type="checkbox" name="14. Compass Tools" value="Compass Cares"> Build content around Compass Cares</label>
+                        <label><input type="checkbox" name="14. Compass Tools" value="Keep Compass tools out of content"> Keep the Compass tools out of the content program</label>
+                    </div>
+                    <textarea name="14. Compass Notes" style="min-height: 56px; margin-top: 12px;" placeholder="Any compliance language, brokerage approval requirements, or framing we should follow when we reference Compass programs..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">15</span> Tell us about Home Sessions.</label>
+                    <div class="question-hint">The musician and filmmaker collaborations in luxury properties are the most distinctive thing on your site and nothing like it exists elsewhere in this market. It is also the kind of asset that is easy to under-leverage. We want to understand it before deciding how much content weight it earns.</div>
+                    <textarea name="15. Home Sessions" style="min-height: 90px;" placeholder="e.g., How often you produce them, whether they run on YouTube, whether sellers request them, whether they have ever directly won a listing, whether you want them positioned as a marketing service to sellers or as brand and lifestyle content, and whether the program is still active..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 6 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">06</span> Relocation and Who Is Moving Here</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">16</span> Where are most of your relocation and out-of-area buyers coming from?</label>
+                    <div class="question-hint">Knowing where buyers come from lets us write targeted content such as "Moving to Asheville from Florida" or "A New York buyer's guide to western North Carolina." Your site already runs a relocation post, so this tells us which versions to build first.</div>
+                    <div class="checkbox-group cols-2">
+                        <label><input type="checkbox" name="16. Buyer Origins" value="Florida"> Florida</label>
+                        <label><input type="checkbox" name="16. Buyer Origins" value="New York / Northeast"> New York and the Northeast</label>
+                        <label><input type="checkbox" name="16. Buyer Origins" value="Atlanta / Georgia"> Atlanta and Georgia</label>
+                        <label><input type="checkbox" name="16. Buyer Origins" value="Charlotte / Raleigh / in-state"> Charlotte, Raleigh, and in-state</label>
+                        <label><input type="checkbox" name="16. Buyer Origins" value="Texas"> Texas</label>
+                        <label><input type="checkbox" name="16. Buyer Origins" value="California"> California</label>
+                        <label><input type="checkbox" name="16. Buyer Origins" value="DC / Virginia / Maryland"> DC, Virginia, Maryland</label>
+                        <label><input type="checkbox" name="16. Buyer Origins" value="Midwest"> Midwest</label>
+                        <label><input type="checkbox" name="16. Buyer Origins" value="South Carolina / coastal"> South Carolina and the coast</label>
+                        <label><input type="checkbox" name="16. Buyer Origins" value="International"> International</label>
+                    </div>
+                    <textarea name="16. Other Buyer Origins" style="min-height: 56px; margin-top: 12px;" placeholder="Any others, and which two or three send you the most business?"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">17</span> Who is the buyer, and what is driving the move?</label>
+                    <div class="question-hint">Asheville draws several distinct groups and each one searches differently. Tell us which ones are actually your clients.</div>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="17. Buyer Types" value="Retirees and pre-retirees"> Retirees and pre-retirees</label>
+                        <label><input type="checkbox" name="17. Buyer Types" value="Remote workers"> Remote workers and location-independent professionals</label>
+                        <label><input type="checkbox" name="17. Buyer Types" value="Second home buyers"> Second home and vacation buyers</label>
+                        <label><input type="checkbox" name="17. Buyer Types" value="Families relocating"> Families relocating for lifestyle</label>
+                        <label><input type="checkbox" name="17. Buyer Types" value="Employer relocation"> Employer-driven relocation</label>
+                        <label><input type="checkbox" name="17. Buyer Types" value="Investors"> Investors and rental buyers</label>
+                        <label><input type="checkbox" name="17. Buyer Types" value="Returning locals / move-up"> Move-up and move-within buyers already here</label>
+                        <label><input type="checkbox" name="17. Buyer Types" value="Downsizers"> Downsizers</label>
+                    </div>
+                    <textarea name="17. Relocation Reasons" style="min-height: 80px; margin-top: 12px;" placeholder="What reasons do people actually give you for choosing Asheville? (e.g., mountains and outdoor access, the food and arts scene, four mild seasons, what a Florida or Northeast budget buys here, no coastal hurricane exposure, proximity to Charlotte and Atlanta airports, a slower pace)"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">18</span> Which employers or institutions drive relocation business to you, if any?</label>
+                    <div class="question-hint">Employer-specific relocation content ranks and gets cited because almost nobody writes it. Asheville is not a single-employer town the way some markets are, so tell us honestly whether this lane is worth building at all.</div>
+                    <textarea name="18. Employers" style="min-height: 80px;" placeholder="e.g., Mission Health and HCA, Pratt and Whitney, Linamar, Thermo Fisher, UNC Asheville, Warren Wilson, Biltmore Estate, the brewery and hospitality economy, or 'not really a factor, our buyers are lifestyle-driven'..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 7 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">07</span> Helene, Risk, and the Questions Buyers Are Actually Asking</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">19</span> How do you want us to handle Helene?</label>
+                    <div class="flag">
+                        <span class="flag-tag">Read this one before answering</span>
+                        This is the most important question in the questionnaire and the most sensitive. Helene was a catastrophe for western North Carolina and we are not going to treat it as a marketing opportunity. But every out-of-area buyer considering Asheville is asking about it, most of them are asking an AI engine rather than an agent, and the answers they are getting are a mix of national news coverage from the worst week and thin blog posts. Someone is going to be the trusted local source on what actually changed, which areas were affected and which were not, and how to evaluate a specific property. That is a service to buyers and to the community, and it happens to be the single strongest citation position available in this market. It is also the easiest thing to get wrong. We want your judgment on where the line is before we write a word.
+                    </div>
+                    <div class="radio-group">
+                        <label><input type="radio" name="19. Helene Approach" value="Lead with it, we want to be the trusted source"> Lead with it. We want to be the honest, local, trusted source on this.</label>
+                        <label><input type="radio" name="19. Helene Approach" value="Address it factually but do not lead"> Address it factually where buyers ask, but do not make it the headline.</label>
+                        <label><input type="radio" name="19. Helene Approach" value="Only in response to direct questions"> Only in the context of direct buyer questions, handled carefully.</label>
+                        <label><input type="radio" name="19. Helene Approach" value="Keep it out of our content entirely"> Keep it out of our content entirely.</label>
+                        <label><input type="radio" name="19. Helene Approach" value="Not sure, we want to talk it through"> Not sure. We want to talk this through before anything is written.</label>
+                    </div>
+                    <textarea name="19. Helene Notes" style="min-height: 100px; margin-top: 12px;" placeholder="Tell us where the lines are. What is fair to write about and what is not? Are there neighborhoods, streets, or communities we should never discuss in terms of damage? Are there people or businesses we should not name? Is there language you find offensive when other agents use it? Your October 2025 post handled this with a lot of grace, so if that is the register you want, say so and we will match it."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">20</span> What do buyers ask you about risk, and what is the honest answer?</label>
+                    <div class="question-hint">These are the questions people type into ChatGPT at night before deciding whether to even schedule a trip. If you are comfortable answering them, we can make you the answer.</div>
+                    <textarea name="20. Risk Questions" style="min-height: 120px;" placeholder="e.g.,
+- Is it safe to buy in Asheville now?
+- How do I tell whether a specific property is at risk?
+- Which areas flooded and which never do?
+- What is the difference between river floodplain, creek proximity, and slope risk?
+- Do I need flood insurance here, and what does it cost?
+- What happened to the water system and has it been fixed?
+- Is the infrastructure being rebuilt differently?
+- Has this changed property values, and where?"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">21</span> Asheville spent years being marketed as a climate haven. Where do you stand on that now?</label>
+                    <div class="question-hint">Your own blog ran a climate migration post back in 2021. That framing drove real buyer demand for a decade and Helene complicated it badly. AI engines are actively being asked whether Asheville is still a climate refuge, and the answers are all over the place. Having a clear, honest position is more valuable than avoiding the topic, but it needs to be your position, not ours.</div>
+                    <textarea name="21. Climate Haven" style="min-height: 90px;" placeholder="e.g., Do you still see climate-motivated buyers, has the conversation changed, do you think the climate haven framing was always oversold, is there an honest version of the argument that survives Helene, or would you rather we stay away from this framing entirely..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 8 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">08</span> Mountain Property Realities</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">22</span> Which mountain property topics should we own? (Check all that apply)</label>
+                    <div class="question-hint">Buying a mountain property is genuinely different from buying a suburban house, and out-of-area buyers do not know what they do not know. This content is technical, underserved, and exactly the kind of thing AI engines cite because there is so little quality material to draw from.</div>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="22. Mountain Topics" value="Private roads and road maintenance agreements"> Private roads, easements, and road maintenance agreements</label>
+                        <label><input type="checkbox" name="22. Mountain Topics" value="Steep slope and grading ordinances"> Steep slope ordinances and what you can actually build</label>
+                        <label><input type="checkbox" name="22. Mountain Topics" value="Landslide and slope stability"> Slope stability and landslide risk assessment</label>
+                        <label><input type="checkbox" name="22. Mountain Topics" value="Well, septic, and spring water"> Wells, septic systems, spring water, and permits</label>
+                        <label><input type="checkbox" name="22. Mountain Topics" value="Driveway grade and winter access"> Driveway grade, winter access, and what four wheel drive really means here</label>
+                        <label><input type="checkbox" name="22. Mountain Topics" value="Views and view easements"> Views, view protection, and tree ordinances</label>
+                        <label><input type="checkbox" name="22. Mountain Topics" value="Land buying and buildability"> Buying land: buildability, perc tests, utilities, and what a lot really costs to develop</label>
+                        <label><input type="checkbox" name="22. Mountain Topics" value="Historic district overlays"> Historic district overlays in Montford, Chestnut Hill, and Grove Park</label>
+                        <label><input type="checkbox" name="22. Mountain Topics" value="Club membership structures"> Club membership structures, initiation, and dues at gated communities</label>
+                        <label><input type="checkbox" name="22. Mountain Topics" value="Buncombe County tax revaluation"> Buncombe County property tax and revaluation</label>
+                        <label><input type="checkbox" name="22. Mountain Topics" value="Home insurance in WNC"> Homeowners insurance in western NC after Helene</label>
+                    </div>
+                    <textarea name="22. Mountain Notes" style="min-height: 70px; margin-top: 12px;" placeholder="Which of these do you know cold and could be quoted on? Which ones do buyers get wrong most often?"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">23</span> How much do out-of-state buyers struggle with North Carolina's contract structure?</label>
+                    <div class="question-hint">NC's due diligence fee and due diligence period are unusual, and buyers from almost anywhere else find them baffling and sometimes alarming. NC is also an attorney closing state. "What is a due diligence fee in North Carolina" is a high-intent question with weak content behind it, and it reaches buyers at exactly the moment they need an agent.</div>
+                    <textarea name="23. NC Contract" style="min-height: 90px;" placeholder="e.g., How you explain the due diligence fee to a buyer from New York or California, what a typical fee looks like in your price band right now, how you counsel sellers on evaluating it, how the due diligence period actually plays out, the attorney closing process, and anything else about NC contracts that surprises out-of-state clients..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 9 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">09</span> Short-Term Rentals and Investment</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">24</span> How much short-term rental business do you touch, and how should we treat it?</label>
+                    <div class="question-hint">Asheville's short-term rental rules are strict, widely misunderstood, and vary by jurisdiction and district. Buyers regularly arrive assuming they can run a whole-house rental and find out otherwise. "Can you Airbnb a house in Asheville" is one of the highest-volume questions in this market and the available answers are outdated or wrong. If you know the current rules, that is a lane you could own outright. If you do not want that business, we will leave it alone.</div>
+                    <div class="radio-group">
+                        <label><input type="radio" name="24. STR" value="Major part of our business, build it out"> It is a real part of our business. Build the content out.</label>
+                        <label><input type="radio" name="24. STR" value="Some, worth covering factually"> We see some of it. Worth covering factually so buyers stop getting it wrong.</label>
+                        <label><input type="radio" name="24. STR" value="Rarely, low priority"> Rarely. Low priority.</label>
+                        <label><input type="radio" name="24. STR" value="We do not want this business"> We do not want this business. Leave it out.</label>
+                    </div>
+                    <textarea name="24. STR Notes" style="min-height: 90px; margin-top: 12px;" placeholder="If you want it covered: what are the current rules as you understand them, how do they differ between the City of Asheville, Buncombe County, and the surrounding towns, what is the difference between a homestay and a whole-house rental, and where can buyers actually still do this? We will verify everything against the current ordinances before publishing, but your practical read matters more than the code text."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">25</span> Do you work with investors, and on what?</label>
+                    <div class="question-hint">Different searcher, different content. Worth knowing whether this is a lane at all.</div>
+                    <textarea name="25. Investors" style="min-height: 70px;" placeholder="e.g., Long-term rentals, mid-term and traveling professional rentals, small multifamily, land banking, renovation and resale, or not a focus..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 10 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">10</span> Questions People Ask You</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">26</span> What are the most common questions buyers ask you?</label>
+                    <div class="question-hint">Think about what comes up in consultations, calls, and emails. These become the exact queries we make AI answer with your name.</div>
+                    <textarea name="26. Buyer Questions" style="min-height: 130px;" placeholder="e.g.,
+- Which Asheville neighborhood fits me?
+- What does $1.5M actually buy here?
+- North Asheville vs. Biltmore Forest vs. The Ramble: how do I choose?
+- Is it worth joining the club at a gated community?
+- How bad are the winters and the roads?
+- What is the drive time to the airport, to Charlotte, to Atlanta?
+- Should I rent for a year first?
+- Is there anything left downtown under $1M?"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">27</span> What are the most common questions sellers ask you?</label>
+                    <div class="question-hint">What do owners want to know when they are thinking about listing?</div>
+                    <textarea name="27. Seller Questions" style="min-height: 120px;" placeholder="e.g.,
+- What is my home worth right now?
+- Has the market recovered enough for me to sell?
+- How long are homes taking to sell in my neighborhood?
+- Should I renovate before listing, or price for it?
+- How does Compass Concierge work and what does it return?
+- Do I have to disclose storm damage or repairs?
+- How do you reach out-of-state and off-market buyers?
+- Is spring really better, or is that a myth here?"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">28</span> What unique or surprising questions do you get that most agents would not know how to answer?</label>
+                    <div class="question-hint">These are gold. They become content no competitor has, which AI loves to cite.</div>
+                    <textarea name="28. Unique Questions" style="min-height: 100px;" placeholder="e.g., Which streets hold value through a downturn, how club membership transfers on resale and what it is really worth, which private road agreements are enforceable and which are a mess, how spring water rights work, which historic overlays will and will not approve an addition, why two houses on the same ridge appraise completely differently..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">29</span> If we could get Panashe cited by AI for just 3 queries, what would they be?</label>
+                    <div class="question-hint">What are the highest-value questions you want to own? Be as literal as you can, the way a buyer or seller would actually type or say it.</div>
+                    <textarea name="29. Top 3 AI Queries" style="min-height: 100px;" placeholder="1.
+2.
+3."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 11 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">11</span> Content Priorities</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">30</span> Which types of content are most important for your business? (Rank your top 5)</label>
+                    <div class="question-hint">We create these as guides and posts that support your pillar and neighborhood pages.</div>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="30. Content Types" value="Neighborhood guides"> Neighborhood and community deep-dives</label>
+                        <label><input type="checkbox" name="30. Content Types" value="Gated and club community guides"> Gated and club community guides (membership, dues, amenities)</label>
+                        <label><input type="checkbox" name="30. Content Types" value="Area comparisons"> Area comparisons (for example, "Biltmore Forest vs. North Asheville")</label>
+                        <label><input type="checkbox" name="30. Content Types" value="Relocation guides"> Relocation guides (for example, "Moving to Asheville from Florida")</label>
+                        <label><input type="checkbox" name="30. Content Types" value="Risk and resilience explainers"> Risk and resilience explainers (flood, slope, insurance)</label>
+                        <label><input type="checkbox" name="30. Content Types" value="Mountain property explainers"> Mountain property explainers (roads, wells, septic, slope, land)</label>
+                        <label><input type="checkbox" name="30. Content Types" value="NC contract and due diligence explainers"> North Carolina contract and due diligence explainers</label>
+                        <label><input type="checkbox" name="30. Content Types" value="Short-term rental guides"> Short-term rental rules and where they apply</label>
+                        <label><input type="checkbox" name="30. Content Types" value="Luxury and estate content"> Luxury and estate content</label>
+                        <label><input type="checkbox" name="30. Content Types" value="Seller guides"> Seller guides</label>
+                        <label><input type="checkbox" name="30. Content Types" value="Second home and vacation buyer guides"> Second home and vacation buyer guides</label>
+                        <label><input type="checkbox" name="30. Content Types" value="Land and build guides"> Land, lot, and build guides</label>
+                        <label><input type="checkbox" name="30. Content Types" value="School guides"> School guides, public and independent</label>
+                        <label><input type="checkbox" name="30. Content Types" value="Market reports"> Market reports (monthly or quarterly)</label>
+                        <label><input type="checkbox" name="30. Content Types" value="Lifestyle and things-to-do"> Lifestyle content (dining, arts, breweries, outdoors, Biltmore)</label>
+                        <label><input type="checkbox" name="30. Content Types" value="Video and Home Sessions"> Video and Home Sessions content</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 12 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">12</span> Your Expertise and Proof</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">31</span> What does Panashe know better than any other team in western North Carolina?</label>
+                    <div class="question-hint">This becomes the angle for your pillar content. What are you uniquely qualified to speak on?</div>
+                    <textarea name="31. Unique Expertise" placeholder="e.g., Twenty years living here and knowing the ridges block by block, the boutique model with a concierge standard of service, REALM access to high net worth buyers most local agents cannot reach, the club and gated community landscape, what actually holds value here, being local through Helene rather than commenting on it from outside..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">32</span> Confirm the numbers and awards we should cite.</label>
+                    <div class="flag">
+                        <span class="flag-tag">Needs current figures</span>
+                        The public figures we can find are dated. Press coverage from the Compass move cites $20M in volume in 2023, a place on Asheville's Top 100 Brokers list that year, and multiple closings above $3M. Those are from before Helene and before two more years of production. Concrete, current, verifiable proof points are what make AI engines trust and cite you, and stale numbers undersell you.
+                    </div>
+                    <div class="question-hint">Give us the precise, current version of each number so we publish one consistent set everywhere.</div>
+                    <textarea name="32. Proof Points" style="min-height: 120px;" placeholder="e.g., Trailing 12-month volume and unit count, career volume, highest sale to date and where, current rankings and the year attached to each, which awards are current versus historical, designations held and by whom, record sales by neighborhood, press or media features..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">33</span> Which designations does the team hold? (Check all that apply)</label>
+                    <div class="question-hint">Designations are structured credentials that AI engines and schema markup both read as trust signals. Note who holds which one below.</div>
+                    <div class="checkbox-group cols-2">
+                        <label><input type="checkbox" name="33. Designations" value="CLHMS"> CLHMS (Certified Luxury Home Marketing Specialist)</label>
+                        <label><input type="checkbox" name="33. Designations" value="GRI"> GRI (Graduate, REALTOR Institute)</label>
+                        <label><input type="checkbox" name="33. Designations" value="CRS"> CRS (Certified Residential Specialist)</label>
+                        <label><input type="checkbox" name="33. Designations" value="ABR"> ABR (Accredited Buyer's Representative)</label>
+                        <label><input type="checkbox" name="33. Designations" value="SRES"> SRES (Seniors Real Estate Specialist)</label>
+                        <label><input type="checkbox" name="33. Designations" value="SRS"> SRS (Seller Representative Specialist)</label>
+                        <label><input type="checkbox" name="33. Designations" value="CIPS"> CIPS (Certified International Property Specialist)</label>
+                        <label><input type="checkbox" name="33. Designations" value="CNE"> CNE (Certified Negotiation Expert)</label>
+                        <label><input type="checkbox" name="33. Designations" value="Broker-in-Charge"> NC Broker-in-Charge status</label>
+                        <label><input type="checkbox" name="33. Designations" value="ePRO"> ePRO</label>
+                    </div>
+                    <textarea name="33. Designations Detail" style="min-height: 56px; margin-top: 12px;" placeholder="Note who holds what, plus any designations not listed and any associations (Land of the Sky Association of REALTORS, NC REALTORS, NAR, Institute for Luxury Home Marketing, local boards or committees)..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">34</span> Who is your ideal client? Describe them.</label>
+                    <div class="question-hint">This helps us write content that speaks directly to the right buyer or seller.</div>
+                    <textarea name="34. Ideal Client" placeholder="e.g., A Florida couple in their late fifties buying a $2M mountain home with a club membership; a remote executive family relocating from the Northeast at $1M to $1.5M; a longtime Biltmore Forest owner ready to list an estate; a second home buyer who wants lock-and-leave downtown; a buyer who has never owned on a mountain and needs someone to explain what they are actually taking on..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 13 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">13</span> Competition and Current Presence</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">35</span> Who are your top competitors, and is there anyone specific you want to outrank?</label>
+                    <div class="question-hint">Name the agents or teams who show up first when buyers search your markets. We will study what they rank for and build past them.</div>
+                    <textarea name="35. Competitors" style="min-height: 90px;" placeholder="e.g., Specific Premier Sotheby's, Beverly-Hanks / Allen Tate, Keller Williams, Nest Realty, Mosaic, Town and Mountain, or other Compass teams in Asheville. Also name anyone whose neighborhood guides, market reports, or videos keep showing up ahead of you..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">36</span> Your blog has been quiet. What happened, and what do you want to happen next?</label>
+                    <div class="flag">
+                        <span class="flag-tag">Found on your site</span>
+                        Asheville Life published steadily through 2021 and 2022, then went quiet after August 2023, with one post since: "A Year Since Helene" in October 2025. We are not raising this as a criticism. Given what the last two years have been, a quiet blog is the least surprising thing on your site. We raise it because it is the largest single opportunity here. You already have the domain, the neighborhood guides, and a voice that works. Restarting a dormant blog with a real content architecture behind it is faster than building one from nothing, and AI engines reward depth and freshness together.
+                    </div>
+                    <div class="question-hint">Tell us how you want to work.</div>
+                    <div class="radio-group">
+                        <label><input type="radio" name="36. Blog Plan" value="BLOK takes it over entirely"> Take it over entirely. We do not have bandwidth to write.</label>
+                        <label><input type="radio" name="36. Blog Plan" value="BLOK writes, we review and approve"> You write, we review and approve before anything publishes.</label>
+                        <label><input type="radio" name="36. Blog Plan" value="Mix: BLOK on the technical content, we keep the lifestyle voice"> Mix. You handle the technical and market content, we keep writing the lifestyle and community posts ourselves.</label>
+                        <label><input type="radio" name="36. Blog Plan" value="Not sure, advise us"> Not sure, recommend an approach.</label>
+                    </div>
+                    <textarea name="36. Blog Notes" style="min-height: 70px; margin-top: 12px;" placeholder="Who wrote the earlier posts, which ones performed best, and is there anything from the old archive you want kept, updated, or removed?"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">37</span> Confirm your profile URLs across the major platforms.</label>
+                    <div class="question-hint">AI engines cross-check your name, brokerage, phone, and address across every profile they can find. Inconsistencies between your site, Google, Zillow, and Realtor.com weaken the entity and make engines less willing to cite you. Paste the live URLs so we can audit and align them.</div>
+                    <div class="confirm-grid">
+                        <div>
+                            <label>Google Business Profile</label>
+                            <input type="text" name="37a. Google Business Profile" placeholder="Paste the URL">
+                        </div>
+                        <div>
+                            <label>Zillow</label>
+                            <input type="text" name="37b. Zillow" placeholder="Paste the URL">
+                        </div>
+                        <div>
+                            <label>Realtor.com</label>
+                            <input type="text" name="37c. Realtor.com" placeholder="Paste the URL">
+                        </div>
+                        <div>
+                            <label>Compass agent page</label>
+                            <input type="text" name="37d. Compass Profile" placeholder="Paste the URL">
+                        </div>
+                        <div>
+                            <label>Instagram</label>
+                            <input type="text" name="37e. Instagram" placeholder="Paste the URL or handle">
+                        </div>
+                        <div>
+                            <label>Facebook</label>
+                            <input type="text" name="37f. Facebook" placeholder="Paste the URL or handle">
+                        </div>
+                        <div>
+                            <label>YouTube</label>
+                            <input type="text" name="37g. YouTube" placeholder="Paste the URL or handle">
+                        </div>
+                        <div>
+                            <label>LinkedIn</label>
+                            <input type="text" name="37h. LinkedIn" placeholder="Paste the URL or handle">
+                        </div>
+                        <div class="full">
+                            <label>Anywhere else the team is listed</label>
+                            <input type="text" name="37i. Other Profiles" placeholder="REALM profile, Luxury Home Marketing, local directories, press pages, other team or personal sites you control">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">38</span> Do we have access to what we need to publish and measure?</label>
+                    <div class="question-hint">Total Search works fastest when we can publish directly and see the data. Tell us who controls each of these and whether access is already available.</div>
+                    <textarea name="38. Access" style="min-height: 90px;" placeholder="e.g., Website CMS and who administers it (Compass-hosted or independent), Google Search Console, Google Analytics, Google Business Profile, who approves content before it goes live, and how quickly that approval usually happens..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 14 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">14</span> Guardrails and Anything Else</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">39</span> Are there any topics, claims, or areas we should avoid, and what tone fits your brand?</label>
+                    <div class="question-hint">Anything you do NOT want us to write about, plus the compliance rules we need to follow: Fair Housing on all school and neighborhood content, NC Real Estate Commission advertising rules, Compass brand requirements, and material fact disclosure. Tell us your standards and we will work inside them.</div>
+                    <textarea name="39. Guardrails & Tone" style="min-height: 100px;" placeholder="e.g., Keep Fair Housing compliant with no steering language, follow NCREC advertising rules and Compass brand requirements, never name clients, never discuss damage at a specific address, avoid crime and demographic claims, avoid competitor comparisons by name. On tone: your site reads boutique and understated ('Fiercely Local', 'a concierge approach to service') and the Helene post was plainspoken and warm. Tell us how closely to match that versus a more straightforward informational voice for the technical guides."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">40</span> Is there anything else we should know about your team, your market, or your goals?</label>
+                    <div class="question-hint">Anything we missed: specialties, languages spoken, upcoming listings or projects you want featured, seasonality, or specific results you want from this program.</div>
+                    <textarea name="40. Additional Notes" style="min-height: 110px;" placeholder="Anything else..."></textarea>
+                </div>
+            </div>
+
+            <!-- Submit -->
+            <div class="submit-section">
+                <button type="submit" class="submit-btn">Submit Questionnaire</button>
+                <p class="submit-note">Your responses go directly to Blok.co. You will receive a confirmation after submitting.</p>
+            </div>
+        </form>
+
+        <footer>
+            <p><strong>Panashe | Compass</strong> | Total Search Questionnaire | August 2026</p>
+            <p>Prepared by <a href="https://blok.co">Blok.co</a></p>
+        </footer>
+
+    </div>
+</body>
+</html>
