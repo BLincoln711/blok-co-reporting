@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Total Search Questionnaire | The Erin Krueger Team</title>
+    <link rel="stylesheet" href="https://use.typekit.net/xay8dos.css">
+    <style>
+        :root {
+            --navy: #010b23;
+            --navy-mid: #060f2a;
+            --navy-light: #0a1536;
+            --indigo: #111e50;
+            --blue: #1936a5;
+            --blue-glow: #416bdf;
+            --cyan: #59f3ff;
+            --cyan-dim: rgba(89,243,255,0.55);
+            --cyan-ghost: rgba(89,243,255,0.10);
+            --coral: #fb958a;
+            --teal: #85c9ce;
+            --paper: #eef1f8;
+            --sheet: #ffffff;
+            --ink: #0a1430;
+            --muted: #55618a;
+            --dim: #8b93b0;
+            --line: rgba(17,30,80,0.12);
+            --line-strong: rgba(17,30,80,0.22);
+            --font: "proxima-nova", -apple-system, "Helvetica Neue", "Segoe UI", system-ui, Roboto, Arial, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font);
+            background:
+                radial-gradient(1200px 600px at 50% -220px, rgba(65,107,223,0.12), transparent 60%),
+                var(--paper);
+            color: var(--ink);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 940px;
+            margin: 0 auto;
+            padding: 32px 20px 60px;
+        }
+
+        /* HEADER: light letterhead with the black BLOK logo */
+        header {
+            background: var(--sheet);
+            border: 1px solid var(--line);
+            border-top: 4px solid var(--cyan);
+            border-radius: 14px;
+            padding: 30px 34px 32px;
+            margin-bottom: 22px;
+            box-shadow: 0 18px 46px -28px rgba(10,20,48,0.4);
+        }
+
+        .brandbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding-bottom: 22px;
+            border-bottom: 1px solid var(--line);
+            margin-bottom: 24px;
+        }
+
+        .brandbar .logo {
+            width: 132px;
+            height: auto;
+            display: block;
+        }
+
+        .brandbar .doc-tag {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2.4px;
+            text-transform: uppercase;
+            color: var(--muted);
+            text-align: right;
+        }
+
+        .brandbar .doc-tag span {
+            display: block;
+            color: var(--blue);
+        }
+
+        header h1 {
+            font-size: 30px;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+            color: var(--navy);
+            margin-bottom: 6px;
+        }
+
+        header .subtitle {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--blue);
+            margin-bottom: 14px;
+        }
+
+        header .description {
+            font-size: 15px;
+            color: var(--muted);
+            max-width: 760px;
+        }
+
+        /* INTRO */
+        .intro {
+            background: var(--sheet);
+            border: 1px solid var(--line);
+            border-left: 4px solid var(--cyan);
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin-bottom: 22px;
+            box-shadow: 0 14px 40px -30px rgba(10,20,48,0.4);
+        }
+
+        .intro p {
+            font-size: 15px;
+            color: var(--ink);
+            margin-bottom: 12px;
+        }
+
+        .intro p:last-child { margin-bottom: 0; }
+
+        .intro strong { color: var(--navy); }
+
+        /* SECTIONS */
+        .section {
+            background: var(--sheet);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 0 30px 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 14px 40px -30px rgba(10,20,48,0.4);
+            overflow: hidden;
+        }
+
+        .section-header {
+            background: linear-gradient(100deg, var(--navy) 0%, var(--indigo) 100%);
+            color: #f0f2fa;
+            padding: 14px 24px;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            margin: 0 -30px 26px;
+            border-bottom: 2px solid var(--cyan);
+        }
+
+        .section-header .sec-num {
+            color: var(--cyan);
+            margin-right: 10px;
+        }
+
+        .question-group { margin-bottom: 28px; }
+        .question-group:last-child { margin-bottom: 0; }
+
+        .question-label {
+            font-weight: 600;
+            color: var(--navy);
+            font-size: 15.5px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .question-number {
+            display: inline-block;
+            background: var(--navy);
+            color: var(--cyan);
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 25px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-right: 9px;
+        }
+
+        .question-hint {
+            font-size: 13.5px;
+            color: var(--muted);
+            margin-bottom: 10px;
+        }
+
+        textarea, input[type="text"] {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1.5px solid var(--line-strong);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 14.5px;
+            color: var(--ink);
+            background: #fbfcff;
+            transition: border-color 0.15s, box-shadow 0.15s;
+        }
+
+        textarea {
+            min-height: 84px;
+            resize: vertical;
+        }
+
+        textarea:focus, input[type="text"]:focus {
+            outline: none;
+            border-color: var(--blue-glow);
+            box-shadow: 0 0 0 3px var(--cyan-ghost);
+            background: #fff;
+        }
+
+        textarea::placeholder, input::placeholder { color: var(--dim); }
+
+        .checkbox-group, .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .checkbox-group label, .radio-group label {
+            display: flex;
+            align-items: flex-start;
+            gap: 11px;
+            cursor: pointer;
+            font-size: 14.5px;
+            padding: 9px 14px;
+            background: #f6f8fd;
+            border: 1px solid transparent;
+            border-radius: 7px;
+            transition: background 0.15s, border-color 0.15s;
+        }
+
+        .checkbox-group label:hover, .radio-group label:hover {
+            background: var(--cyan-ghost);
+            border-color: rgba(89,243,255,0.45);
+        }
+
+        .checkbox-group input[type="checkbox"] { margin-top: 3px; }
+
+        .checkbox-group input[type="checkbox"],
+        .radio-group input[type="radio"] {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+            accent-color: var(--blue);
+        }
+
+        /* Two-column checkbox variant for long lists */
+        .cols-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        /* AREA GRID */
+        .area-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            border: 1.5px solid var(--line-strong);
+            border-radius: 9px;
+            overflow: hidden;
+            margin-top: 12px;
+        }
+
+        .area-grid .area-name {
+            padding: 12px 14px;
+            background: #f6f8fd;
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--navy);
+            border-bottom: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+        }
+
+        .area-grid .area-input {
+            padding: 7px 14px;
+            border-bottom: 1px solid var(--line);
+            border-left: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+        }
+
+        .area-grid .area-input input {
+            border: none;
+            background: transparent;
+            padding: 4px 0;
+            font-size: 14px;
+        }
+
+        .area-grid .area-input input:focus {
+            box-shadow: none;
+            background: transparent;
+        }
+
+        .area-grid .area-name:last-of-type,
+        .area-grid .area-input:last-of-type { border-bottom: none; }
+
+        /* CONFIRM GRID */
+        .confirm-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .confirm-grid .full { grid-column: 1 / -1; }
+
+        .confirm-grid label {
+            font-size: 12.5px;
+            font-weight: 700;
+            letter-spacing: 0.4px;
+            text-transform: uppercase;
+            color: var(--muted);
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        /* FLAG callout for things we found that need confirming */
+        .flag {
+            background: rgba(251,149,138,0.10);
+            border: 1px solid rgba(251,149,138,0.45);
+            border-left: 3px solid var(--coral);
+            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 13.5px;
+            color: var(--ink);
+            margin-bottom: 12px;
+        }
+
+        .flag .flag-tag {
+            display: block;
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 1.6px;
+            text-transform: uppercase;
+            color: #b4564a;
+            margin-bottom: 4px;
+        }
+
+        /* SUBMIT */
+        .submit-section {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 60%, var(--indigo) 100%);
+            border-radius: 12px;
+            padding: 36px 30px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 18px 46px -28px rgba(10,20,48,0.6);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--cyan) 0%, #7fd8ff 100%);
+            color: var(--navy);
+            border: none;
+            padding: 16px 62px;
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.4px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px -6px rgba(89,243,255,0.45);
+        }
+
+        .submit-btn:active { transform: translateY(0); }
+
+        .submit-note {
+            font-size: 13px;
+            color: #c3c5cf;
+            margin-top: 14px;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 8px 20px;
+            color: var(--muted);
+        }
+
+        footer p { font-size: 13px; margin: 4px 0; }
+
+        footer strong { color: var(--navy); }
+
+        footer a { color: var(--blue); text-decoration: none; }
+
+        @media print {
+            body { background: #fff; }
+            .section, header, .intro { box-shadow: none; break-inside: avoid; }
+            .question-group { break-inside: avoid; }
+            .area-grid, .checkbox-group, .radio-group, .confirm-grid, .flag { break-inside: avoid; }
+            textarea { min-height: 60px; }
+        }
+
+        @media (max-width: 640px) {
+            .container { padding: 20px 14px 40px; }
+            header { padding: 24px 20px; }
+            header h1 { font-size: 24px; }
+            .section { padding: 0 18px 24px; }
+            .section-header { margin: 0 -18px 22px; padding: 13px 18px; }
+            .intro { padding: 20px; }
+            .area-grid { grid-template-columns: 1fr; }
+            .confirm-grid { grid-template-columns: 1fr; }
+            .cols-2 { grid-template-columns: 1fr; }
+            .brandbar .doc-tag { text-align: left; }
+            .submit-btn { width: 100%; padding: 16px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <header>
+            <div class="brandbar">
+                <svg class="logo" viewBox="0 0 521.68 163.5" role="img" aria-label="BLOK">
+                    <g>
+                        <polygon fill="#85c9ce" points="54.9 98.1 54.9 40.6 107.4 69.7 107.4 128.5 54.9 98.1"/>
+                        <polygon fill="#fb958a" points="0 132.9 53.7 101.6 106.7 132.9 53.7 163.5 0 132.9"/>
+                        <polygon fill="#060c3b" points="0 129.2 0 29.7 51.7 0 51.7 98.8 0 129.2"/>
+                        <path fill="#060c3b" d="M212.4,104.4c0-10-1.6-17.3-4.7-21.8-3.2-4.6-7.9-6.9-14.2-6.9-8.4,0-14.2,3.4-17.3,10.3v39c3.2,6.9,9.1,10.4,17.5,10.4s14.1-4.2,16.8-12.6c1.3-4,1.9-10.2,1.9-18.4ZM238.8,106.3c0,15.8-3.4,28.2-10.1,37.1-6.8,8.8-16.2,13.2-28.3,13.2-10.7,0-19.3-4.1-25.7-12.3l-1.2,10.5h-23.7V14.6h26.4v50.3c6.1-7.1,14.1-10.7,24-10.7,12.1,0,21.5,4.4,28.3,13.3,6.9,8.8,10.3,21.3,10.3,37.3v1.5Z"/>
+                        <rect fill="#060c3b" x="256.5" y="14.6" width="26.5" height="140.2"/>
+                        <path fill="#060c3b" d="M327.1,106.4c0,9.4,1.8,16.6,5.3,21.5s8.6,7.4,15.2,7.4,11.4-2.4,15-7.3c3.6-4.9,5.4-12.8,5.4-23.6,0-9.2-1.8-16.3-5.4-21.4-3.6-5.1-8.6-7.6-15.2-7.6s-11.4,2.5-15,7.6c-3.5,5.1-5.3,12.9-5.3,23.4ZM300.7,104.5c0-9.8,1.9-18.5,5.7-26.2,3.8-7.7,9.2-13.6,16.2-17.8,7.1-4.2,15.4-6.3,24.7-6.3,13.3,0,24.2,4.1,32.6,12.2,8.5,8.2,13.2,19.2,14.2,33.2l.2,6.8c0,15.2-4.2,27.3-12.7,36.5-8.5,9.1-19.8,13.7-34.1,13.7s-25.6-4.6-34.1-13.7c-8.5-9.1-12.7-21.5-12.7-37.2v-1.2h0Z"/>
+                        <polygon fill="#060c3b" points="446.4 115.2 436.9 124.7 436.9 154.8 410.5 154.8 410.5 14.6 436.9 14.6 436.9 92.3 442 85.7 467.3 56 499 56 463.3 97.2 502.1 154.8 471.8 154.8 446.4 115.2"/>
+                        <path fill="#060c3b" d="M521.68,23.94c0,5.58-4.38,9.96-10.08,9.96s-10.14-4.38-10.14-9.96,4.5-9.84,10.14-9.84,10.08,4.38,10.08,9.84ZM503.98,23.94c0,4.38,3.24,7.86,7.68,7.86s7.5-3.48,7.5-7.8-3.18-7.92-7.56-7.92-7.62,3.54-7.62,7.86ZM510.04,29.1h-2.28v-9.84c.9-.18,2.16-.3,3.78-.3,1.86,0,2.7.3,3.42.72.54.42.96,1.2.96,2.16,0,1.08-.84,1.92-2.04,2.28v.12c.96.36,1.5,1.08,1.8,2.4.3,1.5.48,2.1.72,2.46h-2.46c-.3-.36-.48-1.26-.78-2.4-.18-1.08-.78-1.56-2.04-1.56h-1.08v3.96ZM510.1,23.52h1.08c1.26,0,2.28-.42,2.28-1.44,0-.9-.66-1.5-2.1-1.5-.6,0-1.02.06-1.26.12v2.82Z"/>
+                    </g>
+                </svg>
+                <div class="doc-tag">
+                    Total Search
+                    <span>Onboarding Questionnaire</span>
+                </div>
+            </div>
+
+            <h1>Total Search Questionnaire</h1>
+            <div class="subtitle">The Erin Krueger Team at Compass</div>
+            <p class="description">We build the content that gets your brand cited by Google AI Overviews, ChatGPT, Perplexity, and Gemini. Your answers below tell us exactly what to build, who to target, and which questions to answer for buyers, sellers, builders, and investors across Nashville, Williamson County, and the rest of Middle Tennessee.</p>
+        </header>
+
+        <div class="intro">
+            <p><strong>How this works:</strong> The Erin Krueger Team has more authority to build on than almost any team we onboard. You are a RealTrends and Wall Street Journal ranked team, a five-time Greater Nashville REALTORS Top Selling Team, and erinkrueger.com already publishes neighborhood guides across 12 South, Belle Meade, Green Hills, The Gulch, Germantown, Downtown, Midtown, East Nashville, Oak Hill and Forest Hills, Hillsboro and West End, West Nashville, The Nations, Crieve Hall, Brentwood, Franklin, Spring Hill, College Grove, Mount Juliet, Murfreesboro, and Hendersonville, plus market reports, a blog, videos, a podcast, a book, and dedicated Builder and Developer, Investor, Short-Term Rental, and Relocation divisions. Total Search amplifies all of that into AI search. We create and optimize pillar pages, neighborhood guides, community pages, division-specific content, and relocation content, then index every page so AI engines name your team when people ask about Nashville, Franklin, Brentwood, and the rest of your footprint.</p>
+            <p>Two things make this questionnaire different from a typical agent intake. First, you run four divisions and an eighteen-person roster, so we need to know how to distribute authority across named people rather than concentrate everything under one byline. Second, you already produce original media that most teams do not have, and original media is exactly what AI engines look for when deciding who is a real authority rather than a listing feed.</p>
+            <p>Most questions take a sentence or two. The more specific you are, the faster we own the right searches for your market. If a question does not apply, skip it. Where we found something on your site that needs a decision or a correction, we have flagged it in orange.</p>
+        </div>
+
+        <form action="https://formsubmit.co/brandon.hendricks@blok.co" method="POST">
+            <!-- FormSubmit Configuration -->
+            <input type="hidden" name="_subject" value="Total Search Questionnaire - The Erin Krueger Team">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_cc" value="advertising@blok.co">
+            <input type="hidden" name="_next" value="https://reports-blok.co/thank-you/">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="text" name="_honey" style="display:none">
+
+            <!-- Section 1 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">01</span> Confirm Your Details</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">1</span> Confirm or correct the details we have on file.</label>
+                    <div class="flag">
+                        <span class="flag-tag">Two things we could not resolve from public sources</span>
+                        Your site currently shows the office as 2206 21st Ave S, Nashville, TN 37212, while other records we found list 827 19th Ave South, Suite 1050, Nashville, TN 37203. We also found two phone numbers, (615) 509-7166 and (615) 475-5616, with no indication of which is primary. Address and phone are the two strongest identity signals AI engines use to decide whether two mentions of your team are the same entity. When they conflict across the web, engines hedge instead of citing. Tell us the correct current set and we will publish one version everywhere.
+                    </div>
+                    <div class="question-hint">Correct anything below that is wrong or out of date.</div>
+                    <div class="confirm-grid">
+                        <div>
+                            <label>Team lead / lead agent</label>
+                            <input type="text" name="1a. Agent Name" value="Erin Krueger">
+                        </div>
+                        <div>
+                            <label>Title</label>
+                            <input type="text" name="1b. Title" value="Team Lead, Affiliate Broker, REALTOR">
+                        </div>
+                        <div>
+                            <label>Team name</label>
+                            <input type="text" name="1c. Team Name" value="The Erin Krueger Team">
+                        </div>
+                        <div>
+                            <label>Brokerage (exact legal entity name)</label>
+                            <input type="text" name="1d. Brokerage" value="Compass" placeholder="Your site says COMPASS; licensing records may show Compass RE or Compass Tennessee, LLC">
+                        </div>
+                        <div>
+                            <label>Website</label>
+                            <input type="text" name="1e. Website" value="erinkrueger.com">
+                        </div>
+                        <div>
+                            <label>Primary email</label>
+                            <input type="text" name="1f. Email" value="erin@erinkrueger.com">
+                        </div>
+                        <div>
+                            <label>Primary phone</label>
+                            <input type="text" name="1g. Phone Primary" value="(615) 509-7166">
+                        </div>
+                        <div>
+                            <label>Second phone and what it is for</label>
+                            <input type="text" name="1h. Phone Secondary" value="(615) 475-5616" placeholder="Office, direct, team line, or retire it">
+                        </div>
+                        <div>
+                            <label>License number</label>
+                            <input type="text" name="1i. License" placeholder="Tennessee affiliate broker license number">
+                        </div>
+                        <div>
+                            <label>Best point of contact for this project</label>
+                            <input type="text" name="1j. Project Contact" placeholder="Name, role, direct phone, and email">
+                        </div>
+                        <div>
+                            <label>Year the team was founded</label>
+                            <input type="text" name="1k. Year Founded" placeholder="Year the team formed, and the year Erin started in real estate if different">
+                        </div>
+                        <div>
+                            <label>Hours / availability to publish</label>
+                            <input type="text" name="1l. Hours" placeholder="Office hours as you want them published in structured data">
+                        </div>
+                        <div class="full">
+                            <label>Correct current office address</label>
+                            <input type="text" name="1m. Office Address" value="2206 21st Ave S, Nashville, TN 37212">
+                        </div>
+                        <div class="full">
+                            <label>Any additional offices or satellite locations</label>
+                            <input type="text" name="1n. Other Offices" placeholder="Franklin, Brentwood, or anywhere else you hold an office or regularly meet clients">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">2</span> How do you want the team named across the web?</label>
+                    <div class="question-hint">AI engines build an entity profile by matching your name across your site, Google, Zillow, Realtor.com, Compass, and every directory that has ever listed you. Small variations split that profile in two and weaken both halves. We want one canonical version and we will align every profile we can reach to it.</div>
+                    <textarea name="2. Canonical Naming" style="min-height: 80px;" placeholder="e.g., always The Erin Krueger Team, never Erin Krueger Team or The Krueger Team; brokerage always written as Compass; whether Erin's individual name should be the primary entity or the team name; any DBA, legal entity, or prior team name still floating around out there..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 2 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">02</span> Your Team and Who We Name</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">3</span> Who on the team should be named in content, and for what?</label>
+                    <div class="flag">
+                        <span class="flag-tag">The highest-leverage answer on this form</span>
+                        Your Meet the Team page lists Sarah Daskam, Georgia Mascali, Laura Picataggio, Loren Murphy, Christy Thomas, Mary Spotts, Marissa Gayne, Lisa Pullen, Sydney Wood, Karlie Barons, Sharon Smith, Molly Parsons, Jen Kasick, Sarah Harvey, Amanda Hone, Genaide Kilduff, and Elizabeth Averbuch, with no individual titles or areas of expertise attached to any of them. Eighteen people and one collective description of "seasoned brokers and savvy marketers." AI engines cite named people with a clear specialty far more readily than a generic team byline, and right now nothing on the site tells an engine who owns what. Answering this well is worth more than any other single item here.
+                    </div>
+                    <div class="question-hint">Tell us who owns which lane. You do not need to cover all eighteen, just the ones who should carry authority in content.</div>
+                    <textarea name="3. Team Bylines" style="min-height: 150px;" placeholder="e.g., Erin for luxury, listing strategy, and media; who leads the Builder and Developer division; who leads the Investor and Short-Term Rental division; who leads Relocation; who owns Williamson County versus Davidson County; who handles first-time buyers; who runs listing marketing; who is client-facing versus operations only..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">4</span> Who can be quoted or attributed publicly, and what do we have to work with?</label>
+                    <div class="question-hint">Author attribution, headshots, and real bios are structured signals. A guide bylined to a named person with a photo, a bio, and a credential outperforms an unattributed team post in AI search by a wide margin.</div>
+                    <textarea name="4. Attribution and Assets" style="min-height: 100px;" placeholder="e.g., who can be quoted or bylined, anyone who should not be named publicly at all, whether current headshots and bios exist for the people you named above and where we can get them, any licensing or Compass approval needed before we publish a byline, and who reviews quotes before they go live..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">5</span> Does anyone on the team speak a language other than English with clients?</label>
+                    <div class="question-hint">Language capability is a small answer that opens a content lane almost no Nashville team competes for, and AI engines answer language-specific queries directly.</div>
+                    <textarea name="5. Languages" style="min-height: 56px;" placeholder="Languages spoken, by whom, and whether you actively want business from those communities..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 3 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">03</span> Goals and Transaction Focus</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">6</span> What is your primary goal right now?</label>
+                    <div class="question-hint">What does success look like for The Erin Krueger Team in the next 6 to 12 months?</div>
+                    <textarea name="6. Primary Goal" placeholder="e.g., More listing appointments in Williamson County, grow the luxury side above $2M, feed the Builder and Developer division more community assignments, scale the Investor and Short-Term Rental divisions, capture more of the out-of-state relocation wave, reduce dependence on paid lead sources and portal referrals..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">7</span> What type of transactions are you trying to generate more of?</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="7. Transaction Focus" value="Mostly buyers (70%+ buyer content)"> Mostly buyers (70%+ buyer content)</label>
+                        <label><input type="radio" name="7. Transaction Focus" value="Mostly sellers (70%+ seller content)"> Mostly sellers (70%+ seller content)</label>
+                        <label><input type="radio" name="7. Transaction Focus" value="Even split (50/50)"> Even split (50/50 buyer and seller content)</label>
+                        <label><input type="radio" name="7. Transaction Focus" value="Heavier buyer (60/40)"> Heavier buyer, some seller (60/40)</label>
+                        <label><input type="radio" name="7. Transaction Focus" value="Heavier seller (60/40)"> Heavier seller, some buyer (60/40)</label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">8</span> What price range should our content focus on? (Check all that apply)</label>
+                    <div class="checkbox-group cols-2">
+                        <label><input type="checkbox" name="8. Price Range" value="Under $400K"> Under $400K (first-time, condo, investment)</label>
+                        <label><input type="checkbox" name="8. Price Range" value="$400K - $600K"> $400K to $600K</label>
+                        <label><input type="checkbox" name="8. Price Range" value="$600K - $900K"> $600K to $900K</label>
+                        <label><input type="checkbox" name="8. Price Range" value="$900K - $1.5M"> $900K to $1.5M</label>
+                        <label><input type="checkbox" name="8. Price Range" value="$1.5M - $3M"> $1.5M to $3M</label>
+                        <label><input type="checkbox" name="8. Price Range" value="$3M - $5M"> $3M to $5M</label>
+                        <label><input type="checkbox" name="8. Price Range" value="$5M+ (estate and penthouse tier)"> $5M and up (estate and penthouse tier)</label>
+                        <label><input type="checkbox" name="8. Price Range" value="Land / lots / development sites"> Land, lots, and development sites</label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">9</span> Roughly how does your business split across these four lanes?</label>
+                    <div class="question-hint">You run divisions most Nashville teams do not have. Percentages tell us how much content weight each lane deserves, and which ones are growth targets rather than current volume.</div>
+                    <textarea name="9. Business Mix" style="min-height: 100px;" placeholder="e.g., Traditional resale __%, new construction and builder or developer representation __%, investor and short-term rental __%, relocation and referral __%. Note which of these you want to GROW even if it is small today, because that changes what we build first."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">10</span> Who is your ideal client? Describe them.</label>
+                    <div class="question-hint">This helps us write content that speaks directly to the right buyer, seller, investor, or developer.</div>
+                    <textarea name="10. Ideal Client" placeholder="e.g., A relocating executive family with a $1.2M budget deciding between Franklin and Brentwood; a California seller cashing out and buying twice the house here; a longtime Green Hills owner downsizing; an out-of-state investor buying two short-term rentals in East Nashville; a developer with 60 lots who needs a sales team from entitlement through closeout..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 4 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">04</span> Your Markets</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">11</span> Help us understand your geography. For each area below, tell us what it is and whether we should build a pillar page for it.</label>
+                    <div class="question-hint">A pillar page is a 3,000+ word comprehensive guide, for example "The Ultimate Guide to Living in Franklin, Tennessee." We need to know whether each area is a primary market, a secondary market, or one you are trying to break into. Most of these are pulled from your existing Neighborhoods pages. The last few are not on your site at all and we want to know whether they should be. Correct anything that is wrong for your business.</div>
+
+                    <div class="area-grid">
+                        <div class="area-name">Franklin</div>
+                        <div class="area-input"><input type="text" name="11. Market - Franklin" placeholder="e.g., Primary market, Williamson County, downtown Franklin, schools driver, build the flagship pillar page"></div>
+
+                        <div class="area-name">Brentwood</div>
+                        <div class="area-input"><input type="text" name="11. Market - Brentwood" placeholder="e.g., Primary market, executive relocation, Governors Club and estate tier"></div>
+
+                        <div class="area-name">Green Hills</div>
+                        <div class="area-input"><input type="text" name="11. Market - Green Hills" placeholder="e.g., Primary, in-town luxury, walkability, private schools"></div>
+
+                        <div class="area-name">Belle Meade</div>
+                        <div class="area-input"><input type="text" name="11. Market - Belle Meade" placeholder="e.g., Estate tier, discretion required, low inventory"></div>
+
+                        <div class="area-name">Oak Hill / Forest Hills</div>
+                        <div class="area-input"><input type="text" name="11. Market - Oak Hill Forest Hills" placeholder="e.g., Acreage and estate tier, teardown and rebuild activity"></div>
+
+                        <div class="area-name">12 South</div>
+                        <div class="area-input"><input type="text" name="11. Market - 12 South" placeholder="e.g., In-town lifestyle buyer, price per square foot leader, STR interest"></div>
+
+                        <div class="area-name">The Gulch</div>
+                        <div class="area-input"><input type="text" name="11. Market - The Gulch" placeholder="e.g., Condo and high-rise, investor and second-home buyer"></div>
+
+                        <div class="area-name">Germantown</div>
+                        <div class="area-input"><input type="text" name="11. Market - Germantown" placeholder="e.g., Historic in-town, restaurants, condo and townhome mix"></div>
+
+                        <div class="area-name">Downtown Nashville</div>
+                        <div class="area-input"><input type="text" name="11. Market - Downtown" placeholder="e.g., High-rise condo and penthouse tier, do we own this search or concede it?"></div>
+
+                        <div class="area-name">Midtown</div>
+                        <div class="area-input"><input type="text" name="11. Market - Midtown" placeholder="e.g., Vanderbilt and hospital proximity, condo and rental conversion"></div>
+
+                        <div class="area-name">East Nashville</div>
+                        <div class="area-input"><input type="text" name="11. Market - East Nashville" placeholder="e.g., Sub-neighborhoods (Lockeland Springs, Five Points, Inglewood), STR-heavy"></div>
+
+                        <div class="area-name">Hillsboro / West End</div>
+                        <div class="area-input"><input type="text" name="11. Market - Hillsboro West End" placeholder="e.g., Vanderbilt proximity, historic homes, faculty and physician buyers"></div>
+
+                        <div class="area-name">West Nashville / The Nations</div>
+                        <div class="area-input"><input type="text" name="11. Market - Nations West Nashville" placeholder="e.g., New build tall-and-skinny inventory, first-time and investor buyers"></div>
+
+                        <div class="area-name">Crieve Hall</div>
+                        <div class="area-input"><input type="text" name="11. Market - Crieve Hall" placeholder="e.g., Value play in Davidson County, renovation buyers"></div>
+
+                        <div class="area-name">College Grove</div>
+                        <div class="area-input"><input type="text" name="11. Market - College Grove" placeholder="e.g., Golf and estate communities, acreage, is this a core lane?"></div>
+
+                        <div class="area-name">Spring Hill</div>
+                        <div class="area-input"><input type="text" name="11. Market - Spring Hill" placeholder="e.g., Maury and Williamson split, GM and Ultium employment, new construction"></div>
+
+                        <div class="area-name">Mount Juliet</div>
+                        <div class="area-input"><input type="text" name="11. Market - Mount Juliet" placeholder="e.g., Wilson County, Providence, commuter value, lake proximity"></div>
+
+                        <div class="area-name">Hendersonville</div>
+                        <div class="area-input"><input type="text" name="11. Market - Hendersonville" placeholder="e.g., Sumner County, Old Hickory Lake waterfront, Fairvue and Foxland"></div>
+
+                        <div class="area-name">Murfreesboro</div>
+                        <div class="area-input"><input type="text" name="11. Market - Murfreesboro" placeholder="e.g., Rutherford County, MTSU, affordability and investor demand"></div>
+
+                        <div class="area-name">Nolensville / Thompson's Station</div>
+                        <div class="area-input"><input type="text" name="11. Market - Nolensville Thompsons Station" placeholder="NOT on your site today. Fast-growth Williamson County, heavy new construction. Do you sell here?"></div>
+
+                        <div class="area-name">Gallatin</div>
+                        <div class="area-input"><input type="text" name="11. Market - Gallatin" placeholder="NOT on your site today. Sumner County growth, lake communities. Worth a page?"></div>
+
+                        <div class="area-name">Columbia / Maury County</div>
+                        <div class="area-input"><input type="text" name="11. Market - Columbia Maury" placeholder="NOT on your site today. Emerging value market, historic downtown. Core lane or referral only?"></div>
+                    </div>
+
+                    <textarea name="11. Other Markets" style="min-height: 56px; margin-top: 16px;" placeholder="Any other cities, towns, or areas we should know about? (e.g., Leiper's Fork, Fairview, Arrington, Lebanon, Goodlettsville, Ashland City, Dickson, Bellevue, Sylvan Park, Wedgewood-Houston, Berry Hill, or anywhere you take referrals)"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">12</span> Which school districts and schools matter most to your buyers?</label>
+                    <div class="question-hint">School searches are among the highest-intent queries in Middle Tennessee and AI engines answer them constantly. Williamson County in particular drives relocation decisions before a buyer ever picks a house. We write these Fair Housing compliant, factual, and without steering language.</div>
+                    <textarea name="12. School Districts" style="min-height: 100px;" placeholder="e.g., Williamson County Schools, Franklin Special School District, Metro Nashville Public Schools and which specific zones or magnets matter, Rutherford County, Wilson County, Sumner County, Maury County, plus the private and parochial schools buyers ask you about (Ensworth, MBA, Harpeth Hall, Brentwood Academy, BGA, Father Ryan, CPA, USN, Currey Ingram, Franklin Road Academy)..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 5 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">05</span> Communities, Golf, and Master-Planned Developments</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">13</span> Which specific subdivisions and master-planned developments should get their own dedicated page?</label>
+                    <div class="question-hint">These are Tier 2 pages: detailed guides about living in each community, covering amenities, HOA, schools, lifestyle, price bands, and builders. Middle Tennessee buyers search heavily by community name, and those searches convert. List the ones you specialize in, hold listings in, or have closed repeatedly.</div>
+                    <textarea name="13. Community Pages" style="min-height: 130px;" placeholder="e.g.,
+- Master-planned and large developments (Westhaven, Berry Farms, Durham Farms, Providence, Tollgate Village, Canterbury, Witherspoon, Avondale Park)
+- Bison Ridge and any other development you represent directly
+- Older Nashville and Franklin neighborhoods you know block by block
+- Any builder community where you have repeat closings..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">14</span> Which golf and country club communities should we build out?</label>
+                    <div class="flag">
+                        <span class="flag-tag">An open lane sitting in plain sight on your own site</span>
+                        You have a Golf Course Communities category in your navigation, but the individual clubs do not have their own pages behind it. Club community searches are among the highest-value queries in Williamson County because the buyer is self-identifying as high budget and specific intent before they ever contact anyone. A category link with nothing under it gives an AI engine nothing to cite. This is one of the fastest wins available here.
+                    </div>
+                    <div class="question-hint">List the clubs and communities you actually know and transact in, and note where you have real depth versus general familiarity.</div>
+                    <textarea name="14. Golf Communities" style="min-height: 120px;" placeholder="e.g., Troubadour, The Grove, Governors Club, Vanderbilt Legends, Nashville Golf and Athletic Club, Old Natchez, Fairvue Plantation, Foxland Harbor, Golf Club of Tennessee, Hillwood, Richland, Belle Meade Country Club area. Note membership structures you can speak to, which ones you have closed in, and any club rules about how they may be described publicly..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 6 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">06</span> Builder and Developer Division</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">15</span> Tell us how the Builder and Developer division actually works.</label>
+                    <div class="question-hint">Your site says the division works with developers, investors, and builders across Downtown Nashville and neighboring counties, with involvement ranging from floor plan creation and design selections through sales and marketing. That is a genuinely differentiated service and the page describes it in general terms. Specifics are what get cited.</div>
+                    <textarea name="15. Builder Division" style="min-height: 120px;" placeholder="e.g., Which builders and developers you represent or have repeat relationships with, which communities you are currently selling, how early you typically come in (land, entitlement, plan design, or sales only), typical deal structure, how many units or communities you have taken to closeout, and any builders you would steer a client away from (we will not publish that, but it informs how we frame the guides)..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">16</span> How should we handle Bison Ridge, and do you want more developer clients?</label>
+                    <div class="question-hint">Bison Ridge is the one development named on your site. A community you represent directly should have a deep content footprint behind it, and separately, a developer searching for a sales team types very different queries than a homebuyer does. Almost nobody writes for that second audience.</div>
+                    <textarea name="16. Bison Ridge and Developer Acquisition" style="min-height: 110px;" placeholder="e.g., Bison Ridge location, price band, builder, current sales stage, what we may and may not say about it, and whether it has its own site we should reference. Then: do you want to attract NEW builder and developer clients, and if so what would a developer with 40 to 100 lots actually search for when looking for a sales and marketing team?"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">17</span> What do buyers get wrong about new construction, and what does your team do differently?</label>
+                    <div class="question-hint">This is a lane almost no competing team writes about honestly, which makes it a prime AI citation target, and it pairs directly with your builder relationships.</div>
+                    <textarea name="17. New Construction Edge" style="min-height: 100px;" placeholder="e.g., Buyers do not realize the on-site agent works for the builder, what is actually negotiable versus what is not, lot premiums, incentive structures and preferred-lender math, upgrade decisions that hold value versus ones that do not, inspection rights during the build, timeline and contract risk in Middle Tennessee..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 7 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">07</span> Investor Division and Short-Term Rentals</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">18</span> What kind of investor do you actually serve?</label>
+                    <div class="question-hint">Investor content only works if it is written for a specific strategy. A buy-and-hold out-of-state owner and a build-to-rent fund are not the same reader and do not ask the same questions.</div>
+                    <textarea name="18. Investor Profile" style="min-height: 100px;" placeholder="e.g., Out-of-state buy-and-hold, short-term rental, small multifamily, build-to-rent, 1031 exchange, house hacking, land banking. Note typical entry budget, whether you work with funds or only individuals, and which of these you want more of..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">19</span> How do you explain Nashville short-term rental rules to a buyer?</label>
+                    <div class="flag">
+                        <span class="flag-tag">The single widest-open citation lane in your market</span>
+                        Short-term rental rules in Davidson County vary by zoning and permit type, they have changed repeatedly, and the surrounding counties all treat them differently. Buyers search these questions constantly and the answers AI engines currently return are a mix of outdated blog posts and national listicles that get Nashville specifics wrong. Almost no Nashville team publishes a clear, current, honest guide, and you already have the division to back one up. This is the highest-value thing we could build for you, and it is also the one that most needs your judgment on how definitive we are allowed to be.
+                    </div>
+                    <div class="question-hint">Give us your working explanation, and tell us where the line is between helpful and giving legal advice.</div>
+                    <textarea name="19. STR Rules" style="min-height: 130px;" placeholder="e.g., What you tell a buyer about owner-occupied versus non-owner-occupied permits, which zoning districts allow what, how the permit cap and grandfathering work, which neighborhoods actually work for STR versus which ones people wrongly assume work, HOA and covenant traps, how Williamson, Wilson, Rutherford, and Sumner counties differ from Metro, and what disclaimer language you want on anything we publish..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">20</span> What returns and partners can we discuss publicly?</label>
+                    <div class="question-hint">Concrete numbers get cited. Vague ones do not. But we will not publish a figure you are not comfortable standing behind.</div>
+                    <textarea name="20. Returns and Partners" style="min-height: 90px;" placeholder="e.g., Typical cap rates, gross rents, or occupancy figures you are comfortable publishing and how you want them caveated, property management partners you refer to, lenders who handle investor and STR financing, CPAs or 1031 intermediaries, and anything you would rather we keep out entirely..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 8 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">08</span> Luxury and the Estate Tier</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">21</span> Confirm your record sales and how you want the luxury side positioned.</label>
+                    <div class="flag">
+                        <span class="flag-tag">Strong proof points that need their details filled in</span>
+                        Your site cites a 2023 record of nearly $2,300 per square foot and a 2024 record-breaking penthouse sale at nearly $4,000 per square foot. Records like that are exactly the kind of specific, verifiable fact AI engines cite, but only when the surrounding detail is there. Right now neither one names the property, the building, the neighborhood, or the record it broke, which leaves an engine with an impressive number and nothing to attach it to.
+                    </div>
+                    <div class="question-hint">Give us what we can publish, and tell us what is confidential.</div>
+                    <textarea name="21. Luxury Records" style="min-height: 120px;" placeholder="e.g., For each record: the building or neighborhood, the year, what record it broke (city, county, building, price per square foot), and whether the address may be named. Then: how you want the luxury side positioned overall, which price band is your real luxury sweet spot, and what you do for a $3M+ seller that a typical Nashville agent does not..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">22</span> How should we handle discretion, and the Compass tools?</label>
+                    <div class="question-hint">Compass Concierge, bridge loans, and Private Exclusives are searchable questions with real intent, for example "how does Compass Concierge work." We want your framing before we publish anything about how you use them. Separately, high-profile clients in Nashville come with privacy expectations we need to respect from the first draft.</div>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="22. Compass Tools" value="Compass Concierge"> Build content around Compass Concierge (pre-sale improvements)</label>
+                        <label><input type="checkbox" name="22. Compass Tools" value="Bridge loans"> Build content around bridge loans and buying before you sell</label>
+                        <label><input type="checkbox" name="22. Compass Tools" value="Private Exclusives / Private Client Network"> Build content around Private Exclusives and the Private Client Network</label>
+                        <label><input type="checkbox" name="22. Compass Tools" value="Compass Marketing / staging"> Build content around the marketing and staging program</label>
+                        <label><input type="checkbox" name="22. Compass Tools" value="Keep Compass tools out of content"> Keep the Compass tools out of the content program</label>
+                    </div>
+                    <textarea name="22. Discretion Notes" style="min-height: 80px; margin-top: 12px;" placeholder="Any Compass compliance or approval requirements, plus how you handle discretion for music industry, athlete, healthcare executive, or other high-profile clients, and anything that must never appear in content..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 9 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">09</span> Relocation and Corporate Migration</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">23</span> Where are most of your relocation and out-of-area buyers coming from?</label>
+                    <div class="question-hint">Knowing where buyers come from lets us write targeted content such as "Moving to Franklin from California" or "A New York buyer's guide to Nashville." You already run a Relocation division, so this tells us which versions to build first.</div>
+                    <div class="checkbox-group cols-2">
+                        <label><input type="checkbox" name="23. Buyer Origins" value="California"> California</label>
+                        <label><input type="checkbox" name="23. Buyer Origins" value="New York / Northeast"> New York, New Jersey, and the Northeast</label>
+                        <label><input type="checkbox" name="23. Buyer Origins" value="Chicago / Illinois / Midwest"> Chicago, Illinois, and the Midwest</label>
+                        <label><input type="checkbox" name="23. Buyer Origins" value="Florida"> Florida</label>
+                        <label><input type="checkbox" name="23. Buyer Origins" value="Texas"> Texas</label>
+                        <label><input type="checkbox" name="23. Buyer Origins" value="Washington DC / Virginia / Maryland"> Washington DC, Virginia, and Maryland</label>
+                        <label><input type="checkbox" name="23. Buyer Origins" value="Corporate relocation programs"> Corporate relocation programs</label>
+                        <label><input type="checkbox" name="23. Buyer Origins" value="Healthcare / physician recruitment"> Healthcare and physician recruitment</label>
+                        <label><input type="checkbox" name="23. Buyer Origins" value="Music / entertainment industry"> Music and entertainment industry</label>
+                        <label><input type="checkbox" name="23. Buyer Origins" value="International"> International buyers</label>
+                        <label><input type="checkbox" name="23. Buyer Origins" value="Within Middle Tennessee"> Move-up and downsize locally</label>
+                        <label><input type="checkbox" name="23. Buyer Origins" value="Second home / part-time"> Second home and part-time buyers</label>
+                    </div>
+                    <textarea name="23. Other Buyer Origins" style="min-height: 56px; margin-top: 12px;" placeholder="Any other places you frequently see buyers coming from?"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">24</span> Which employers, campuses, or developments drive the most relocation business to you?</label>
+                    <div class="question-hint">Employer-specific relocation content ranks and gets cited because almost nobody writes it. If a health system, a corporate campus, or a manufacturing plant is sending you buyers, that is a content lane you can own outright.</div>
+                    <textarea name="24. Relocation Employers" style="min-height: 110px;" placeholder="e.g., HCA Healthcare, Vanderbilt University and VUMC, Nissan North America in Franklin, Amazon at Nashville Yards, Oracle, AllianceBernstein, Asurion, Bridgestone Americas, Mars Petcare, Tractor Supply, Dollar General, Community Health Systems, CoreCivic, Ryman Hospitality, GM and Ultium Cells in Spring Hill, the record labels and music industry, Belmont, Lipscomb, MTSU, plus any corporate relocation firms or HR contacts you work with directly..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">25</span> What are the top reasons people give for moving to Middle Tennessee and buying with you?</label>
+                    <div class="question-hint">This shapes the angle of our relocation content and the questions AI will answer with your name.</div>
+                    <textarea name="25. Relocation Reasons" style="min-height: 100px;" placeholder="e.g., No state income tax and what that actually saves, what a California or New York budget buys in Franklin or Brentwood, Williamson County schools, the healthcare and music job markets, direct flights from BNA, cost of living relative to the coasts, the food and music scene, SEC and pro sports, weather, proximity to the airport and downtown..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 10 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">10</span> Your Media Library</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">26</span> Confirm what your media assets actually are and whether they are still in production.</label>
+                    <div class="flag">
+                        <span class="flag-tag">You have assets most teams do not, and they are underworking</span>
+                        We found a podcast called Luxury on Location Nashville on Spotify, a video series called In A Real Estate Minute, a book referred to only as "Erin's Book" with no title given, a blog, and an In The News section. Original media is exactly what AI engines look for when deciding who is a real authority rather than a listing feed. But an engine can only credit media it can identify, date, and read, and right now the book has no title on your own site and the series have no clear current status. This is authority you have already paid for and are not collecting on.
+                    </div>
+                    <div class="question-hint">Fill in what we could not find.</div>
+                    <textarea name="26. Media Assets" style="min-height: 130px;" placeholder="e.g., The book's actual title, publisher, year, where it can be bought, and whether we may quote from it. The podcast's current status, co-host, cadence, and where else it is distributed. Whether In A Real Estate Minute is current or archived and where the episodes live. Who produces this content now and whether transcripts exist..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">27</span> Which media and press should we amplify first?</label>
+                    <div class="question-hint">Point us at the assets you most want working for you. We structure and index them so engines can read them, and we build written content around the strongest ones.</div>
+                    <textarea name="27. Media Priorities" style="min-height: 90px;" placeholder="e.g., Your strongest press hits and features and where they ran, which podcast episodes or videos are evergreen versus dated, which blog posts already perform, any national coverage, and anything you would rather quietly retire..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 11 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">11</span> Questions People Ask You</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">28</span> What are the most common questions buyers ask you?</label>
+                    <div class="question-hint">Think about what comes up in consultations, calls, and emails. These become the exact queries we make AI answer with your name.</div>
+                    <textarea name="28. Common Buyer Questions" style="min-height: 130px;" placeholder="e.g.,
+- Franklin vs. Brentwood vs. Nolensville for a family: how do I choose?
+- Should I live in Davidson County or Williamson County?
+- What does $900K actually buy in each of these areas?
+- Are Williamson County schools worth the price difference?
+- How bad is the commute from Spring Hill or Mount Juliet?
+- Can I short-term rent this house?
+- Should I buy new construction or an established home?"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">29</span> What are the most common questions sellers ask you?</label>
+                    <div class="question-hint">What do owners want to know when they are thinking about listing?</div>
+                    <textarea name="29. Common Seller Questions" style="min-height: 130px;" placeholder="e.g.,
+- What is my Franklin or Green Hills home worth right now?
+- How long are homes taking to sell in my neighborhood?
+- Should I update before listing, or price for it?
+- How does Compass Concierge work and what does it actually return?
+- Can I buy before I sell?
+- Is my home competing against new construction, and how do I win that?
+- Should I list now or wait for spring?
+- Is my lot worth more to a builder than my house is to a buyer?"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">30</span> What unique or surprising questions do you get that most agents would not know how to answer?</label>
+                    <div class="question-hint">These are gold. They become content no competitor has, which AI loves to cite.</div>
+                    <textarea name="30. Unique Questions" style="min-height: 100px;" placeholder="e.g., How short-term rental permits actually work by zoning, which streets sit inside versus outside a city boundary and what that changes for taxes and services, flood plain and drainage realities in specific neighborhoods, how Metro rezoning affects a lot's value, teardown economics in Oak Hill or Green Hills, HOA and covenant quirks by community, how privacy and discretion work for high-profile clients, which schools a specific address actually zones to..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">31</span> What questions should someone relocating to Nashville be asking?</label>
+                    <div class="question-hint">Relocation content performs extremely well in AI search. What do newcomers need to know that they do not think to ask?</div>
+                    <textarea name="31. Relocation Questions" style="min-height: 100px;" placeholder="e.g., How Tennessee taxes actually work and what the no-income-tax benefit nets out to, city versus county boundaries and what they change, which area fits which commute, what summer humidity is really like, how fast good homes move in each price band, new construction timelines and builder contracts, where to rent while you look, whether to buy before or after you move..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 12 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">12</span> Content Priorities</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">32</span> Which types of supporting content are most important for your business? (Rank your top 5)</label>
+                    <div class="question-hint">We create these as guides and posts that support your pillar, neighborhood, and community pages. You already publish neighborhood guides and market reports, so we will also reinforce and optimize what is already working.</div>
+                    <div class="checkbox-group cols-2">
+                        <label><input type="checkbox" name="32. Content Types" value="Area comparisons"> Area comparisons ("Franklin vs. Brentwood")</label>
+                        <label><input type="checkbox" name="32. Content Types" value="Relocation guides"> Relocation guides ("Moving to Nashville from California")</label>
+                        <label><input type="checkbox" name="32. Content Types" value="Corporate relocation guides"> Corporate and employer relocation guides</label>
+                        <label><input type="checkbox" name="32. Content Types" value="School guides"> School and district guides</label>
+                        <label><input type="checkbox" name="32. Content Types" value="Neighborhood deep-dives"> Neighborhood and subdivision deep-dives</label>
+                        <label><input type="checkbox" name="32. Content Types" value="New construction & builder guides"> New construction and builder guides</label>
+                        <label><input type="checkbox" name="32. Content Types" value="Golf & country club community guides"> Golf and country club community guides</label>
+                        <label><input type="checkbox" name="32. Content Types" value="Short-term rental & investor guides"> Short-term rental and investor guides</label>
+                        <label><input type="checkbox" name="32. Content Types" value="Builder & developer acquisition content"> Content aimed at builders and developers</label>
+                        <label><input type="checkbox" name="32. Content Types" value="Seller guides"> Seller guides</label>
+                        <label><input type="checkbox" name="32. Content Types" value="First-time buyer guides"> First-time buyer guides</label>
+                        <label><input type="checkbox" name="32. Content Types" value="Tax & cost-of-living guides"> Tax and cost-of-living guides</label>
+                        <label><input type="checkbox" name="32. Content Types" value="Market reports"> Market reports (monthly or quarterly, by area)</label>
+                        <label><input type="checkbox" name="32. Content Types" value="Lifestyle & things-to-do content"> Lifestyle content (music, dining, parks, events)</label>
+                        <label><input type="checkbox" name="32. Content Types" value="Luxury & estate content"> Luxury and estate content</label>
+                        <label><input type="checkbox" name="32. Content Types" value="Condo & high-rise guides"> Condo and high-rise guides</label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">33</span> If we could get The Erin Krueger Team cited by AI for just 3 queries, what would they be?</label>
+                    <div class="question-hint">What are the highest-value questions you want to own? Be as literal as you can, the way a buyer, seller, investor, or developer would actually type or say it.</div>
+                    <textarea name="33. Top 3 AI Queries" style="min-height: 100px;" placeholder="1.
+2.
+3."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 13 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">13</span> Your Expertise and Proof</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">34</span> What does The Erin Krueger Team know better than any other team in Middle Tennessee?</label>
+                    <div class="question-hint">This becomes the angle for your pillar content. What is your team uniquely qualified to speak on?</div>
+                    <textarea name="34. Unique Expertise" placeholder="e.g., Running four divisions under one roof, representing developments from the ground up rather than just reselling them, an eighteen-person team that can cover six counties at once, Erin's career before real estate and what it changes about how she negotiates, years of Nashville market cycles, discretion for high-profile clients..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">35</span> Reconcile the numbers and awards we should cite.</label>
+                    <div class="flag">
+                        <span class="flag-tag">Read this one carefully, it is costing you citations right now</span>
+                        Across your homepage, About page, and team page we found the same accomplishments described in ways that contradict each other. Homes sold appears as both "4,000+" and "nearly 4,000." National team ranking appears as "#3 Large Size Team in US by Volume" and, on the same page, "#67 Large size team in US by Volume." Erin's individual ranking appears as "#15 nationally for homes sold by an individual agent" and as "#14 in the US as a solo agent" per the Wall Street Journal. Tennessee ranking appears as "#1 Compass Team in TN by Volume" and as "#1 Large Size Team in TN by Volume," which are different awards. Career volume is "over $2.5 billion" with no as-of date. When an AI engine finds a claim stated three ways, it does not pick the best one. It hedges, or it drops you and cites a team whose numbers are consistent. Every one of these is fixable in one pass.
+                    </div>
+                    <div class="question-hint">Give us the correct current set, with a year attached to each, and we will publish one version everywhere.</div>
+                    <textarea name="35. Proof Points" style="min-height: 150px;" placeholder="e.g., Exact career volume and the year it runs through, exact homes-sold count and as-of date, trailing 12-month volume and units, the precise RealTrends award name, category, ranking, and year for each one, which Wall Street Journal ranking and year is correct, how many consecutive years Greater Nashville REALTORS has named you Top Selling Team and through which year, and which of these are historical rather than current..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">36</span> Which designations do members of the team hold? (Check all that apply)</label>
+                    <div class="question-hint">Designations are structured credentials that AI engines and schema markup both read as trust signals. Your site lists MBA, ABR, ASP, and CRS for Erin. Confirm those, add anyone else's, and note who holds what below.</div>
+                    <div class="checkbox-group cols-2">
+                        <label><input type="checkbox" name="36. Designations" value="ABR" checked> ABR (Accredited Buyer's Representative)</label>
+                        <label><input type="checkbox" name="36. Designations" value="CRS" checked> CRS (Certified Residential Specialist)</label>
+                        <label><input type="checkbox" name="36. Designations" value="ASP" checked> ASP (Accredited Staging Professional)</label>
+                        <label><input type="checkbox" name="36. Designations" value="GRI"> GRI (Graduate, REALTOR Institute)</label>
+                        <label><input type="checkbox" name="36. Designations" value="SRES"> SRES (Seniors Real Estate Specialist)</label>
+                        <label><input type="checkbox" name="36. Designations" value="SRS"> SRS (Seller Representative Specialist)</label>
+                        <label><input type="checkbox" name="36. Designations" value="CLHMS"> CLHMS (Certified Luxury Home Marketing)</label>
+                        <label><input type="checkbox" name="36. Designations" value="ePRO"> ePRO</label>
+                        <label><input type="checkbox" name="36. Designations" value="CNE"> CNE (Certified Negotiation Expert)</label>
+                        <label><input type="checkbox" name="36. Designations" value="CCIM / commercial"> CCIM or other commercial credentials</label>
+                    </div>
+                    <textarea name="36. Designations Detail" style="min-height: 70px; margin-top: 12px;" placeholder="Note who holds what, plus any designations not listed above, where Erin's MBA is from, and any professional associations (Greater Nashville REALTORS, Tennessee REALTORS, NAR committees, Urban Land Institute, homebuilder associations)..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 14 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">14</span> Competition and Current Presence</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">37</span> Who are your top competitors, and is there anyone specific you want to outrank?</label>
+                    <div class="question-hint">Name the agents or teams who show up first when buyers search your markets. We will study what they rank for and build past them.</div>
+                    <textarea name="37. Competitors" style="min-height: 90px;" placeholder="e.g., Specific Parks, Benchmark, Zeitlin Sotheby's, Onward, The Ashton Real Estate Group / RE/MAX Advantage, Village, Fridrich and Clark, Corcoran, or other Compass teams in Nashville, Franklin, or Brentwood. Anyone whose neighborhood guides, market reports, or videos keep showing up ahead of you..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">38</span> Confirm your profile URLs across the major platforms.</label>
+                    <div class="question-hint">AI engines cross-check your name, brokerage, phone, and address across every profile they can find. Inconsistencies between your site, Google, Zillow, and Realtor.com weaken the entity and make engines less willing to cite you. Paste the live URLs so we can audit and align them.</div>
+                    <div class="confirm-grid">
+                        <div>
+                            <label>Google Business Profile</label>
+                            <input type="text" name="38a. Google Business Profile" placeholder="Paste the URL">
+                        </div>
+                        <div>
+                            <label>Zillow</label>
+                            <input type="text" name="38b. Zillow" placeholder="Paste the URL">
+                        </div>
+                        <div>
+                            <label>Realtor.com</label>
+                            <input type="text" name="38c. Realtor.com" placeholder="Paste the URL">
+                        </div>
+                        <div>
+                            <label>Compass agent / team page</label>
+                            <input type="text" name="38d. Compass Profile" placeholder="Paste the URL">
+                        </div>
+                        <div>
+                            <label>Facebook</label>
+                            <input type="text" name="38e. Facebook" placeholder="Paste the URL or handle">
+                        </div>
+                        <div>
+                            <label>Instagram</label>
+                            <input type="text" name="38f. Instagram" placeholder="Paste the URL or handle">
+                        </div>
+                        <div>
+                            <label>LinkedIn</label>
+                            <input type="text" name="38g. LinkedIn" placeholder="Paste the URL or handle">
+                        </div>
+                        <div>
+                            <label>YouTube</label>
+                            <input type="text" name="38h. YouTube" placeholder="Paste the URL or handle">
+                        </div>
+                        <div>
+                            <label>Podcast (Spotify, Apple)</label>
+                            <input type="text" name="38i. Podcast" placeholder="Luxury on Location Nashville and anywhere else it is distributed">
+                        </div>
+                        <div>
+                            <label>The book's retail page</label>
+                            <input type="text" name="38j. Book" placeholder="Amazon or wherever it is sold">
+                        </div>
+                        <div>
+                            <label>Bison Ridge or other development sites</label>
+                            <input type="text" name="38k. Development Sites" placeholder="Any project sites you control">
+                        </div>
+                        <div>
+                            <label>TikTok</label>
+                            <input type="text" name="38l. TikTok" placeholder="Paste the URL or handle">
+                        </div>
+                        <div class="full">
+                            <label>Anywhere else the team is listed</label>
+                            <input type="text" name="38m. Other Profiles" placeholder="Homes.com, Redfin, Greater Nashville REALTORS, local directories, press pages, other team or personal sites you control">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">39</span> What content, profiles, or channels do you already have that are working?</label>
+                    <div class="question-hint">You already run more than twenty neighborhood pages, market reports, a golf communities section, a home valuation tool, an affordability calculator, and utility and new construction resources on erinkrueger.com. Share the URLs you most want amplified so we build on what is already earning attention.</div>
+                    <textarea name="39. Existing Content" style="min-height: 90px;" placeholder="List URLs or handles: top-performing neighborhood pages or blog posts, your strongest social channels, Zillow and Google Business profiles, your newsletter, video content, anything that already gets engagement or leads..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">40</span> Do we have access to what we need to publish and measure?</label>
+                    <div class="question-hint">Total Search works fastest when we can publish directly and see the data. Tell us who controls each of these and whether access is already available.</div>
+                    <textarea name="40. Access" style="min-height: 90px;" placeholder="e.g., Website CMS and who administers or built it, Google Search Console, Google Analytics, Google Business Profile, who approves content before it goes live, and how quickly that approval usually happens..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 15 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">15</span> Guardrails and Anything Else</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">41</span> Are there any topics, claims, or areas we should avoid, and what tone fits your brand?</label>
+                    <div class="question-hint">Anything you do NOT want us to write about, any compliance or Fair Housing language to keep in mind (school and neighborhood content especially), Compass brand requirements, client confidentiality for high-profile buyers and sellers, and the voice that fits The Erin Krueger Team.</div>
+                    <textarea name="41. Guardrails and Tone" style="min-height: 90px;" placeholder="e.g., Keep Fair Housing compliant with no steering language in school or neighborhood content, follow Compass brand and disclosure requirements, never name clients or reference celebrity transactions, be careful how we state short-term rental rules since they change, avoid direct competitor comparisons, avoid crime and demographic claims, preferred tone is confident and local rather than salesy..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">42</span> Is there anything else we should know about your team, your market, or your goals?</label>
+                    <div class="question-hint">Anything we missed: team specialties, upcoming developments or listings you want featured, seasonality in your market, recruiting goals, or specific results you want from this program.</div>
+                    <textarea name="42. Additional Notes" style="min-height: 110px;" placeholder="Anything else..."></textarea>
+                </div>
+            </div>
+
+            <!-- Submit -->
+            <div class="submit-section">
+                <button type="submit" class="submit-btn">Submit Questionnaire</button>
+                <p class="submit-note">Your responses go directly to Blok.co. You will receive a confirmation after submitting.</p>
+            </div>
+        </form>
+
+        <footer>
+            <p><strong>The Erin Krueger Team at Compass</strong> | Total Search Questionnaire | August 2026</p>
+            <p>Prepared by <a href="https://blok.co">Blok.co</a></p>
+        </footer>
+
+    </div>
+</body>
+</html>
