@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Total Search Questionnaire | The Beasley Group</title>
+    <link rel="stylesheet" href="https://use.typekit.net/xay8dos.css">
+    <style>
+        :root {
+            --navy: #010b23;
+            --navy-mid: #060f2a;
+            --navy-light: #0a1536;
+            --indigo: #111e50;
+            --blue: #1936a5;
+            --blue-glow: #416bdf;
+            --cyan: #59f3ff;
+            --cyan-dim: rgba(89,243,255,0.55);
+            --cyan-ghost: rgba(89,243,255,0.10);
+            --coral: #fb958a;
+            --teal: #85c9ce;
+            --paper: #eef1f8;
+            --sheet: #ffffff;
+            --ink: #0a1430;
+            --muted: #55618a;
+            --dim: #8b93b0;
+            --line: rgba(17,30,80,0.12);
+            --line-strong: rgba(17,30,80,0.22);
+            --font: "proxima-nova", -apple-system, "Helvetica Neue", "Segoe UI", system-ui, Roboto, Arial, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font);
+            background:
+                radial-gradient(1200px 600px at 50% -220px, rgba(65,107,223,0.12), transparent 60%),
+                var(--paper);
+            color: var(--ink);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 940px;
+            margin: 0 auto;
+            padding: 32px 20px 60px;
+        }
+
+        /* HEADER: light letterhead with the black BLOK logo */
+        header {
+            background: var(--sheet);
+            border: 1px solid var(--line);
+            border-top: 4px solid var(--cyan);
+            border-radius: 14px;
+            padding: 30px 34px 32px;
+            margin-bottom: 22px;
+            box-shadow: 0 18px 46px -28px rgba(10,20,48,0.4);
+        }
+
+        .brandbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding-bottom: 22px;
+            border-bottom: 1px solid var(--line);
+            margin-bottom: 24px;
+        }
+
+        .brandbar .logo {
+            width: 132px;
+            height: auto;
+            display: block;
+        }
+
+        .brandbar .doc-tag {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2.4px;
+            text-transform: uppercase;
+            color: var(--muted);
+            text-align: right;
+        }
+
+        .brandbar .doc-tag span {
+            display: block;
+            color: var(--blue);
+        }
+
+        header h1 {
+            font-size: 30px;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+            color: var(--navy);
+            margin-bottom: 6px;
+        }
+
+        header .subtitle {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--blue);
+            margin-bottom: 14px;
+        }
+
+        header .description {
+            font-size: 15px;
+            color: var(--muted);
+            max-width: 760px;
+        }
+
+        /* INTRO */
+        .intro {
+            background: var(--sheet);
+            border: 1px solid var(--line);
+            border-left: 4px solid var(--cyan);
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin-bottom: 22px;
+            box-shadow: 0 14px 40px -30px rgba(10,20,48,0.4);
+        }
+
+        .intro p {
+            font-size: 15px;
+            color: var(--ink);
+            margin-bottom: 12px;
+        }
+
+        .intro p:last-child { margin-bottom: 0; }
+
+        .intro strong { color: var(--navy); }
+
+        /* SECTIONS */
+        .section {
+            background: var(--sheet);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 0 30px 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 14px 40px -30px rgba(10,20,48,0.4);
+            overflow: hidden;
+        }
+
+        .section-header {
+            background: linear-gradient(100deg, var(--navy) 0%, var(--indigo) 100%);
+            color: #f0f2fa;
+            padding: 14px 24px;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            margin: 0 -30px 26px;
+            border-bottom: 2px solid var(--cyan);
+        }
+
+        .section-header .sec-num {
+            color: var(--cyan);
+            margin-right: 10px;
+        }
+
+        .question-group { margin-bottom: 28px; }
+        .question-group:last-child { margin-bottom: 0; }
+
+        .question-label {
+            font-weight: 600;
+            color: var(--navy);
+            font-size: 15.5px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .question-number {
+            display: inline-block;
+            background: var(--navy);
+            color: var(--cyan);
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 25px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-right: 9px;
+        }
+
+        .question-hint {
+            font-size: 13.5px;
+            color: var(--muted);
+            margin-bottom: 10px;
+        }
+
+        textarea, input[type="text"] {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1.5px solid var(--line-strong);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 14.5px;
+            color: var(--ink);
+            background: #fbfcff;
+            transition: border-color 0.15s, box-shadow 0.15s;
+        }
+
+        textarea {
+            min-height: 84px;
+            resize: vertical;
+        }
+
+        textarea:focus, input[type="text"]:focus {
+            outline: none;
+            border-color: var(--blue-glow);
+            box-shadow: 0 0 0 3px var(--cyan-ghost);
+            background: #fff;
+        }
+
+        textarea::placeholder, input::placeholder { color: var(--dim); }
+
+        .checkbox-group, .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .checkbox-group label, .radio-group label {
+            display: flex;
+            align-items: flex-start;
+            gap: 11px;
+            cursor: pointer;
+            font-size: 14.5px;
+            padding: 9px 14px;
+            background: #f6f8fd;
+            border: 1px solid transparent;
+            border-radius: 7px;
+            transition: background 0.15s, border-color 0.15s;
+        }
+
+        .checkbox-group label:hover, .radio-group label:hover {
+            background: var(--cyan-ghost);
+            border-color: rgba(89,243,255,0.45);
+        }
+
+        .checkbox-group input[type="checkbox"] { margin-top: 3px; }
+
+        .checkbox-group input[type="checkbox"],
+        .radio-group input[type="radio"] {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+            accent-color: var(--blue);
+        }
+
+        /* Two-column checkbox variant for long lists */
+        .cols-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        /* AREA GRID */
+        .area-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            border: 1.5px solid var(--line-strong);
+            border-radius: 9px;
+            overflow: hidden;
+            margin-top: 12px;
+        }
+
+        .area-grid .area-name {
+            padding: 12px 14px;
+            background: #f6f8fd;
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--navy);
+            border-bottom: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+        }
+
+        .area-grid .area-input {
+            padding: 7px 14px;
+            border-bottom: 1px solid var(--line);
+            border-left: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+        }
+
+        .area-grid .area-input input {
+            border: none;
+            background: transparent;
+            padding: 4px 0;
+            font-size: 14px;
+        }
+
+        .area-grid .area-input input:focus {
+            box-shadow: none;
+            background: transparent;
+        }
+
+        .area-grid .area-name:last-of-type,
+        .area-grid .area-input:last-of-type { border-bottom: none; }
+
+        /* CONFIRM GRID */
+        .confirm-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .confirm-grid .full { grid-column: 1 / -1; }
+
+        .confirm-grid label {
+            font-size: 12.5px;
+            font-weight: 700;
+            letter-spacing: 0.4px;
+            text-transform: uppercase;
+            color: var(--muted);
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        /* FLAG callout for things we found that need confirming */
+        .flag {
+            background: rgba(251,149,138,0.10);
+            border: 1px solid rgba(251,149,138,0.45);
+            border-left: 3px solid var(--coral);
+            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 13.5px;
+            color: var(--ink);
+            margin-bottom: 12px;
+        }
+
+        .flag .flag-tag {
+            display: block;
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 1.6px;
+            text-transform: uppercase;
+            color: #b4564a;
+            margin-bottom: 4px;
+        }
+
+        /* SUBMIT */
+        .submit-section {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 60%, var(--indigo) 100%);
+            border-radius: 12px;
+            padding: 36px 30px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 18px 46px -28px rgba(10,20,48,0.6);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--cyan) 0%, #7fd8ff 100%);
+            color: var(--navy);
+            border: none;
+            padding: 16px 62px;
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.4px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px -6px rgba(89,243,255,0.45);
+        }
+
+        .submit-btn:active { transform: translateY(0); }
+
+        .submit-note {
+            font-size: 13px;
+            color: #c3c5cf;
+            margin-top: 14px;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 8px 20px;
+            color: var(--muted);
+        }
+
+        footer p { font-size: 13px; margin: 4px 0; }
+
+        footer strong { color: var(--navy); }
+
+        footer a { color: var(--blue); text-decoration: none; }
+
+        @media print {
+            body { background: #fff; }
+            .section, header, .intro { box-shadow: none; break-inside: avoid; }
+            .question-group { break-inside: avoid; }
+            .area-grid, .checkbox-group, .radio-group, .confirm-grid, .flag { break-inside: avoid; }
+            textarea { min-height: 60px; }
+        }
+
+        @media (max-width: 640px) {
+            .container { padding: 20px 14px 40px; }
+            header { padding: 24px 20px; }
+            header h1 { font-size: 24px; }
+            .section { padding: 0 18px 24px; }
+            .section-header { margin: 0 -18px 22px; padding: 13px 18px; }
+            .intro { padding: 20px; }
+            .area-grid { grid-template-columns: 1fr; }
+            .confirm-grid { grid-template-columns: 1fr; }
+            .cols-2 { grid-template-columns: 1fr; }
+            .brandbar .doc-tag { text-align: left; }
+            .submit-btn { width: 100%; padding: 16px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <header>
+            <div class="brandbar">
+                <svg class="logo" viewBox="0 0 521.68 163.5" role="img" aria-label="BLOK">
+                    <g>
+                        <polygon fill="#85c9ce" points="54.9 98.1 54.9 40.6 107.4 69.7 107.4 128.5 54.9 98.1"/>
+                        <polygon fill="#fb958a" points="0 132.9 53.7 101.6 106.7 132.9 53.7 163.5 0 132.9"/>
+                        <polygon fill="#060c3b" points="0 129.2 0 29.7 51.7 0 51.7 98.8 0 129.2"/>
+                        <path fill="#060c3b" d="M212.4,104.4c0-10-1.6-17.3-4.7-21.8-3.2-4.6-7.9-6.9-14.2-6.9-8.4,0-14.2,3.4-17.3,10.3v39c3.2,6.9,9.1,10.4,17.5,10.4s14.1-4.2,16.8-12.6c1.3-4,1.9-10.2,1.9-18.4ZM238.8,106.3c0,15.8-3.4,28.2-10.1,37.1-6.8,8.8-16.2,13.2-28.3,13.2-10.7,0-19.3-4.1-25.7-12.3l-1.2,10.5h-23.7V14.6h26.4v50.3c6.1-7.1,14.1-10.7,24-10.7,12.1,0,21.5,4.4,28.3,13.3,6.9,8.8,10.3,21.3,10.3,37.3v1.5Z"/>
+                        <rect fill="#060c3b" x="256.5" y="14.6" width="26.5" height="140.2"/>
+                        <path fill="#060c3b" d="M327.1,106.4c0,9.4,1.8,16.6,5.3,21.5s8.6,7.4,15.2,7.4,11.4-2.4,15-7.3c3.6-4.9,5.4-12.8,5.4-23.6,0-9.2-1.8-16.3-5.4-21.4-3.6-5.1-8.6-7.6-15.2-7.6s-11.4,2.5-15,7.6c-3.5,5.1-5.3,12.9-5.3,23.4ZM300.7,104.5c0-9.8,1.9-18.5,5.7-26.2,3.8-7.7,9.2-13.6,16.2-17.8,7.1-4.2,15.4-6.3,24.7-6.3,13.3,0,24.2,4.1,32.6,12.2,8.5,8.2,13.2,19.2,14.2,33.2l.2,6.8c0,15.2-4.2,27.3-12.7,36.5-8.5,9.1-19.8,13.7-34.1,13.7s-25.6-4.6-34.1-13.7c-8.5-9.1-12.7-21.5-12.7-37.2v-1.2h0Z"/>
+                        <polygon fill="#060c3b" points="446.4 115.2 436.9 124.7 436.9 154.8 410.5 154.8 410.5 14.6 436.9 14.6 436.9 92.3 442 85.7 467.3 56 499 56 463.3 97.2 502.1 154.8 471.8 154.8 446.4 115.2"/>
+                        <path fill="#060c3b" d="M521.68,23.94c0,5.58-4.38,9.96-10.08,9.96s-10.14-4.38-10.14-9.96,4.5-9.84,10.14-9.84,10.08,4.38,10.08,9.84ZM503.98,23.94c0,4.38,3.24,7.86,7.68,7.86s7.5-3.48,7.5-7.8-3.18-7.92-7.56-7.92-7.62,3.54-7.62,7.86ZM510.04,29.1h-2.28v-9.84c.9-.18,2.16-.3,3.78-.3,1.86,0,2.7.3,3.42.72.54.42.96,1.2.96,2.16,0,1.08-.84,1.92-2.04,2.28v.12c.96.36,1.5,1.08,1.8,2.4.3,1.5.48,2.1.72,2.46h-2.46c-.3-.36-.48-1.26-.78-2.4-.18-1.08-.78-1.56-2.04-1.56h-1.08v3.96ZM510.1,23.52h1.08c1.26,0,2.28-.42,2.28-1.44,0-.9-.66-1.5-2.1-1.5-.6,0-1.02.06-1.26.12v2.82Z"/>
+                    </g>
+                <div class="doc-tag">
+                    Total Search
+                    <span>Onboarding Questionnaire</span>
+                </div>
+            </div>
+
+            <h1>Total Search Questionnaire</h1>
+            <div class="subtitle">The Beasley Group at Compass</div>
+            <p class="description">We build the content that gets your brand cited by Google AI Overviews, ChatGPT, Perplexity, and Gemini. Your answers below tell us exactly what to build, who to target, and which questions to answer for buyers, sellers, second-home owners, and investors across 30A, Destin, and the wider Emerald Coast.</p>
+        </header>
+
+        <div class="intro">
+            <p><strong>How this works:</strong> Most teams we onboard have to build an audience from nothing. You do not. brianbeasleygroup.com already publishes fifteen community guides from Dune Allen to Panama City Beach, each one running roughly 1,300 words with a neighborhood video embedded, plus a past-transactions record, a testimonials wall, and a featured-listings feed. Your YouTube channel holds 83 videos going back to March 2023, including a complete 30A Highlight Reel series that covers the coast community by community. That is a real library, and it is exactly the kind of original media AI engines look for when deciding who is an authority rather than a listing feed.</p>
+            <p>Two things shape this questionnaire. First, the library is strong but the identity around it is split: your domain says Brian Beasley Group, your brand says The Beasley Group, your YouTube handle says thebeasleygroup30a, and older listings still point at a separate 30A site. Engines treat those as separate entities and hedge instead of citing. Second, the publishing surfaces are built but empty. Your blog is live and titled, with zero posts on it. Your Market Reports page is in the main navigation and renders with no content. Those two pages are where Total Search does most of its work, so filling them is the fastest path to citations.</p>
+            <p>Most questions take a sentence or two. The more specific you are, the faster we own the right searches for your market. If a question does not apply, skip it. Where we found something on your site that needs a decision or a correction, we have flagged it in orange.</p>
+        </div>
+
+        <form action="https://formsubmit.co/brandon.hendricks@blok.co" method="POST">
+            <!-- FormSubmit Configuration -->
+            <input type="hidden" name="_subject" value="Total Search Questionnaire - The Beasley Group">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_cc" value="advertising@blok.co">
+            <input type="hidden" name="_next" value="https://reports-blok.co/thank-you/">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="text" name="_honey" style="display:none">
+
+            <!-- Section 1 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">01</span> Confirm Your Details</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">1</span> Confirm or correct the details we have on file.</label>
+                    <div class="flag">
+                        <span class="flag-tag">Two things we could not resolve from public sources</span>
+                        Your footer publishes one license, Lic #BK230787, attached to the line "The Beasley Group | Lic #BK230787 | COMPASS", with no indication of whether that is your individual broker license or the Compass Florida brokerage license. Separately, the contact block on your site lists the office as "The Beasley Group at Compass, 30A / Emerald Coast, Florida" with no street address, while the footer gives 2048 West County Highway 30A, Suite 107, Santa Rosa Beach, FL 32459. Address and license are two of the strongest identity signals AI engines use to decide whether two mentions of your team are the same business. When they conflict or go missing, engines hedge instead of citing.
+                    </div>
+                    <div class="question-hint">Correct anything below that is wrong or out of date.</div>
+                    <div class="confirm-grid">
+                        <div>
+                            <label>Team lead / lead agent</label>
+                            <input type="text" name="1a. Agent Name" value="Brian Beasley">
+                        </div>
+                        <div>
+                            <label>Title</label>
+                            <input type="text" name="1b. Title" value="Broker Associate">
+                        </div>
+                        <div>
+                            <label>Team name</label>
+                            <input type="text" name="1c. Team Name" value="The Beasley Group">
+                        </div>
+                        <div>
+                            <label>Brokerage (exact legal entity name)</label>
+                            <input type="text" name="1d. Brokerage" value="Compass" placeholder="Your disclaimer reads Compass Florida, LLC d/b/a Compass">
+                        </div>
+                        <div>
+                            <label>Website</label>
+                            <input type="text" name="1e. Website" value="brianbeasleygroup.com">
+                        </div>
+                        <div>
+                            <label>Primary email</label>
+                            <input type="text" name="1f. Email" value="brian.beasley@compass.com">
+                        </div>
+                        <div>
+                            <label>Primary phone</label>
+                            <input type="text" name="1g. Phone Primary" value="(850) 329-5013">
+                        </div>
+                        <div>
+                            <label>Your individual license number</label>
+                            <input type="text" name="1h. License Individual" value="BK230787" placeholder="Confirm this is yours, not the brokerage license">
+                        </div>
+                        <div>
+                            <label>Brokerage license number, if different</label>
+                            <input type="text" name="1i. License Brokerage" placeholder="The Compass Florida license number">
+                        </div>
+                        <div>
+                            <label>Best point of contact for this project</label>
+                            <input type="text" name="1j. Project Contact" value="Brian Beasley" placeholder="Add direct phone and best email if different from above">
+                        </div>
+                        <div>
+                            <label>Year the team was formed</label>
+                            <input type="text" name="1k. Year Founded" placeholder="Year The Beasley Group formed, the year you started in real estate, and the year you joined Compass">
+                        </div>
+                        <div>
+                            <label>Hours / availability to publish</label>
+                            <input type="text" name="1l. Hours" placeholder="Office hours as you want them published in structured data">
+                        </div>
+                        <div class="full">
+                            <label>Correct current office address</label>
+                            <input type="text" name="1m. Office Address" value="2048 West County Highway 30A, Suite 107, Santa Rosa Beach, FL 32459">
+                        </div>
+                        <div class="full">
+                            <label>Any additional offices or places you regularly meet clients</label>
+                            <input type="text" name="1n. Other Offices" placeholder="You market Destin and Panama City Beach heavily but publish only the 30A office. Tell us about any Destin, Miramar Beach, or PCB presence we should list">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">2</span> How do you want the team named across the web?</label>
+                    <div class="flag">
+                        <span class="flag-tag">Your name is currently split five ways</span>
+                        We found your team published as The Beasley Group (site title, schema, Compass profile), Brian Beasley Group (your domain), the Brian Beasley Team (in one of your own testimonials), The Beasley Group 30A team (in another), and thebeasleygroup30a (your YouTube handle), with Instagram at the.beasley.group and Facebook at thebeasleygroup. A separate 30A site, lp30a.com, also carries The Beasley Group name and currently returns a 403 error rather than redirecting anywhere. Each variant builds its own partial entity profile, and none of them accumulates full authority. We want one canonical version and we will align every profile we can reach to it.
+                    </div>
+                    <div class="question-hint">Tell us the one name that should appear everywhere, and what should happen to the rest.</div>
+                    <textarea name="2. Canonical Naming" style="min-height: 90px;" placeholder="e.g., always The Beasley Group, never Beasley Group or Brian Beasley Team; brokerage always written as Compass; whether your individual name or the team name should be the primary entity; whether brianbeasleygroup.com should stay the domain or redirect to a name that matches the brand; what to do with lp30a.com and whether you still control it..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 2 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">02</span> Your Team and Who We Name</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">3</span> Who on the team should be named in content, and for what?</label>
+                    <div class="flag">
+                        <span class="flag-tag">The highest-leverage answer on this form</span>
+                        Your Meet the Team page lists eight people: Brian Beasley (Broker Associate), Joe Pehanick, Tom Hidell, Stephanie Reiter, Danielle Schramm, Amanda Edwards and Ryan Holloway (all titled Real Estate Advisor), and Lisa Evans (REALTOR). Seven of the eight carry the identical title, and none of the eight has a bio, a specialty, or an area attached. AI engines cite named people with a clear, documented specialty far more readily than a generic team byline, and right now nothing on your site tells an engine who owns what. Answering this well is worth more than any other single item here.
+                    </div>
+                    <div class="question-hint">Tell us who owns which lane. Areas, property types, buyer or seller side, price tier, or feeder market are all useful ways to split it.</div>
+                    <textarea name="3. Team Bylines" style="min-height: 150px;" placeholder="e.g., who owns Destin and the Harbor versus 30A east versus 30A west versus Panama City Beach; who handles gulf-front luxury; who works new construction and builder relationships; who handles investment and short-term rental buyers; who works condos; who is client-facing versus operations only..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">4</span> Who can be quoted or attributed publicly, and what do we have to work with?</label>
+                    <div class="question-hint">Author attribution, headshots, and real bios are structured signals. A guide bylined to a named person with a photo, a bio, and a credential outperforms an unattributed team post in AI search by a wide margin.</div>
+                    <textarea name="4. Attribution and Assets" style="min-height: 100px;" placeholder="e.g., who can be quoted or bylined, anyone who should not be named publicly, whether current headshots and bios exist for the people above and where we can get them, any Compass approval needed before a byline goes live, and who reviews content before it publishes..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">5</span> Who is missing from the Meet the Team page?</label>
+                    <div class="flag">
+                        <span class="flag-tag">Someone doing the work is invisible to search</span>
+                        Three separate testimonials on your own site name Mackenzie, one of them singling out "Special thanks to Mackenzie and Danielle" for organization and client focus. Mackenzie does not appear anywhere on your Meet the Team page. Clients are naming this person unprompted, which is exactly the signal that builds an entity, and there is no page for an engine to attach it to.
+                    </div>
+                    <div class="question-hint">Include transaction coordinators, marketing, listing managers, and anyone client-facing who is not on the roster today.</div>
+                    <textarea name="5. Missing Team Members" style="min-height: 90px;" placeholder="e.g., Mackenzie's full name and role, whether she should be published, plus any coordinator, marketing, or admin roles that deserve a named profile..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">6</span> What licensing, languages, or out-of-state reach does the team have?</label>
+                    <div class="question-hint">Several of your advisors publish phone numbers from Dallas, Chicago, Nashville, and Alabama area codes. If any of them are licensed elsewhere or actively work a feeder market from the inside, that opens a content lane almost no Emerald Coast team competes for.</div>
+                    <textarea name="6. Licensing and Languages" style="min-height: 90px;" placeholder="e.g., who holds licenses in other states, who came from which market and still has a network there, any languages spoken with clients, any referral relationships in feeder cities..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 3 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">03</span> Goals and Transaction Focus</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">7</span> What does a win look like twelve months from now?</label>
+                    <div class="question-hint">Be concrete. We build toward the outcome you name, and we report against it.</div>
+                    <textarea name="7. Twelve Month Goal" style="min-height: 90px;" placeholder="e.g., a specific number of additional listings taken, a target volume, being the team AI engines name for 30A luxury, breaking into a community you do not currently dominate, more inbound seller inquiries and fewer portal leads..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">8</span> Which transaction types matter most to you?</label>
+                    <div class="question-hint">Check everything that applies, then rank the top three in the box below.</div>
+                    <div class="checkbox-group cols-2">
+                        <label><input type="checkbox" name="8. Transaction Types" value="Gulf-front luxury"> Gulf-front luxury</label>
+                        <label><input type="checkbox" name="8. Transaction Types" value="Second homes"> Second homes</label>
+                        <label><input type="checkbox" name="8. Transaction Types" value="Short-term rental investment"> Short-term rental investment</label>
+                        <label><input type="checkbox" name="8. Transaction Types" value="Primary residences"> Primary residences</label>
+                        <label><input type="checkbox" name="8. Transaction Types" value="New construction"> New construction</label>
+                        <label><input type="checkbox" name="8. Transaction Types" value="Pre-construction and lots"> Pre-construction and lots</label>
+                        <label><input type="checkbox" name="8. Transaction Types" value="Condos"> Condos</label>
+                        <label><input type="checkbox" name="8. Transaction Types" value="Harbor, bay and bayou front"> Harbor, bay and bayou front</label>
+                        <label><input type="checkbox" name="8. Transaction Types" value="Waterfront with boat slips"> Waterfront with boat slips</label>
+                        <label><input type="checkbox" name="8. Transaction Types" value="Retirement and downsizing"> Retirement and downsizing</label>
+                        <label><input type="checkbox" name="8. Transaction Types" value="1031 exchange"> 1031 exchange</label>
+                        <label><input type="checkbox" name="8. Transaction Types" value="Land and development"> Land and development</label>
+                    </div>
+                    <div class="question-hint" style="margin-top:12px;">Rank your top three and tell us why.</div>
+                    <textarea name="8b. Transaction Priority" placeholder="e.g., 1) gulf-front listings over $3M because that is where the volume is, 2) new construction because of the builder relationships, 3) STR investors because they transact repeatedly..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">9</span> What price bands do you want more of?</label>
+                    <div class="question-hint">Your published transactions run from condo and cottage product up to a $9,007,000 sale in Santa Rosa Beach and a $6,100,000 sale on Coopersmith Lane in Inlet Beach. Tell us where you want the next ten deals to land.</div>
+                    <div class="checkbox-group cols-2">
+                        <label><input type="checkbox" name="9. Price Bands" value="Under $750K"> Under $750K</label>
+                        <label><input type="checkbox" name="9. Price Bands" value="$750K to $1.5M"> $750K to $1.5M</label>
+                        <label><input type="checkbox" name="9. Price Bands" value="$1.5M to $3M"> $1.5M to $3M</label>
+                        <label><input type="checkbox" name="9. Price Bands" value="$3M to $5M"> $3M to $5M</label>
+                        <label><input type="checkbox" name="9. Price Bands" value="$5M to $10M"> $5M to $10M</label>
+                        <label><input type="checkbox" name="9. Price Bands" value="$10M and above"> $10M and above</label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">10</span> Where does your business come from today?</label>
+                    <div class="question-hint">This tells us what to protect and what to replace. It also tells us which searches are already working for you.</div>
+                    <textarea name="10. Lead Sources" style="min-height: 90px;" placeholder="e.g., rough percentage from repeat and referral, sphere, Compass network, Zillow or other portals, open houses, social, organic search, past clients who bought a second home and came back to buy another..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 4 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">04</span> Your Markets</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">11</span> Rank the areas that actually matter to your business.</label>
+                    <div class="flag">
+                        <span class="flag-tag">Grayton Beach is missing and it should not be</span>
+                        You publish fifteen community pages, but Grayton Beach is not one of them. The URL brianbeasleygroup.com/grayton-beach/ serves your homepage instead, with a canonical tag pointing back to the homepage, so an engine sees no Grayton Beach page at all. Meanwhile you have a "Welcome to Grayton Beach on 30A" video on YouTube and a seller testimonial on your site attributed to Grayton Beach. You have the credibility and the media for that market and no page to attach either one to.
+                    </div>
+                    <div class="question-hint">Mark 1 for the areas you most want to own and 5 for the ones you barely touch. Leave blank anything that does not matter. The slug beside each field is what you publish today.</div>
+                    <div class="area-grid">
+                        <div class="area-name">Dune Allen</div>
+                        <div class="area-input"><input type="text" name="11. Area - Dune Allen" placeholder="Priority 1 to 5, or skip. Current page: /dune-allen/"></div>
+                        <div class="area-name">Gulf Place</div>
+                        <div class="area-input"><input type="text" name="11. Area - Gulf Place" placeholder="Priority 1 to 5, or skip. Current page: /gulf-place/"></div>
+                        <div class="area-name">Santa Rosa Beach</div>
+                        <div class="area-input"><input type="text" name="11. Area - Santa Rosa Beach" placeholder="Priority 1 to 5, or skip. Current page: /santa-rosa-beach/"></div>
+                        <div class="area-name">Blue Mountain Beach</div>
+                        <div class="area-input"><input type="text" name="11. Area - Blue Mountain Beach" placeholder="Priority 1 to 5, or skip. Current page: /blue-mountain/"></div>
+                        <div class="area-name">Grayton Beach</div>
+                        <div class="area-input"><input type="text" name="11. Area - Grayton Beach" placeholder="Priority 1 to 5, or skip. Current page: no page on your site today"></div>
+                        <div class="area-name">WaterColor</div>
+                        <div class="area-input"><input type="text" name="11. Area - WaterColor" placeholder="Priority 1 to 5, or skip. Current page: /watercolor/"></div>
+                        <div class="area-name">Seaside</div>
+                        <div class="area-input"><input type="text" name="11. Area - Seaside" placeholder="Priority 1 to 5, or skip. Current page: /seaside/"></div>
+                        <div class="area-name">Seagrove Beach</div>
+                        <div class="area-input"><input type="text" name="11. Area - Seagrove Beach" placeholder="Priority 1 to 5, or skip. Current page: /seagrove/"></div>
+                        <div class="area-name">WaterSound</div>
+                        <div class="area-input"><input type="text" name="11. Area - WaterSound" placeholder="Priority 1 to 5, or skip. Current page: /watersound/"></div>
+                        <div class="area-name">Seacrest Beach</div>
+                        <div class="area-input"><input type="text" name="11. Area - Seacrest Beach" placeholder="Priority 1 to 5, or skip. Current page: /seacrest/"></div>
+                        <div class="area-name">Alys Beach</div>
+                        <div class="area-input"><input type="text" name="11. Area - Alys Beach" placeholder="Priority 1 to 5, or skip. Current page: /alys-beach/"></div>
+                        <div class="area-name">Rosemary Beach</div>
+                        <div class="area-input"><input type="text" name="11. Area - Rosemary Beach" placeholder="Priority 1 to 5, or skip. Current page: /rosemary/"></div>
+                        <div class="area-name">Inlet Beach</div>
+                        <div class="area-input"><input type="text" name="11. Area - Inlet Beach" placeholder="Priority 1 to 5, or skip. Current page: /inlet-beach/"></div>
+                        <div class="area-name">Miramar Beach</div>
+                        <div class="area-input"><input type="text" name="11. Area - Miramar Beach" placeholder="Priority 1 to 5, or skip. Current page: /miramar-beach/"></div>
+                        <div class="area-name">Destin</div>
+                        <div class="area-input"><input type="text" name="11. Area - Destin" placeholder="Priority 1 to 5, or skip. Current page: /destin/"></div>
+                        <div class="area-name">Panama City Beach</div>
+                        <div class="area-input"><input type="text" name="11. Area - Panama City Beach" placeholder="Priority 1 to 5, or skip. Current page: /panama-city-beach/"></div>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">12</span> What areas do you want that you have no page for today?</label>
+                    <div class="question-hint">Grayton Beach is the obvious one. Tell us what else. Think about where you have closed deals, where your listings are, and where you want to be taken seriously next year.</div>
+                    <textarea name="12. Missing Areas" style="min-height: 90px;" placeholder="e.g., Grayton Beach, Point Washington, Freeport, Sandestin, Fort Walton Beach, Navarre, Watersound Origins as its own page separate from WaterSound Beach, 30A east versus 30A west as concepts, Walton County versus Bay County..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">13</span> Is there anywhere you do not want to be published as an expert?</label>
+                    <div class="question-hint">Sometimes a page attracts the wrong business. If an area is on your site but you would rather not get those calls, say so and we will not build on it.</div>
+                    <textarea name="13. Areas to Avoid" placeholder="e.g., Panama City Beach is on the site but is not really where we want to grow; we do not want inland or Freeport inquiries..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 5 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">05</span> Communities, Resorts, and Developments</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">14</span> Which named communities and developments do you want to own?</label>
+                    <div class="question-hint">Named communities are the highest-intent searches in your market because a buyer typing them already knows what they want. Your videos and transactions already reference WaterSound Beach, WaterColor, NatureWalk at Seagrove, Wild Heron, Eagle Bay Landing, The Hammocks, Grand Dunes, Seascape, and The Retreat at Old Pass. Tell us which of those, and which others, deserve their own page.</div>
+                    <textarea name="14. Named Communities" style="min-height: 130px;" placeholder="List the communities you want to be the named expert for, and note anything specific about each: WaterSound Beach, WaterSound Origins, WaterColor, Alys Beach, Rosemary Beach, Seaside, Seacrest, Gulf Place, NatureWalk at Seagrove, Wild Heron, Eagle Bay Landing, The Hammocks, Grand Dunes, Seascape, Old Florida Village, Draper Lake, Churchill Oaks, The Retreat at Old Pass..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">15</span> What do buyers actually need to know about HOA, club, and amenity structures?</label>
+                    <div class="question-hint">This is the detail buyers search for and almost nobody publishes accurately. It is also where AI engines currently give bad answers, which is exactly the gap we want to fill.</div>
+                    <textarea name="15. HOA and Amenities" style="min-height: 110px;" placeholder="e.g., which communities have beach access versus deeded beach access versus a beach club, where HOA dues actually land and what they cover, which have mandatory club memberships and what they cost, private versus public beach questions, golf and tennis membership structures, gulf-front versus gulf-view distinctions that affect value..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">16</span> Which communities are gated, private, or otherwise hard for an outsider to understand?</label>
+                    <div class="question-hint">Barriers to entry are content opportunities. If a buyer cannot easily figure something out, that is a page worth owning.</div>
+                    <textarea name="16. Gated and Private" placeholder="e.g., which are gated, which have rental restrictions that surprise buyers, which have architectural review that affects renovation plans, where the resale market behaves differently than list prices suggest..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 6 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">06</span> Second Homes, Investment, and Short-Term Rental</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">17</span> How do short-term rental rules actually work across your footprint?</label>
+                    <div class="flag">
+                        <span class="flag-tag">This is the biggest unclaimed search category in your market</span>
+                        Your coverage spans Walton County, Bay County, and the Destin and Okaloosa side, and the short-term rental rules are not the same across them. This is the single highest-volume question category for a beach market, it changes often enough that most published content is stale, and AI engines currently answer it badly. If you give us an accurate, current picture, we can build the page that becomes the cited answer. We will date it and note that rules change, so you are not on the hook for a permanent claim.
+                    </div>
+                    <div class="question-hint">Give us the practical version you would give a client on the phone.</div>
+                    <textarea name="17. STR Rules" style="min-height: 130px;" placeholder="e.g., how Walton County registration and noise rules differ from Bay County, which communities prohibit or restrict short-term rentals outright, minimum stay requirements, what changed most recently, what buyers most commonly get wrong, and which parts you would rather we not state definitively..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">18</span> How do you handle rental projections and property management questions?</label>
+                    <div class="question-hint">Buyers underwrite these properties on rental income. Whoever answers the projection question credibly gets the buyer. Tell us how you handle it and what you are willing to publish.</div>
+                    <textarea name="18. Rental Projections" style="min-height: 100px;" placeholder="e.g., which management companies you work with or recommend, how you source projections, typical gross rental ranges by community and price point, what you can publish versus what has to stay a conversation, whether you want us to publish numbers at all..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">19</span> Describe your investor and second-home buyer.</label>
+                    <div class="question-hint">The more precisely you describe them, the more precisely we can match the language they actually search with.</div>
+                    <textarea name="19. Investor Profile" style="min-height: 90px;" placeholder="e.g., where they live, what they do, whether they are buying for income, for family use, for eventual retirement, or all three; typical budget; what they compare 30A against; what makes them choose here over Rosemary versus Destin versus PCB..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 7 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">07</span> New Construction, Builders, and Developers</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">20</span> What builder and developer relationships do you have?</label>
+                    <div class="flag">
+                        <span class="flag-tag">You have a developer story you are not telling</span>
+                        Two of your videos present The Retreat at Old Pass as "Destin's Newest Harbor Front Community," framed as The Beasley Group presenting it rather than simply listing it. Another video for 714 Harbor Blvd advertises new construction with boat slips and seller financing. That reads like a developer relationship, and developer relationships are a genuine differentiator that almost no competing team can claim. There is nothing on your website that describes this work.
+                    </div>
+                    <div class="question-hint">Tell us what is real here so we can decide whether it deserves its own section of the site.</div>
+                    <textarea name="20. Builder Relationships" style="min-height: 110px;" placeholder="e.g., which builders and developers you represent or partner with, whether you handle full community sellouts, The Retreat at Old Pass specifically and what your role is, any exclusive or preferred listing arrangements, whether you want to attract more developer clients..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">21</span> How much of your business is pre-construction, lots, or build-to-suit?</label>
+                    <div class="question-hint">These are different searches with different buyers, and they are rarely served well online.</div>
+                    <textarea name="21. Preconstruction and Lots" placeholder="e.g., how often you sell lots, whether you advise on build costs and timelines, which communities still have buildable inventory, what a buyer should know before buying a lot here..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">22</span> Do you offer or arrange any financing structures worth publishing?</label>
+                    <div class="question-hint">One of your listing videos mentions seller financing. If that is a repeatable capability rather than a one-off, it is a strong differentiator and a distinct search.</div>
+                    <textarea name="22. Financing Structures" placeholder="e.g., seller financing availability, lender relationships, construction and bridge financing, anything that helps a buyer transact here that competitors cannot offer..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 8 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">08</span> Luxury and the Gulf-Front Tier</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">23</span> Where does luxury actually start in your market, and what defines it?</label>
+                    <div class="question-hint">Your positioning is "Luxury without the ego." We want to make that concrete rather than atmospheric, because engines cite specifics and ignore adjectives.</div>
+                    <textarea name="23. Luxury Definition" style="min-height: 90px;" placeholder="e.g., the price point where luxury genuinely begins on 30A versus Destin versus PCB, what a buyer at that level expects, what distinguishes a true luxury property here beyond price, how the market has shifted in the last two years..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">24</span> How should we handle the different waterfront types?</label>
+                    <div class="question-hint">Your transactions cover gulf-front, gulf-view, Destin Harbor front, bayou front on Mack Bayou, and lakefront at Wild Heron. Buyers search those separately and value them very differently.</div>
+                    <textarea name="24. Waterfront Types" style="min-height: 100px;" placeholder="e.g., what a buyer should understand about gulf-front versus gulf-view pricing, how harbor front and bayou front compare, boat slip and dock value, coastal construction line and setback issues, insurance realities, what surprises buyers most..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">25</span> How do you want private and off-market business represented?</label>
+                    <div class="question-hint">Your site leads on private pre-market outreach and off-market sourcing, and one of your testimonials credits you with finding a home that never hit the market. That is a strong claim and we want to publish it without overstating it or creating a compliance problem.</div>
+                    <textarea name="25. Off Market" style="min-height: 90px;" placeholder="e.g., how Compass Private Exclusives work in practice for you, how often off-market deals actually happen, what you are comfortable claiming publicly, any discretion requirements for high-profile clients..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 9 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">09</span> Relocation and Feeder Markets</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">26</span> Where do your buyers actually come from?</label>
+                    <div class="flag">
+                        <span class="flag-tag">Your roster is already a feeder-market map</span>
+                        The phone numbers your advisors publish carry Dallas, Chicago, Nashville, and Alabama area codes, and one of your testimonials is from an out-of-state seller who says you handled everything remotely. Emerald Coast buyers are overwhelmingly from somewhere else, which means "moving to 30A from [city]" is a high-intent search category. Almost no team builds content for it, because it requires knowing the origin market as well as the destination.
+                    </div>
+                    <div class="question-hint">Name the actual cities and states, in rough order of volume.</div>
+                    <textarea name="26. Feeder Markets" style="min-height: 100px;" placeholder="e.g., Birmingham, Atlanta, Nashville, Dallas, Chicago, Houston, Memphis, St. Louis, Louisiana; which of those you have real depth in; whether anyone on the team came from one of them and still has a network there..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">27</span> What actually drives people to buy here?</label>
+                    <div class="question-hint">The reason behind the move determines the questions they ask and the searches they run before they ever contact an agent.</div>
+                    <textarea name="27. Relocation Drivers" style="min-height: 100px;" placeholder="e.g., Florida tax situation versus their home state, remote work, retirement timing, family vacation history that turned into ownership, rental income, school considerations for the ones who move full time, hurricane and insurance concerns they raise..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">28</span> How does seasonality shape your year?</label>
+                    <div class="question-hint">Beach markets have sharper seasonality than most. Knowing yours lets us publish ahead of demand instead of behind it.</div>
+                    <textarea name="28. Seasonality" placeholder="e.g., when buyers actually shop versus when they close, spring break and summer effects on showings, the shoulder seasons, when sellers list, when your inquiries spike, what you wish you had published a month earlier last year..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 10 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">10</span> Your Media Library</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">29</span> How do you want your video library used?</label>
+                    <div class="flag">
+                        <span class="flag-tag">Your best asset is doing almost nothing for you</span>
+                        Your YouTube channel has 83 videos published since March 2023 and roughly 6,000 lifetime views against 21 subscribers. The 30A Highlight Reel series alone covers Dune Allen, Blue Mountain, Gulf Place, Grayton Beach, Seaside, WaterColor, Seagrove, WaterSound, Seacrest, Alys Beach, Rosemary Beach, Inlet Beach, Seascape, and Santa Rosa Beach. You are already embedding one video per community page, which is the right instinct. What is missing is the text: transcripts, structured data, and written guides that give an engine something to actually quote. Video is original media that no competitor can copy, and right now none of it is readable by the systems doing the citing.
+                    </div>
+                    <div class="question-hint">Tell us what we can do with it and whether more is coming.</div>
+                    <textarea name="29. Video Library" style="min-height: 100px;" placeholder="e.g., whether we can transcribe and repurpose existing videos into written guides, whether you are still producing and at what cadence, who shoots and edits, whether the Highlight Reel series will be extended, any videos you would rather retire..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">30</span> What other original media or content do you produce?</label>
+                    <div class="question-hint">Anything with your own name, data, or point of view on it counts and is worth amplifying.</div>
+                    <textarea name="30. Other Media" style="min-height: 90px;" placeholder="e.g., a newsletter and how many subscribers, Instagram content and who runs it, print or mailers, market data you compile yourself, podcast or press appearances, speaking, community involvement or sponsorships..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">31</span> What photography and video rights do we have?</label>
+                    <div class="question-hint">We want to use your own imagery rather than stock. Stock photography is a weak signal and your coast is the whole product.</div>
+                    <textarea name="31. Media Rights" placeholder="e.g., who owns the listing photography, whether we can use it after a property closes, drone footage availability, any photographer credit requirements, whether Compass imposes restrictions..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 11 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">11</span> Questions People Ask You</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">32</span> What do buyers ask you over and over?</label>
+                    <div class="question-hint">This is the most directly useful section on the form. AI engines answer questions, so the fastest way to get cited is to answer the real ones better than anyone else has. Write them the way clients actually say them, not the way a website would phrase them.</div>
+                    <textarea name="32. Buyer Questions" style="min-height: 140px;" placeholder="e.g., which part of 30A is right for us, is Rosemary Beach worth the premium over Seacrest, can I rent it out when we are not there, what will insurance cost, how bad is the traffic in summer, is Panama City Beach a mistake, what does gulf-front actually get me, how far is the airport, do we need a golf cart..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">33</span> What do sellers ask you over and over?</label>
+                    <div class="question-hint">Same instruction. Verbatim is better than polished.</div>
+                    <textarea name="33. Seller Questions" style="min-height: 120px;" placeholder="e.g., when is the right time to list here, how do I price against new construction, should I sell furnished, do I need to stop renting it to sell it, how long will it take, what should I fix first, how do you market differently than the last agent..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">34</span> What question do you get constantly that nobody online answers well?</label>
+                    <div class="question-hint">This is where the biggest wins usually hide. If you find yourself explaining the same thing every week because the internet gets it wrong, that is the page we want to build first.</div>
+                    <textarea name="34. Unanswered Questions" style="min-height: 100px;" placeholder="e.g., the thing every client is confused about because a portal or a national article has it wrong, the local nuance that only someone who works here knows, the myth you keep correcting..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 12 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">12</span> Content Priorities</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">35</span> Your publishing surfaces are built and empty. What goes on them first?</label>
+                    <div class="flag">
+                        <span class="flag-tag">Two live pages with nothing on them</span>
+                        brianbeasleygroup.com/blog/ is live, titled "Blog | Real Estate Articles From The Beasley Group," headed "Real Estate News," and contains zero posts. brianbeasleygroup.com/market-reports/ sits in your main navigation and renders with no content at all, and its title tag is duplicated as "Market Reports | The Beasley Group | The Beasley Group." Separately, your fifteen community pages carry bare one-word titles and headings such as "Rosemary," "Seagrove," "Seacrest," and "Blue Mountain" rather than the full place names people actually search. Those are quick, high-value fixes and they are the first thing we would do.
+                    </div>
+                    <div class="question-hint">Tell us what you want published first and whether anything is off limits.</div>
+                    <textarea name="35. First Content" style="min-height: 100px;" placeholder="e.g., start with Grayton Beach and the missing communities, or lead with short-term rental rules, or get market reports running first because clients ask for them; anything you have tried before that did not work..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">36</span> What cadence and format do you want for market reports?</label>
+                    <div class="question-hint">You have one "30A Market Update, What Q1 2026 Is Telling Us" video, so the appetite is there. Market data is one of the most reliably cited content types in AI search because engines want current numbers with a clear source.</div>
+                    <textarea name="36. Market Reports" style="min-height: 90px;" placeholder="e.g., monthly or quarterly, which geographies get their own report, whether you want them broken out by community, whether you have a data source you prefer, whether video should accompany each one, who signs off on the commentary..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">37</span> Which content types should we prioritize?</label>
+                    <div class="question-hint">Check what you want. We will sequence it against what your market is actually searching.</div>
+                    <div class="checkbox-group cols-2">
+                        <label><input type="checkbox" name="37. Content Types" value="Community and neighborhood guides"> Community and neighborhood guides</label>
+                        <label><input type="checkbox" name="37. Content Types" value="Community vs community comparisons"> Community vs community comparisons</label>
+                        <label><input type="checkbox" name="37. Content Types" value="Market reports"> Market reports</label>
+                        <label><input type="checkbox" name="37. Content Types" value="Short-term rental guides"> Short-term rental guides</label>
+                        <label><input type="checkbox" name="37. Content Types" value="Relocation guides by feeder city"> Relocation guides by feeder city</label>
+                        <label><input type="checkbox" name="37. Content Types" value="Buying process and cost guides"> Buying process and cost guides</label>
+                        <label><input type="checkbox" name="37. Content Types" value="Seller strategy and pricing"> Seller strategy and pricing</label>
+                        <label><input type="checkbox" name="37. Content Types" value="New construction and builder content"> New construction and builder content</label>
+                        <label><input type="checkbox" name="37. Content Types" value="Condo and resort building guides"> Condo and resort building guides</label>
+                        <label><input type="checkbox" name="37. Content Types" value="Investment and rental income analysis"> Investment and rental income analysis</label>
+                        <label><input type="checkbox" name="37. Content Types" value="Insurance, flood zones and coastal risk"> Insurance, flood zones and coastal risk</label>
+                        <label><input type="checkbox" name="37. Content Types" value="Lifestyle, dining and things to do"> Lifestyle, dining and things to do</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 13 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">13</span> Your Expertise and Proof</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">38</span> What is your background, and what credentials should we publish?</label>
+                    <div class="question-hint">Public sources describe you as an Auburn graduate who started in real estate in 2003, became a broker in 2005, helped grow a boutique luxury firm into a Century 21 franchise that later sold to Coldwell Banker, worked as a Previews luxury agent, opened the Destin and 30A Beaches shops for Engel and Voelkers, and moved to Compass in 2022. Confirm or correct that, because none of it appears on your website today and career history is a genuine authority signal.</div>
+                    <textarea name="38. Background and Credentials" style="min-height: 120px;" placeholder="Correct anything above that is wrong, and add designations, certifications, board or association roles, luxury credentials, teaching or mentoring, and anything about the rest of the team's background worth publishing..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">39</span> Give us one canonical set of numbers and awards.</label>
+                    <div class="flag">
+                        <span class="flag-tag">Three pages, three different versions</span>
+                        Your homepage stat band shows #2 medium team in Seagrove Beach, #82 medium team in Florida, and #983 medium team nationally. Your Meet the Team band shows #2 in Seagrove Beach for 2025, #2 on 30A, and #4 in Northern Florida for 2023, and drops the Florida and national numbers. Your Recognition section lists a fourth combination, including Top 100 Producer at Compass Florida for 2022 and 2025. The $800M+ lifetime volume figure appears everywhere with no date or basis attached. Every one of these may be accurate, but engines cross-check claims across a site, and three versions of the same ranking reads as unreliable rather than impressive.
+                    </div>
+                    <div class="question-hint">Give us the single correct list, each with the year and the awarding body, and tell us what the volume figure covers.</div>
+                    <textarea name="39. Canonical Stats" style="min-height: 120px;" placeholder="e.g., the exact RealTrends rankings with year and category for each, which Compass recognitions and which years, what $800M+ measures and as of when, whether it is team lifetime or your personal career, current annual volume and transaction count if you want those published..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">40</span> Can we attribute your reviews to real people?</label>
+                    <div class="flag">
+                        <span class="flag-tag">Thirteen strong reviews, almost none of them attributable</span>
+                        Your testimonials page carries thirteen reviews and ten of them are signed "Beasley Group Client" with no name, no date, and no source platform. The other three are signed by transaction type and location. The content is genuinely strong, but unattributed praise is the weakest form of proof for an AI engine, and it cannot carry review structured data. Even first name and last initial with a source and a date changes what we can publish.
+                    </div>
+                    <div class="question-hint">Tell us what is possible here. We are not asking you to chase clients, just to point us at what already exists.</div>
+                    <textarea name="40. Review Attribution" style="min-height: 100px;" placeholder="e.g., these came from Google or Zillow originally and can be re-linked, we can attribute first name and last initial, we can add the year and the community, we would rather not attribute any of them; also tell us where your reviews live today and roughly how many..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 14 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">14</span> Competition and Current Presence</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">41</span> Who do you actually compete with, and where do you lose?</label>
+                    <div class="question-hint">Name real teams and brokerages. We will measure how often AI engines name them versus you for your priority searches, and that becomes your baseline.</div>
+                    <textarea name="41. Competitors" style="min-height: 100px;" placeholder="e.g., the teams that keep beating you to listings, the ones with the strongest online presence whether or not they close more, national brands with a local office, the portal or rental company that ranks for everything, and the searches where you know you are invisible..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">42</span> Do we have the access we need to publish and measure?</label>
+                    <div class="flag">
+                        <span class="flag-tag">One legacy property to resolve</span>
+                        lp30a.com carries The Beasley Group name and Compass branding and appears in search results, but it currently returns a 403 Forbidden error rather than loading or redirecting. A branded domain that fails to load is worse than one that does not exist, because links and citations pointing at it go nowhere. Tell us whether you still control it and we will either redirect it to the main site or retire it properly.
+                    </div>
+                    <div class="question-hint">Total Search works fastest when we can publish directly and see the data. Tell us who controls each of these and whether access is already available.</div>
+                    <textarea name="42. Access" style="min-height: 110px;" placeholder="e.g., who administers the website, Google Search Console access, Google Analytics, your Google Business Profile and who manages it, your YouTube channel, whether you still own lp30a.com, who approves content before it goes live and how quickly that usually happens..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 15 -->
+            <div class="section">
+                <div class="section-header"><span class="sec-num">15</span> Guardrails and Anything Else</div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">43</span> Are there any topics, claims, or areas we should avoid, and what tone fits your brand?</label>
+                    <div class="question-hint">Anything you do not want us to write about, any compliance or Fair Housing language to keep in mind, Compass brand requirements, client confidentiality, and the voice that fits a team whose positioning is "Luxury without the ego."</div>
+                    <textarea name="43. Guardrails and Tone" style="min-height: 110px;" placeholder="e.g., keep Fair Housing compliant with no steering language in school or neighborhood content, follow Compass brand and disclosure requirements, never name clients, be careful stating short-term rental rules and insurance costs since both change, avoid direct competitor comparisons, avoid hurricane and flood claims we cannot support, no hype and no exclamation points..."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label"><span class="question-number">44</span> Is there anything else we should know about your team, your market, or your goals?</label>
+                    <div class="question-hint">Anything we missed: upcoming listings or developments you want featured, recruiting goals, changes coming to the team, or specific results you want from this program.</div>
+                    <textarea name="44. Additional Notes" style="min-height: 110px;" placeholder="Anything else..."></textarea>
+                </div>
+            </div>
+
+            <!-- Submit -->
+            <div class="submit-section">
+                <button type="submit" class="submit-btn">Submit Questionnaire</button>
+                <p class="submit-note">Your responses go directly to Blok.co. You will receive a confirmation after submitting.</p>
+            </div>
+        </form>
+
+        <footer>
+            <p><strong>The Beasley Group at Compass</strong> | Total Search Questionnaire | August 2026</p>
+            <p>Prepared by <a href="https://blok.co">Blok.co</a></p>
+        </footer>
+
+    </div>
+</body>
+</html>
