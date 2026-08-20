@@ -699,5 +699,134 @@
             <p>Prepared by <a href="https://blok.co">Blok.co</a></p>
         </footer>
     </div>
+<script>
+/* BLOK Total Search questionnaire guard - added 2026-08-19
+   Fixes: a bare Enter keypress in any single-line field submitted the entire
+   form via HTML implicit submission, sending a near-empty questionnaire with
+   no way to recover the answers (FormSubmit stores nothing).
+   Adds: Enter-key block, empty-submit hard stop, partial-submit confirm,
+   and localStorage autosave/restore so answers survive an accidental send. */
+(function () {
+  var form = document.querySelector('form');
+  if (!form) return;
+  var KEY = 'blok-ts-audreyross-jun2026';
+
+  function fields() {
+    return Array.prototype.slice.call(
+      form.querySelectorAll('input[type="text"], textarea'));
+  }
+  function boxes() {
+    return Array.prototype.slice.call(
+      form.querySelectorAll('input[type="checkbox"]'));
+  }
+
+  /* remember what shipped pre-filled so we can tell real answers from defaults */
+  var initial = {};
+  fields().forEach(function (el) { if (el.name) initial[el.name] = el.value; });
+
+  function answered() {
+    var n = 0;
+    fields().forEach(function (el) {
+      if (el.name && el.value.trim() && el.value !== (initial[el.name] || '')) n++;
+    });
+    boxes().forEach(function (el) { if (el.checked) n++; });
+    return n;
+  }
+
+  /* ---- 1. Enter must never submit the form ---- */
+  form.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' && e.target && e.target.tagName === 'INPUT') {
+      e.preventDefault();
+      var all = fields();
+      var i = all.indexOf(e.target);
+      if (i > -1 && all[i + 1]) all[i + 1].focus();
+    }
+  });
+
+  /* ---- 2. autosave ---- */
+  var stamp = document.createElement('p');
+  stamp.className = 'submit-note';
+  stamp.id = 'blok-save-stamp';
+  stamp.textContent = 'Your answers save automatically in this browser as you type.';
+  var note = form.querySelector('.submit-note');
+  if (note && note.parentNode) note.parentNode.appendChild(stamp);
+  function save() {
+    try {
+      var d = {};
+      fields().forEach(function (el) { if (el.name && el.value) d[el.name] = el.value; });
+      boxes().forEach(function (el) {
+        if (el.checked) d['cb::' + el.name + '::' + el.value] = '1';
+      });
+      localStorage.setItem(KEY, JSON.stringify({ t: Date.now(), d: d }));
+      if (stamp) stamp.textContent = 'Answers saved in this browser at ' +
+        new Date().toLocaleTimeString();
+    } catch (err) { /* private mode, ignore */ }
+  }
+  var timer;
+  form.addEventListener('input', function () {
+    clearTimeout(timer); timer = setTimeout(save, 600);
+  });
+  form.addEventListener('change', save);
+
+  /* ---- 3. restore ---- */
+  try {
+    var raw = localStorage.getItem(KEY);
+    if (raw) {
+      var parsed = JSON.parse(raw), d = parsed.d || {}, restored = 0;
+      fields().forEach(function (el) {
+        if (el.name && d[el.name] && d[el.name] !== el.value) {
+          el.value = d[el.name]; restored++;
+        }
+      });
+      boxes().forEach(function (el) {
+        if (d['cb::' + el.name + '::' + el.value]) { el.checked = true; restored++; }
+      });
+      if (restored) {
+        var bar = document.createElement('div');
+        bar.className = 'flag';
+        bar.style.margin = '0 0 18px';
+        bar.innerHTML = '<span class="flag-tag">Draft restored</span>' +
+          'We restored ' + restored + ' answer' + (restored === 1 ? '' : 's') +
+          ' you had already filled in on this device, last saved ' +
+          new Date(parsed.t).toLocaleString() + '. ' +
+          '<a href="#" id="blok-clear" style="color:#b4564a;font-weight:600;">' +
+          'Clear and start fresh</a>';
+        form.parentNode.insertBefore(bar, form);
+        document.getElementById('blok-clear').addEventListener('click', function (e) {
+          e.preventDefault();
+          if (confirm('Clear the restored answers and start this form over?')) {
+            localStorage.removeItem(KEY); location.reload();
+          }
+        });
+      }
+    }
+  } catch (err) { /* ignore */ }
+
+  /* ---- 4. submit gate ---- */
+  form.addEventListener('submit', function (e) {
+    var n = answered();
+    if (n === 0) {
+      e.preventDefault();
+      alert('This form is still blank.\n\n' +
+        'Nothing has been filled in beyond the details we pre-filled for you, ' +
+        'so there is nothing for us to work from yet.\n\n' +
+        'Answer what you can, then submit. Your answers save automatically in ' +
+        'this browser as you go, so you can close the page and come back to it.');
+      var first = fields()[0]; if (first) first.focus();
+      return;
+    }
+    var total = fields().length + 3;
+    if (n < 8) {
+      if (!confirm('You have answered ' + n + ' of roughly ' + total +
+        ' items.\n\nSubmit anyway? You can only submit once, and we cannot see ' +
+        'anything you have not filled in.\n\nClick Cancel to keep working. ' +
+        'Your progress is saved in this browser.')) {
+        e.preventDefault(); return;
+      }
+    }
+    try { localStorage.setItem(KEY + '-sent', String(Date.now())); } catch (err) {}
+  });
+})();
+</script>
 </body>
 </html>
