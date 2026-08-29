@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Total Search Questionnaire | Dennis and Martha Rush</title>
+    <link rel="stylesheet" href="https://use.typekit.net/xay8dos.css">
+    <style>
+        :root {
+            --navy: #010b23;
+            --navy-mid: #060f2a;
+            --navy-light: #0a1536;
+            --indigo: #111e50;
+            --blue: #1936a5;
+            --blue-glow: #416bdf;
+            --cyan: #59f3ff;
+            --cyan-dim: rgba(89,243,255,0.55);
+            --cyan-ghost: rgba(89,243,255,0.10);
+            --coral: #fb958a;
+            --teal: #85c9ce;
+            --paper: #eef1f8;
+            --sheet: #ffffff;
+            --ink: #0a1430;
+            --muted: #55618a;
+            --dim: #8b93b0;
+            --line: rgba(17,30,80,0.12);
+            --line-strong: rgba(17,30,80,0.22);
+            --font: "proxima-nova", -apple-system, "Helvetica Neue", "Segoe UI", system-ui, Roboto, Arial, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font);
+            background:
+                radial-gradient(1200px 600px at 50% -220px, rgba(65,107,223,0.12), transparent 60%),
+                var(--paper);
+            color: var(--ink);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 940px;
+            margin: 0 auto;
+            padding: 32px 20px 60px;
+        }
+
+        /* HEADER: light letterhead with the black BLOK logo */
+        header {
+            background: var(--sheet);
+            border: 1px solid var(--line);
+            border-top: 4px solid var(--cyan);
+            border-radius: 14px;
+            padding: 30px 34px 32px;
+            margin-bottom: 22px;
+            box-shadow: 0 18px 46px -28px rgba(10,20,48,0.4);
+        }
+
+        .brandbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding-bottom: 22px;
+            border-bottom: 1px solid var(--line);
+            margin-bottom: 24px;
+        }
+
+        .brandbar .logo {
+            width: 132px;
+            height: auto;
+            display: block;
+        }
+
+        .brandbar .doc-tag {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2.4px;
+            text-transform: uppercase;
+            color: var(--muted);
+            text-align: right;
+        }
+
+        .brandbar .doc-tag span {
+            display: block;
+            color: var(--blue);
+        }
+
+        header h1 {
+            font-size: 30px;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+            color: var(--navy);
+            margin-bottom: 6px;
+        }
+
+        header .subtitle {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--blue);
+            margin-bottom: 14px;
+        }
+
+        header .description {
+            font-size: 15px;
+            color: var(--muted);
+            max-width: 760px;
+        }
+
+        /* INTRO */
+        .intro {
+            background: var(--sheet);
+            border: 1px solid var(--line);
+            border-left: 4px solid var(--cyan);
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin-bottom: 22px;
+            box-shadow: 0 14px 40px -30px rgba(10,20,48,0.4);
+        }
+
+        .intro p {
+            font-size: 15px;
+            color: var(--ink);
+            margin-bottom: 12px;
+        }
+
+        .intro p:last-child { margin-bottom: 0; }
+
+        .intro strong { color: var(--navy); }
+
+        /* SECTIONS */
+        .section {
+            background: var(--sheet);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 0 30px 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 14px 40px -30px rgba(10,20,48,0.4);
+            overflow: hidden;
+        }
+
+        .section-header {
+            background: linear-gradient(100deg, var(--navy) 0%, var(--indigo) 100%);
+            color: #f0f2fa;
+            padding: 14px 24px;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            margin: 0 -30px 26px;
+            border-bottom: 2px solid var(--cyan);
+        }
+
+        .section-header .sec-num {
+            color: var(--cyan);
+            margin-right: 10px;
+        }
+
+        .question-group { margin-bottom: 28px; }
+        .question-group:last-child { margin-bottom: 0; }
+
+        .question-label {
+            font-weight: 600;
+            color: var(--navy);
+            font-size: 15.5px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .question-number {
+            display: inline-block;
+            background: var(--navy);
+            color: var(--cyan);
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 25px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-right: 9px;
+        }
+
+        .question-hint {
+            font-size: 13.5px;
+            color: var(--muted);
+            margin-bottom: 10px;
+        }
+
+        textarea, input[type="text"] {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1.5px solid var(--line-strong);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 14.5px;
+            color: var(--ink);
+            background: #fbfcff;
+            transition: border-color 0.15s, box-shadow 0.15s;
+        }
+
+        textarea {
+            min-height: 84px;
+            resize: vertical;
+        }
+
+        textarea:focus, input[type="text"]:focus {
+            outline: none;
+            border-color: var(--blue-glow);
+            box-shadow: 0 0 0 3px var(--cyan-ghost);
+            background: #fff;
+        }
+
+        textarea::placeholder, input::placeholder { color: var(--dim); }
+
+        .checkbox-group, .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .checkbox-group label, .radio-group label {
+            display: flex;
+            align-items: flex-start;
+            gap: 11px;
+            cursor: pointer;
+            font-size: 14.5px;
+            padding: 9px 14px;
+            background: #f6f8fd;
+            border: 1px solid transparent;
+            border-radius: 7px;
+            transition: background 0.15s, border-color 0.15s;
+        }
+
+        .checkbox-group label:hover, .radio-group label:hover {
+            background: var(--cyan-ghost);
+            border-color: rgba(89,243,255,0.45);
+        }
+
+        .checkbox-group input[type="checkbox"] { margin-top: 3px; }
+
+        .checkbox-group input[type="checkbox"],
+        .radio-group input[type="radio"] {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+            accent-color: var(--blue);
+        }
+
+        /* Two-column checkbox variant for long lists */
+        .cols-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        /* AREA GRID */
+        .area-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            border: 1.5px solid var(--line-strong);
+            border-radius: 9px;
+            overflow: hidden;
+            margin-top: 12px;
+        }
+
+        .area-grid .area-name {
+            padding: 12px 14px;
+            background: #f6f8fd;
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--navy);
+            border-bottom: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+        }
+
+        .area-grid .area-input {
+            padding: 7px 14px;
+            border-bottom: 1px solid var(--line);
+            border-left: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+        }
+
+        .area-grid .area-input input {
+            border: none;
+            background: transparent;
+            padding: 4px 0;
+            font-size: 14px;
+        }
+
+        .area-grid .area-input input:focus {
+            box-shadow: none;
+            background: transparent;
+        }
+
+        .area-grid .area-name:last-of-type,
+        .area-grid .area-input:last-of-type { border-bottom: none; }
+
+        /* CONFIRM GRID */
+        .confirm-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .confirm-grid .full { grid-column: 1 / -1; }
+
+        .confirm-grid label {
+            font-size: 12.5px;
+            font-weight: 700;
+            letter-spacing: 0.4px;
+            text-transform: uppercase;
+            color: var(--muted);
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        /* FLAG callout for things we found that need confirming */
+        .flag {
+            background: rgba(251,149,138,0.10);
+            border: 1px solid rgba(251,149,138,0.45);
+            border-left: 3px solid var(--coral);
+            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 13.5px;
+            color: var(--ink);
+            margin-bottom: 12px;
+        }
+
+        .flag .flag-tag {
+            display: block;
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 1.6px;
+            text-transform: uppercase;
+            color: #b4564a;
+            margin-bottom: 4px;
+        }
+
+        /* SUBMIT */
+        .submit-section {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 60%, var(--indigo) 100%);
+            border-radius: 12px;
+            padding: 36px 30px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 18px 46px -28px rgba(10,20,48,0.6);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--cyan) 0%, #7fd8ff 100%);
+            color: var(--navy);
+            border: none;
+            padding: 16px 62px;
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.4px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px -6px rgba(89,243,255,0.45);
+        }
+
+        .submit-btn:active { transform: translateY(0); }
+
+        .submit-note {
+            font-size: 13px;
+            color: #c3c5cf;
+            margin-top: 14px;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 8px 20px;
+            color: var(--muted);
+        }
+
+        footer p { font-size: 13px; margin: 4px 0; }
+
+        footer strong { color: var(--navy); }
+
+        footer a { color: var(--blue); text-decoration: none; }
+
+        @media print {
+            body { background: #fff; }
+            .section, header, .intro { box-shadow: none; break-inside: avoid; }
+            .question-group { break-inside: avoid; }
+            .area-grid, .checkbox-group, .radio-group, .confirm-grid, .flag { break-inside: avoid; }
+            textarea { min-height: 60px; }
+        }
+
+        @media (max-width: 640px) {
+            .container { padding: 20px 14px 40px; }
+            header { padding: 24px 20px; }
+            header h1 { font-size: 24px; }
+            .section { padding: 0 18px 24px; }
+            .section-header { margin: 0 -18px 22px; padding: 13px 18px; }
+            .intro { padding: 20px; }
+            .area-grid { grid-template-columns: 1fr; }
+            .confirm-grid { grid-template-columns: 1fr; }
+            .cols-2 { grid-template-columns: 1fr; }
+            .brandbar .doc-tag { text-align: left; }
+            .submit-btn { width: 100%; padding: 16px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <header>
+            <div class="brandbar">
+                <svg class="logo" viewBox="0 0 521.68 163.5" role="img" aria-label="BLOK">
+                    <g>
+                        <polygon fill="#85c9ce" points="54.9 98.1 54.9 40.6 107.4 69.7 107.4 128.5 54.9 98.1"/>
+                        <polygon fill="#fb958a" points="0 132.9 53.7 101.6 106.7 132.9 53.7 163.5 0 132.9"/>
+                        <polygon fill="#060c3b" points="0 129.2 0 29.7 51.7 0 51.7 98.8 0 129.2"/>
+                        <path fill="#060c3b" d="M212.4,104.4c0-10-1.6-17.3-4.7-21.8-3.2-4.6-7.9-6.9-14.2-6.9-8.4,0-14.2,3.4-17.3,10.3v39c3.2,6.9,9.1,10.4,17.5,10.4s14.1-4.2,16.8-12.6c1.3-4,1.9-10.2,1.9-18.4ZM238.8,106.3c0,15.8-3.4,28.2-10.1,37.1-6.8,8.8-16.2,13.2-28.3,13.2-10.7,0-19.3-4.1-25.7-12.3l-1.2,10.5h-23.7V14.6h26.4v50.3c6.1-7.1,14.1-10.7,24-10.7,12.1,0,21.5,4.4,28.3,13.3,6.9,8.8,10.3,21.3,10.3,37.3v1.5Z"/>
+                        <rect fill="#060c3b" x="256.5" y="14.6" width="26.5" height="140.2"/>
+                        <path fill="#060c3b" d="M327.1,106.4c0,9.4,1.8,16.6,5.3,21.5s8.6,7.4,15.2,7.4,11.4-2.4,15-7.3c3.6-4.9,5.4-12.8,5.4-23.6,0-9.2-1.8-16.3-5.4-21.4-3.6-5.1-8.6-7.6-15.2-7.6s-11.4,2.5-15,7.6c-3.5,5.1-5.3,12.9-5.3,23.4ZM300.7,104.5c0-9.8,1.9-18.5,5.7-26.2,3.8-7.7,9.2-13.6,16.2-17.8,7.1-4.2,15.4-6.3,24.7-6.3,13.3,0,24.2,4.1,32.6,12.2,8.5,8.2,13.2,19.2,14.2,33.2l.2,6.8c0,15.2-4.2,27.3-12.7,36.5-8.5,9.1-19.8,13.7-34.1,13.7s-25.6-4.6-34.1-13.7c-8.5-9.1-12.7-21.5-12.7-37.2v-1.2h0Z"/>
+                        <polygon fill="#060c3b" points="446.4 115.2 436.9 124.7 436.9 154.8 410.5 154.8 410.5 14.6 436.9 14.6 436.9 92.3 442 85.7 467.3 56 499 56 463.3 97.2 502.1 154.8 471.8 154.8 446.4 115.2"/>
+                        <path fill="#060c3b" d="M521.68,23.94c0,5.58-4.38,9.96-10.08,9.96s-10.14-4.38-10.14-9.96,4.5-9.84,10.14-9.84,10.08,4.38,10.08,9.84ZM503.98,23.94c0,4.38,3.24,7.86,7.68,7.86s7.5-3.48,7.5-7.8-3.18-7.92-7.56-7.92-7.62,3.54-7.62,7.86ZM510.04,29.1h-2.28v-9.84c.9-.18,2.16-.3,3.78-.3,1.86,0,2.7.3,3.42.72.54.42.96,1.2.96,2.16,0,1.08-.84,1.92-2.04,2.28v.12c.96.36,1.5,1.08,1.8,2.4.3,1.5.48,2.1.72,2.46h-2.46c-.3-.36-.48-1.26-.78-2.4-.18-1.08-.78-1.56-2.04-1.56h-1.08v3.96ZM510.1,23.52h1.08c1.26,0,2.28-.42,2.28-1.44,0-.9-.66-1.5-2.1-1.5-.6,0-1.02.06-1.26.12v2.82Z"/>
+                    </g>
+                </svg>
+                
+                <div class="doc-tag">
+                    Total Search
+                    <span>AI Visibility Questionnaire</span>
+                </div>
+            </div>
+
+            <h1>Total Search Questionnaire</h1>
+            <div class="subtitle">Dennis and Martha Rush at Compass, Wailea and Makena, Maui</div>
+            <p class="description">This follows the AI visibility reading we ran on August 28, 2026, in which we put your question and eleven variations to ChatGPT, Perplexity, Gemini, Google AI Overviews and Google AI Mode across 92 observations. Your answers below give us the raw material to close the specific gaps that reading found.</p>
+        </header>
+
+        <div class="intro">
+            <p><strong>How this works:</strong> the reading showed that you are named in 18 of 18 runs when a question already contains your name, and once in 42 runs when a question is phrased the way a buyer with no agent actually searches. The cause is not that you lack a record. It is that your record is not written in a form an answer engine can read, quote and attribute. This questionnaire exists to fix that, so almost every question here is asking for a fact, a number, a year and a source rather than an opinion.</p>
+            <p>Two things worth knowing before you start. First, we will not publish a claim we cannot source, which is why section 2 asks where each of your credentials comes from. That is not skepticism about your record, it is that sourced and dated claims are the ones these engines repeat and unsourced superlatives are the ones they skip. Second, the questions carrying a highlighted callout are the ones that unblock the most work. If you run out of time, answer those and send the rest later.</p>
+            <p>Anything you cannot answer, leave blank and we will chase it down ourselves where we can.</p>
+        </div>
+
+        <form action="https://formsubmit.co/brandon.hendricks@blok.co" method="POST">
+            <!-- FormSubmit Configuration -->
+            <input type="hidden" name="_subject" value="Total Search Questionnaire - Dennis and Martha Rush">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_cc" value="advertising@blok.co">
+            <input type="hidden" name="_next" value="https://reports-blok.co/thank-you/">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="text" name="_honey" style="display:none">
+            <!-- Apps Script backend identifiers, used once wire-forms.py runs -->
+            <input type="hidden" name="_client" value="dennisrush-aug2026">
+            <input type="hidden" name="_clientLabel" value="Dennis and Martha Rush">
+<div class="section">
+<div class="section-header">1. Identity and naming</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">1</span> Confirm or correct the details we have on file.</label>
+<div class="question-hint">These are pulled from dennisrush.com and your public profiles on August 28, 2026. Correct anything wrong or out of date. The phone numbers matter more than they look: we found three different numbers across the site and the markup, and AI engines use a stable number as an identity anchor.</div>
+<div class="confirm-grid">
+<div><label>Lead agent</label><input type="text" name="1a. Lead Agent" value="Dennis Rush" placeholder=""></div>
+<div><label>Partner</label><input type="text" name="1b. Partner" value="Martha Rush" placeholder=""></div>
+<div><label>Dennis&#x27;s title</label><input type="text" name="1c. Dennis Title" value="" placeholder="Broker, REALTOR, Principal Broker, exactly as licensed"></div>
+<div><label>Martha&#x27;s title</label><input type="text" name="1d. Martha Title" value="" placeholder="exactly as licensed"></div>
+<div><label>Team name as you want it published</label><input type="text" name="1e. Team Name" value="" placeholder="see question 2 before answering"></div>
+<div><label>Brokerage (exact legal entity name)</label><input type="text" name="1f. Brokerage" value="Compass" placeholder=""></div>
+<div><label>Website</label><input type="text" name="1g. Website" value="dennisrush.com" placeholder=""></div>
+<div><label>Primary email</label><input type="text" name="1h. Primary Email" value="martha@martharush.com" placeholder="this is what your markup publishes"></div>
+<div><label>Dennis&#x27;s email</label><input type="text" name="1i. Dennis Email" value="" placeholder=""></div>
+<div><label>PRIMARY phone, the one number to use everywhere</label><input type="text" name="1j. Primary Phone" value="" placeholder="808-283-3952, 808-280-0788 or 808-875-8888"></div>
+<div><label>Second phone and what it is for</label><input type="text" name="1k. Second Phone" value="" placeholder="office line, cell, listing line"></div>
+<div><label>Third phone and what it is for</label><input type="text" name="1l. Third Phone" value="" placeholder=""></div>
+<div><label>Dennis&#x27;s license number</label><input type="text" name="1m. Dennis License" value="" placeholder=""></div>
+<div><label>Martha&#x27;s license number</label><input type="text" name="1n. Martha License" value="" placeholder=""></div>
+<div><label>Office address</label><input type="text" name="1o. Office Address" value="116 Wailea Ike Drive Suite 2108, Wailea, HI 96753" placeholder=""></div>
+<div><label>Year Dennis started selling on Maui</label><input type="text" name="1p. Dennis Start Year" value="" placeholder="your site says the 1990s, we need the year"></div>
+<div><label>Year Martha started</label><input type="text" name="1q. Martha Start Year" value="" placeholder=""></div>
+<div><label>Year you began working as a partnership</label><input type="text" name="1r. Partnership Year" value="" placeholder=""></div>
+</div></div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">2</span> How do you want to be named across the web? This is the single highest leverage answer in this document.</label>
+<div class="question-hint">Your homepage currently uses four different forms of the same name: &quot;Dennis and Martha&quot; 47 times, &quot;Martha &amp; Dennis&quot; 16 times, &quot;Martha and Dennis&quot; 7 times, and &quot;Dennis &amp; Martha&quot; twice. Your page title and your structured data both say &quot;Martha &amp; Dennis&quot;. Your logo says &quot;Dennis and Martha Rush&quot; and your domain is dennisrush.com. AI engines build one profile per exact string, so four strings split your authority four ways. We need one canonical version and we will align every profile we can reach to it. Our recommendation, and John&#x27;s, is &quot;Dennis and Martha Rush&quot;, because it carries the surname and matches the domain.</div>
+<div class="flag">Answer this one even if you answer nothing else.</div>
+<textarea name="2. Canonical Name" style="min-height: 80px;" placeholder="Pick one exact string. Also tell us any prior team name, DBA or legal entity still floating around out there that we should chase down."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">3</span> Should Dennis Rush and Martha Rush each be findable as individuals, or only as the team?</label>
+<div class="question-hint">This is the gap John spotted and the reading confirmed. Your website tells machines that it represents a business called &quot;Martha &amp; Dennis&quot;. It never says that Dennis Rush is a person, that Martha Rush is a person, or that either of you is a real estate agent in your own right. The measured result: when a question is phrased around a team, ChatGPT named you in three of four runs. When it is phrased around an individual agent, you were named once in 42 runs. We can publish both, but we need to know how you want authority distributed.</div>
+<div class="flag">This is the technical root cause of the query Dennis asked about.</div>
+<textarea name="3. Individual vs Team Entity" style="min-height: 80px;" placeholder="For example: Dennis as the primary individual entity for luxury and listings, Martha as a named individual for Spanish-speaking and relocation clients, plus the team as an umbrella. Or a different split."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">4</span> Who should be quoted and attributed in published content?</label>
+<div class="question-hint">Direct quotes attributed to a named person with a title are one of the strongest signals an answer engine can use, and they are also what gets lifted verbatim into an AI answer. We need to know who signs off and whose voice we write in.</div>
+<textarea name="4. Attribution" style="min-height: 70px;" placeholder="Who can be quoted, who approves copy before it publishes, and how fast you can turn a review around."></textarea>
+</div>
+</div>
+<div class="section">
+<div class="section-header">2. Credentials and proof, the sourcing section</div>
+<div class="flag">This section unblocks more work than the rest of the questionnaire combined. Every agent who beat you in the AI answers we measured was attached to a number, a year and a source. We do not publish a claim we cannot source.</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">5</span> Your Meet The Team page says you are &quot;Compass Maui&#x27;s number one team&quot;. What is the source and the year?</label>
+<div class="question-hint">We could not find a source or a date for this anywhere on the site or off it, so we left it out of the reading. An unsourced superlative is exactly the kind of statement answer engines decline to repeat, and in Hawaii it also carries advertising compliance risk. With a source and a year attached it becomes one of your strongest publishable lines.</div>
+<div class="flag">If there is documentation, attach it. This claim is currently unpublishable.</div>
+<textarea name="5. Number One Team Claim" style="min-height: 80px;" placeholder="Which body ranked you, on what basis (volume, units, GCI), for which period, and is there a report, email or award letter you can send us."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">6</span> Hall of Fame and Top 100 Realtors in the State of Hawaii. Which years, and who issues it?</label>
+<div class="question-hint">Public write-ups describe Dennis as being in the Hall of Fame as one of the Top 100 Realtors in the State of Hawaii by sales volume. We need the issuing organization, the years, and the basis before we publish it.</div>
+<textarea name="6. Hall of Fame and Top 100" style="min-height: 80px;" placeholder="Issuing body, exact award name, every year received, and the ranking basis."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">7</span> &quot;Top 3% of all Maui Realtors&quot;. Source, period, and denominator?</label>
+<div class="question-hint">Same standard. Top 3 percent of what population, measured by whom, over what period.</div>
+<textarea name="7. Top 3 Percent Claim" style="min-height: 70px;" placeholder="If this came from a Compass or RAM report, the report name and year is enough."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">8</span> Compass Hawaii founding position. What exactly can we claim, and can Compass corroborate it?</label>
+<div class="question-hint">Your site says you were the first Compass Hawaii brokers. This is one of your strongest third party credentials and it is currently invisible to machines, because Compass does not appear anywhere in your structured data. A dated, corroborated version of this is very quotable.</div>
+<textarea name="8. Compass Founding" style="min-height: 80px;" placeholder="Month and year you joined, whether &quot;first&quot; means first in Hawaii, first on Maui, or founding agent, and whether there is a Compass press release or announcement we can point at."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">9</span> Career production. What are you willing to publish?</label>
+<div class="question-hint">Your sales history page lists 24 closed transactions between 2021 and 2025 totaling $185,274,608, with 14 at $5M or above and a $28.5M top sale. That figure appears nowhere on your site in words, only as a grid of individual sold cards, which a machine reads as a listings feed rather than a claim about you. Competitors who win these answers publish a career total in one sentence. We want to do the same for you, with whatever number you can stand behind.</div>
+<div class="flag">Your strongest asset is already on your site and unusable in its current form.</div>
+<textarea name="9. Career Production" style="min-height: 80px;" placeholder="Career total volume and the start year it covers, career units, best single year, and anything you are NOT comfortable publishing."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">10</span> Every other award, ranking or designation, with the year.</label>
+<div class="question-hint">RealTrends, Compass internal rankings, Realtors Association of Maui, Luxury Portfolio, Who&#x27;s Who in Luxury Real Estate, CLHMS, Forbes Global Properties, chamber or community awards. List everything, we will filter for what is sourceable.</div>
+<textarea name="10. Awards and Designations" style="min-height: 80px;" placeholder="One per line: award, issuing body, year."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">11</span> What documentation can you send us?</label>
+<div class="question-hint">Award letters, Compass production reports, MLS production summaries, press clippings, screenshots of rankings. Anything dated and attributable. Send it with this questionnaire or tell us where to get it.</div>
+<textarea name="11. Documentation" style="min-height: 70px;" placeholder="List what exists and how you will get it to us."></textarea>
+</div>
+</div>
+<div class="section">
+<div class="section-header">3. The transaction record</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">12</span> Is your sales history page complete?</label>
+<div class="question-hint">We counted 24 closed transactions covering 2021 to 2025. If you have been selling since the 1990s, that is a fraction of the record. Everything missing is evidence we cannot use.</div>
+<textarea name="12. Sales History Completeness" style="min-height: 80px;" placeholder="What is missing, how far back your records go, and whether we can get the full MLS history."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">13</span> Records and firsts. Have you set any?</label>
+<div class="question-hint">A record is the most quotable form of evidence there is, because it is specific, verifiable and unique to you. Highest sale ever in a community, highest price per square foot, first sale in a new development, largest land transaction.</div>
+<textarea name="13. Records and Firsts" style="min-height: 80px;" placeholder="For example, the Wailea Golf Estates II homesite subdivision at $7,200,000, or any community record you hold."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">14</span> Off market and private exclusive volume that is not on the site.</label>
+<div class="question-hint">Luxury sellers often prefer discretion, which means your published record can understate you. We cannot publish a confidential transaction, but we can often publish it in aggregate, for example &quot;including off market transactions&quot;.</div>
+<textarea name="14. Off Market Volume" style="min-height: 70px;" placeholder="Rough share of your business and whether we can reference it in aggregate."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">15</span> Which closed sales can we name publicly, and which are off limits?</label>
+<div class="question-hint">Address level detail is powerful for AI answers and sensitive for luxury clients. We default to whatever is already public in the MLS and on your site unless you tell us otherwise.</div>
+<textarea name="15. Publication Permissions" style="min-height: 70px;" placeholder="Any client, address or transaction that must never be named."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">16</span> What is your buyer to seller split, and which do you want more of?</label>
+<div class="question-hint">This decides whether we build seller facing content, buyer facing content, or both, and it changes which questions we target.</div>
+<input type="text" name="16. Buyer Seller Split" placeholder="For example: 60 percent seller representation, want more listings" value="">
+</div>
+</div>
+<div class="section">
+<div class="section-header">4. Sub-markets and where you can actually win</div>
+<div class="question-hint">The reading found that the engines answering "best Wailea Makena luxury realtor" are overwhelmingly reading agent owned websites, not portals. That is a surface you control. But your Wailea and Makena page is currently 1,684 words of destination copy with no market data, no closed evidence and no mention that you have personally sold at the top of that market. We rebuild these pages around what you actually know and what you have actually closed, so we need your real depth per area rather than a list of places you will take a call about.</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">17</span> Rate your genuine depth in each sub-market, and tell us roughly how many transactions you have closed there.</label>
+<div class="question-hint">Be honest about the thin ones. We would rather build five pages you can dominate than twenty you cannot defend. Write something like "deep, 30+ closings" or "light, referral only".</div>
+<div class="area-grid">
+<div class="area-name">Wailea (resort and residential)</div><div class="area-input"><input type="text" name="17.01 Wailea (resort and residential)" placeholder="depth and rough closings"></div>
+<div class="area-name">Makena</div><div class="area-input"><input type="text" name="17.02 Makena" placeholder="depth and rough closings"></div>
+<div class="area-name">Wailea Golf Estates</div><div class="area-input"><input type="text" name="17.03 Wailea Golf Estates" placeholder="depth and rough closings"></div>
+<div class="area-name">Wailea Beach Villas</div><div class="area-input"><input type="text" name="17.04 Wailea Beach Villas" placeholder="depth and rough closings"></div>
+<div class="area-name">Makena Surf</div><div class="area-input"><input type="text" name="17.05 Makena Surf" placeholder="depth and rough closings"></div>
+<div class="area-name">Maluaka</div><div class="area-input"><input type="text" name="17.06 Maluaka" placeholder="depth and rough closings"></div>
+<div class="area-name">Ho&#x27;olei</div><div class="area-input"><input type="text" name="17.07 Ho&#x27;olei" placeholder="depth and rough closings"></div>
+<div class="area-name">Papali Wailea</div><div class="area-input"><input type="text" name="17.08 Papali Wailea" placeholder="depth and rough closings"></div>
+<div class="area-name">Kaimanu Estates</div><div class="area-input"><input type="text" name="17.09 Kaimanu Estates" placeholder="depth and rough closings"></div>
+<div class="area-name">Keawakapu</div><div class="area-input"><input type="text" name="17.10 Keawakapu" placeholder="depth and rough closings"></div>
+<div class="area-name">Maui Meadows</div><div class="area-input"><input type="text" name="17.11 Maui Meadows" placeholder="depth and rough closings"></div>
+<div class="area-name">Kihei</div><div class="area-input"><input type="text" name="17.12 Kihei" placeholder="depth and rough closings"></div>
+<div class="area-name">Oceanfront and beachfront (island wide)</div><div class="area-input"><input type="text" name="17.13 Oceanfront and beachfront (island wide)" placeholder="depth and rough closings"></div>
+<div class="area-name">Olowalu and Launiupoko</div><div class="area-input"><input type="text" name="17.14 Olowalu and Launiupoko" placeholder="depth and rough closings"></div>
+<div class="area-name">Lahaina</div><div class="area-input"><input type="text" name="17.15 Lahaina" placeholder="depth and rough closings"></div>
+<div class="area-name">Kapalua and Kaanapali</div><div class="area-input"><input type="text" name="17.16 Kapalua and Kaanapali" placeholder="depth and rough closings"></div>
+<div class="area-name">Napili, Kahana, Honokowai</div><div class="area-input"><input type="text" name="17.17 Napili, Kahana, Honokowai" placeholder="depth and rough closings"></div>
+<div class="area-name">Paia and Spreckelsville</div><div class="area-input"><input type="text" name="17.18 Paia and Spreckelsville" placeholder="depth and rough closings"></div>
+<div class="area-name">Upcountry</div><div class="area-input"><input type="text" name="17.19 Upcountry" placeholder="depth and rough closings"></div>
+<div class="area-name">Central Maui</div><div class="area-input"><input type="text" name="17.20 Central Maui" placeholder="depth and rough closings"></div>
+<div class="area-name">Hana</div><div class="area-input"><input type="text" name="17.21 Hana" placeholder="depth and rough closings"></div>
+<div class="area-name">Molokai</div><div class="area-input"><input type="text" name="17.22 Molokai" placeholder="depth and rough closings"></div>
+</div></div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">18</span> If we could only win three sub-markets for you, which three?</label>
+<div class="question-hint">This is where we would concentrate the build. Based on the reading, the realistic path is not the head query &quot;best Wailea Makena luxury realtor&quot;, where incumbents publish billion dollar career figures. It is the narrower communities where your closed evidence is genuinely strongest and the field is thinner.</div>
+<div class="flag">This determines where the first ninety days of content goes.</div>
+<textarea name="18. Priority Sub-Markets" style="min-height: 80px;" placeholder="Name three, and say why you would win each one."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">19</span> Where are you genuinely number one, or top three, and can you prove it?</label>
+<div class="question-hint">Not aspiration. Where does the record actually support it.</div>
+<textarea name="19. Where You Lead" style="min-height: 70px;" placeholder="Community, basis, period, and what proves it."></textarea>
+</div>
+</div>
+<div class="section">
+<div class="section-header">5. Your clients and the questions they ask</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">20</span> Who is your buyer, specifically?</label>
+<div class="question-hint">Mainland second home buyer, relocating executive, 1031 investor, international buyer, local move up. Each one asks completely different questions, and AI answers are assembled per question.</div>
+<textarea name="20. Buyer Profile" style="min-height: 80px;" placeholder="Include rough percentages if you can, and typical price band per type."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">21</span> Where do your buyers come from geographically?</label>
+<div class="question-hint">This changes how we write and which comparisons we make. A buyer comparing Wailea to Newport Beach needs a different page than one comparing it to Kapalua.</div>
+<input type="text" name="21. Buyer Origin" placeholder="For example: California 40 percent, Pacific Northwest 20 percent, Texas, Canada, Japan" value="">
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">22</span> The ten questions buyers ask you most often. In their words.</label>
+<div class="question-hint">This is the raw material for everything we build. Answer engines are assembling responses to real questions, so the closer these are to how a client actually says it, the better. Do not clean them up.</div>
+<div class="flag">If you only have time for three long answers, make this one of them.</div>
+<textarea name="22. Buyer Questions" style="min-height: 160px;" placeholder="One per line. For example: is Wailea or Makena better for a family, what does an HOA actually cost at Wailea Beach Villas, can I rent it short term, how bad is the drive from Kahului..."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">23</span> The ten questions sellers ask you most often.</label>
+<div class="question-hint">Same instruction. Listing side questions are where the commission is.</div>
+<textarea name="23. Seller Questions" style="min-height: 160px;" placeholder="One per line."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">24</span> What do you know about Wailea and Makena that is not published anywhere?</label>
+<div class="question-hint">This is the highest value question in the document after the sourcing section. Google&#x27;s own guidance for AI search is to lead with what only your brand can say. Thirty years of local knowledge that exists only in your head is worth more than any amount of rewritten destination copy.</div>
+<div class="flag">Nobody else can write this. It is the whole differentiator.</div>
+<textarea name="24. Proprietary Knowledge" style="min-height: 160px;" placeholder="Which streets flood, which HOAs are about to reassess, how the Makena resort development actually affects values, which buildings have the leasehold issues, what the golf estates covenants really allow, why one side of a street trades at a premium..."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">25</span> What do buyers and sellers most often get wrong about this market?</label>
+<div class="question-hint">Correcting a common misconception is one of the most reliably cited content shapes, because it answers a question the reader did not know they had.</div>
+<textarea name="25. Misconceptions" style="min-height: 90px;" placeholder="One per line."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">26</span> What objections do you hear, and how do you answer them?</label>
+<div class="question-hint">Price, insurance, water, fire risk after 2023, short term rental rules, resort fees, distance from town, leasehold versus fee simple.</div>
+<textarea name="26. Objections" style="min-height: 110px;" placeholder="Objection, then how you actually answer it."></textarea>
+</div>
+</div>
+<div class="section">
+<div class="section-header">6. The competitive set</div>
+<div class="question-hint">In the reading, these are the names the engines recommend when someone asks who the best Wailea and Makena luxury realtor is, with the number of runs out of 42 in which each appeared: Riette Jenkins 24, Dave Richardson 21, Dale Richardson 18, Chelsea Dimin 13, Mary Anne Fitch 13, Patrick Franta 11, Robbie Dein 11, Ken Hayo 11, Jennifer Edwards 11. You appeared zero times.</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">27</span> Who do you actually compete against for listings, and is that list right?</label>
+<div class="question-hint">The names above are who the machines think matter. We want to know who really takes business from you, because the two lists are often different and the gap is informative.</div>
+<textarea name="27. Real Competitors" style="min-height: 80px;" placeholder="Who you lose listings to, and roughly how often."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">28</span> What do those competitors claim that you can beat on the record?</label>
+<div class="question-hint">For example, several of them publish career volume figures. If your record beats theirs on a narrower basis, such as Makena estate sales specifically, or price per square foot achieved, that is the claim we build around instead of a total that loses a head to head comparison.</div>
+<textarea name="28. Where You Beat Them" style="min-height: 90px;" placeholder="Be specific about the basis on which you win."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">29</span> Is there anyone we should not name or reference?</label>
+<div class="question-hint">Compass colleagues, past partners, anyone where a mention creates a problem.</div>
+<input type="text" name="29. Do Not Mention" placeholder="Names or firms to avoid" value="">
+</div>
+</div>
+<div class="section">
+<div class="section-header">7. Brokerage and compliance</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">30</span> Which Compass and network affiliations are current?</label>
+<div class="question-hint">Your site lists the Compass Luxury Division, the Sports and Entertainment Division, REAL Global, and Barnes International, plus pages for Realm Global, Inhous and Forbes Global Properties. We need to know which are live, because a lapsed affiliation published as current is a liability.</div>
+<textarea name="30. Affiliations" style="min-height: 80px;" placeholder="Confirm each one, and add anything missing."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">31</span> What are Compass&#x27;s rules on your marketing?</label>
+<div class="question-hint">Brand usage, required disclosures, approval workflow, anything we cannot say. We would rather design around the constraint than get a page pulled after it ranks.</div>
+<textarea name="31. Compass Constraints" style="min-height: 90px;" placeholder="Include who at Compass approves marketing, if anyone."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">32</span> Hawaii advertising compliance. Anything specific we need to observe?</label>
+<div class="question-hint">Required license display, team name rules, disclosure language, restrictions on ranking or superlative claims.</div>
+<textarea name="32. Compliance" style="min-height: 70px;" placeholder="Include your broker&#x27;s position on ranking claims."></textarea>
+</div>
+</div>
+<div class="section">
+<div class="section-header">8. Martha, and the second entity</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">33</span> Martha&#x27;s story and role. What do you want published?</label>
+<div class="question-hint">Public sources describe Martha as born and raised in Peru, fluent in Spanish, doing personal and business translation for the Latino community on Maui. If that is accurate and publishable, it is a genuine differentiator and it is currently doing nothing for you, because Martha does not exist as an entity in your website&#x27;s markup at all.</div>
+<textarea name="33. Martha Profile" style="min-height: 80px;" placeholder="What is accurate, what she wants published, and whether she wants to be findable as an individual agent in her own right."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">34</span> Languages spoken, and by whom.</label>
+<div class="question-hint">Spanish language capability in a luxury resort market is a real and searchable differentiator, and almost nobody publishes it in a form machines can read.</div>
+<input type="text" name="34. Languages" placeholder="Language, who speaks it, and at what level" value="">
+</div>
+</div>
+<div class="section">
+<div class="section-header">9. Media and existing assets</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">35</span> What original media do you already have?</label>
+<div class="question-hint">Original media is one of the clearest signals an engine uses to separate a real authority from a content mill. Video walk throughs, drone footage, market update videos, podcast appearances, published market reports.</div>
+<textarea name="35. Existing Media" style="min-height: 80px;" placeholder="What exists, where it lives, and how often you produce it."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">36</span> Press and third party coverage we can cite.</label>
+<div class="question-hint">You appear in Hawaii Business Magazine. Anything else, local or national, counts. Third party mentions are what the engines use to corroborate a claim you make about yourself.</div>
+<textarea name="36. Press Coverage" style="min-height: 90px;" placeholder="Publication, date, and a link if you have one."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">37</span> Your monthly Maui newsletter and market report. What is the plan?</label>
+<div class="question-hint">You publish a market report and a property newsletter most months, and the August 2026 market report includes real Wailea and Makena analysis. That is already the right raw material and it is not structured to be found. We want to keep it going and make it work harder.</div>
+<textarea name="37. Newsletter and Market Report" style="min-height: 90px;" placeholder="Who writes it, how often, and whether the underlying data is yours or licensed."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">38</span> Photography and video rights.</label>
+<div class="question-hint">We need to know what we can republish. Listing photography rights usually sit with the photographer or the brokerage, and a rights problem found after publication is expensive.</div>
+<textarea name="38. Asset Rights" style="min-height: 70px;" placeholder="Who owns what, and any restrictions."></textarea>
+</div>
+</div>
+<div class="section">
+<div class="section-header">10. Technical access</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">39</span> Confirm we have what we need to make technical changes.</label>
+<div class="question-hint">Blok already builds and hosts dennisrush.com, so most of the repair list from the reading is work we can execute directly. We are confirming rather than asking.</div>
+<textarea name="39. Website Access" style="min-height: 70px;" placeholder="Anything about the site we should know before we touch the markup."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">40</span> Your IDX system, and the redirect behavior on expired listings.</label>
+<div class="question-hint">Right now every URL that does not exist, including expired IDX listings, 301 redirects to your homepage. The intent is good and the visitor experience is good. The cost is that Google classifies a blanket redirect to a homepage as a soft 404 and drops those URLs, so the value each listing page built up goes nowhere. Pointing an expired Wailea listing at your Wailea community page instead keeps the experience and moves that value onto the pages we want winning.</div>
+<textarea name="40. IDX and Redirects" style="min-height: 80px;" placeholder="Which IDX provider, who controls the redirect rule, and roughly how many listings cycle out per year."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">41</span> Profile access for name and number alignment.</label>
+<div class="question-hint">To fix the identity problem we need to align the same name and the same phone number everywhere a machine can read them. Tell us which of these you control and can update, and which need someone else.</div>
+<textarea name="41. Profile Access" style="min-height: 80px;" placeholder="Google Business Profile, Compass agent page, Zillow (zillow.com/profile/DennisRushRB), Realtor.com, LinkedIn (linkedin.com/in/rushdennis), Instagram, Facebook, Realtors Association of Maui, Issuu, any others."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">42</span> Analytics and Search Console access.</label>
+<div class="question-hint">We need Google Analytics and Google Search Console to measure whether any of this moves. Without them we can measure AI answers but not what they send you.</div>
+<textarea name="42. Analytics Access" style="min-height: 70px;" placeholder="Who administers each, and the email to grant access to."></textarea>
+</div>
+</div>
+<div class="section">
+<div class="section-header">11. Goals</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">43</span> What is the primary goal for the next twelve months?</label>
+<div class="question-hint">More listings, higher average price, a specific community, succession, or simply being in the conversation when a mainland buyer asks an AI who to call.</div>
+<textarea name="43. Primary Goal" style="min-height: 90px;" placeholder=""></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">44</span> What price band do you most want more of?</label>
+<div class="question-hint">This changes which sub-markets we prioritize and how we frame your record.</div>
+<input type="text" name="44. Target Price Band" placeholder="For example: $5M to $15M single family in Wailea and Makena" value="">
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">45</span> What would make you say this worked, twelve months from now?</label>
+<div class="question-hint">Be concrete. We re-run the same question set on a schedule and report against it, so we would rather agree the target now than argue about it later. One honest note from the reading: being named on team framed questions in Wailea and Makena is a realistic target, and being the top name on &quot;who is the best Wailea Makena luxury realtor&quot; is not something anyone can promise you.</div>
+<textarea name="45. Definition of Success" style="min-height: 110px;" placeholder="Number of listings, a specific query you want to appear in, a revenue figure, or something else."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">46</span> Anything we did not ask that we should have?</label>
+<textarea name="46. Anything Else" style="min-height: 90px;" placeholder=""></textarea>
+</div>
+</div>
+<div class="submit-section">
+                <button type="submit" class="submit-btn">Submit Questionnaire</button>
+                <p class="submit-note">Your answers go to Blok.co. You will get a confirmation once it is received.</p>
+            </div>
+        </form>
+
+        <footer>
+            <p><strong>Dennis and Martha Rush at Compass</strong> | Total Search Questionnaire | August 2026</p>
+            <p>Prepared by <a href="https://blok.co">Blok.co</a></p>
+        </footer>
+
+    </div>
+
+<script>
+/* BLOK Total Search questionnaire guard - added 2026-08-19
+   Fixes: a bare Enter keypress in any single-line field submitted the entire
+   form via HTML implicit submission, sending a near-empty questionnaire with
+   no way to recover the answers (FormSubmit stores nothing).
+   Adds: Enter-key block, empty-submit hard stop, partial-submit confirm,
+   and localStorage autosave/restore so answers survive an accidental send. */
+(function () {
+  var form = document.querySelector('form');
+  if (!form) return;
+  var KEY = 'blok-ts-dennisrush-aug2026';
+
+  function fields() {
+    return Array.prototype.slice.call(
+      form.querySelectorAll('input[type="text"], textarea'));
+  }
+  function boxes() {
+    return Array.prototype.slice.call(
+      form.querySelectorAll('input[type="checkbox"]'));
+  }
+
+  /* remember what shipped pre-filled so we can tell real answers from defaults */
+  var initial = {};
+  fields().forEach(function (el) { if (el.name) initial[el.name] = el.value; });
+
+  function answered() {
+    var n = 0;
+    fields().forEach(function (el) {
+      if (el.name && el.value.trim() && el.value !== (initial[el.name] || '')) n++;
+    });
+    boxes().forEach(function (el) { if (el.checked) n++; });
+    return n;
+  }
+
+  /* ---- 1. Enter must never submit the form ---- */
+  form.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' && e.target && e.target.tagName === 'INPUT') {
+      e.preventDefault();
+      var all = fields();
+      var i = all.indexOf(e.target);
+      if (i > -1 && all[i + 1]) all[i + 1].focus();
+    }
+  });
+
+  /* ---- 2. autosave ---- */
+  var stamp = document.createElement('p');
+  stamp.className = 'submit-note';
+  stamp.id = 'blok-save-stamp';
+  stamp.textContent = 'Your answers save automatically in this browser as you type.';
+  var note = form.querySelector('.submit-note');
+  if (note && note.parentNode) note.parentNode.appendChild(stamp);
+  function save() {
+    try {
+      var d = {};
+      fields().forEach(function (el) { if (el.name && el.value) d[el.name] = el.value; });
+      boxes().forEach(function (el) {
+        if (el.checked) d['cb::' + el.name + '::' + el.value] = '1';
+      });
+      localStorage.setItem(KEY, JSON.stringify({ t: Date.now(), d: d }));
+      if (stamp) stamp.textContent = 'Answers saved in this browser at ' +
+        new Date().toLocaleTimeString();
+    } catch (err) { /* private mode, ignore */ }
+  }
+  var timer;
+  form.addEventListener('input', function () {
+    clearTimeout(timer); timer = setTimeout(save, 600);
+  });
+  form.addEventListener('change', save);
+
+  /* ---- 3. restore ---- */
+  try {
+    var raw = localStorage.getItem(KEY);
+    if (raw) {
+      var parsed = JSON.parse(raw), d = parsed.d || {}, restored = 0;
+      fields().forEach(function (el) {
+        if (el.name && d[el.name] && d[el.name] !== el.value) {
+          el.value = d[el.name]; restored++;
+        }
+      });
+      boxes().forEach(function (el) {
+        if (d['cb::' + el.name + '::' + el.value]) { el.checked = true; restored++; }
+      });
+      if (restored) {
+        var bar = document.createElement('div');
+        bar.className = 'flag';
+        bar.style.margin = '0 0 18px';
+        bar.innerHTML = '<span class="flag-tag">Draft restored</span>' +
+          'We restored ' + restored + ' answer' + (restored === 1 ? '' : 's') +
+          ' you had already filled in on this device, last saved ' +
+          new Date(parsed.t).toLocaleString() + '. ' +
+          '<a href="#" id="blok-clear" style="color:#b4564a;font-weight:600;">' +
+          'Clear and start fresh</a>';
+        form.parentNode.insertBefore(bar, form);
+        document.getElementById('blok-clear').addEventListener('click', function (e) {
+          e.preventDefault();
+          if (confirm('Clear the restored answers and start this form over?')) {
+            localStorage.removeItem(KEY); location.reload();
+          }
+        });
+      }
+    }
+  } catch (err) { /* ignore */ }
+
+  /* ---- 4. submit gate ---- */
+  form.addEventListener('submit', function (e) {
+    var n = answered();
+    if (n === 0) {
+      e.preventDefault();
+      alert('This form is still blank.\n\n' +
+        'Nothing has been filled in beyond the details we pre-filled for you, ' +
+        'so there is nothing for us to work from yet.\n\n' +
+        'Answer what you can, then submit. Your answers save automatically in ' +
+        'this browser as you go, so you can close the page and come back to it.');
+      var first = fields()[0]; if (first) first.focus();
+      return;
+    }
+    var total = fields().length + 3;
+    if (n < 8) {
+      if (!confirm('You have answered ' + n + ' of roughly ' + total +
+        ' items.\n\nSubmit anyway? You can only submit once, and we cannot see ' +
+        'anything you have not filled in.\n\nClick Cancel to keep working. ' +
+        'Your progress is saved in this browser.')) {
+        e.preventDefault(); return;
+      }
+    }
+    try { localStorage.setItem(KEY + '-sent', String(Date.now())); } catch (err) {}
+  });
+})();
+</script>
+</body>
+</html>
