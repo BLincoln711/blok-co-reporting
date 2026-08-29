@@ -1,2 +1,12 @@
 .vercel
 node_modules
+
+# Internal, never publish. reports-blok.co is a public host with no access control.
+# The QA memo is the internal ship gate and the email draft carries unverified-claim
+# notes; neither is for the client. No month has ever committed them.
+**/QA-MEMO*.md
+**/EMAIL-DRAFT*.md
+**/client-email-draft.md
+# The capture script's auto-detection guesses. Known wrong in both directions and
+# they contradict the scored verdicts in the report itself.
+**/screenshots/**/hits/
