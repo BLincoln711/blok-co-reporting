@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Real Estate Answer Index &middot; Edition 01 &middot; August 2026</title>
+<meta name="description" content="Which sources AI engines actually cite when someone asks a real estate question. 1,598 measured observations across 12 United States markets, Perplexity, ChatGPT and Google AI Overviews.">
+<meta name="author" content="Brandon Lincoln Hendricks">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://reports-blok.co/answer-index/edition-01-august-2026/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="BLOK">
+<meta property="og:title" content="The Real Estate Answer Index &middot; Edition 01">
+<meta property="og:description" content="Which sources AI engines actually cite when someone asks a real estate question. 1,598 measured observations across 12 United States markets, Perplexity, ChatGPT and Google AI Overviews.">
+<meta property="og:url" content="https://reports-blok.co/answer-index/edition-01-august-2026/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Real Estate Answer Index &middot; Edition 01">
+<meta name="twitter:description" content="Which sources AI engines actually cite when someone asks a real estate question. 1,598 measured observations across 12 United States markets, Perplexity, ChatGPT and Google AI Overviews.">
+<meta name="theme-color" content="#010b23">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23010b23'/%3E%3Cpath d='M28 62V26l33 18v37z' fill='%2359f3ff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --navy:#010b23; --panel:#060f2a; --panel2:#0a1536; --indigo:#111e50;
+  --cyan:#59f3ff; --cyan-dim:rgba(89,243,255,.55); --cyan-ghost:rgba(89,243,255,.10);
+  --blue:#416bdf; --blue-deep:#1936a5;
+  --ink:#f0f2fa; --muted:#c3c5cf; --dim:#7d8bb5;
+  --line:rgba(65,107,223,.20); --line-soft:rgba(65,107,223,.11); --glow:rgba(89,243,255,.18);
+  --amber:#e0a75c; --amber-ghost:rgba(224,167,92,.12);
+  --slate:#8fa3d4;
+  --sans:"IBM Plex Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --disp:"Archivo",var(--sans);
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --col:min(1180px,100% - 3rem);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--navy);color:var(--ink);font-family:var(--sans);
+  font-size:15.5px;line-height:1.62;-webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(1100px 620px at 12% -8%,rgba(25,54,165,.30),transparent 62%),
+                   radial-gradient(760px 460px at 96% 4%,rgba(89,243,255,.055),transparent 60%);
+  background-attachment:fixed;background-repeat:no-repeat}
+.wrap{width:var(--col);margin-inline:auto}
+h1,h2,h3,h4{font-family:var(--disp);text-wrap:balance;margin:0}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+a{color:var(--cyan);text-decoration-color:rgba(89,243,255,.35);text-underline-offset:3px}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:3px}
+::selection{background:var(--cyan);color:#010b23;text-shadow:none}
+::-moz-selection{background:var(--cyan);color:#010b23;text-shadow:none}
+
+/* masthead */
+header.mast{border-bottom:1px solid var(--line);padding:2.6rem 0 0}
+.brandrow{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
+.blok{color:var(--ink);display:flex;align-items:center;line-height:0}
+.blok svg{height:27px;width:auto;display:block}
+.mastmeta{font-family:var(--mono);font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;color:var(--dim);text-align:right}
+h1{font-size:clamp(2.5rem,6.4vw,4.5rem);font-weight:800;letter-spacing:-.033em;line-height:1.0;margin:2.4rem 0 0}
+h1 em{font-style:normal;color:var(--cyan)}
+.standfirst{max-width:63ch;color:var(--muted);font-size:1.09rem;margin:1.3rem 0 2.2rem}
+.corpus{display:grid;grid-template-columns:repeat(auto-fit,minmax(122px,1fr));gap:1px;background:var(--line-soft);
+  border:1px solid var(--line);border-bottom:none;margin-top:.4rem}
+.corpus div{background:var(--panel);padding:.95rem 1rem}
+.corpus b{display:block;font-family:var(--mono);font-size:1.32rem;font-weight:500;color:var(--cyan);
+  font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.corpus span{display:block;font-size:.665rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-top:.28rem;font-family:var(--mono)}
+
+/* sections */
+section{padding:4.4rem 0 0}
+.eyebrow{font-family:var(--mono);font-size:.685rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan-dim);
+  display:flex;align-items:center;gap:.7rem;margin-bottom:.85rem}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--cyan);opacity:.65}
+h2{font-size:clamp(1.55rem,3.1vw,2.15rem);font-weight:700;letter-spacing:-.022em;line-height:1.16;max-width:24ch}
+.lede{max-width:66ch;color:var(--muted);margin:1rem 0 0}
+.prose{max-width:66ch}
+.prose p{margin:1rem 0 0}
+.prose p.tight{margin-top:.5rem}
+
+/* confidence chips */
+.chip{font-family:var(--mono);font-size:.6rem;letter-spacing:.11em;text-transform:uppercase;
+  padding:.2rem .48rem;border-radius:2px;white-space:nowrap;vertical-align:2px}
+.c-meas{background:var(--cyan-ghost);color:var(--cyan);border:1px solid var(--glow)}
+.c-un{background:var(--amber-ghost);color:var(--amber);border:1px solid rgba(224,167,92,.28)}
+.c-res{background:rgba(65,107,223,.12);color:var(--slate);border:1px solid var(--line)}
+
+/* hero gap chart */
+.gap{margin-top:2.2rem;border:1px solid var(--line);background:var(--panel)}
+.gaphead{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;
+  padding:1.1rem 1.35rem;border-bottom:1px solid var(--line-soft)}
+.gaphead h3{font-size:.94rem;font-weight:600;letter-spacing:.01em}
+.gaphead span{font-family:var(--mono);font-size:.685rem;color:var(--dim);letter-spacing:.08em}
+.bars{padding:1.5rem 1.35rem 1.7rem;display:flex;flex-direction:column;gap:.72rem}
+.bar{display:grid;grid-template-columns:minmax(140px,215px) 1fr minmax(84px,auto);align-items:center;gap:1rem}
+.bar .lab{font-size:.845rem;color:var(--muted)}
+.bar .lab b{display:block;color:var(--ink);font-weight:500;font-size:.9rem}
+.bar .lab i{font-style:normal;font-family:var(--mono);font-size:.66rem;color:var(--dim);letter-spacing:.05em}
+.track{height:15px;background:rgba(255,255,255,.032);position:relative;overflow:hidden}
+.fill{height:100%;background:linear-gradient(90deg,var(--blue-deep),var(--cyan));
+  box-shadow:0 0 16px rgba(89,243,255,.34);animation:grow .95s cubic-bezier(.2,.8,.25,1) both}
+.fill.lo{background:linear-gradient(90deg,rgba(65,107,223,.5),rgba(143,163,212,.75));box-shadow:none}
+@keyframes grow{from{transform:scaleX(0);transform-origin:left}to{transform:scaleX(1);transform-origin:left}}
+@media (prefers-reduced-motion:reduce){.fill{animation:none}}
+.bar .val{font-family:var(--mono);font-size:1.02rem;color:var(--ink);text-align:right;font-variant-numeric:tabular-nums}
+.bar .val i{font-style:normal;font-size:.68rem;color:var(--dim);display:block;letter-spacing:.04em}
+.gapfoot{padding:1rem 1.35rem;border-top:1px solid var(--line-soft);font-size:.82rem;color:var(--slate);
+  font-family:var(--mono);line-height:1.55}
+
+/* tables */
+.tw{overflow-x:auto;margin-top:1.7rem;border:1px solid var(--line);background:var(--panel)}
+table{border-collapse:collapse;width:100%;min-width:600px;font-size:.845rem}
+caption{text-align:left;padding:1rem 1.2rem;border-bottom:1px solid var(--line-soft);
+  font-family:var(--disp);font-weight:600;font-size:.94rem;color:var(--ink)}
+caption span{display:block;font-family:var(--mono);font-weight:400;font-size:.685rem;color:var(--dim);
+  letter-spacing:.07em;margin-top:.3rem;text-transform:none}
+th{text-align:left;font-family:var(--mono);font-weight:500;font-size:.645rem;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--dim);padding:.7rem 1.2rem;border-bottom:1px solid var(--line-soft);
+  background:rgba(255,255,255,.016);white-space:nowrap}
+td{padding:.62rem 1.2rem;border-bottom:1px solid rgba(65,107,223,.07);vertical-align:top}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:rgba(89,243,255,.028)}
+td.n,th.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+td.d{font-family:var(--mono);font-size:.815rem;color:var(--ink)}
+td.q{font-family:var(--mono);font-size:.79rem;color:var(--muted)}
+.rk{font-family:var(--mono);color:var(--dim);font-size:.75rem;text-align:right;width:1%;padding-right:.2rem}
+.own{color:var(--cyan)}
+.zero{color:var(--amber)}
+.mini{display:inline-block;height:7px;background:linear-gradient(90deg,var(--blue-deep),var(--cyan));
+  vertical-align:middle;margin-right:.5rem;min-width:2px}
+.mini.lo{background:rgba(143,163,212,.55)}
+.cat{font-family:var(--mono);font-size:.665rem;letter-spacing:.06em;color:var(--slate);text-transform:uppercase}
+
+/* engine cards */
+.engines{display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:1px;background:var(--line-soft);
+  border:1px solid var(--line);margin-top:1.8rem}
+.eng{background:var(--panel);padding:1.3rem 1.25rem}
+.eng h3{font-size:1.02rem;font-weight:700;letter-spacing:-.01em;display:flex;align-items:center;gap:.55rem;flex-wrap:wrap}
+.eng .sub{font-family:var(--mono);font-size:.665rem;color:var(--dim);letter-spacing:.08em;margin:.42rem 0 1rem;text-transform:uppercase}
+.eng ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.42rem}
+.eng li{display:grid;grid-template-columns:1fr auto;gap:.7rem;align-items:baseline;font-size:.815rem}
+.eng li span:first-child{font-family:var(--mono);color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.eng li span:last-child{font-family:var(--mono);color:var(--cyan);font-size:.775rem;font-variant-numeric:tabular-nums}
+.eng .note{margin-top:1rem;padding-top:.85rem;border-top:1px solid var(--line-soft);font-size:.8rem;color:var(--slate);line-height:1.55}
+.eng.unmeas{background:linear-gradient(180deg,rgba(224,167,92,.045),transparent 60%),var(--panel)}
+.eng.unmeas li span:last-child{color:var(--amber)}
+
+/* callout */
+.call{border-left:2px solid var(--cyan);background:linear-gradient(90deg,rgba(89,243,255,.058),transparent 72%);
+  padding:1.15rem 1.35rem;margin-top:1.8rem;max-width:74ch}
+.call p{margin:0;color:var(--ink);font-size:.955rem}
+.call p+p{margin-top:.6rem;color:var(--muted);font-size:.885rem}
+.call.warn{border-left-color:var(--amber);background:linear-gradient(90deg,rgba(224,167,92,.055),transparent 72%)}
+
+/* limits */
+.limits{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:1px;background:var(--line-soft);
+  border:1px solid var(--line);margin-top:1.8rem}
+.lim{background:var(--panel);padding:1.15rem 1.2rem}
+.lim h4{font-size:.845rem;font-weight:600;color:var(--ink);margin-bottom:.42rem;display:flex;gap:.5rem;align-items:baseline}
+.lim p{margin:0;font-size:.82rem;color:var(--slate);line-height:1.56}
+
+/* roadmap */
+.road{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:var(--line-soft);
+  border:1px solid var(--line);margin-top:1.8rem}
+.step{background:var(--panel);padding:1.25rem 1.2rem}
+.step .no{font-family:var(--mono);font-size:.68rem;color:var(--cyan);letter-spacing:.13em}
+.step h4{font-size:.96rem;font-weight:700;margin:.5rem 0 .5rem}
+.step p{margin:0;font-size:.83rem;color:var(--dim);line-height:1.55}
+.step ul{margin:.6rem 0 0;padding-left:1.05rem;font-size:.815rem;color:var(--muted)}
+.step li{margin-bottom:.28rem}
+
+footer{margin-top:5rem;border-top:1px solid var(--line);padding:2rem 0 3.2rem;
+  font-family:var(--mono);font-size:.7rem;color:var(--dim);letter-spacing:.06em;line-height:1.85}
+footer b{color:var(--slate);font-weight:400}
+@media(max-width:640px){
+  :root{--col:min(1180px,100% - 2rem)}
+  .bar{grid-template-columns:1fr;gap:.3rem}
+  .bar .track{order:3}.bar .val{text-align:left;order:2}
+  .mastmeta{text-align:left}
+}
+</style>
+</head>
+<body>
+<header class="mast">
+  <div class="wrap">
+    <div class="brandrow">
+      <div class="blok" role="img" aria-label="BLOK"><svg fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="bloklogo" viewBox="0 0 522.61 163.5"><g id="Layer_2-2"><g id="Layer_1-2"><polygon points="54.9 98.1 54.9 40.6 107.4 69.7 107.4 128.5 54.9 98.1"></polygon><polygon points="0 132.9 53.7 101.6 106.7 132.9 53.7 163.5 0 132.9"></polygon><polygon points="0 129.2 0 29.7 51.7 0 51.7 98.8 0 129.2"></polygon><path d="M212.4,104.4c0-10-1.6-17.3-4.7-21.8-3.2-4.6-7.9-6.9-14.2-6.9-8.4,0-14.2,3.4-17.3,10.3v39c3.2,6.9,9.1,10.4,17.5,10.4s14.1-4.2,16.8-12.6c1.3-4,1.9-10.2,1.9-18.4ZM238.8,106.3c0,15.8-3.4,28.2-10.1,37.1-6.8,8.8-16.2,13.2-28.3,13.2-10.7,0-19.3-4.1-25.7-12.3l-1.2,10.5h-23.7V14.6h26.4v50.3c6.1-7.1,14.1-10.7,24-10.7,12.1,0,21.5,4.4,28.3,13.3,6.9,8.8,10.3,21.3,10.3,37.3v1.5Z"></path><rect x="256.5" y="14.6" width="26.5" height="140.2"></rect><path d="M327.1,106.4c0,9.4,1.8,16.6,5.3,21.5s8.6,7.4,15.2,7.4,11.4-2.4,15-7.3c3.6-4.9,5.4-12.8,5.4-23.6,0-9.2-1.8-16.3-5.4-21.4-3.6-5.1-8.6-7.6-15.2-7.6s-11.4,2.5-15,7.6c-3.5,5.1-5.3,12.9-5.3,23.4ZM300.7,104.5c0-9.8,1.9-18.5,5.7-26.2,3.8-7.7,9.2-13.6,16.2-17.8,7.1-4.2,15.4-6.3,24.7-6.3,13.3,0,24.2,4.1,32.6,12.2,8.5,8.2,13.2,19.2,14.2,33.2l.2,6.8c0,15.2-4.2,27.3-12.7,36.5-8.5,9.1-19.8,13.7-34.1,13.7s-25.6-4.6-34.1-13.7c-8.5-9.1-12.7-21.5-12.7-37.2v-1.2h0Z"></path><polygon points="446.4 115.2 436.9 124.7 436.9 154.8 410.5 154.8 410.5 14.6 436.9 14.6 436.9 92.3 442 85.7 467.3 56 499 56 463.3 97.2 502.1 154.8 471.8 154.8 446.4 115.2"></polygon></g><path d="M522.61,24.94c0,5.58-4.38,9.96-10.08,9.96s-10.14-4.38-10.14-9.96,4.5-9.84,10.14-9.84,10.08,4.38,10.08,9.84ZM504.91,24.94c0,4.38,3.24,7.86,7.68,7.86s7.5-3.48,7.5-7.8-3.18-7.92-7.56-7.92-7.62,3.54-7.62,7.86ZM510.97,30.1h-2.28v-9.84c.9-.18,2.16-.3,3.78-.3,1.86,0,2.7.3,3.42.72.54.42.96,1.2.96,2.16,0,1.08-.84,1.92-2.04,2.28v.12c.96.36,1.5,1.08,1.8,2.4.3,1.5.48,2.1.72,2.46h-2.46c-.3-.36-.48-1.26-.78-2.4-.18-1.08-.78-1.56-2.04-1.56h-1.08v3.96ZM511.03,24.52h1.08c1.26,0,2.28-.42,2.28-1.44,0-.9-.66-1.5-2.1-1.5-.6,0-1.02.06-1.26.12v2.82Z"></path></g></svg></div>
+      <div class="mastmeta">Search in the AI Era<br>Edition 01 &middot; August 2026</div>
+    </div>
+    <h1>The Real Estate<br><em>Answer Index</em></h1>
+    <p class="standfirst">Which sources AI engines actually cite when someone asks a real estate question, measured across twelve United States markets rather than argued from a screenshot. This edition answers one question above all others: when does an agent's own website win the answer, and when does something else win it instead.</p>
+    <div class="corpus">
+      <div><b>1,598</b><span>Observations</span></div>
+      <div><b>156</b><span>Questions</span></div>
+      <div><b>12</b><span>Markets</span></div>
+      <div><b>3</b><span>Engines</span></div>
+      <div><b>1,833</b><span>Domains seen</span></div>
+      <div><b>7</b><span>Days</span></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section id="finding">
+  <div class="wrap">
+    <div class="eyebrow">01 &middot; The finding</div>
+    <h2>Your name is solved. The question that finds you is not.</h2>
+    <div class="prose">
+      <p class="lede">Across identical markets, identical days and identical engines, an agent's own website is cited on 84 percent of branded searches and 15 percent of the searches a stranger actually uses to pick an agent. That single contrast is the finding. A team that checks its own name concludes AI search is handled. The question that acquires a customer is the one they are absent from.</p>
+    </div>
+
+    <div class="gap">
+      <div class="gaphead">
+        <h3>Owned-site citation rate by question shape</h3>
+        <span>12 United States markets &middot; all engines pooled &middot; n = 1,598</span>
+      </div>
+      <div class="bars">
+        <div class="bar"><div class="lab"><b>Branded</b><i>"[team name] [city] real estate"</i></div><div class="track"><div class="fill" style="width:84%"></div></div><div class="val">84%<i>98 / 117</i></div></div>
+        <div class="bar"><div class="lab"><b>Is this a good place to live</b><i>"is [town] a good place to live"</i></div><div class="track"><div class="fill" style="width:74%"></div></div><div class="val">74%<i>40 / 54</i></div></div>
+        <div class="bar"><div class="lab"><b>Comparison</b><i>"[town] vs [town] which is better"</i></div><div class="track"><div class="fill" style="width:67%"></div></div><div class="val">67%<i>48 / 72</i></div></div>
+        <div class="bar"><div class="lab"><b>Market data and cost</b><i>"cost of living in [town]"</i></div><div class="track"><div class="fill" style="width:49%"></div></div><div class="val">49%<i>81 / 167</i></div></div>
+        <div class="bar"><div class="lab"><b>Neighborhood guide</b><i>"[neighborhood] guide"</i></div><div class="track"><div class="fill" style="width:42%"></div></div><div class="val">42%<i>146 / 344</i></div></div>
+        <div class="bar"><div class="lab"><b>Relocation</b><i>"moving to [metro] guide"</i></div><div class="track"><div class="fill lo" style="width:27%"></div></div><div class="val">27%<i>39 / 147</i></div></div>
+        <div class="bar"><div class="lab"><b>Best agent or team</b><i>"best [luxury] real estate agent [city]"</i></div><div class="track"><div class="fill lo" style="width:15%"></div></div><div class="val">15%<i>11 / 71</i></div></div>
+        <div class="bar"><div class="lab"><b>Inventory</b><i>"[neighborhood] homes for sale"</i></div><div class="track"><div class="fill lo" style="width:6%"></div></div><div class="val">6%<i>7 / 119</i></div></div>
+      </div>
+      <div class="gapfoot">Observed 2026-08-18 to 2026-08-25 across Perplexity, ChatGPT and Google AI Overviews. Every rate carries its own denominator. Question shapes are not equally sampled.</div>
+    </div>
+
+    <div class="call">
+      <p>Of the seven "best team in this market" questions tracked, five returned the agent's own site zero times out of eleven or twelve attempts.</p>
+      <p>The two that won returned it on seven of ten and four of six. Both are markets where a full content architecture had already been published. That is the most commercially useful line in this dataset. The selection question is not unwinnable. It is unwinnable without the asset.</p>
+    </div>
+  </div>
+</section>
+
+<section id="answers">
+  <div class="wrap">
+    <div class="eyebrow">02 &middot; Three questions, answered from the data</div>
+    <h2>What returns your site, what returns a portal, and what returns a marketplace.</h2>
+
+    <div class="tw">
+      <table>
+        <caption>A. Question patterns that return the agent's own website <span>Patterns drawn from the tracked question set. Owned-site citation rate across all three engines.</span></caption>
+        <thead><tr><th>Question pattern</th><th class="n">Own site cited</th><th class="n">Rate</th></tr></thead>
+        <tbody>
+          <tr><td class="q">"[suburb] best place to live"</td><td class="n">10 / 10</td><td class="n own">100%</td></tr>
+          <tr><td class="q">"cost of living in [town]"</td><td class="n">10 / 11</td><td class="n own">91%</td></tr>
+          <tr><td class="q">"[team name] [town] real estate"</td><td class="n">10 / 11</td><td class="n own">91%</td></tr>
+          <tr><td class="q">"[village] vs [village] which is better"</td><td class="n">9 / 11</td><td class="n own">82%</td></tr>
+          <tr><td class="q">"is [town] a good place to live"</td><td class="n">8 / 11</td><td class="n own">73%</td></tr>
+          <tr><td class="q">"[enclave] vs [enclave]"</td><td class="n">8 / 11</td><td class="n own">73%</td></tr>
+          <tr><td class="q">"[town] housing market 2026"</td><td class="n">8 / 11</td><td class="n own">73%</td></tr>
+          <tr><td class="q">"best real estate team [region]"</td><td class="n">7 / 10</td><td class="n own">70%</td></tr>
+          <tr><td class="q">"[state] property tax legislation"</td><td class="n">9 / 13</td><td class="n own">69%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="prose" style="margin-top:1rem;color:var(--slate);font-size:.86rem">The pattern is consistent. An owned site wins where the answer is a judgement about a place, a comparison between two places, or a local number that changes. It wins where the engine needs a resident expert and no national database holds the answer.</p>
+
+    <div class="tw">
+      <table>
+        <caption>B. Question patterns that return portals and national publishers instead <span>Owned-site citation rate on the same three engines.</span></caption>
+        <thead><tr><th>Question pattern</th><th class="n">Own site cited</th><th class="n">Rate</th></tr></thead>
+        <tbody>
+          <tr><td class="q">"[luxury enclave] homes for sale"</td><td class="n">0 / 11</td><td class="n zero">0%</td></tr>
+          <tr><td class="q">"[affluent neighborhood] homes for sale"</td><td class="n">0 / 11</td><td class="n zero">0%</td></tr>
+          <tr><td class="q">"[employment corridor] homes for sale"</td><td class="n">0 / 11</td><td class="n zero">0%</td></tr>
+          <tr><td class="q">"[suburb] homes for sale"</td><td class="n">0 / 11</td><td class="n zero">0%</td></tr>
+          <tr><td class="q">"moving to [metro] guide"</td><td class="n">0 / 11</td><td class="n zero">0%</td></tr>
+          <tr><td class="q">"relocating to [metro area]"</td><td class="n">0 / 11</td><td class="n zero">0%</td></tr>
+          <tr><td class="q">"corporate relocation [metro]"</td><td class="n">0 / 11</td><td class="n zero">0%</td></tr>
+          <tr><td class="q">"[town] neighborhood guide"</td><td class="n">0 / 11</td><td class="n zero">0%</td></tr>
+          <tr><td class="q">"best luxury neighborhoods in [city]"</td><td class="n">0 / 11</td><td class="n zero">0%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="prose" style="margin-top:1rem;color:var(--slate);font-size:.86rem">Inventory is the hardest shape in the index at 6 percent, with a portal appearing in three quarters of those answers. Relocation looks winnable and is not: the phrasing pulls national moving and cost-of-living publishers rather than local expertise. Note that the same town can win as a "good place to live" question and lose completely as a "neighborhood guide" question. The wording decides the winner, not the market.</p>
+
+    <div class="tw">
+      <table>
+        <caption>C. What actually appears when someone asks for the best agent <span>Presence inside the 71 answers to the seven "best agent or team" questions.</span></caption>
+        <thead><tr><th>Source present in the answer</th><th>Type</th><th class="n">Answers</th><th class="n">Share</th></tr></thead>
+        <tbody>
+          <tr><td class="d">Any portal (Zillow, Realtor.com, Redfin, Homes.com)</td><td class="cat">Portal</td><td class="n">56 / 71</td><td class="n"><span class="mini" style="width:63px"></span>78.9%</td></tr>
+          <tr><td class="d">Any lead-gen or agent-matching directory</td><td class="cat">Lead-gen</td><td class="n">43 / 71</td><td class="n"><span class="mini" style="width:48px"></span>60.6%</td></tr>
+          <tr><td class="d">fastexpert.com</td><td class="cat">Lead-gen marketplace</td><td class="n">27 / 71</td><td class="n"><span class="mini" style="width:30px"></span>38.0%</td></tr>
+          <tr><td class="d">expertise.com</td><td class="cat">Agent directory</td><td class="n">24 / 71</td><td class="n"><span class="mini" style="width:27px"></span>33.8%</td></tr>
+          <tr><td class="d">homelight.com</td><td class="cat">Lead-gen marketplace</td><td class="n">22 / 71</td><td class="n"><span class="mini" style="width:25px"></span>31.0%</td></tr>
+          <tr><td class="d">effectiveagents.com</td><td class="cat">Lead-gen marketplace</td><td class="n">15 / 71</td><td class="n"><span class="mini" style="width:17px"></span>21.1%</td></tr>
+          <tr><td class="d">realtrends.com</td><td class="cat">Ranking directory</td><td class="n">13 / 71</td><td class="n"><span class="mini" style="width:15px"></span>18.3%</td></tr>
+          <tr><td class="d">listwithclever.com / clever.com</td><td class="cat">Lead-gen marketplace</td><td class="n">6 / 71</td><td class="n"><span class="mini lo" style="width:7px"></span>8.5%</td></tr>
+          <tr><td class="d" style="color:var(--cyan)">The agent's own website</td><td class="cat">Owned</td><td class="n own">11 / 71</td><td class="n own"><span class="mini lo" style="width:12px"></span>15.5%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="call warn">
+      <p>Cited zero times anywhere in this edition: upnest.com, idealagent.com, rockethomes.com, topagentsranked.com, referralexchange.com, greatschools.org, nar.realtor.</p>
+      <p>Several of these are named routinely in agent marketing advice as sources worth courting. Across twelve markets and seven days they were not cited once. Absence in one window is not proof they never appear. It is enough to stop paying for them on the assumption that they do.</p>
+    </div>
+  </div>
+</section>
+
+<section id="engines">
+  <div class="wrap">
+    <div class="eyebrow">03 &middot; The engine split</div>
+    <h2>These are not one market. They are three separate source systems.</h2>
+    <div class="prose">
+      <p class="lede">Only 5.8 percent of the domains in this edition were cited by all three engines. YouTube appears in 38 percent of Google AI Overview answers and is effectively absent from ChatGPT. Reddit runs 39 percent on Perplexity and 6 percent on ChatGPT. Any product reporting a single blended AI visibility score is measuring one system and calling it the market.</p>
+    </div>
+
+    <div class="engines">
+      <div class="eng">
+        <h3>Perplexity <span class="chip c-meas">n = 850</span></h3>
+        <div class="sub">The breadth citer &middot; 14.2 domains per answer &middot; cites something 100% of the time</div>
+        <ol>
+          <li><span>zillow.com</span><span>42.2%</span></li>
+          <li><span>reddit.com</span><span>39.3%</span></li>
+          <li><span>homes.com</span><span>32.9%</span></li>
+          <li><span>redfin.com</span><span>27.8%</span></li>
+          <li><span>realtor.com</span><span>26.5%</span></li>
+          <li><span>compass.com</span><span>21.3%</span></li>
+          <li><span>trulia.com</span><span>15.6%</span></li>
+          <li><span>niche.com</span><span>12.6%</span></li>
+          <li><span>sothebysrealty.com</span><span>11.4%</span></li>
+          <li><span>har.com</span><span>11.1%</span></li>
+          <li><span>linkedin.com</span><span>10.8%</span></li>
+          <li><span>youtube.com</span><span>8.7%</span></li>
+        </ol>
+        <div class="note">Cites on every single answer, which makes it the most generous engine toward owned sites and the easiest place to earn a first citation. Breadth is not endorsement: a citation inside a fifteen source panel is worth less than a single inline credit.</div>
+      </div>
+
+      <div class="eng">
+        <h3>ChatGPT <span class="chip c-meas">n = 444</span></h3>
+        <div class="sub">The portal citer &middot; 3.7 domains per answer &middot; cites nothing on 37% of answers</div>
+        <ol>
+          <li><span>realtor.com</span><span>23.2%</span></li>
+          <li><span>zillow.com</span><span>20.0%</span></li>
+          <li><span>redfin.com</span><span>18.5%</span></li>
+          <li><span>compass.com</span><span>8.6%</span></li>
+          <li><span>reddit.com</span><span>6.1%</span></li>
+          <li><span>en.wikipedia.org</span><span>5.6%</span></li>
+          <li><span>niche.com</span><span>5.2%</span></li>
+          <li><span>har.com</span><span>4.7%</span></li>
+          <li><span>homes.com</span><span>4.5%</span></li>
+          <li><span>realtrends.com</span><span>3.8%</span></li>
+          <li><span>marketupdates.sothebysrealty.com</span><span>3.2%</span></li>
+          <li><span>effectiveagents.com</span><span>2.0%</span></li>
+        </ol>
+        <div class="note">The stingiest and most portal-weighted engine, and the one where branded and selection questions diverge completely: 100 percent owned on branded, 5 percent on best agent. Note that sothebysrealty.com earns nothing here while its market-updates subdomain does. Content structure beats brand equity.</div>
+      </div>
+
+      <div class="eng">
+        <h3>Google AI Overviews <span class="chip c-meas">n = 304</span></h3>
+        <div class="sub">The social and video citer &middot; 4.8 domains per answer &middot; often renders no panel at all</div>
+        <ol>
+          <li><span>youtube.com</span><span>38.2%</span></li>
+          <li><span>reddit.com</span><span>28.6%</span></li>
+          <li><span>facebook.com</span><span>9.2%</span></li>
+          <li><span>instagram.com</span><span>7.2%</span></li>
+          <li><span>homes.com</span><span>7.2%</span></li>
+          <li><span>nashvillehome.guru</span><span>6.2%</span></li>
+          <li><span>zillow.com</span><span>5.9%</span></li>
+          <li><span>redfin.com</span><span>5.6%</span></li>
+          <li><span>nashvillesmls.com</span><span>4.9%</span></li>
+          <li><span>niche.com</span><span>4.9%</span></li>
+          <li><span>realtor.com</span><span>4.9%</span></li>
+          <li><span>livability.com</span><span>3.9%</span></li>
+        </ol>
+        <div class="note">The failure mode here is suppression, not exclusion. Google rendered no AI Overview on 19 of 22 branded observations and 27 of 30 inventory observations. Optimising AI Overview presence for "homes for sale" is optimising for a panel that does not appear. On informational questions it renders almost every time.</div>
+      </div>
+    </div>
+    <p class="prose" style="margin-top:1.2rem;color:var(--slate);font-size:.83rem">This edition covers three engines. Others were not part of this reading and no figure is published for them.</p>
+  </div>
+</section>
+
+<section id="sources">
+  <div class="wrap">
+    <div class="eyebrow">04 &middot; The source register</div>
+    <h2>The 25 sources that decide real estate answers.</h2>
+    <div class="prose">
+      <p class="lede">Ranked by share of the 1,598 answers in which the domain appeared. Read this as a register of who holds the answer layer, not a leaderboard to chase. The most important rows are the ones without a brand name on them.</p>
+    </div>
+
+    <div class="tw">
+      <table>
+        <caption>Source register, all engines pooled <span>Share = percentage of the 1,598 answers in which the domain appeared. Perplexity is sampled more heavily than the other two engines, so pooled shares lean toward it.</span></caption>
+        <thead><tr><th class="rk">#</th><th>Source</th><th>Type</th><th class="n">Share of answers</th></tr></thead>
+        <tbody>
+          <tr><td class="rk">1</td><td class="d">zillow.com</td><td class="cat">Portal</td><td class="n"><span class="mini" style="width:61px"></span>29.2%</td></tr>
+          <tr><td class="rk">2</td><td class="d">reddit.com</td><td class="cat">UGC forum</td><td class="n"><span class="mini" style="width:59px"></span>28.0%</td></tr>
+          <tr><td class="rk">3</td><td class="d">realtor.com</td><td class="cat">Portal</td><td class="n"><span class="mini" style="width:45px"></span>21.5%</td></tr>
+          <tr><td class="rk">4</td><td class="d">redfin.com</td><td class="cat">Portal</td><td class="n"><span class="mini" style="width:44px"></span>21.0%</td></tr>
+          <tr><td class="rk">5</td><td class="d">homes.com</td><td class="cat">Portal</td><td class="n"><span class="mini" style="width:42px"></span>20.2%</td></tr>
+          <tr><td class="rk">6</td><td class="d">compass.com</td><td class="cat">National brokerage</td><td class="n"><span class="mini" style="width:30px"></span>14.2%</td></tr>
+          <tr><td class="rk">7</td><td class="d">youtube.com</td><td class="cat">Video</td><td class="n"><span class="mini" style="width:25px"></span>12.1%</td></tr>
+          <tr><td class="rk">8</td><td class="d">trulia.com</td><td class="cat">Portal</td><td class="n"><span class="mini lo" style="width:19px"></span>9.2%</td></tr>
+          <tr><td class="rk">9</td><td class="d">niche.com</td><td class="cat">Place data</td><td class="n"><span class="mini lo" style="width:19px"></span>9.1%</td></tr>
+          <tr><td class="rk">10</td><td class="d">har.com</td><td class="cat">Association portal</td><td class="n"><span class="mini lo" style="width:16px"></span>7.6%</td></tr>
+          <tr><td class="rk">11</td><td class="d">en.wikipedia.org</td><td class="cat">Encyclopedia</td><td class="n"><span class="mini lo" style="width:13px"></span>6.3%</td></tr>
+          <tr><td class="rk">12</td><td class="d">sothebysrealty.com</td><td class="cat">Luxury brokerage</td><td class="n"><span class="mini lo" style="width:13px"></span>6.2%</td></tr>
+          <tr><td class="rk">13</td><td class="d">linkedin.com</td><td class="cat">Social</td><td class="n"><span class="mini lo" style="width:12px"></span>5.9%</td></tr>
+          <tr><td class="rk">14</td><td class="d">livability.com</td><td class="cat">Place data</td><td class="n"><span class="mini lo" style="width:11px"></span>5.0%</td></tr>
+          <tr><td class="rk">15</td><td class="d" style="color:var(--cyan)">nashvillehome.guru</td><td class="cat">Competing agent</td><td class="n"><span class="mini lo" style="width:8px"></span>3.8%</td></tr>
+          <tr><td class="rk">16</td><td class="d" style="color:var(--cyan)">echofineproperties.com</td><td class="cat">Competing team</td><td class="n"><span class="mini lo" style="width:8px"></span>3.8%</td></tr>
+          <tr><td class="rk">17</td><td class="d" style="color:var(--cyan)">steamboatsprings-realestate.com</td><td class="cat">Competing agent</td><td class="n"><span class="mini lo" style="width:8px"></span>3.8%</td></tr>
+          <tr><td class="rk">18</td><td class="d">nashvillesmls.com</td><td class="cat">Local MLS</td><td class="n"><span class="mini lo" style="width:8px"></span>3.6%</td></tr>
+          <tr><td class="rk">19</td><td class="d">facebook.com</td><td class="cat">Social</td><td class="n"><span class="mini lo" style="width:7px"></span>3.5%</td></tr>
+          <tr><td class="rk">20</td><td class="d" style="color:var(--cyan)">theagencysteamboat.com</td><td class="cat">Local brokerage</td><td class="n"><span class="mini lo" style="width:7px"></span>3.5%</td></tr>
+          <tr><td class="rk">21</td><td class="d" style="color:var(--cyan)">suburbanjunglegroup.com</td><td class="cat">Relocation advisory</td><td class="n"><span class="mini lo" style="width:7px"></span>3.3%</td></tr>
+          <tr><td class="rk">22</td><td class="d">elliman.com</td><td class="cat">National brokerage</td><td class="n"><span class="mini lo" style="width:7px"></span>3.3%</td></tr>
+          <tr><td class="rk">23</td><td class="d" style="color:var(--cyan)">austinrealestatehomesblog.com</td><td class="cat">Competing agent</td><td class="n"><span class="mini lo" style="width:7px"></span>3.3%</td></tr>
+          <tr><td class="rk">24</td><td class="d" style="color:var(--cyan)">steamboatagent.com</td><td class="cat">Competing agent</td><td class="n"><span class="mini lo" style="width:7px"></span>3.3%</td></tr>
+          <tr><td class="rk">25</td><td class="d" style="color:var(--cyan)">bexrealty.com</td><td class="cat">Local brokerage</td><td class="n"><span class="mini lo" style="width:7px"></span>3.1%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="call">
+      <p>Eight of the top twenty five are not portals, directories or brands. They are other agents.</p>
+      <p>They are individual agent, team and local brokerage websites, and they are cited more often than Yelp, RealTrends, FastExpert or RE/MAX. Across the whole reading, independent agent, team and local brokerage sites take 64.0 percent of all citation events, and a tracked agent's own domain appeared in 38.1 percent of answers. The wall is not Zillow. It is the agent down the road who published the guide.</p>
+    </div>
+
+    <div class="tw">
+      <table>
+        <caption>Where the named directories and brands actually land <span>The sources cited most often in agent marketing advice, measured against the same 1,598 answers.</span></caption>
+        <thead><tr><th>Source</th><th>Type</th><th class="n">Share of answers</th></tr></thead>
+        <tbody>
+          <tr><td class="d">realtrends.com</td><td class="cat">Ranking directory</td><td class="n">3.00%</td></tr>
+          <tr><td class="d">apartments.com</td><td class="cat">Portal</td><td class="n">2.88%</td></tr>
+          <tr><td class="d">yelp.com</td><td class="cat">Review site</td><td class="n">2.88%</td></tr>
+          <tr><td class="d">century21.com</td><td class="cat">National brokerage</td><td class="n">2.82%</td></tr>
+          <tr><td class="d">areavibes.com</td><td class="cat">Place data</td><td class="n">2.75%</td></tr>
+          <tr><td class="d">bestplaces.net</td><td class="cat">Place data</td><td class="n">2.69%</td></tr>
+          <tr><td class="d">instagram.com</td><td class="cat">Social</td><td class="n">2.32%</td></tr>
+          <tr><td class="d">fastexpert.com</td><td class="cat">Lead-gen marketplace</td><td class="n">2.07%</td></tr>
+          <tr><td class="d">city-data.com</td><td class="cat">Place data</td><td class="n">2.00%</td></tr>
+          <tr><td class="d">nextdoor.com</td><td class="cat">Social</td><td class="n">1.75%</td></tr>
+          <tr><td class="d">homelight.com</td><td class="cat">Lead-gen marketplace</td><td class="n">1.75%</td></tr>
+          <tr><td class="d">remax.com</td><td class="cat">National brokerage</td><td class="n">1.56%</td></tr>
+          <tr><td class="d">expertise.com</td><td class="cat">Agent directory</td><td class="n">1.50%</td></tr>
+          <tr><td class="d">coldwellbanker.com</td><td class="cat">National brokerage</td><td class="n">1.50%</td></tr>
+          <tr><td class="d">effectiveagents.com</td><td class="cat">Lead-gen marketplace</td><td class="n">0.94%</td></tr>
+          <tr><td class="d">listwithclever.com</td><td class="cat">Lead-gen marketplace</td><td class="n">0.38%</td></tr>
+          <tr><td class="d" style="color:var(--amber)">upnest.com, idealagent.com, rockethomes.com, greatschools.org, nar.realtor</td><td class="cat">Not cited once</td><td class="n zero">0.00%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="prose" style="margin-top:1.1rem;color:var(--slate);font-size:.83rem">The 64.0 percent figure is a residual class: every domain that did not match an explicit portal, directory, brokerage, social, place-data, news or government list. Its fifty largest members were reviewed by hand and are genuine independent practitioner sites. The tail was not reviewed domain by domain and will contain some misclassification, so treat it as the shape of the market rather than a precise share.</p>
+  </div>
+</section>
+
+<section id="limits">
+  <div class="wrap">
+    <div class="eyebrow">05 &middot; What this edition cannot claim</div>
+    <h2>The limits are published because an index that hides them is not an index.</h2>
+    <div class="prose">
+      <p class="lede">Every figure above is a direct reading, not a model, an estimate or a number borrowed from someone else's study. That also means the boundaries are hard, and they are worth stating before anyone quotes a figure from this page.</p>
+    </div>
+
+    <div class="limits">
+      <div class="lim"><h4>Read at national level <span class="chip c-un">material</span></h4><p>Readings were taken at United States national level rather than from inside each market. A question with local intent asked from a national vantage point can return a different answer than the same question asked in market. Treat every market-level rate here as a floor rather than a reading of what a local buyer sees.</p></div>
+      <div class="lim"><h4>Credit, not mention</h4><p>This edition records whether an engine credited a source. It does not record whether an engine said a brand name aloud without linking to it. Those are two different events, and only the first one is measured here.</p></div>
+      <div class="lim"><h4>One week, not a quarter</h4><p>Every figure comes from a single seven day window, 2026-08-18 to 2026-08-25. This is one reading of a system that moves. No trend, direction or month over month claim is made anywhere in this edition.</p></div>
+      <div class="lim"><h4>Unequal sampling across engines</h4><p>Perplexity contributes 850 answers, ChatGPT 444 and Google 304. Pooled figures therefore lean toward Perplexity. The per-engine numbers, which carry their own denominators, are the safer read for any engine-to-engine comparison.</p></div>
+      <div class="lim"><h4>The Google reading is the thinnest</h4><p>Google's AI Overview is the least stable of the three surfaces to read at scale, and the suppression finding rests on the smallest sample. It is reported because it is actionable and flagged here because it is thin.</p></div>
+      <div class="lim"><h4>Not a demand-weighted sample</h4><p>The 156 questions were chosen for twelve specific markets, and they are phrased more tightly than the longer conversational wording people actually use with an assistant. Nothing here says how often a real buyer asks any of them. Search demand weighting is absent entirely.</p></div>
+      <div class="lim"><h4>Presence, not prominence</h4><p>A citation is recorded as present or absent. Whether it led the answer or sat fifteenth in a long source panel, and whether the mention was favourable, are not captured. A single inline credit and one entry in a long list count identically.</p></div>
+      <div class="lim"><h4>Three engines</h4><p>This edition covers Perplexity, ChatGPT and Google AI Overviews. Other assistants were not part of this reading, and no figure, ranking or prediction is offered for them.</p></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <b>The Real Estate Answer Index</b> &middot; Edition 01 &middot; August 2026 &middot; <b>Authored by Brandon Lincoln Hendricks</b><br>
+    Read 2026-08-18 to 2026-08-25 &middot; 1,598 observations &middot; 156 questions &middot; 12 United States markets &middot; Perplexity, ChatGPT and Google AI Overviews<br>
+    Read at United States national level, not market pinned. Figures are a single window reading and carry no trend claim.<br>
+    <b>A BLOK.co publication</b>
+  </div>
+</footer>
+</body>
+</html>
