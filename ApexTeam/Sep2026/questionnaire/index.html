@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Total Search Questionnaire | Joe Belz + Apex Team</title>
+    <link rel="stylesheet" href="https://use.typekit.net/xay8dos.css">
+    <style>
+        :root {
+            --navy: #010b23;
+            --navy-mid: #060f2a;
+            --navy-light: #0a1536;
+            --indigo: #111e50;
+            --blue: #1936a5;
+            --blue-glow: #416bdf;
+            --cyan: #59f3ff;
+            --cyan-dim: rgba(89,243,255,0.55);
+            --cyan-ghost: rgba(89,243,255,0.10);
+            --coral: #fb958a;
+            --teal: #85c9ce;
+            --paper: #eef1f8;
+            --sheet: #ffffff;
+            --ink: #0a1430;
+            --muted: #55618a;
+            --dim: #8b93b0;
+            --line: rgba(17,30,80,0.12);
+            --line-strong: rgba(17,30,80,0.22);
+            --font: "proxima-nova", -apple-system, "Helvetica Neue", "Segoe UI", system-ui, Roboto, Arial, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font);
+            background:
+                radial-gradient(1200px 600px at 50% -220px, rgba(65,107,223,0.12), transparent 60%),
+                var(--paper);
+            color: var(--ink);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 940px;
+            margin: 0 auto;
+            padding: 32px 20px 60px;
+        }
+
+        /* HEADER: light letterhead with the black BLOK logo */
+        header {
+            background: var(--sheet);
+            border: 1px solid var(--line);
+            border-top: 4px solid var(--cyan);
+            border-radius: 14px;
+            padding: 30px 34px 32px;
+            margin-bottom: 22px;
+            box-shadow: 0 18px 46px -28px rgba(10,20,48,0.4);
+        }
+
+        .brandbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding-bottom: 22px;
+            border-bottom: 1px solid var(--line);
+            margin-bottom: 24px;
+        }
+
+        .brandbar .logo {
+            width: 132px;
+            height: auto;
+            display: block;
+        }
+
+        .brandbar .doc-tag {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2.4px;
+            text-transform: uppercase;
+            color: var(--muted);
+            text-align: right;
+        }
+
+        .brandbar .doc-tag span {
+            display: block;
+            color: var(--blue);
+        }
+
+        header h1 {
+            font-size: 30px;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+            color: var(--navy);
+            margin-bottom: 6px;
+        }
+
+        header .subtitle {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--blue);
+            margin-bottom: 14px;
+        }
+
+        header .description {
+            font-size: 15px;
+            color: var(--muted);
+            max-width: 760px;
+        }
+
+        /* INTRO */
+        .intro {
+            background: var(--sheet);
+            border: 1px solid var(--line);
+            border-left: 4px solid var(--cyan);
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin-bottom: 22px;
+            box-shadow: 0 14px 40px -30px rgba(10,20,48,0.4);
+        }
+
+        .intro p {
+            font-size: 15px;
+            color: var(--ink);
+            margin-bottom: 12px;
+        }
+
+        .intro p:last-child { margin-bottom: 0; }
+
+        .intro strong { color: var(--navy); }
+
+        /* SECTIONS */
+        .section {
+            background: var(--sheet);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 0 30px 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 14px 40px -30px rgba(10,20,48,0.4);
+            overflow: hidden;
+        }
+
+        .section-header {
+            background: linear-gradient(100deg, var(--navy) 0%, var(--indigo) 100%);
+            color: #f0f2fa;
+            padding: 14px 24px;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            margin: 0 -30px 26px;
+            border-bottom: 2px solid var(--cyan);
+        }
+
+        .section-header .sec-num {
+            color: var(--cyan);
+            margin-right: 10px;
+        }
+
+        .question-group { margin-bottom: 28px; }
+        .question-group:last-child { margin-bottom: 0; }
+
+        .question-label {
+            font-weight: 600;
+            color: var(--navy);
+            font-size: 15.5px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .question-number {
+            display: inline-block;
+            background: var(--navy);
+            color: var(--cyan);
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 25px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-right: 9px;
+        }
+
+        .question-hint {
+            font-size: 13.5px;
+            color: var(--muted);
+            margin-bottom: 10px;
+        }
+
+        textarea, input[type="text"] {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1.5px solid var(--line-strong);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 14.5px;
+            color: var(--ink);
+            background: #fbfcff;
+            transition: border-color 0.15s, box-shadow 0.15s;
+        }
+
+        textarea {
+            min-height: 84px;
+            resize: vertical;
+        }
+
+        textarea:focus, input[type="text"]:focus {
+            outline: none;
+            border-color: var(--blue-glow);
+            box-shadow: 0 0 0 3px var(--cyan-ghost);
+            background: #fff;
+        }
+
+        textarea::placeholder, input::placeholder { color: var(--dim); }
+
+        .checkbox-group, .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .checkbox-group label, .radio-group label {
+            display: flex;
+            align-items: flex-start;
+            gap: 11px;
+            cursor: pointer;
+            font-size: 14.5px;
+            padding: 9px 14px;
+            background: #f6f8fd;
+            border: 1px solid transparent;
+            border-radius: 7px;
+            transition: background 0.15s, border-color 0.15s;
+        }
+
+        .checkbox-group label:hover, .radio-group label:hover {
+            background: var(--cyan-ghost);
+            border-color: rgba(89,243,255,0.45);
+        }
+
+        .checkbox-group input[type="checkbox"] { margin-top: 3px; }
+
+        .checkbox-group input[type="checkbox"],
+        .radio-group input[type="radio"] {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+            accent-color: var(--blue);
+        }
+
+        /* Two-column checkbox variant for long lists */
+        .cols-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        /* AREA GRID */
+        .area-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            border: 1.5px solid var(--line-strong);
+            border-radius: 9px;
+            overflow: hidden;
+            margin-top: 12px;
+        }
+
+        .area-grid .area-name {
+            padding: 12px 14px;
+            background: #f6f8fd;
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--navy);
+            border-bottom: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+        }
+
+        .area-grid .area-input {
+            padding: 7px 14px;
+            border-bottom: 1px solid var(--line);
+            border-left: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+        }
+
+        .area-grid .area-input input {
+            border: none;
+            background: transparent;
+            padding: 4px 0;
+            font-size: 14px;
+        }
+
+        .area-grid .area-input input:focus {
+            box-shadow: none;
+            background: transparent;
+        }
+
+        .area-grid .area-name:last-of-type,
+        .area-grid .area-input:last-of-type { border-bottom: none; }
+
+        /* CONFIRM GRID */
+        .confirm-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .confirm-grid .full { grid-column: 1 / -1; }
+
+        .confirm-grid label {
+            font-size: 12.5px;
+            font-weight: 700;
+            letter-spacing: 0.4px;
+            text-transform: uppercase;
+            color: var(--muted);
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        /* FLAG callout for things we found that need confirming */
+        .flag {
+            background: rgba(251,149,138,0.10);
+            border: 1px solid rgba(251,149,138,0.45);
+            border-left: 3px solid var(--coral);
+            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 13.5px;
+            color: var(--ink);
+            margin-bottom: 12px;
+        }
+
+        .flag .flag-tag {
+            display: block;
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 1.6px;
+            text-transform: uppercase;
+            color: #b4564a;
+            margin-bottom: 4px;
+        }
+
+        /* SUBMIT */
+        .submit-section {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 60%, var(--indigo) 100%);
+            border-radius: 12px;
+            padding: 36px 30px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 18px 46px -28px rgba(10,20,48,0.6);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--cyan) 0%, #7fd8ff 100%);
+            color: var(--navy);
+            border: none;
+            padding: 16px 62px;
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.4px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px -6px rgba(89,243,255,0.45);
+        }
+
+        .submit-btn:active { transform: translateY(0); }
+
+        .submit-note {
+            font-size: 13px;
+            color: #c3c5cf;
+            margin-top: 14px;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 8px 20px;
+            color: var(--muted);
+        }
+
+        footer p { font-size: 13px; margin: 4px 0; }
+
+        footer strong { color: var(--navy); }
+
+        footer a { color: var(--blue); text-decoration: none; }
+
+        @media print {
+            body { background: #fff; }
+            .section, header, .intro { box-shadow: none; break-inside: avoid; }
+            .question-group { break-inside: avoid; }
+            .area-grid, .checkbox-group, .radio-group, .confirm-grid, .flag { break-inside: avoid; }
+            textarea { min-height: 60px; }
+        }
+
+        @media (max-width: 640px) {
+            .container { padding: 20px 14px 40px; }
+            header { padding: 24px 20px; }
+            header h1 { font-size: 24px; }
+            .section { padding: 0 18px 24px; }
+            .section-header { margin: 0 -18px 22px; padding: 13px 18px; }
+            .intro { padding: 20px; }
+            .area-grid { grid-template-columns: 1fr; }
+            .confirm-grid { grid-template-columns: 1fr; }
+            .cols-2 { grid-template-columns: 1fr; }
+            .brandbar .doc-tag { text-align: left; }
+            .submit-btn { width: 100%; padding: 16px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <header>
+            <div class="brandbar">
+                <svg class="logo" viewBox="0 0 521.68 163.5" role="img" aria-label="BLOK">
+                    <g>
+                        <polygon fill="#85c9ce" points="54.9 98.1 54.9 40.6 107.4 69.7 107.4 128.5 54.9 98.1"/>
+                        <polygon fill="#fb958a" points="0 132.9 53.7 101.6 106.7 132.9 53.7 163.5 0 132.9"/>
+                        <polygon fill="#060c3b" points="0 129.2 0 29.7 51.7 0 51.7 98.8 0 129.2"/>
+                        <path fill="#060c3b" d="M212.4,104.4c0-10-1.6-17.3-4.7-21.8-3.2-4.6-7.9-6.9-14.2-6.9-8.4,0-14.2,3.4-17.3,10.3v39c3.2,6.9,9.1,10.4,17.5,10.4s14.1-4.2,16.8-12.6c1.3-4,1.9-10.2,1.9-18.4ZM238.8,106.3c0,15.8-3.4,28.2-10.1,37.1-6.8,8.8-16.2,13.2-28.3,13.2-10.7,0-19.3-4.1-25.7-12.3l-1.2,10.5h-23.7V14.6h26.4v50.3c6.1-7.1,14.1-10.7,24-10.7,12.1,0,21.5,4.4,28.3,13.3,6.9,8.8,10.3,21.3,10.3,37.3v1.5Z"/>
+                        <rect fill="#060c3b" x="256.5" y="14.6" width="26.5" height="140.2"/>
+                        <path fill="#060c3b" d="M327.1,106.4c0,9.4,1.8,16.6,5.3,21.5s8.6,7.4,15.2,7.4,11.4-2.4,15-7.3c3.6-4.9,5.4-12.8,5.4-23.6,0-9.2-1.8-16.3-5.4-21.4-3.6-5.1-8.6-7.6-15.2-7.6s-11.4,2.5-15,7.6c-3.5,5.1-5.3,12.9-5.3,23.4ZM300.7,104.5c0-9.8,1.9-18.5,5.7-26.2,3.8-7.7,9.2-13.6,16.2-17.8,7.1-4.2,15.4-6.3,24.7-6.3,13.3,0,24.2,4.1,32.6,12.2,8.5,8.2,13.2,19.2,14.2,33.2l.2,6.8c0,15.2-4.2,27.3-12.7,36.5-8.5,9.1-19.8,13.7-34.1,13.7s-25.6-4.6-34.1-13.7c-8.5-9.1-12.7-21.5-12.7-37.2v-1.2h0Z"/>
+                        <polygon fill="#060c3b" points="446.4 115.2 436.9 124.7 436.9 154.8 410.5 154.8 410.5 14.6 436.9 14.6 436.9 92.3 442 85.7 467.3 56 499 56 463.3 97.2 502.1 154.8 471.8 154.8 446.4 115.2"/>
+                        <path fill="#060c3b" d="M521.68,23.94c0,5.58-4.38,9.96-10.08,9.96s-10.14-4.38-10.14-9.96,4.5-9.84,10.14-9.84,10.08,4.38,10.08,9.84ZM503.98,23.94c0,4.38,3.24,7.86,7.68,7.86s7.5-3.48,7.5-7.8-3.18-7.92-7.56-7.92-7.62,3.54-7.62,7.86ZM510.04,29.1h-2.28v-9.84c.9-.18,2.16-.3,3.78-.3,1.86,0,2.7.3,3.42.72.54.42.96,1.2.96,2.16,0,1.08-.84,1.92-2.04,2.28v.12c.96.36,1.5,1.08,1.8,2.4.3,1.5.48,2.1.72,2.46h-2.46c-.3-.36-.48-1.26-.78-2.4-.18-1.08-.78-1.56-2.04-1.56h-1.08v3.96ZM510.1,23.52h1.08c1.26,0,2.28-.42,2.28-1.44,0-.9-.66-1.5-2.1-1.5-.6,0-1.02.06-1.26.12v2.82Z"/>
+                    </g>
+                </svg>
+                
+                <div class="doc-tag">
+                    Total Search
+                    <span>AI Visibility Questionnaire</span>
+                </div>
+            </div>
+
+            <h1>Total Search Questionnaire</h1>
+            <div class="subtitle">Joe Belz + Apex Team at Compass, Naples, Florida</div>
+            <p class="description">Prepared for Joe Belz, September 2026. The questions below come from a technical reading of apexteamnaples.com run on September 2, 2026, in which we read every page the way an answer engine reads it rather than the way a visitor does.</p>
+        </header>
+
+        <div class="intro">
+            <p><strong>How this works:</strong> the reading found that your website tells machines almost nothing about you. Your structured data describes one business, names no people, and leaves the field that says which geography you cover completely blank. Compass appears in your footer and in your page title and nowhere a machine can read it. Your strongest claims, twenty five years in the market and number one at Compass in Naples, carry no source and no current year. And your thirteen neighborhood pages, which are the right idea, currently display other brokerages&#39; listings as their only evidence.</p>
+            <p>None of that is a content problem. Your record is real. It is that your record is not written in a form an answer engine can read, quote and attribute. This questionnaire exists to fix that, so almost every question here asks for a fact, a number, a year and a source rather than an opinion.</p>
+            <p>Two things worth knowing before you start. First, we will not publish a claim we cannot source, which is why section 2 asks where each of your credentials comes from. That is not skepticism about your record. Sourced and dated claims are the ones these engines repeat, and unsourced superlatives are the ones they skip. Second, the questions carrying a highlighted callout are the ones that unblock the most work. If you run out of time, answer those and send the rest later.</p>
+            <p>Anything you cannot answer, leave blank and we will chase it down ourselves where we can.</p>
+        </div>
+
+        <form action="https://formsubmit.co/brandon.hendricks@blok.co" method="POST">
+            <!-- FormSubmit Configuration -->
+            <input type="hidden" name="_subject" value="Total Search Questionnaire - Joe Belz + Apex Team">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_cc" value="advertising@blok.co">
+            <input type="hidden" name="_next" value="https://reports-blok.co/thank-you/">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="text" name="_honey" style="display:none">
+            <!-- Apps Script backend identifiers, used once wire-forms.py runs -->
+            <input type="hidden" name="_client" value="apexteam-sep2026">
+            <input type="hidden" name="_clientLabel" value="Joe Belz + Apex Team">
+<div class="section">
+<div class="section-header">1. Identity and naming</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">1</span> Confirm or correct the details we have on file.</label>
+<div class="question-hint">These are pulled from apexteamnaples.com and your public profiles on September 2, 2026. Correct anything wrong or out of date. The license and phone fields matter more than they look, because answer engines use a stable number and a verifiable license as identity anchors.</div>
+<div class="confirm-grid">
+<div><label>Founder and lead agent</label><input type="text" name="1a. Lead Agent" value="Joe Belz" placeholder=""></div>
+<div><label>Joe&#x27;s title, exactly as licensed</label><input type="text" name="1b. Joe Title" value="" placeholder="site says &#x27;Principle&#x27;, we assume Principal"></div>
+<div><label>Team name as you want it published</label><input type="text" name="1c. Team Name" value="" placeholder="see question 2 before answering"></div>
+<div><label>Brokerage, exact legal entity name</label><input type="text" name="1d. Brokerage" value="Compass" placeholder="Compass Florida LLC, or however it is registered"></div>
+<div><label>Website</label><input type="text" name="1e. Website" value="apexteamnaples.com" placeholder=""></div>
+<div><label>PRIMARY phone, the one number to use everywhere</label><input type="text" name="1f. Primary Phone" value="(239) 825-3646" placeholder=""></div>
+<div><label>Primary email</label><input type="text" name="1g. Primary Email" value="joe.belz@compass.com" placeholder="confirm this is the address you want published"></div>
+<div><label>Office address</label><input type="text" name="1h. Office Address" value="800 Laurel Oak Dr #400, Naples, FL 34108" placeholder=""></div>
+<div><label>Second office or satellite, if any</label><input type="text" name="1i. Second Office" value="" placeholder=""></div>
+<div><label>License #700249 in your footer belongs to</label><input type="text" name="1j. License 700249" value="" placeholder="Joe individually, the team registration, or Compass"></div>
+<div><label>Joe&#x27;s individual Florida license number</label><input type="text" name="1k. Joe License" value="" placeholder=""></div>
+<div><label>Year Joe started in real estate</label><input type="text" name="1l. Joe Start Year" value="" placeholder="your site says 25+ years, we need the year"></div>
+<div><label>Year the Apex Team was formed</label><input type="text" name="1m. Team Founded" value="" placeholder=""></div>
+<div><label>Year the team joined Compass</label><input type="text" name="1n. Compass Year" value="" placeholder=""></div>
+</div></div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">2</span> How do you want to be named across the web? This is the single highest leverage answer in this document.</label>
+<div class="question-hint">Four forms of your name are in circulation right now. Your page title and your structured data both say &quot;Joe Belz + Apex Team&quot;. Your body copy says &quot;The Apex Team&quot; and, on the Meet The Team page, &quot;The APEX Team&quot;. All three of your social handles say &quot;BelzSells&quot;. Your domain says apexteamnaples.com. Answer engines build one profile per exact string, so five strings split your authority five ways. We need one canonical version and we will align every profile we can reach to it.</div>
+<div class="flag">Answer this one even if you answer nothing else.</div>
+<textarea name="2. Canonical Name" style="min-height: 80px;" placeholder="Pick one exact string. Also tell us any prior team name, DBA or legal entity still floating around that we should chase down."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">3</span> Should Joe Belz be findable as an individual agent, or only as the team?</label>
+<div class="question-hint">This is the technical root cause of most of what is wrong. Your website tells machines that it represents one business called &quot;Joe Belz + Apex Team&quot;. It never says that Joe Belz is a person, that he is a real estate agent in his own right, or that Jozef Maston and Shannon May are people at all. A question phrased around a team can find a team. A question phrased the way most buyers actually search, around a named agent or around no name at all, has nothing to find. We can publish both, but we need to know how you want authority distributed.</div>
+<div class="flag">This decides how we rebuild your structured data.</div>
+<textarea name="3. Individual vs Team Entity" style="min-height: 80px;" placeholder="For example: Joe as the primary individual entity for luxury, waterfront and builder work, Jozef and Shannon as named individual advisors, plus the team as an umbrella. Or a different split."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">4</span> Give us the true roster, and tell us who is licensed.</label>
+<div class="question-hint">Your Meet The Team copy and your agent cards disagree. The paragraph names Shannon May, Jozef Maston and Sherri Eppich. The cards show Joe Belz, Jozef Maston, Shannon May and Cyndi Bautista as Assistant to the Apex Team. Sherri Eppich has no card. Cyndi Bautista is not in the paragraph. We need one accurate list before we publish anyone, because a licensed advisor and an operations staff member get very different treatment in the markup and under Florida advertising rules.</div>
+<div class="flag">Also flag anyone who has left, so we can stop publishing them.</div>
+<textarea name="4. Roster" style="min-height: 140px;" placeholder="One per line: full name, exact published title, licensed or unlicensed, license number if licensed, email, direct phone, and whether they should be findable individually."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">5</span> Who can be quoted, and who approves copy?</label>
+<div class="question-hint">Direct quotes attributed to a named person with a title are one of the strongest signals an answer engine can use, and they are what gets lifted verbatim into an AI answer. We need to know whose voice we write in and how fast a review turns around.</div>
+<textarea name="5. Attribution and Approval" style="min-height: 70px;" placeholder="Who can be quoted, who signs off before publication, and your realistic turnaround."></textarea>
+</div>
+</div>
+<div class="section">
+<div class="section-header">2. Credentials and proof, the sourcing section</div>
+<div class="flag">This section unblocks more work than the rest of the questionnaire combined. We do not publish a claim we cannot source. That is not skepticism about your record. Sourced and dated claims are the ones these engines repeat, and unsourced superlatives are the ones they skip.</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">6</span> &quot;25+ years of experience.&quot; What year did Joe start, and where?</label>
+<div class="question-hint">A range is unquotable. A start year is a fact an engine can anchor to, and it lets us write a sentence that stays true without editing every January.</div>
+<textarea name="6. Years of Experience" style="min-height: 70px;" placeholder="Start year, the market and the brokerage he started in, and roughly when he moved into Naples luxury."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">7</span> &quot;#1 at Compass in Naples in 2021.&quot; What is the source, and what is the current year&#x27;s figure?</label>
+<div class="question-hint">This is your strongest claim on the site and it has two problems. It has no issuing body or measurement basis attached, and it is five years old. A 2021 ranking published in 2026 with no more recent figure beside it reads to a machine, and to a buyer, as the last year you were number one.</div>
+<div class="flag">If there is documentation, attach it. This claim is currently unpublishable as written.</div>
+<textarea name="7. Number One at Compass Naples" style="min-height: 80px;" placeholder="Who produced the ranking, measured on what basis (volume, units, GCI), and what your ranking has been in each year since. Send the report or the email if you have it."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">8</span> &quot;Consistently ranked in the top-producing 25 teams at Compass Florida.&quot; Which years, and who issues that list?</label>
+<div class="question-hint">Same standard. Which internal Compass report, what period, measured how, and which years you actually appeared.</div>
+<textarea name="8. Top 25 Compass Florida" style="min-height: 70px;" placeholder="Report name, issuing group inside Compass, basis, and every year you placed."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">9</span> Career production. What are you willing to publish?</label>
+<div class="question-hint">There is no production figure anywhere on your site in words. Your Featured Portfolio shows sold properties as a grid of cards, which a machine reads as a listings feed rather than as a claim about you. The agents who win these answers publish a career total in one sentence. We want to do the same for you, with whatever number you can stand behind.</div>
+<div class="flag">Your strongest asset is already on your site and unusable in its current form.</div>
+<textarea name="9. Career Production" style="min-height: 110px;" placeholder="Career total volume and the start year it covers, career units, best single year, 2024 and 2025 volume, highest single sale, and anything you are NOT comfortable publishing."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">10</span> Every other award, ranking, designation or membership, with the year.</label>
+<div class="question-hint">RealTrends, Compass internal rankings, Naples Area Board of Realtors, Institute for Luxury Home Marketing and CLHMS, Who&#x27;s Who in Luxury Real Estate, Forbes Global Properties, Leading Real Estate Companies of the World, chamber or community awards. List everything and we will filter for what is sourceable.</div>
+<textarea name="10. Awards and Designations" style="min-height: 120px;" placeholder="One per line: award, issuing body, year."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">11</span> What documentation can you send us?</label>
+<div class="question-hint">Award letters, Compass production reports, MLS of Naples production summaries, press clippings, dated screenshots of rankings. Anything dated and attributable. Send it with this questionnaire or tell us where to get it.</div>
+<textarea name="11. Documentation" style="min-height: 70px;" placeholder="List what exists and how you will get it to us."></textarea>
+</div>
+</div>
+<div class="section">
+<div class="section-header">3. The transaction record</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">12</span> Where does your full closed record live, and can we have it?</label>
+<div class="question-hint">Your Featured Portfolio is a curated selection, not a record. If Joe has been selling for 25 years, almost all of that evidence is invisible. Everything missing is proof we cannot use.</div>
+<textarea name="12. Closed Record" style="min-height: 70px;" placeholder="How far back your records go, whether we can pull the full MLS of Naples history, and who can export it."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">13</span> Records and firsts. Have you set any?</label>
+<div class="question-hint">A record is the most quotable form of evidence there is, because it is specific, verifiable and unique to you. Highest sale ever in a community, highest price per square foot, fastest sale at a price point, first closing in a new development, largest lot or teardown transaction.</div>
+<textarea name="13. Records and Firsts" style="min-height: 100px;" placeholder="Community, the record, the number, and the year."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">14</span> Off market, pocket and Compass Private Exclusive volume that is not on the site.</label>
+<div class="question-hint">Luxury sellers often prefer discretion, which means your published record can understate you badly. We cannot publish a confidential transaction, but we can usually publish it in aggregate, for example &quot;including off market transactions&quot;.</div>
+<textarea name="14. Off Market Volume" style="min-height: 70px;" placeholder="Rough share of your business and whether we may reference it in aggregate."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">15</span> Which closed sales can we name publicly, and which are off limits?</label>
+<div class="question-hint">Address level detail is powerful for AI answers and sensitive for luxury clients. We default to whatever is already public in the MLS and on your site unless you tell us otherwise.</div>
+<textarea name="15. Publication Permissions" style="min-height: 70px;" placeholder="Any client, address, community or transaction that must never be named."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">16</span> What is the split across your business, and which side do you want more of?</label>
+<div class="question-hint">This decides whether we build seller facing content, buyer facing content, builder facing content or all three, and it changes which questions we target.</div>
+<textarea name="16. Business Split" style="min-height: 70px;" placeholder="Rough percentages across listings, buyer representation, new construction and builder work, and investment. Then tell us which one you want to grow."></textarea>
+</div>
+</div>
+<div class="section">
+<div class="section-header">4. Neighborhoods and where you can actually win</div>
+<div class="question-hint">You have thirteen neighborhood pages and they are the right idea built the wrong way. Port Royal is 1,964 words of lifestyle copy with no market data, no closed evidence and no statement that you have ever sold there, and the listings displayed on it belong to Realty One Group MVP and Gulf Coast International. Royal Harbor and Colliers Reserve have the same shape. We rebuild these around what you actually know and what you have actually closed, so we need your real depth per area rather than a list of places you will take a call about.</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">17</span> Rate your genuine depth in each area, and tell us roughly how many transactions you have closed there.</label>
+<div class="question-hint">Be honest about the thin ones. We would rather build five pages you can dominate than twenty you cannot defend. Write something like "deep, 30+ closings" or "light, referral only". Leave blank anywhere you do not work.</div>
+<div class="area-grid">
+<div class="area-name">Port Royal</div><div class="area-input"><input type="text" name="17.01 Port Royal" placeholder="depth and rough closings"></div>
+<div class="area-name">Aqualane Shores</div><div class="area-input"><input type="text" name="17.02 Aqualane Shores" placeholder="depth and rough closings"></div>
+<div class="area-name">Olde Naples</div><div class="area-input"><input type="text" name="17.03 Olde Naples" placeholder="depth and rough closings"></div>
+<div class="area-name">Coquina Sands</div><div class="area-input"><input type="text" name="17.04 Coquina Sands" placeholder="depth and rough closings"></div>
+<div class="area-name">The Moorings</div><div class="area-input"><input type="text" name="17.05 The Moorings" placeholder="depth and rough closings"></div>
+<div class="area-name">Park Shore</div><div class="area-input"><input type="text" name="17.06 Park Shore" placeholder="depth and rough closings"></div>
+<div class="area-name">Pelican Bay</div><div class="area-input"><input type="text" name="17.07 Pelican Bay" placeholder="depth and rough closings"></div>
+<div class="area-name">Bay Colony</div><div class="area-input"><input type="text" name="17.08 Bay Colony" placeholder="depth and rough closings"></div>
+<div class="area-name">Vanderbilt Beach</div><div class="area-input"><input type="text" name="17.09 Vanderbilt Beach" placeholder="depth and rough closings"></div>
+<div class="area-name">Pine Ridge</div><div class="area-input"><input type="text" name="17.10 Pine Ridge" placeholder="depth and rough closings"></div>
+<div class="area-name">Grey Oaks and Estuary</div><div class="area-input"><input type="text" name="17.11 Grey Oaks and Estuary" placeholder="depth and rough closings"></div>
+<div class="area-name">Colliers Reserve</div><div class="area-input"><input type="text" name="17.12 Colliers Reserve" placeholder="depth and rough closings"></div>
+<div class="area-name">Royal Harbor</div><div class="area-input"><input type="text" name="17.13 Royal Harbor" placeholder="depth and rough closings"></div>
+<div class="area-name">Waterfront and boating access (any area)</div><div class="area-input"><input type="text" name="17.14 Waterfront and boating access (any area)" placeholder="depth and rough closings"></div>
+<div class="area-name">Mediterra</div><div class="area-input"><input type="text" name="17.15 Mediterra" placeholder="depth and rough closings"></div>
+<div class="area-name">Talis Park</div><div class="area-input"><input type="text" name="17.16 Talis Park" placeholder="depth and rough closings"></div>
+<div class="area-name">Quail West</div><div class="area-input"><input type="text" name="17.17 Quail West" placeholder="depth and rough closings"></div>
+<div class="area-name">New construction (any area)</div><div class="area-input"><input type="text" name="17.18 New construction (any area)" placeholder="depth and rough closings"></div>
+<div class="area-name">Marco Island and Isles of Capri</div><div class="area-input"><input type="text" name="17.19 Marco Island and Isles of Capri" placeholder="depth and rough closings"></div>
+<div class="area-name">Bonita Springs and Estero</div><div class="area-input"><input type="text" name="17.20 Bonita Springs and Estero" placeholder="depth and rough closings"></div>
+<div class="area-name">Fort Myers and Fort Myers Beach</div><div class="area-input"><input type="text" name="17.21 Fort Myers and Fort Myers Beach" placeholder="depth and rough closings"></div>
+<div class="area-name">Naples east and Golden Gate Estates</div><div class="area-input"><input type="text" name="17.22 Naples east and Golden Gate Estates" placeholder="depth and rough closings"></div>
+</div></div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">18</span> If we could only win three areas for you, which three?</label>
+<div class="question-hint">This is where we would concentrate the build. We would rather own three communities outright than appear thinly in thirteen.</div>
+<div class="flag">This determines where the first ninety days of content goes.</div>
+<textarea name="18. Priority Areas" style="min-height: 80px;" placeholder="Name three, and say why you would win each one."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">19</span> Where are you genuinely number one, or top three, and what proves it?</label>
+<div class="question-hint">Not aspiration. Where does the closed record actually support it.</div>
+<textarea name="19. Where You Lead" style="min-height: 70px;" placeholder="Community, basis, period, and the evidence."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">20</span> What is your real service area boundary?</label>
+<div class="question-hint">Your copy says Naples and greater Southwest Florida, your structured data says nothing at all, and one of your listing pages is in North Fort Myers. The areaServed field in your markup is currently an empty string, which means the single field that tells a machine which geography you cover is blank. We are going to fill it, and we need to fill it with the truth rather than with everything within driving distance.</div>
+<textarea name="20. Service Area" style="min-height: 70px;" placeholder="The cities and communities you genuinely serve, and where you would refer out instead."></textarea>
+</div>
+</div>
+<div class="section">
+<div class="section-header">5. Golf, the differentiator nobody is using</div>
+<div class="question-hint">Golf is the most valuable thing on your site that is doing nothing. You carry The Ultimate Golf Resource in the navigation, golf course communities are a named specialty, and two of your blog posts establish Joe as a member at Olde Florida Golf Club. Buyers moving to Naples for golf ask extremely specific questions that almost nobody answers publicly, because the answers require membership level knowledge. This is exactly the kind of content answer engines have nothing else to cite.</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">21</span> Which golf communities do you genuinely know, and how well?</label>
+<div class="question-hint">Membership structures, waitlists, transfer rules, initiation and the difference between bundled, equity and non equity. This is where thirty years of local knowledge beats any amount of rewritten destination copy.</div>
+<div class="flag">Nobody else can write this. It is your clearest differentiator.</div>
+<textarea name="21. Golf Communities" style="min-height: 140px;" placeholder="One per line: community, your depth, closings there, and what you know about its membership that is not published anywhere. For example Grey Oaks, Estuary, Quail West, Mediterra, Talis Park, Olde Cypress, Olde Florida, Bay Colony, Pelican Bay, Collier&#x27;s Reserve, Bonita Bay, Colliers Reserve."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">22</span> Joe&#x27;s own memberships and golf affiliations. What may we publish?</label>
+<div class="question-hint">Your blog establishes Olde Florida Golf Club membership. A named membership is a genuine third party credential and it is currently visible only inside two 2025 blog posts that no machine is reading. Some clubs restrict how members may reference them commercially, so we need to know the rules before we use it.</div>
+<textarea name="22. Memberships" style="min-height: 70px;" placeholder="Which clubs, since when, and any restriction on commercial use of the club name."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">23</span> What should The Ultimate Golf Resource actually be?</label>
+<div class="question-hint">Right now it is a navigation item. Done properly, a genuine golf community comparison resource covering membership cost, waitlist length, transfer terms and what a buyer actually gets is the single highest value asset you could own in this market.</div>
+<textarea name="23. Golf Resource" style="min-height: 90px;" placeholder="What you would want it to cover, what data you already hold, and whether clubs would object to being compared."></textarea>
+</div>
+</div>
+<div class="section">
+<div class="section-header">6. Your clients and the questions they ask</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">24</span> Who is your buyer, specifically?</label>
+<div class="question-hint">Second home buyer, seasonal resident becoming full time, relocating executive, retiree, 1031 investor, international buyer, local move up. Each one asks completely different questions, and AI answers are assembled per question.</div>
+<textarea name="24. Buyer Profile" style="min-height: 90px;" placeholder="Include rough percentages if you can, and typical price band per type."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">25</span> Where do your buyers come from geographically?</label>
+<div class="question-hint">This changes how we write and which comparisons we make. A buyer comparing Naples to Palm Beach needs a different page than one comparing Port Royal to Aqualane Shores.</div>
+<input type="text" name="25. Buyer Origin" placeholder="For example: Midwest 35 percent, Northeast 30 percent, Canada, Ohio, Chicago, New York" value="">
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">26</span> The ten questions buyers ask you most often. In their words.</label>
+<div class="question-hint">This is the raw material for everything we build. Answer engines are assembling responses to real questions, so the closer these are to how a client actually says it, the better. Do not clean them up.</div>
+<div class="flag">If you only have time for three long answers, make this one of them.</div>
+<textarea name="26. Buyer Questions" style="min-height: 160px;" placeholder="One per line. For example: is Park Shore or Pelican Bay better for a family, what does flood insurance actually cost west of 41 now, how long is the Grey Oaks membership waitlist, can I get a boat lift in Royal Harbor, what did the hurricanes really do to values..."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">27</span> The ten questions sellers ask you most often.</label>
+<div class="question-hint">Same instruction. Listing side questions are where the commission is.</div>
+<textarea name="27. Seller Questions" style="min-height: 160px;" placeholder="One per line."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">28</span> What do you know about Naples that is not published anywhere?</label>
+<div class="question-hint">This is the highest value question in the document after the sourcing section. Google&#x27;s own guidance for AI search is to lead with what only your brand can say. Twenty five years of local knowledge that exists only in your head is worth more than any amount of rewritten lifestyle copy.</div>
+<div class="flag">Nobody else can write this. It is the whole differentiator.</div>
+<textarea name="28. Proprietary Knowledge" style="min-height: 180px;" placeholder="Which streets flood and which do not, which associations are about to assess, what post storm insurance and elevation rules really mean for a 1970s waterfront home, which docks can take what size boat, which communities have a real membership waitlist versus a marketed one, why one side of a street trades at a premium, what the teardown economics actually look like right now..."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">29</span> What do buyers and sellers most often get wrong about this market?</label>
+<div class="question-hint">Correcting a common misconception is one of the most reliably cited content shapes, because it answers a question the reader did not know they had.</div>
+<textarea name="29. Misconceptions" style="min-height: 110px;" placeholder="One per line."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">30</span> What objections do you hear, and how do you answer them?</label>
+<div class="question-hint">Insurance cost and availability, hurricane and flood risk, association assessments, seasonality, traffic, price relative to 2021, how long inventory is sitting.</div>
+<textarea name="30. Objections" style="min-height: 120px;" placeholder="Objection, then how you actually answer it."></textarea>
+</div>
+</div>
+<div class="section">
+<div class="section-header">7. The four specialty lines</div>
+<div class="question-hint">You publish four specialty service pages and each one is roughly 1,200 words of positioning with no evidence attached. These are the pages most likely to win a narrow, high value question, because almost nobody in Naples competes on them properly. Each one needs a number and a name to become usable.</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">31</span> Builder and developer services. What is the actual track record?</label>
+<div class="question-hint">New construction is a named specialty and this is the page with the least competition behind it. A builder searching for a Naples listing partner is asking a very specific question and the answer is currently unsourceable.</div>
+<textarea name="31. Builder and Developer" style="min-height: 110px;" placeholder="Which builders and developers you have represented, how many projects, total units or volume, which communities, and which of those names we may publish."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">32</span> Investment opportunities. What does this line really mean?</label>
+<div class="question-hint">Investment is the word most likely to attract the wrong enquiry if it is vague and the most valuable if it is specific.</div>
+<textarea name="32. Investment" style="min-height: 90px;" placeholder="1031 exchange work, rental yield, teardown and rebuild, pre construction allocations, multi unit. Volume and examples where you have them."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">33</span> Sports and entertainment. What is behind this page?</label>
+<div class="question-hint">Compass has a Sports and Entertainment division and your page references it. Whether this is a real practice with clients behind it or a divisional affiliation changes entirely how we write it. We will not imply clients you do not have.</div>
+<textarea name="33. Sports and Entertainment" style="min-height: 90px;" placeholder="Is this Compass divisional membership, a genuine client base, or both. Anything publishable, including in aggregate and without names."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">34</span> Private Client Network and Compass Private Exclusives. How does it actually work?</label>
+<div class="question-hint">Off market and pre market access is one of the most searched things a luxury buyer wants and one of the least clearly explained anywhere. Explaining the mechanics plainly is highly citable.</div>
+<textarea name="34. Private Client Network" style="min-height: 90px;" placeholder="How a buyer gets in, what they get, how many private exclusives you run in a typical year, and what you are allowed to say about it."></textarea>
+</div>
+</div>
+<div class="section">
+<div class="section-header">8. The competitive set</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">35</span> Who do you actually compete against for listings in Naples?</label>
+<div class="question-hint">We will run our own reading of who the engines name in your market. We want your list first, unprompted, because the two lists are often different and the gap is the most informative thing in the whole exercise.</div>
+<textarea name="35. Real Competitors" style="min-height: 90px;" placeholder="Individuals and teams, who you lose listings to, and roughly how often."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">36</span> What do those competitors claim that you can beat on the record?</label>
+<div class="question-hint">Several of the large Naples teams publish career volume figures. If your record beats theirs on a narrower basis, such as Port Royal waterfront specifically, or new construction, or price per square foot achieved, that is the claim we build around instead of a total that loses a head to head comparison.</div>
+<textarea name="36. Where You Beat Them" style="min-height: 90px;" placeholder="Be specific about the basis on which you win."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">37</span> Is there anyone we should not name or reference?</label>
+<div class="question-hint">Compass colleagues, past partners, builders, clubs, anyone where a mention creates a problem.</div>
+<input type="text" name="37. Do Not Mention" placeholder="Names or firms to avoid" value="">
+</div>
+</div>
+<div class="section">
+<div class="section-header">9. Brokerage and compliance</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">38</span> Compass affiliations and marketing rules.</label>
+<div class="question-hint">Your site references the Compass Advantage, the Private Client Network and the Sports and Entertainment division. Compass does not currently appear anywhere in your structured data, and your markup names your own team as its own parent organization. We are going to fix that, which means publishing the affiliation properly, so we need to know the rules first.</div>
+<textarea name="38. Compass Rules" style="min-height: 100px;" placeholder="Which affiliations are current, brand and logo usage rules, required disclosures, who at Compass approves marketing, and anything we cannot say."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">39</span> Florida advertising compliance. Anything specific we need to observe?</label>
+<div class="question-hint">Florida requires the brokerage name in advertising, has rules on team names, and your broker may have a position on ranking or superlative claims. We would rather design around the constraint than get a page pulled after it starts working.</div>
+<textarea name="39. Compliance" style="min-height: 80px;" placeholder="Required license display, team name rules, disclosure language, and your broker&#x27;s position on ranking claims."></textarea>
+</div>
+</div>
+<div class="section">
+<div class="section-header">10. Media and existing assets</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">40</span> What original media do you already have?</label>
+<div class="question-hint">Original media is one of the clearest signals an engine uses to separate a real authority from a content mill. Video walkthroughs, drone footage, market update videos, podcast appearances, published market reports. We noticed several video URLs on your site, so some of this already exists.</div>
+<textarea name="40. Existing Media" style="min-height: 90px;" placeholder="What exists, where it lives, and how often you produce it."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">41</span> Press and third party coverage we can cite.</label>
+<div class="question-hint">Your Naples in the News page suggests there is coverage. Third party mentions are what engines use to corroborate a claim you make about yourself, so a dated link is worth more than a paragraph you write about yourself.</div>
+<textarea name="41. Press Coverage" style="min-height: 90px;" placeholder="Publication, date, and a link if you have one."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">42</span> Your blog and market reports. What is realistic going forward?</label>
+<div class="question-hint">Every post on your blog carries the date January 8, 2025, which is an import stamp rather than a publication date, and your blog sitemap contains a single URL. Your market reports page has 817 words and no report. Both are fixable, but only if we agree who produces the underlying material and how often.</div>
+<textarea name="42. Blog and Market Reports" style="min-height: 100px;" placeholder="Who writes, how often you can realistically commit, whether the market data is yours or licensed, and whether we may rewrite or delete the existing posts."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">43</span> Photography and video rights.</label>
+<div class="question-hint">We need to know what we can republish. Listing photography rights usually sit with the photographer or the brokerage, and a rights problem found after publication is expensive.</div>
+<textarea name="43. Asset Rights" style="min-height: 70px;" placeholder="Who owns what, and any restrictions."></textarea>
+</div>
+</div>
+<div class="section">
+<div class="section-header">11. Technical access</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">44</span> Confirm we have what we need to make technical changes.</label>
+<div class="question-hint">Blok already builds and hosts apexteamnaples.com, so most of the repair list is work we can execute directly. We are confirming rather than asking. One item is worth flagging now: your Meet The Team page is currently printing the raw template placeholders [TENSE_VAR_2] and [TENSE_VAR_8] in the live team introduction, and it has been doing so for anyone who reads that page.</div>
+<textarea name="44. Website Access" style="min-height: 70px;" placeholder="Anything about the site we should know before we touch the markup."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">45</span> Profile access for name and number alignment.</label>
+<div class="question-hint">To fix the identity problem we need the same name and the same phone number everywhere a machine can read them. Tell us which of these you control and can update, and which need someone else.</div>
+<textarea name="45. Profile Access" style="min-height: 100px;" placeholder="Google Business Profile, Compass agent pages for each team member, Zillow, Realtor.com, LinkedIn (linkedin.com/in/belzsells), Instagram and Facebook (BelzSells), Naples Area Board of Realtors, any others."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">46</span> Analytics and Search Console access.</label>
+<div class="question-hint">We need Google Analytics and Google Search Console to measure whether any of this moves. Without them we can measure AI answers but not what they send you.</div>
+<textarea name="46. Analytics Access" style="min-height: 70px;" placeholder="Who administers each, and the email to grant access to."></textarea>
+</div>
+</div>
+<div class="section">
+<div class="section-header">12. Goals</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">47</span> What is the primary goal for the next twelve months?</label>
+<div class="question-hint">More listings, higher average price, a specific community, more builder work, or simply being in the conversation when a buyer asks an AI who to call in Naples.</div>
+<textarea name="47. Primary Goal" style="min-height: 90px;" placeholder=""></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">48</span> What price band do you most want more of?</label>
+<div class="question-hint">This changes which areas we prioritize and how we frame your record.</div>
+<input type="text" name="48. Target Price Band" placeholder="For example: $4M to $12M waterfront single family west of 41" value="">
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">49</span> What would make you say this worked, twelve months from now?</label>
+<div class="question-hint">Be concrete. We re-run the same question set on a schedule and report against it, so we would rather agree the target now than argue about it later. One honest note: being named on team framed and community framed questions in Naples is a realistic target. Being the top name on &quot;best realtor in Naples&quot; is not something anyone can promise you.</div>
+<textarea name="49. Definition of Success" style="min-height: 110px;" placeholder="Number of listings, a specific question you want to appear in, a revenue figure, or something else."></textarea>
+</div>
+<div class="question-group">
+<label class="question-label"><span class="question-number">50</span> Anything we did not ask that we should have?</label>
+<textarea name="50. Anything Else" style="min-height: 90px;" placeholder=""></textarea>
+</div>
+</div>
+<div class="submit-section">
+                <button type="submit" class="submit-btn">Submit Questionnaire</button>
+                <p class="submit-note">Your answers go to Blok.co. You will get a confirmation once it is received.</p>
+            </div>
+        </form>
+
+        <footer>
+            <p><strong>Joe Belz + Apex Team at Compass</strong> | Total Search Questionnaire | September 2026</p>
+            <p>Prepared by <a href="https://blok.co">Blok.co</a></p>
+        </footer>
+
+    </div>
+<script>
+/* BLOK Total Search questionnaire guard + submit
+   2026-08-19: a bare Enter keypress submitted the whole form (HTML implicit
+   submission), sending a near-empty questionnaire that could not be recovered.
+   2026-08-21: submission moved off FormSubmit onto the Apps Script backend so
+   every answer lands in a Sheet. A send that fails must never look like it
+   worked, which is what both the old FormSubmit path and the first Apps Script
+   draft did. */
+(function () {
+  var form = document.querySelector('form');
+  if (!form) return;
+
+  var ENDPOINT = '';           /* Apps Script /exec URL */
+  var CLIENT   = 'apexteam-sep2026';        /* client slug, also the draft key */
+  var LABEL    = 'Joe Belz + Apex Team';
+  var KEY      = 'blok-ts-' + CLIENT;
+  var configured = ENDPOINT.indexOf('http') === 0;
+
+  function fields() {
+    return Array.prototype.slice.call(form.querySelectorAll('input[type="text"], textarea'));
+  }
+  function boxes() {
+    return Array.prototype.slice.call(form.querySelectorAll('input[type="checkbox"]'));
+  }
+
+  var initial = {};
+  fields().forEach(function (el) { if (el.name) initial[el.name] = el.value; });
+
+  function answered() {
+    var n = 0;
+    fields().forEach(function (el) {
+      if (el.name && el.value.trim() && el.value !== (initial[el.name] || '')) n++;
+    });
+    boxes().forEach(function (el) { if (el.checked) n++; });
+    return n;
+  }
+
+  /* ---- 1. Enter must never submit the form ---- */
+  form.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' && e.target && e.target.tagName === 'INPUT') {
+      e.preventDefault();
+      var all = fields(); var i = all.indexOf(e.target);
+      if (i > -1 && all[i + 1]) all[i + 1].focus();
+    }
+  });
+
+  /* ---- 2. autosave ---- */
+  var stamp = document.createElement('p');
+  stamp.className = 'submit-note';
+  stamp.id = 'blok-save-stamp';
+  stamp.textContent = 'Your answers save automatically in this browser as you type.';
+  var note = form.querySelector('.submit-note');
+  if (note && note.parentNode) note.parentNode.appendChild(stamp);
+
+  function snapshot() {
+    var d = {};
+    fields().forEach(function (el) { if (el.name && el.value) d[el.name] = el.value; });
+    boxes().forEach(function (el) {
+      if (el.checked) d['cb::' + el.name + '::' + el.value] = '1';
+    });
+    return d;
+  }
+  function save() {
+    try {
+      localStorage.setItem(KEY, JSON.stringify({ t: Date.now(), d: snapshot() }));
+      if (stamp) stamp.textContent = 'Answers saved in this browser at ' + new Date().toLocaleTimeString();
+    } catch (err) {}
+  }
+  var timer;
+  form.addEventListener('input', function () { clearTimeout(timer); timer = setTimeout(save, 600); });
+  form.addEventListener('change', save);
+
+  /* ---- 3. restore ---- */
+  try {
+    var raw = localStorage.getItem(KEY);
+    if (raw) {
+      var parsed = JSON.parse(raw), d = parsed.d || {}, restored = 0;
+      fields().forEach(function (el) {
+        if (el.name && d[el.name] && d[el.name] !== el.value) { el.value = d[el.name]; restored++; }
+      });
+      boxes().forEach(function (el) {
+        if (d['cb::' + el.name + '::' + el.value]) { el.checked = true; restored++; }
+      });
+      if (restored) {
+        var bar = document.createElement('div');
+        bar.className = 'flag'; bar.style.margin = '0 0 18px';
+        bar.innerHTML = '<span class="flag-tag">Draft restored</span>We restored ' + restored +
+          ' answer' + (restored === 1 ? '' : 's') + ' you had already filled in on this device, last saved ' +
+          new Date(parsed.t).toLocaleString() + '. <a href="#" id="blok-clear" ' +
+          'style="color:#b4564a;font-weight:600;">Clear and start fresh</a>';
+        form.parentNode.insertBefore(bar, form);
+        document.getElementById('blok-clear').addEventListener('click', function (e) {
+          e.preventDefault();
+          if (confirm('Clear the restored answers and start this form over?')) {
+            localStorage.removeItem(KEY); location.reload();
+          }
+        });
+      }
+    }
+  } catch (err) {}
+
+  /* ---- 4. result panel ---- */
+  function panel(kind, title, html) {
+    var box = document.getElementById('blok-result');
+    if (!box) {
+      box = document.createElement('div');
+      box.id = 'blok-result';
+      form.parentNode.insertBefore(box, form);
+    }
+    var good = kind === 'ok';
+    box.className = good ? 'intro' : 'flag';
+    box.style.cssText = good
+      ? 'border-left:4px solid #59f3ff;margin:0 0 18px;'
+      : 'margin:0 0 18px;';
+    box.innerHTML = (good ? '' : '<span class="flag-tag">Not sent</span>') +
+      '<p style="font-size:16px;font-weight:700;color:#010b23;margin-bottom:8px;">' + title + '</p>' + html;
+    box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  function payload() {
+    var p = new URLSearchParams();
+    var fd = new FormData(form);
+    fd.forEach(function (v, k) { p.append(k, v); });
+    p.append('_client', CLIENT);
+    p.append('_clientLabel', LABEL);
+    p.append('_ajax', '1');
+    p.append('_token', token());
+    return p;
+  }
+  function token() {
+    try {
+      var t = sessionStorage.getItem(KEY + '-tok');
+      if (!t) {
+        t = String(Date.now()) + '-' + Math.random().toString(36).slice(2, 10);
+        sessionStorage.setItem(KEY + '-tok', t);
+      }
+      return t;
+    } catch (e) { return String(Date.now()); }
+  }
+
+  function failed(btn) {
+    if (btn) { btn.disabled = false; btn.textContent = 'Submit Questionnaire'; }
+    panel('bad', 'We could not deliver your answers',
+      '<p style="font-size:14px;line-height:1.6;">Nothing has been lost. Everything you typed is still on this page and saved ' +
+      'in this browser, so you can close it and come back.</p>' +
+      '<p style="font-size:14px;line-height:1.6;margin-top:8px;">Please try Submit once more. If it fails again, ' +
+      'click <a href="#" id="blok-copy" style="color:#b4564a;font-weight:600;">copy my answers</a> and paste them into ' +
+      'an email to <a href="mailto:brandon.hendricks@blok.co" style="color:#b4564a;font-weight:600;">brandon.hendricks@blok.co</a>.</p>');
+    var c = document.getElementById('blok-copy');
+    if (c) c.addEventListener('click', function (e) {
+      e.preventDefault();
+      var d = snapshot(), out = [];
+      Object.keys(d).forEach(function (k) {
+        out.push(k.indexOf('cb::') === 0 ? k.split('::')[1] + ': ' + k.split('::')[2] : k + ': ' + d[k]);
+      });
+      var text = LABEL + ' - Total Search questionnaire\n\n' + out.join('\n\n');
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(function () { c.textContent = 'copied'; });
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = text; document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); c.textContent = 'copied'; } catch (e2) {}
+        document.body.removeChild(ta);
+      }
+    });
+  }
+
+  function succeeded(btn) {
+    try { localStorage.removeItem(KEY); } catch (e) {}
+    if (btn) { btn.disabled = true; btn.textContent = 'Submitted'; }
+    form.style.opacity = '0.55';
+    form.style.pointerEvents = 'none';
+    panel('ok', 'Thank you, we have your answers',
+      '<p style="font-size:14px;line-height:1.6;">Your questionnaire reached BLOK and is recorded on our end, ' +
+      'so nothing can go missing. You will get a confirmation by email.</p>' +
+      '<p style="font-size:14px;line-height:1.6;margin-top:8px;">We will review your responses and come back with ' +
+      'an initial market and content plan. To add anything, just reply to that email.</p>');
+  }
+
+  /* ---- 5. submit ---- */
+  form.addEventListener('submit', function (e) {
+    var n = answered();
+    if (n === 0) {
+      e.preventDefault();
+      alert('This form is still blank.\n\n' +
+        'Nothing has been filled in beyond the details we pre-filled for you, ' +
+        'so there is nothing for us to work from yet.\n\n' +
+        'Answer what you can, then submit. Your answers save automatically in ' +
+        'this browser as you go, so you can close the page and come back to it.');
+      var first = fields()[0]; if (first) first.focus();
+      return;
+    }
+    var total = fields().length + 3;
+    if (n < 8 && !confirm('You have answered ' + n + ' of roughly ' + total +
+      ' items.\n\nSubmit anyway? Click Cancel to keep working. Your progress is ' +
+      'saved in this browser.')) { e.preventDefault(); return; }
+
+    /* Without an endpoint configured, fall through to the form's own action. */
+    if (!configured) return;
+
+    e.preventDefault();
+    save();
+    var btn = form.querySelector('.submit-btn');
+    if (btn) { btn.disabled = true; btn.textContent = 'Sending...'; }
+
+    var done = false;
+    var giveUp = setTimeout(function () { if (!done) { done = true; failed(btn); } }, 25000);
+
+    fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+      body: payload().toString()
+    }).then(function (r) {
+      return r.text().then(function (t) {
+        var ok = false;
+        try { ok = JSON.parse(t).result === 'success'; } catch (err) { ok = /safely recorded|Already received/.test(t); }
+        return ok;
+      });
+    }).then(function (ok) {
+      if (done) return;
+      done = true; clearTimeout(giveUp);
+      ok ? succeeded(btn) : failed(btn);
+    }).catch(function () {
+      /* Opaque or blocked response. Retry once fire-and-forget, then be honest:
+         we cannot confirm, so keep the draft and say so rather than claim success. */
+      if (done) return;
+      fetch(ENDPOINT, {
+        method: 'POST', mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+        body: payload().toString()
+      }).then(function () {
+        if (done) return;
+        done = true; clearTimeout(giveUp);
+        if (btn) { btn.disabled = false; btn.textContent = 'Submit again'; }
+        panel('bad', 'We could not confirm your answers arrived',
+          '<p style="font-size:14px;line-height:1.6;">Your browser blocked our confirmation, so we cannot tell you ' +
+          'for certain whether this went through. Your answers are still saved here.</p>' +
+          '<p style="font-size:14px;line-height:1.6;margin-top:8px;">Email ' +
+          '<a href="mailto:brandon.hendricks@blok.co" style="color:#b4564a;font-weight:600;">brandon.hendricks@blok.co</a> ' +
+          'to check before you close this page.</p>');
+      }).catch(function () {
+        if (done) return;
+        done = true; clearTimeout(giveUp); failed(btn);
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
